@@ -43,7 +43,7 @@ namespace Jerre
         {
             var spawnPoint = spawnPointManager.GetNextSpawnPoint();
             var newPlayer = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
-            newPlayer.SetPlayerNumber(playerNumber);
+            newPlayer.playerNumber = playerNumber;
             playerNumberMap.Add(playerNumber, newPlayer);
         }
 

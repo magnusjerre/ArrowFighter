@@ -2,18 +2,14 @@
 
 namespace Jerre
 {
-    [RequireComponent(typeof (PlayerInputComponent))]
-    public class PlayerSettings : MonoBehaviour
+    public class PlayerPhysics : MonoBehaviour
     {
-        public int playerNumber;
-
-        public float MaxSpeed = 100f;
-        public float VelocityStickyNess = 0.95f;
+        public Vector3 Velocity;
 
         // Start is called before the first frame update
         void Start()
         {
-            
+
         }
 
         // Update is called once per frame

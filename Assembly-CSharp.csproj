@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{8F2FE9EA-CE87-4439-848E-04116C11D5EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -62,6 +63,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerInputComponent.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerPhysics.cs" />
     <Compile Include="Assets\Scripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
