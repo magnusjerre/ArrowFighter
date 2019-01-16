@@ -8,7 +8,7 @@ namespace Jerre
         public int playerNumber;
 
         public float MaxSpeed = 100f;
-        public float VelocityStickyNess = 0.95f;
+        public float MaxAcceleration = 1000f;
 
         // Start is called before the first frame update
         void Start()
@@ -21,5 +21,6 @@ namespace Jerre
         {
 
         }
+   
     }
 }

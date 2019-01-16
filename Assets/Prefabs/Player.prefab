@@ -129,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 0
   MaxSpeed: 100
-  VelocityStickyNess: 0.9
+  MaxAcceleration: 250
 --- !u!114 &1107538732434461958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a80d45ef4470648975160baab9af73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocity: {x: 0, y: 0, z: 0}
+  MovementDirection: {x: 0, y: 0, z: 0}
+  Speed: 0
+  MovementRotation: 0
 --- !u!1 &1091042639372086202
 GameObject:
   m_ObjectHideFlags: 0

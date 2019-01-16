@@ -22,15 +22,21 @@ namespace Jerre
         void Update()
         {
             var newMoveDirection = playerInput.input.MoveDirection;
-            var tempVelocity = newMoveDirection * settings.MaxSpeed;
-            var velocity = tempVelocity * (1f - settings.VelocityStickyNess) + physics.Velocity * settings.VelocityStickyNess;
-            if (velocity.sqrMagnitude > settings.MaxSpeed * settings.MaxSpeed)
-            {
-                velocity = velocity.normalized * settings.MaxSpeed;
-            }
-            physics.Velocity = velocity;
 
-            transform.Translate(velocity * Time.deltaTime, Space.World);
+            // Speed
+            var accelerationSpeed = settings.MaxAcceleration * Time.deltaTime;
+            var oldVelocity = physics.MovementDirection * physics.Speed;
+            var wantedVelocity = newMoveDirection.normalized * accelerationSpeed * newMoveDirection.magnitude;
+            var newVelocity = oldVelocity + (wantedVelocity.sqrMagnitude == 0f ? -accelerationSpeed * physics.MovementDirection : wantedVelocity);
+            if (newVelocity.magnitude > settings.MaxSpeed)
+            {
+                newVelocity = newVelocity.normalized * settings.MaxSpeed;
+            }
+
+            physics.Speed = newVelocity.magnitude;
+            physics.MovementDirection = newVelocity.normalized;
+
+            transform.Translate(physics.MovementDirection * physics.Speed * Time.deltaTime, Space.World);
             transform.LookAt(transform.position + playerInput.input.MoveDirection);
         }
     }
