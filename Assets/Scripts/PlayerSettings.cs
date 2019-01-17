@@ -10,6 +10,8 @@ namespace Jerre
         public float MaxSpeed = 100f;
         public float MaxAcceleration = 1000f;
 
+        public float MaxLookRotationSpeedDegs = 360 * Mathf.Deg2Rad;
+
         // Start is called before the first frame update
         void Start()
         {

@@ -37,7 +37,6 @@ namespace Jerre
             physics.MovementDirection = newVelocity.normalized;
 
             transform.Translate(physics.MovementDirection * physics.Speed * Time.deltaTime, Space.World);
-            transform.LookAt(transform.position + playerInput.input.MoveDirection);
         }
     }
 }

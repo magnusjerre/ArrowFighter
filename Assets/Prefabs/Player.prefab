@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 1107538732434461958}
   - component: {fileID: 2075523055437041301}
   - component: {fileID: 8055578929864350619}
+  - component: {fileID: 9093188679974830718}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -130,6 +131,7 @@ MonoBehaviour:
   playerNumber: 0
   MaxSpeed: 100
   MaxAcceleration: 250
+  MaxLookRotationSpeedDegs: 720
 --- !u!114 &1107538732434461958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +170,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementDirection: {x: 0, y: 0, z: 0}
   Speed: 0
-  MovementRotation: 0
+--- !u!114 &9093188679974830718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091042639049842558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3dd2f31a4053f4c9789fd1bd1a0b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1091042639372086202
 GameObject:
   m_ObjectHideFlags: 0
