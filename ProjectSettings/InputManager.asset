@@ -164,7 +164,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: MoveY_2
     descriptiveName: 
@@ -180,7 +180,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: LookX_2
     descriptiveName: 
@@ -196,7 +196,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: LookY_2
     descriptiveName: 
@@ -212,7 +212,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: Fire_2
     descriptiveName: 
@@ -228,7 +228,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 9
-    joyNum: 1
+    joyNum: 2
   - serializedVersion: 3
     m_Name: DodgeRight_2
     descriptiveName: 
@@ -308,7 +308,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: MoveY_3
     descriptiveName: 
@@ -324,7 +324,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: LookX_3
     descriptiveName: 
@@ -340,7 +340,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: LookY_3
     descriptiveName: 
@@ -356,7 +356,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: Fire_3
     descriptiveName: 
@@ -372,7 +372,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 9
-    joyNum: 1
+    joyNum: 3
   - serializedVersion: 3
     m_Name: DodgeRight_3
     descriptiveName: 
@@ -452,7 +452,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: MoveY_4
     descriptiveName: 
@@ -468,7 +468,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: LookX_4
     descriptiveName: 
@@ -484,7 +484,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: LookY_4
     descriptiveName: 
@@ -500,7 +500,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: Fire_4
     descriptiveName: 
@@ -516,7 +516,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 9
-    joyNum: 1
+    joyNum: 4
   - serializedVersion: 3
     m_Name: DodgeRight_4
     descriptiveName: 
