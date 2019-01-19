@@ -63,13 +63,19 @@
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerInputComponent.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerPhysics.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
+    <Compile Include="Assets\Scripts\Weapons\BulletCollider.cs" />
+    <Compile Include="Assets\Scripts\Weapons\BulletMover.cs" />
+    <Compile Include="Assets\Scripts\Weapons\BulletSettings.cs" />
+    <Compile Include="Assets\Scripts\Weapons\LifteTime.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/MJGameDev/ArrowFighter/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
