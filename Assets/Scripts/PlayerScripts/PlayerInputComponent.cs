@@ -23,7 +23,7 @@ namespace Jerre
                 Input.GetAxis(PlayerInputTags.MOVE_Y + playerNumber),
                 Input.GetAxis(PlayerInputTags.LOOK_X + playerNumber),
                 Input.GetAxis(PlayerInputTags.LOOK_Y + playerNumber),
-                Input.GetButtonDown(PlayerInputTags.FIRE + playerNumber),
+                Input.GetAxis(PlayerInputTags.FIRE + playerNumber) > 0.5f,
                 Input.GetButtonDown(PlayerInputTags.DODGE_RIGHT + playerNumber),
                 Input.GetButtonDown(PlayerInputTags.DODGE_LEFT + playerNumber),
                 Input.GetButtonDown(PlayerInputTags.BOOST + playerNumber)
