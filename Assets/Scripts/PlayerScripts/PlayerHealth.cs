@@ -22,16 +22,17 @@ namespace Jerre
         {
             settings = GetComponent<PlayerSettings>();
             MaxHealth = settings.MaxHealth;
+            ResetHealth();
         }
 
         public void DoDamage(int damage)
         {
             healthLeft -= damage;
-            if (healthLeft <= 1)
+            if (healthLeft <= 0)
             {
                 healthLeft = 0;
-                Debug.Log("Player died!");
-                ResetHealth();  //Temporary thing
+                Debug.Log("Player " + settings.playerNumber + " died!");
+                PlayerDeathManager.instance.RegisterPlayerDeath(settings);
             }
         }
 

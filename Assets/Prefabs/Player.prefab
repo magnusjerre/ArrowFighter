@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 0
-  MaxHealth: 10
+  MaxHealth: 2
   MaxSpeed: 100
   MaxAcceleration: 250
   MaxLookRotationSpeedDegs: 720
