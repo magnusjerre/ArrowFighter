@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Jerre.UI;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jerre
@@ -9,16 +10,22 @@ namespace Jerre
 
         private Dictionary<int, PlayerSettings> playerNumberMap;
         private SpawnPointManager spawnPointManager;
+        private ScoreUIManager scoreUIManager;
+
+        private Color[] playerColors;
+        private int indexOfNextColor = 0;
 
         private void Awake()
         {
             playerNumberMap = new Dictionary<int, PlayerSettings>();
+            playerColors = new Color[] { Color.red, Color.green, Color.blue, Color.yellow };
         }
 
         // Start is called before the first frame update
         void Start()
         {
             spawnPointManager = GameObject.FindObjectOfType<SpawnPointManager>();
+            scoreUIManager = GameObject.FindObjectOfType<ScoreUIManager>();
         }
 
         // Update is called once per frame
@@ -45,6 +52,9 @@ namespace Jerre
             var newPlayer = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
             newPlayer.playerNumber = playerNumber;
             playerNumberMap.Add(playerNumber, newPlayer);
+            var playerColor = NextColor();
+            newPlayer.color = playerColor;
+            scoreUIManager.AddScoreForPlayer(0, 10, playerNumber, playerColor);
         }
 
         private void RemovePlayer(int playerNumber)
@@ -54,6 +64,14 @@ namespace Jerre
             {
                 Destroy(playerToRemove.gameObject);
             }
+            scoreUIManager.RemoveScoreForPlayer(playerNumber);
+        }
+
+        private Color NextColor()
+        {
+            var color = playerColors[indexOfNextColor];
+            indexOfNextColor = (indexOfNextColor + 1) % playerColors.Length;
+            return color;
         }
     }
 }

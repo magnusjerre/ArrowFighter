@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerHealth.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
+    <Compile Include="Assets\Scripts\UI\ScoreUIElement.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
     <Compile Include="Assets\Scripts\Weapons\BulletCollider.cs" />
     <Compile Include="Assets\Scripts\Weapons\BulletMover.cs" />
