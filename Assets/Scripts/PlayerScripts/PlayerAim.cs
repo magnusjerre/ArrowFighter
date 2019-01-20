@@ -7,12 +7,14 @@ namespace Jerre
     {
         PlayerInputComponent playerInput;
         PlayerSettings settings;
+        PlayerBoost boost;
         
         // Start is called before the first frame update
         void Start()
         {
             playerInput = GetComponent<PlayerInputComponent>();
             settings = GetComponent<PlayerSettings>();
+            boost = GetComponent<PlayerBoost>();
         }
 
         // Update is called once per frame
@@ -20,7 +22,7 @@ namespace Jerre
         {
             var input = playerInput.input;
             var oldLookDirection = transform.forward.normalized;
-            var targetLookDirection = (input.LookDirection.sqrMagnitude == 0f) ? input.MoveDirection.normalized : input.LookDirection.normalized;
+            var targetLookDirection = (input.LookDirection.sqrMagnitude == 0f || boost.boosting) ? input.MoveDirection.normalized : input.LookDirection.normalized;
             var angleRotation = Mathf.Min(Vector3.Angle(oldLookDirection, targetLookDirection), settings.MaxLookRotationSpeedDegs * Time.deltaTime);
             var targetDirection = Vector3.RotateTowards(oldLookDirection, targetLookDirection, angleRotation * Mathf.Deg2Rad, 0f);
             transform.LookAt(transform.position + targetDirection);
