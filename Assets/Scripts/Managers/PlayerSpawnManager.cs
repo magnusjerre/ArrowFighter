@@ -17,6 +17,8 @@ namespace Jerre
         private Color[] playerColors;
         private int indexOfNextColor = 0;
 
+        private AFEventManager eventManager;
+
         private void Awake()
         {
             playerNumberMap = new Dictionary<int, PlayerSettings>();
@@ -30,7 +32,8 @@ namespace Jerre
             scoreUIManager = GameObject.FindObjectOfType<ScoreUIManager>();
             scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
-            AFEventManager.INSTANCE.AddListener(this);
+            eventManager = GameObject.FindObjectOfType<AFEventManager>();
+            eventManager.AddListener(this);
         }
 
         // Update is called once per frame
@@ -59,8 +62,9 @@ namespace Jerre
             playerNumberMap.Add(playerNumber, newPlayer);
             var playerColor = NextColor();
             newPlayer.color = playerColor;
+            eventManager.PostEvent(AFEvents.PlayerJoin(playerNumber, playerColor));
+
             scoreUIManager.AddScoreForPlayer(0, scoreManager.maxScore, playerNumber, playerColor);
-            scoreManager.AddPlayer(playerNumber);
         }
 
         private void RemovePlayer(int playerNumber)
@@ -73,8 +77,9 @@ namespace Jerre
                     Destroy(playerToRemove.gameObject);
                 }
             }
+            eventManager.PostEvent(AFEvents.PlayerLeave(playerNumber));
+
             scoreUIManager.RemoveScoreForPlayer(playerNumber);
-            scoreManager.RemovePlayer(playerNumber);
         }
 
         private Color NextColor()

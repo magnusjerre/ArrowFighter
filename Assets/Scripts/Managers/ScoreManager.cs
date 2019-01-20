@@ -10,6 +10,7 @@ namespace Jerre
         public int maxScore = 10;
 
         private ScoreUIManager scoreUIManager;
+        private AFEventManager eventManager;
         private Dictionary<int, int> playerScores;
 
         void Awake()
@@ -21,43 +22,65 @@ namespace Jerre
         void Start()
         {
             scoreUIManager = GameObject.FindObjectOfType<ScoreUIManager>();
-            AFEventManager.INSTANCE.AddListener(this);
-        }
-
-        public void AddPlayer(int playerNumber)
-        {
-            playerScores.Add(playerNumber, 0);
-        }
-
-        public void RemovePlayer(int playerNumber)
-        {
-            playerScores.Remove(playerNumber);
+            eventManager = GetComponent<AFEventManager>();
+            eventManager.AddListener(this);
         }
 
         public bool HandleEvent(AFEvent afEvent)
         {
-            if (afEvent.type == AFEventType.KILLED)
+            switch (afEvent.type)
             {
-                var payload = (KilledEventPayload) afEvent.payload;
-                if (playerScores.ContainsKey(payload.playerNumberOfKiller))
-                {
-                    var oldScore = playerScores[payload.playerNumberOfKiller];
-                    var newScore = oldScore + 1;
-                    playerScores[payload.playerNumberOfKiller] = newScore;
-                    scoreUIManager.UpdateScoreForPlayer(newScore, maxScore, payload.playerNumberOfKiller);
-
-                    if (newScore == maxScore)
+                case AFEventType.KILLED:
                     {
-                        Debug.Log("Game over");
-                        AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
+                        return HandleKilledEvent((KilledEventPayload)afEvent.payload);
                     }
-                }
-                else
-                {
-                    RemovePlayer(payload.playerNumberOfKiller);
-                }
-
+                case AFEventType.PLAYER_JOIN:
+                    {
+                        return HandlePlayerJoinEvent((PlayerJoinPayload)afEvent.payload);
+                    }
+                case AFEventType.PLAYER_LEAVE:
+                    {
+                        return HandlePlayerLeaveEvent((PlayerLeavePayload)afEvent.payload);
+                    }
+                default:
+                    {
+                        return false;
+                    }
             }
+        }
+
+        private bool HandleKilledEvent(KilledEventPayload payload)
+        {
+            if (playerScores.ContainsKey(payload.playerNumberOfKiller))
+            {
+                var oldScore = playerScores[payload.playerNumberOfKiller];
+                var newScore = oldScore + 1;
+                playerScores[payload.playerNumberOfKiller] = newScore;
+                scoreUIManager.UpdateScoreForPlayer(newScore, maxScore, payload.playerNumberOfKiller);
+
+                if (newScore == maxScore)
+                {
+                    Debug.Log("Game over");
+                    eventManager.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
+                }
+            }
+            else
+            {
+                playerScores.Remove(payload.playerNumberOfKilledPlayer);
+            }
+
+            return false;
+        }
+
+        private bool HandlePlayerJoinEvent(PlayerJoinPayload payload)
+        {
+            playerScores.Add(payload.playerNumber, 0);
+            return false;
+        }
+
+        private bool HandlePlayerLeaveEvent(PlayerLeavePayload payload)
+        {
+            playerScores.Remove(payload.playerNumber);
             return false;
         }
     }
