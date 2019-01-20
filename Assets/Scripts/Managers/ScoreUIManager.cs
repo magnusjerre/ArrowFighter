@@ -68,5 +68,10 @@ namespace Jerre.UI
                 }
             }
         }
+
+        public void ResetNumberInLine()
+        {
+            nextNumberInLine = 1;
+        }
     }
 }

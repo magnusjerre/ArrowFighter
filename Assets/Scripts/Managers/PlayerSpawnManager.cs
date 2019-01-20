@@ -1,16 +1,18 @@
-﻿using Jerre.UI;
+﻿using Jerre.Events;
+using Jerre.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jerre
 {
-    public class PlayerSpawnManager : MonoBehaviour
+    public class PlayerSpawnManager : MonoBehaviour, IAFEventListener
     {
         public PlayerSettings playerPrefab;
 
         private Dictionary<int, PlayerSettings> playerNumberMap;
         private SpawnPointManager spawnPointManager;
         private ScoreUIManager scoreUIManager;
+        private ScoreManager scoreManager;
 
         private Color[] playerColors;
         private int indexOfNextColor = 0;
@@ -26,6 +28,9 @@ namespace Jerre
         {
             spawnPointManager = GameObject.FindObjectOfType<SpawnPointManager>();
             scoreUIManager = GameObject.FindObjectOfType<ScoreUIManager>();
+            scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+
+            AFEventManager.INSTANCE.AddListener(this);
         }
 
         // Update is called once per frame
@@ -54,17 +59,22 @@ namespace Jerre
             playerNumberMap.Add(playerNumber, newPlayer);
             var playerColor = NextColor();
             newPlayer.color = playerColor;
-            scoreUIManager.AddScoreForPlayer(0, 10, playerNumber, playerColor);
+            scoreUIManager.AddScoreForPlayer(0, scoreManager.maxScore, playerNumber, playerColor);
+            scoreManager.AddPlayer(playerNumber);
         }
 
         private void RemovePlayer(int playerNumber)
         {
-            var playerToRemove = playerNumberMap[playerNumber];
-            if (playerNumberMap.Remove(playerNumber))
+            if (playerNumberMap.ContainsKey(playerNumber))
             {
-                Destroy(playerToRemove.gameObject);
+                var playerToRemove = playerNumberMap[playerNumber];
+                if (playerNumberMap.Remove(playerNumber))
+                {
+                    Destroy(playerToRemove.gameObject);
+                }
             }
             scoreUIManager.RemoveScoreForPlayer(playerNumber);
+            scoreManager.RemovePlayer(playerNumber);
         }
 
         private Color NextColor()
@@ -72,6 +82,20 @@ namespace Jerre
             var color = playerColors[indexOfNextColor];
             indexOfNextColor = (indexOfNextColor + 1) % playerColors.Length;
             return color;
+        }
+
+        public bool HandleEvent(AFEvent afEvent)
+        {
+            if (afEvent.type == AFEventType.GAME_OVER)
+            {
+                for (var i = 1; i <= 4; i++)
+                {
+                    RemovePlayer(i);
+                    indexOfNextColor = 0;
+                    scoreUIManager.ResetNumberInLine();
+                }
+            }
+            return false;
         }
     }
 }

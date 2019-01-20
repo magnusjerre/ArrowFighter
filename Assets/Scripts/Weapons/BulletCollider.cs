@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Jerre.Events;
+using UnityEngine;
 
 namespace Jerre
 {
@@ -20,7 +21,10 @@ namespace Jerre
             {
                 var playerSettings = other.GetComponent<PlayerSettings>();
                 Debug.Log("Player " + settings.PlayerOwnerNumber + " hit player " + playerSettings.playerNumber + "! Doing damage: " + settings.Damage);
-                playerHealth.DoDamage(settings.Damage);
+                if (playerHealth.DoDamage(settings.Damage))
+                {
+                    AFEventManager.INSTANCE.PostEvent(AFEvents.Kill(settings.PlayerOwnerNumber, playerSettings.playerNumber));
+                }
             } else
             {
                 Debug.Log("Bullet hit something else..");

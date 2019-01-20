@@ -60,8 +60,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Events\AFEvent.cs" />
+    <Compile Include="Assets\Scripts\Events\AFEventManager.cs" />
+    <Compile Include="Assets\Scripts\Events\AFEvents.cs" />
+    <Compile Include="Assets\Scripts\Events\AFEventType.cs" />
+    <Compile Include="Assets\Scripts\Events\IAFEventListener.cs" />
+    <Compile Include="Assets\Scripts\Events\Payloads\GameOverPayload.cs" />
+    <Compile Include="Assets\Scripts\Events\Payloads\KilledEventPayload.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />

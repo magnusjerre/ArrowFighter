@@ -426,6 +426,8 @@ GameObject:
   - component: {fileID: 1043987874}
   - component: {fileID: 1043987875}
   - component: {fileID: 1043987876}
+  - component: {fileID: 1043987878}
+  - component: {fileID: 1043987877}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -502,6 +504,31 @@ MonoBehaviour:
   scoreUIPrefab: {fileID: 4237707889972997031, guid: 7ad998a5a1ea8444aa5f1edc89f197c2,
     type: 3}
   scorePadding: 10
+--- !u!114 &1043987877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043987871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50a88cfa4e3cf7f4d9fec8c082e081ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1043987878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043987871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44eed35ae3e5b58429d4e7fe9726d58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxScore: 4
 --- !u!1 &1236998125
 GameObject:
   m_ObjectHideFlags: 0

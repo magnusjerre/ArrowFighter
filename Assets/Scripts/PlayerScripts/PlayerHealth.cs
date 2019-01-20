@@ -25,7 +25,8 @@ namespace Jerre
             ResetHealth();
         }
 
-        public void DoDamage(int damage)
+        // returns true if player is killed, false otherwise
+        public bool DoDamage(int damage)
         {
             healthLeft -= damage;
             if (healthLeft <= 0)
@@ -33,7 +34,9 @@ namespace Jerre
                 healthLeft = 0;
                 Debug.Log("Player " + settings.playerNumber + " died!");
                 PlayerDeathManager.instance.RegisterPlayerDeath(settings);
+                return true;
             }
+            return false;
         }
 
         public void ResetHealth()
