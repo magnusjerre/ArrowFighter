@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 9093188679974830718}
   - component: {fileID: 4089627472998003799}
   - component: {fileID: 3357473888168835179}
+  - component: {fileID: 2887167135447658282}
   - component: {fileID: 1464357877829653123}
   - component: {fileID: 6507999089634282337}
   m_Layer: 0
@@ -139,6 +140,10 @@ MonoBehaviour:
   MaxAcceleration: 250
   MaxLookRotationSpeedDegs: 720
   FireRate: 4
+  color: {r: 0, g: 0, b: 0, a: 0}
+  DodgeSpeed: 150
+  DodgeDuration: 0.2
+  DodgePauseDuration: 2
 --- !u!114 &1107538732434461958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +223,18 @@ MonoBehaviour:
   Muzzle: {fileID: 6459393256375075923}
   bulletPrefab: {fileID: 4647767403863908384, guid: f384b61a5a4565846820064fd423c79e,
     type: 3}
+--- !u!114 &2887167135447658282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091042639049842558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aba903232e5fd747bfc12e52f83ce4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &1464357877829653123
 SphereCollider:
   m_ObjectHideFlags: 0

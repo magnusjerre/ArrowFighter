@@ -16,6 +16,10 @@ namespace Jerre
 
         public Color color;
 
+        public float DodgeSpeed = 200f;
+        public float DodgeDuration = 0.25f;
+        public float DodgePauseDuration = 2f;
+
         // Start is called before the first frame update
         void Start()
         {
