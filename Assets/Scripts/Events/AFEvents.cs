@@ -23,5 +23,10 @@ namespace Jerre.Events
         {
             return new AFEvent(AFEventType.PLAYER_LEAVE, new PlayerLeavePayload(playerNumber));
         }
+
+        public static AFEvent Score(int playerNumber, int playerScore, int maxScore)
+        {
+            return new AFEvent(AFEventType.SCORE, new ScorePayload(playerNumber, playerScore, maxScore));
+        }
     }
 }

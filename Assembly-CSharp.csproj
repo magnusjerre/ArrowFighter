@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Events\Payloads\KilledEventPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerJoinPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerLeavePayload.cs" />
+    <Compile Include="Assets\Scripts\Events\Payloads\ScorePayload.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />

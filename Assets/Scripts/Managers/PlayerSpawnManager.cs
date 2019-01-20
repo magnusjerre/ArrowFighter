@@ -63,8 +63,6 @@ namespace Jerre
             var playerColor = NextColor();
             newPlayer.color = playerColor;
             eventManager.PostEvent(AFEvents.PlayerJoin(playerNumber, playerColor));
-
-            scoreUIManager.AddScoreForPlayer(0, scoreManager.maxScore, playerNumber, playerColor);
         }
 
         private void RemovePlayer(int playerNumber)
@@ -78,8 +76,6 @@ namespace Jerre
                 }
             }
             eventManager.PostEvent(AFEvents.PlayerLeave(playerNumber));
-
-            scoreUIManager.RemoveScoreForPlayer(playerNumber);
         }
 
         private Color NextColor()

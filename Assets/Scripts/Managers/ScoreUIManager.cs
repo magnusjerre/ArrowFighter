@@ -1,17 +1,23 @@
-﻿using UnityEngine;
+﻿using Jerre.Events;
+using UnityEngine;
 
 namespace Jerre.UI
 {
-    public class ScoreUIManager : MonoBehaviour
+    public class ScoreUIManager : MonoBehaviour, IAFEventListener
     {
         public RectTransform ScoreArea;
         public ScoreUIElement scoreUIPrefab;
         public int scorePadding = 10;
         private int nextNumberInLine = 1;
 
+        private ScoreManager scoreManager;
+        private AFEventManager eventManager;
+
         void Start()
         {
-
+            scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+            eventManager = GameObject.FindObjectOfType<AFEventManager>();
+            eventManager.AddListener(this);
         }
 
         public void AddScoreForPlayer(int playerScore, int maxScore, int playerNumber, Color color)
@@ -72,6 +78,45 @@ namespace Jerre.UI
         public void ResetNumberInLine()
         {
             nextNumberInLine = 1;
+        }
+
+        public bool HandleEvent(AFEvent afEvent)
+        {
+            switch(afEvent.type)
+            {
+                case AFEventType.SCORE:
+                    {
+                        return HandleScoreUpdate((ScorePayload)afEvent.payload);
+                    }
+                case AFEventType.PLAYER_JOIN:
+                    {
+                        return HandlePlayerJoin((PlayerJoinPayload)afEvent.payload);
+                    }
+                case AFEventType.PLAYER_LEAVE:
+                    {
+                        return HandlePlayerLeave((PlayerLeavePayload)afEvent.payload);
+                    }
+                default: return false;
+            }
+            
+        }
+
+        private bool HandlePlayerJoin(PlayerJoinPayload payload)
+        {
+            AddScoreForPlayer(0, scoreManager.maxScore, payload.playerNumber, payload.color);
+            return false;
+        }
+
+        private bool HandlePlayerLeave(PlayerLeavePayload payload)
+        {
+            RemoveScoreForPlayer(payload.playerNumber);
+            return false;
+        }
+
+        private bool HandleScoreUpdate(ScorePayload payload)
+        {
+            UpdateScoreForPlayer(payload.playerScore, payload.maxScore, payload.playerNumber);
+            return false;
         }
     }
 }

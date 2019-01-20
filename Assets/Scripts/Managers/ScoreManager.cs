@@ -56,7 +56,7 @@ namespace Jerre
                 var oldScore = playerScores[payload.playerNumberOfKiller];
                 var newScore = oldScore + 1;
                 playerScores[payload.playerNumberOfKiller] = newScore;
-                scoreUIManager.UpdateScoreForPlayer(newScore, maxScore, payload.playerNumberOfKiller);
+                eventManager.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, newScore, maxScore));
 
                 if (newScore == maxScore)
                 {
