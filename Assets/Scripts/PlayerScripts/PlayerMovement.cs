@@ -9,6 +9,8 @@ namespace Jerre
         PlayerInputComponent playerInput;
         PlayerSettings settings;
         PlayerPhysics physics;
+        PlayerBoost boost;
+
 
         // Start is called before the first frame update
         void Start()
@@ -16,6 +18,7 @@ namespace Jerre
             playerInput = GetComponent<PlayerInputComponent>();
             settings = GetComponent<PlayerSettings>();
             physics = GetComponent<PlayerPhysics>();
+            boost = GetComponent<PlayerBoost>();
         }
 
         // Update is called once per frame
@@ -24,13 +27,22 @@ namespace Jerre
             var newMoveDirection = playerInput.input.MoveDirection;
 
             // Speed
-            var accelerationSpeed = settings.MaxAcceleration * Time.deltaTime;
+            var acceleration = (boost != null && boost.boosting) ? settings.BoostAcceleration : settings.MaxAcceleration;
+            var accelerationSpeed = acceleration * Time.deltaTime;
             var oldVelocity = physics.MovementDirection * physics.Speed;
             var wantedVelocity = newMoveDirection.normalized * accelerationSpeed * newMoveDirection.magnitude;
             var newVelocity = oldVelocity + (wantedVelocity.sqrMagnitude == 0f ? -accelerationSpeed * physics.MovementDirection : wantedVelocity);
-            if (newVelocity.magnitude > settings.MaxSpeed)
+            var maxSpeed = (boost != null && boost.boosting) ? settings.BoostSpeed : settings.MaxSpeed;
+            if (newVelocity.magnitude > maxSpeed)
             {
-                newVelocity = newVelocity.normalized * settings.MaxSpeed;
+                if (boost.boosting)
+                {
+                    newVelocity = newVelocity.normalized * maxSpeed;
+                } else
+                {
+                    var newSpeed = Mathf.Max(newVelocity.magnitude - settings.BoostAcceleration * Time.deltaTime, settings.MaxSpeed);
+                    newVelocity = newVelocity.normalized * newSpeed;
+                }
             }
 
             physics.Speed = newVelocity.magnitude;

@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4089627472998003799}
   - component: {fileID: 3357473888168835179}
   - component: {fileID: 2887167135447658282}
+  - component: {fileID: 3844733223788122563}
   - component: {fileID: 1464357877829653123}
   - component: {fileID: 6507999089634282337}
   m_Layer: 0
@@ -141,9 +142,13 @@ MonoBehaviour:
   MaxLookRotationSpeedDegs: 720
   FireRate: 4
   color: {r: 0, g: 0, b: 0, a: 0}
-  DodgeSpeed: 150
+  DodgeSpeed: 100
   DodgeDuration: 0.2
   DodgePauseDuration: 2
+  BoostSpeed: 200
+  BoostDuration: 1
+  BoostPauseDuration: 2
+  BoostAcceleration: 750
 --- !u!114 &1107538732434461958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +240,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aba903232e5fd747bfc12e52f83ce4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3844733223788122563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091042639049842558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4b464e3a094cb4399b833379696538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boosting: 0
 --- !u!135 &1464357877829653123
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -20,6 +20,11 @@ namespace Jerre
         public float DodgeDuration = 0.25f;
         public float DodgePauseDuration = 2f;
 
+        public float BoostSpeed = 200f;
+        public float BoostDuration = 1f;
+        public float BoostPauseDuration = 2f;
+        public float BoostAcceleration = 2000f;
+
         // Start is called before the first frame update
         void Start()
         {

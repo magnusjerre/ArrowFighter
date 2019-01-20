@@ -26,7 +26,7 @@ namespace Jerre
                 Input.GetAxis(PlayerInputTags.FIRE + playerNumber) > 0.5f,
                 Input.GetButtonDown(PlayerInputTags.DODGE_RIGHT + playerNumber),
                 Input.GetButtonDown(PlayerInputTags.DODGE_LEFT + playerNumber),
-                Input.GetButtonDown(PlayerInputTags.BOOST + playerNumber)
+                Input.GetAxis(PlayerInputTags.BOOST + playerNumber) > 0.5f
             );
         }
     }

@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Managers\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerBoost.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerDodge.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerInput.cs" />
