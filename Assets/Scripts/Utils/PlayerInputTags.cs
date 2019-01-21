@@ -7,6 +7,7 @@
         public const string LOOK_X = "LookX_";
         public const string LOOK_Y = "LookY_";
         public const string FIRE = "Fire_";
+        public const string FIRE2 = "Fire2_";
         public const string DODGE_RIGHT = "DodgeRight_";
         public const string DODGE_LEFT = "DodgeLeft_";
         public const string BOOST = "Boost_";

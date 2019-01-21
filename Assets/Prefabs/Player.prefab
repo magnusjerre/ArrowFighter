@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 3357473888168835179}
   - component: {fileID: 2887167135447658282}
   - component: {fileID: 3844733223788122563}
+  - component: {fileID: 3238656893420677796}
   - component: {fileID: 1464357877829653123}
   - component: {fileID: 6507999089634282337}
   m_Layer: 0
@@ -141,6 +142,7 @@ MonoBehaviour:
   MaxAcceleration: 250
   MaxLookRotationSpeedDegs: 720
   FireRate: 4
+  Fire2Rate: 0.25
   color: {r: 0, g: 0, b: 0, a: 0}
   DodgeSpeed: 100
   DodgeDuration: 0.2
@@ -253,6 +255,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boosting: 0
+--- !u!114 &3238656893420677796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091042639049842558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc8cb0cf7cd4c324ba2ff0771c67ae72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 7730678022640361869, guid: 88e9359741f7eb0449b3479fe324ba10,
+    type: 3}
 --- !u!135 &1464357877829653123
 SphereCollider:
   m_ObjectHideFlags: 0

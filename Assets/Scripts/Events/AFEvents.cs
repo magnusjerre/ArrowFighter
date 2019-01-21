@@ -28,5 +28,10 @@ namespace Jerre.Events
         {
             return new AFEvent(AFEventType.SCORE, new ScorePayload(playerNumber, playerScore, maxScore));
         }
+
+        public static AFEvent BombTrigger(int ownerPlayerNumber, bool triggeredByPlayer)
+        {
+            return new AFEvent(AFEventType.BOMB_TRIGGER, new BombTriggerPayload(ownerPlayerNumber, triggeredByPlayer));
+        }
     }
 }

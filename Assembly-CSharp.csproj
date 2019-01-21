@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Events\AFEvents.cs" />
     <Compile Include="Assets\Scripts\Events\AFEventType.cs" />
     <Compile Include="Assets\Scripts\Events\IAFEventListener.cs" />
+    <Compile Include="Assets\Scripts\Events\Payloads\BombTriggerPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\GameOverPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\KilledEventPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerJoinPayload.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\Scripts\Managers\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerBombWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBoost.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerDodge.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerHealth.cs" />
@@ -88,6 +90,8 @@
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UI\ScoreUIElement.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Bomb\BombSettings.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Bomb\BombTriggerable.cs" />
     <Compile Include="Assets\Scripts\Weapons\BulletCollider.cs" />
     <Compile Include="Assets\Scripts\Weapons\BulletMover.cs" />
     <Compile Include="Assets\Scripts\Weapons\BulletSettings.cs" />
