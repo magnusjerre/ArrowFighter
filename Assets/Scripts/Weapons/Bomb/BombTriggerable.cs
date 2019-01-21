@@ -33,7 +33,10 @@ namespace Jerre
 
                 if (playerSettings != null && playerHealth != null)
                 {
-                    if (playerHealth.DoDamage(settings.BlastDamage))
+                    var distance = (playerSettings.transform.position - transform.position).magnitude;
+                    var multiplier = 1f - distance / settings.BlastRadius;
+                    var blastDamage = Mathf.Max(1, Mathf.RoundToInt(settings.BlastDamage * multiplier));
+                    if (playerHealth.DoDamage(blastDamage))
                     {
                         eventManager.PostEvent(AFEvents.Kill(settings.PlayerOwnerNumber, playerSettings.playerNumber));
                     }
