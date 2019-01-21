@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BlastDamage: 2
-  BlastSpeed: 1000
+  BlastAcceleration: 20000
   BlastRadius: 75
   MaxLifeTimeWithoutExploding: 5
   PlayerOwnerNumber: 0

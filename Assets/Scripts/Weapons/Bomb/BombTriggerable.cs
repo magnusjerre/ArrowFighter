@@ -30,12 +30,19 @@ namespace Jerre
             {
                 var playerSettings = colliders[i].GetComponent<PlayerSettings>();
                 var playerHealth = colliders[i].GetComponent<PlayerHealth>();
+                var playerPhysics = colliders[i].GetComponent<PlayerPhysics>();
 
-                if (playerSettings != null && playerHealth != null)
+                if (playerSettings != null && playerHealth != null && playerPhysics != null)
                 {
-                    var distance = (playerSettings.transform.position - transform.position).magnitude;
+                    var explosionDirection = (playerSettings.transform.position - transform.position);
+                    var distance = explosionDirection.magnitude;
                     var multiplier = 1f - distance / settings.BlastRadius;
                     var blastDamage = Mathf.Max(1, Mathf.RoundToInt(settings.BlastDamage * multiplier));
+
+                    var resultingSpeed = playerPhysics.Speed * playerPhysics.MovementDirection + explosionDirection.normalized * settings.BlastAcceleration * Time.deltaTime;
+                    playerPhysics.Speed = resultingSpeed.magnitude;
+                    playerPhysics.MovementDirection = resultingSpeed.normalized;
+
                     if (playerHealth.DoDamage(blastDamage))
                     {
                         eventManager.PostEvent(AFEvents.Kill(settings.PlayerOwnerNumber, playerSettings.playerNumber));
