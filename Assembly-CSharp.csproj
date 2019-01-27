@@ -79,10 +79,13 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBombWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBoost.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerBoostEngineParticles.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerDodge.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerDodgeEngineParticles.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerInputComponent.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerMainEngineParticles.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerPhysics.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerWeapon.cs" />

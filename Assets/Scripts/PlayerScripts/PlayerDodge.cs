@@ -13,6 +13,10 @@ namespace Jerre
         private float elapsedDodgeTime;
         private float dodgeDirection;
 
+        public bool Dodging = false;
+        public bool DodgingRight() => Dodging && dodgeDirection > 0f;
+        public bool DodgingLeft() => Dodging && dodgeDirection < 0f;
+
         // Use this for initialization
         void Start()
         {
@@ -35,9 +39,13 @@ namespace Jerre
                     dodgeDirection = input.DodgeRight ? 1f : -1f;
                     elapsedDodgeTime = 0f;
                     timeSinceLastDodge = 0f;
+                    Dodging = true;
                 }
 
                 transform.Translate(Vector3.right * dodgeDirection * settings.DodgeSpeed * Time.deltaTime);
+            } else
+            {
+                Dodging = false;
             }
         }
 
