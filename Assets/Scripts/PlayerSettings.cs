@@ -2,7 +2,6 @@
 
 namespace Jerre
 {
-    [RequireComponent(typeof (PlayerInputComponent))]
     public class PlayerSettings : MonoBehaviour
     {
         public int playerNumber;
