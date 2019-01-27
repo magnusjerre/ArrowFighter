@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerJoinPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerLeavePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\ScorePayload.cs" />
+    <Compile Include="Assets\Scripts\FixedDirection.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
@@ -90,6 +91,8 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerPhysics.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerSettings.cs" />
+    <Compile Include="Assets\Scripts\Rotator.cs" />
+    <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UI\ScoreUIElement.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
