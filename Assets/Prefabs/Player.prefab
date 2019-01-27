@@ -96,21 +96,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2b34b3a96f3da468da085a89376736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
+  playerNumber: 1
   MaxHealth: 3
-  MaxSpeed: 100
+  MaxSpeed: 150
   MaxAcceleration: 250
   MaxLookRotationSpeedDegs: 720
   FireRate: 4
   Fire2Rate: 0.25
-  color: {r: 0, g: 0, b: 0, a: 0}
-  DodgeSpeed: 100
+  color: {r: 0, g: 0, b: 0, a: 1}
+  DodgeSpeed: 250
   DodgeDuration: 0.2
   DodgePauseDuration: 2
-  BoostSpeed: 200
-  BoostDuration: 1
+  BoostSpeed: 300
+  BoostDuration: 2
   BoostPauseDuration: 2
-  BoostAcceleration: 750
+  BoostAcceleration: 1500
 --- !u!114 &1107538732434461958
 MonoBehaviour:
   m_ObjectHideFlags: 0

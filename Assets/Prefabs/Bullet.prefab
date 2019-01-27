@@ -62,10 +62,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4719c9b8f5c62594c9b4e04b82ed73fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 150
+  Speed: 500
   TimeToLive: 2
   Damage: 1
   PlayerOwnerNumber: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!54 &4647767403863908387
 Rigidbody:
   m_ObjectHideFlags: 0
