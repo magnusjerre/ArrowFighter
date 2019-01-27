@@ -51,7 +51,9 @@ namespace Jerre
             }
 
             eventManager.RemoveListener(this);
-            Instantiate(explosionParticlesPrefab, transform.position, transform.rotation);
+            var explosionParticles = Instantiate(explosionParticlesPrefab, transform.position, transform.rotation);
+            var particlesMainModule = explosionParticles.main;
+            particlesMainModule.startColor = settings.color;
             Destroy(gameObject);
         }
 
