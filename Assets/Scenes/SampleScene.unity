@@ -488,6 +488,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RespawnTime: 2
+  playerDeathExplosionPrefab: {fileID: 4350648923392498753, guid: 2999c0f5f5fc9a945b5f56f8c7095978,
+    type: 3}
 --- !u!114 &1043987876
 MonoBehaviour:
   m_ObjectHideFlags: 0

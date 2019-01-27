@@ -10,6 +10,8 @@ namespace Jerre
 
         public float RespawnTime = 2f;
 
+        public ParticleSystem playerDeathExplosionPrefab;
+
         private SpawnPointManager spawnPointManager;
 
         // Use this for initialization
@@ -27,6 +29,7 @@ namespace Jerre
 
         public void RegisterPlayerDeath(PlayerSettings playerSettings)
         {
+            CreateExplosion(playerSettings);
             EnableOrDisablePlayer(playerSettings, false);
             StartCoroutine(RespawnPlayer(playerSettings.playerNumber, RespawnTime));
         }
@@ -76,6 +79,13 @@ namespace Jerre
             var pTransform = playerSettings.transform;
             pTransform.position = newSpawnPoint.transform.position;
             pTransform.rotation = newSpawnPoint.transform.rotation;
+        }
+
+        private void CreateExplosion(PlayerSettings playerSettings)
+        {
+            var explosion = Instantiate(playerDeathExplosionPrefab, playerSettings.transform.position, playerSettings.transform.rotation);
+            var explosionMainModule = explosion.main;
+            explosionMainModule.startColor = playerSettings.color;
         }
     }
 }
