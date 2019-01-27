@@ -9,10 +9,11 @@ namespace Jerre
         public float BlastRadius = 10f;
         public float MaxLifeTimeWithoutExploding = 10f;
         public int PlayerOwnerNumber;
+        public Color color;
 
         void Start()
         {
-
+            GetComponentInChildren<SpriteRenderer>().color = color;
         }
     }
 }

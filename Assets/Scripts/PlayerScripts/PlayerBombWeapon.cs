@@ -41,6 +41,7 @@ namespace Jerre
                 BombDropped = true;
                 var newBomb = Instantiate(bombPrefab, transform.position, transform.rotation);
                 newBomb.PlayerOwnerNumber = settings.playerNumber;
+                newBomb.color = settings.color;
             }
         }
 

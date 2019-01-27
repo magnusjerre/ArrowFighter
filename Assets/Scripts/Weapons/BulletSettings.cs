@@ -8,11 +8,12 @@ namespace Jerre
         public float TimeToLive = 2f;
         public int Damage = 1;
         public int PlayerOwnerNumber;
+        public Color color;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            GetComponentInChildren<SpriteRenderer>().color = color;
         }
     }
 }

@@ -33,6 +33,7 @@ namespace Jerre
             {
                 var bullet = Instantiate(bulletPrefab, Muzzle.position, Muzzle.rotation);
                 bullet.PlayerOwnerNumber = settings.playerNumber;
+                bullet.color = settings.color;
                 timeSinceLastFire = 0f;
             }
         }
