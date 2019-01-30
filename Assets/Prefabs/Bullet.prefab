@@ -63,10 +63,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 500
-  TimeToLive: 2
+  TimeToLive: 1
   Damage: 1
   PlayerOwnerNumber: 0
   color: {r: 0, g: 0, b: 0, a: 0}
+  hitParticlesPrefab: {fileID: 4512442324150540652, guid: 589160b62bd40a94a8f199e9bd29cdf4,
+    type: 3}
 --- !u!54 &4647767403863908387
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -120,6 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToLive: 2
+  lifetimeExplosionParticlesPrefab: {fileID: 4512442324150540652, guid: 589160b62bd40a94a8f199e9bd29cdf4,
+    type: 3}
 --- !u!1 &5100744275307756462
 GameObject:
   m_ObjectHideFlags: 0

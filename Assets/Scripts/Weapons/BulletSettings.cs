@@ -10,6 +10,8 @@ namespace Jerre
         public int PlayerOwnerNumber;
         public Color color;
 
+        public ParticleSystem hitParticlesPrefab;
+
         // Start is called before the first frame update
         void Start()
         {
