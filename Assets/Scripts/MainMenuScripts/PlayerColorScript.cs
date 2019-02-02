@@ -18,7 +18,12 @@ namespace Jerre.MainMenu
 
         public void Update()
         {
-            if (Input.GetButtonDown(PlayerInputTags.DODGE_RIGHT + settings.Number))
+            var changeColor = Input.GetButtonDown(PlayerInputTags.DODGE_RIGHT + settings.Number);
+            if (settings.Ready && changeColor)
+            {
+                Debug.Log("Player is ready, can't change color");
+                return;
+            } else if (changeColor)
             {
                 settings.Color = ColorManager.SwapForNextColor(settings.Color);
                 UpdateColor();

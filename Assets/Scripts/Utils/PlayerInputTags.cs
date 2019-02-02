@@ -12,5 +12,6 @@
         public const string DODGE_LEFT = "DodgeLeft_";
         public const string BOOST = "Boost_";
         public const string JOIN_LEAVE = "JoinLeave_";
+        public const string ACCEPT = "Accept_";
     }
 }

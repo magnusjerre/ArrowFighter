@@ -37,7 +37,7 @@ namespace Jerre.MainMenu
                     }
                 }
                 else if (Input.GetButtonDown(leaveKeyName)) {
-                    RemovePlayer(i);
+                    RemovePlayerIfNotReady(i);
                 }
             }
         }
@@ -66,9 +66,13 @@ namespace Jerre.MainMenu
                     var playerSettings = child.GetComponentInChildren<PlayerMenuSettings>();
                     playerSettings.Color = colorManager.ExtractNextColor();
                     playerSettings.Number = controllerIndex;
+                    playerSettings.Ready = false;
                     var colorScript = child.GetComponentInChildren<PlayerColorScript>();
                     colorScript.ColorManager = colorManager;
                     colorScript.UpdateColor();
+                    var readyScript = child.GetComponentInChildren<PlayerReady>();
+                    readyScript.playerJoinManager = this;
+                    readyScript.Reset();
                     playerNumberMap.Add(controllerIndex, playerSettings);
                     break;
                 }
@@ -76,7 +80,7 @@ namespace Jerre.MainMenu
 
         }
 
-        void RemovePlayer(int playerNumber)
+        void RemovePlayerIfNotReady(int playerNumber)
         {
             if (!playerNumberMap.ContainsKey(playerNumber))
             {
@@ -86,6 +90,11 @@ namespace Jerre.MainMenu
             var index = FindIndexForPlayerNumber(playerNumber, JoinedPlayers);
             var playerChild = JoinedPlayers.GetChild(index);
             var playerSettings = playerChild.GetComponentInChildren<PlayerMenuSettings>();
+            if (playerSettings.Ready)
+            {
+                playerSettings.GetComponent<PlayerReady>().Reset();
+                return;
+            }
             colorManager.ReturnColor(playerSettings.Color);
             playerChild.gameObject.SetActive(false);
             WaitingForPlayerJoin.GetChild(index).gameObject.SetActive(true);
@@ -100,6 +109,20 @@ namespace Jerre.MainMenu
                 if (settings.Number == playerNumber) return i;
             }
             return -1;
+        }
+
+        public void NotifyPlayerReady(int playerNumber)
+        {
+            PlayersState.INSTANCE.AddPlayer(playerNumberMap[playerNumber]);
+            if (PlayersState.INSTANCE.ReadyPlayersCount == playerNumberMap.Count)
+            {
+                //Start game
+            }
+        }
+
+        public void NotifyPlayerNotReady(int playerNumber)
+        {
+            PlayersState.INSTANCE.RemovePlayer(playerNumberMap[playerNumber]);
         }
     }
 }

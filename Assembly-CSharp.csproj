@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerColorScript.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerJoinManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerMenuSettings.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\PlayerReady.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerPhysics.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerSettings.cs" />
+    <Compile Include="Assets\Scripts\PlayersState.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />

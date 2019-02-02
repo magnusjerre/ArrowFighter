@@ -6,6 +6,7 @@ namespace Jerre.MainMenu
     {
         public int Number;
         public Color Color;
+        public bool Ready;
 
         void Start()
         {
