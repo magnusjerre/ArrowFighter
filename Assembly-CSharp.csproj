@@ -72,6 +72,11 @@
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerLeavePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\ScorePayload.cs" />
     <Compile Include="Assets\Scripts\FixedDirection.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\ColorManager.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\PlayerAimMenu.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\PlayerColorScript.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\PlayerJoinManager.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\PlayerMenuSettings.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
