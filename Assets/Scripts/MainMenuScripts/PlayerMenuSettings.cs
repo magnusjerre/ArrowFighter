@@ -7,6 +7,7 @@ namespace Jerre.MainMenu
         public int Number;
         public Color Color;
         public bool Ready;
+        public bool CanListenForInput = true;
 
         void Start()
         {

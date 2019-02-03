@@ -17,6 +17,7 @@ namespace Jerre.MainMenu
 
         void Update()
         {
+            if (!settings.CanListenForInput) return; 
             if (Input.GetButtonDown(PlayerInputTags.ACCEPT + settings.Number))
             {
                 settings.Ready = true;

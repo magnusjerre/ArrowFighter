@@ -243,6 +243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaitingForPlayerJoin: {fileID: 1129165513}
   JoinedPlayers: {fileID: 1051340905}
+  playerExplosionParticlesPrefab: {fileID: 4350648923392498753, guid: 2999c0f5f5fc9a945b5f56f8c7095978,
+    type: 3}
+  StartWaitTime: 0.25
 --- !u!1 &783249850
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,8 +297,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 300
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -319,7 +322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783249850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 531, y: 300, z: -328}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -417,6 +420,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StartMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7546625983063848451, guid: 411bdcf9e41bfb44894d3c14b7d16f34,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7546625983063848511, guid: 411bdcf9e41bfb44894d3c14b7d16f34,
         type: 3}

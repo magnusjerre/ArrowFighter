@@ -7,6 +7,8 @@ namespace Jerre.MainMenu
     {
         public RectTransform WaitingForPlayerJoin;
         public RectTransform JoinedPlayers;
+        public ParticleSystem playerExplosionParticlesPrefab;
+        public float StartWaitTime = 0.25f;
 
         private ColorManager colorManager;
 
@@ -42,10 +44,10 @@ namespace Jerre.MainMenu
             }
         }
 
-        void DisableAllChildren(RectTransform rectTransform)
+        void DisableAllChildren(Transform transform)
         {
-            for (var i = 0; i < rectTransform.childCount; i++) {
-                rectTransform.GetChild(i).gameObject.SetActive(false);
+            for (var i = 0; i < transform.childCount; i++) {
+                transform.GetChild(i).gameObject.SetActive(false);
             }
         }
 
@@ -116,8 +118,37 @@ namespace Jerre.MainMenu
             PlayersState.INSTANCE.AddPlayer(playerNumberMap[playerNumber]);
             if (PlayersState.INSTANCE.ReadyPlayersCount == playerNumberMap.Count)
             {
-                //Start game
+                foreach (var entry in playerNumberMap)
+                {
+                    entry.Value.CanListenForInput = false;
+                }
+                Invoke("TriggerStart", StartWaitTime);
             }
+        }
+        
+        void TriggerStart()
+        {
+            var timeUntilNextSceneLoad = 1f;
+            for (var i = 0; i < JoinedPlayers.childCount; i++)
+            {
+                var child = JoinedPlayers.GetChild(i);
+                if (child.gameObject.activeSelf)
+                {
+                    var playerSettings = child.GetComponentInChildren<PlayerMenuSettings>();
+                    DisableAllChildren(child);
+                    var particles = Instantiate(playerExplosionParticlesPrefab, child.transform.position, child.transform.rotation);
+                    ParticleSystem.MinMaxGradient gradient = new ParticleSystem.MinMaxGradient(playerSettings.Color, playerSettings.Color);
+                    var mainModule = particles.main;
+                    mainModule.startColor = gradient;
+                    timeUntilNextSceneLoad = mainModule.duration;
+                }
+            }
+            Invoke("TriggerNextSceneLoad", timeUntilNextSceneLoad);
+        }
+
+        void TriggerNextSceneLoad()
+        {
+            Debug.Log("Bo! Next scene should load");
         }
 
         public void NotifyPlayerNotReady(int playerNumber)
