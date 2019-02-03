@@ -18,9 +18,9 @@ namespace Jerre.MainMenu
 
         public void Update()
         {
-            if (!settings.CanListenForInput) return;
+            if (!settings.mm_CanListenForInput) return;
             var changeColor = Input.GetButtonDown(PlayerInputTags.DODGE_RIGHT + settings.Number);
-            if (settings.Ready && changeColor)
+            if (settings.mm_Ready && changeColor)
             {
                 Debug.Log("Player is ready, can't change color");
                 return;

@@ -6,8 +6,11 @@ namespace Jerre.MainMenu
     {
         public int Number;
         public Color Color;
-        public bool Ready;
-        public bool CanListenForInput = true;
+
+        // "mm_" indicates that the values are only relevant to the main menu, not the spawning
+        // of players in game
+        public bool mm_Ready;
+        public bool mm_CanListenForInput = true;
 
         void Start()
         {

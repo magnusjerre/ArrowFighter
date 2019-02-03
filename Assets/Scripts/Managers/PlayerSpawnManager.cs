@@ -18,16 +18,15 @@ namespace Jerre
         private int indexOfNextColor = 0;
 
         private AFEventManager eventManager;
+        private bool CanJoinInGame = false;
 
         private void Awake()
         {
             playerNumberMap = new Dictionary<int, PlayerSettings>();
             playerColors = new Color[] { Color.red, Color.green, Color.blue, Color.yellow };
-        }
 
-        // Start is called before the first frame update
-        void Start()
-        {
+            CanJoinInGame = PlayersState.INSTANCE.ReadyPlayersCount == 0;
+
             spawnPointManager = GameObject.FindObjectOfType<SpawnPointManager>();
             scoreUIManager = GameObject.FindObjectOfType<ScoreUIManager>();
             scoreManager = GameObject.FindObjectOfType<ScoreManager>();
@@ -36,9 +35,21 @@ namespace Jerre
             eventManager.AddListener(this);
         }
 
-        // Update is called once per frame
+        void Start()
+        {
+            if (!CanJoinInGame)
+            {
+                for (var i = 0; i < PlayersState.INSTANCE.ReadyPlayersCount; i++)
+                {
+                    var playerMenuSettings = PlayersState.INSTANCE.GetSettings(i);
+                    AddPlayer(playerMenuSettings.Number, playerMenuSettings.Color);
+                }
+            }
+        }
+
         void Update()
         {
+            if (!CanJoinInGame) return;
             for (int i = 1; i <= 4; i++)
             {
                 var joinLeaveKeyName = PlayerInputTags.JOIN_LEAVE + i;
@@ -56,13 +67,17 @@ namespace Jerre
 
         private void AddPlayer(int playerNumber)
         {
+            AddPlayer(playerNumber, NextColor());
+        }
+
+        private void AddPlayer(int playerNumber, Color color)
+        {
             var spawnPoint = spawnPointManager.GetNextSpawnPoint();
             var newPlayer = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
             newPlayer.playerNumber = playerNumber;
             playerNumberMap.Add(playerNumber, newPlayer);
-            var playerColor = NextColor();
-            newPlayer.color = playerColor;
-            eventManager.PostEvent(AFEvents.PlayerJoin(playerNumber, playerColor));
+            newPlayer.color = color;
+            eventManager.PostEvent(AFEvents.PlayerJoin(playerNumber, color));
         }
 
         private void RemovePlayer(int playerNumber)

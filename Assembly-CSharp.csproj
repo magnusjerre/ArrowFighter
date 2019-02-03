@@ -102,6 +102,7 @@
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UI\ScoreUIElement.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
+    <Compile Include="Assets\Scripts\Utils\SceneNames.cs" />
     <Compile Include="Assets\Scripts\Weapons\Bomb\BombLifetimeIndicator.cs" />
     <Compile Include="Assets\Scripts\Weapons\Bomb\BombSettings.cs" />
     <Compile Include="Assets\Scripts\Weapons\Bomb\BombTriggerable.cs" />

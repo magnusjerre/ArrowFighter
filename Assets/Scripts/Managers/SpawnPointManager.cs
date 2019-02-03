@@ -7,10 +7,15 @@ namespace Jerre
         private SpawnPoint[] spawnPoints;
         private int nextSpawnIndex = 0;
 
+        private void Awake()
+        {
+            spawnPoints = GameObject.FindObjectsOfType<SpawnPoint>();
+        }
+
         // Start is called before the first frame update
         void Start()
         {
-            spawnPoints = GameObject.FindObjectsOfType<SpawnPoint>();
+            
         }
 
         // Update is called once per frame

@@ -41,6 +41,11 @@ namespace Jerre
         }
 
         public int ReadyPlayersCount => ReadyPlayers.Count;
+        public PlayerMenuSettings GetSettings(int index) => ReadyPlayers[index];
 
+        public void Reset()
+        {
+            ReadyPlayers.Clear();
+        }
     }
 }

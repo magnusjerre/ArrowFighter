@@ -14,11 +14,16 @@ namespace Jerre
 
         private SpawnPointManager spawnPointManager;
 
-        // Use this for initialization
-        void Start()
+        private void Awake()
         {
             spawnPointManager = GameObject.FindObjectOfType<SpawnPointManager>();
             instance = this;
+        }
+
+        // Use this for initialization
+        void Start()
+        {
+            
         }
 
         // Update is called once per frame

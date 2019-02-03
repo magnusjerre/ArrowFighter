@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Jerre.MainMenu
 {
@@ -21,6 +22,7 @@ namespace Jerre.MainMenu
 
         void Start()
         {
+            PlayersState.INSTANCE.Reset();
             DisableAllChildren(JoinedPlayers);
             colorManager = GetComponent<ColorManager>();
         }
@@ -68,7 +70,7 @@ namespace Jerre.MainMenu
                     var playerSettings = child.GetComponentInChildren<PlayerMenuSettings>();
                     playerSettings.Color = colorManager.ExtractNextColor();
                     playerSettings.Number = controllerIndex;
-                    playerSettings.Ready = false;
+                    playerSettings.mm_Ready = false;
                     var colorScript = child.GetComponentInChildren<PlayerColorScript>();
                     colorScript.ColorManager = colorManager;
                     colorScript.UpdateColor();
@@ -92,7 +94,7 @@ namespace Jerre.MainMenu
             var index = FindIndexForPlayerNumber(playerNumber, JoinedPlayers);
             var playerChild = JoinedPlayers.GetChild(index);
             var playerSettings = playerChild.GetComponentInChildren<PlayerMenuSettings>();
-            if (playerSettings.Ready)
+            if (playerSettings.mm_Ready)
             {
                 playerSettings.GetComponent<PlayerReady>().Reset();
                 return;
@@ -120,7 +122,7 @@ namespace Jerre.MainMenu
             {
                 foreach (var entry in playerNumberMap)
                 {
-                    entry.Value.CanListenForInput = false;
+                    entry.Value.mm_CanListenForInput = false;
                 }
                 Invoke("TriggerStart", StartWaitTime);
             }
@@ -136,6 +138,8 @@ namespace Jerre.MainMenu
                 {
                     var playerSettings = child.GetComponentInChildren<PlayerMenuSettings>();
                     DisableAllChildren(child);
+                    var rectTransform = child.GetComponent<RectTransform>();
+
                     var particles = Instantiate(playerExplosionParticlesPrefab, child.transform.position, child.transform.rotation);
                     ParticleSystem.MinMaxGradient gradient = new ParticleSystem.MinMaxGradient(playerSettings.Color, playerSettings.Color);
                     var mainModule = particles.main;
@@ -149,6 +153,7 @@ namespace Jerre.MainMenu
         void TriggerNextSceneLoad()
         {
             Debug.Log("Bo! Next scene should load");
+            SceneManager.LoadScene(SceneNames.GAME_SCENE, LoadSceneMode.Single);
         }
 
         public void NotifyPlayerNotReady(int playerNumber)

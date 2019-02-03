@@ -13,11 +13,16 @@ namespace Jerre.UI
         private ScoreManager scoreManager;
         private AFEventManager eventManager;
 
-        void Start()
+        void Awake()
         {
             scoreManager = GameObject.FindObjectOfType<ScoreManager>();
             eventManager = GameObject.FindObjectOfType<AFEventManager>();
             eventManager.AddListener(this);
+        }
+
+        void Start()
+        {
+            
         }
 
         public void AddScoreForPlayer(int playerScore, int maxScore, int playerNumber, Color color)

@@ -17,25 +17,25 @@ namespace Jerre.MainMenu
 
         void Update()
         {
-            if (!settings.CanListenForInput) return; 
+            if (!settings.mm_CanListenForInput) return; 
             if (Input.GetButtonDown(PlayerInputTags.ACCEPT + settings.Number))
             {
-                settings.Ready = true;
-                PlayerReadyTransform.gameObject.SetActive(settings.Ready);
+                settings.mm_Ready = true;
+                PlayerReadyTransform.gameObject.SetActive(settings.mm_Ready);
                 playerJoinManager.NotifyPlayerReady(settings.Number);
             }
             else if (Input.GetButton(PlayerInputTags.FIRE2 + settings.Number))
             {
-                settings.Ready = false;
-                PlayerReadyTransform.gameObject.SetActive(settings.Ready);
+                settings.mm_Ready = false;
+                PlayerReadyTransform.gameObject.SetActive(settings.mm_Ready);
                 playerJoinManager.NotifyPlayerNotReady(settings.Number);
             }
         }
 
         public void Reset()
         {
-            settings.Ready = false;
-            PlayerReadyTransform.gameObject.SetActive(settings.Ready);
+            settings.mm_Ready = false;
+            PlayerReadyTransform.gameObject.SetActive(settings.mm_Ready);
         }
     }
 }

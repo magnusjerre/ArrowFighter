@@ -2,6 +2,7 @@
 using Jerre.UI;
 using System.Collections.Generic;
 using Jerre.Events;
+using UnityEngine.SceneManagement;
 
 namespace Jerre
 {
@@ -16,14 +17,15 @@ namespace Jerre
         void Awake()
         {
             playerScores = new Dictionary<int, int>();
+            scoreUIManager = GameObject.FindObjectOfType<ScoreUIManager>();
+            eventManager = GetComponent<AFEventManager>();
+            eventManager.AddListener(this);
         }
 
         // Use this for initialization
         void Start()
         {
-            scoreUIManager = GameObject.FindObjectOfType<ScoreUIManager>();
-            eventManager = GetComponent<AFEventManager>();
-            eventManager.AddListener(this);
+            
         }
 
         public bool HandleEvent(AFEvent afEvent)
@@ -62,6 +64,7 @@ namespace Jerre
                 {
                     Debug.Log("Game over");
                     eventManager.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
+                    SceneManager.LoadScene(SceneNames.START_MENU, LoadSceneMode.Single);
                 }
             }
             else
