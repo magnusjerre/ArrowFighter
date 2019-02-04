@@ -19,6 +19,22 @@ namespace Jerre
         }
 
         private List<PlayerMenuSettings> ReadyPlayers;
+        public List<PlayerScore> Scores
+        {
+            get;
+            private set;
+        }
+
+        public void SetScores(List<PlayerScore> newScores)
+        {
+            newScores.Sort();
+            Scores = new List<PlayerScore>();
+            for (var i = 0; i < newScores.Count; i++)
+            {
+                var s = newScores[i];
+                Scores.Add(new PlayerScore(s.PlayerNumber, s.PlayerColor, i + 1, s.Score));
+            }
+        }
 
         private PlayersState()
         {
@@ -46,6 +62,8 @@ namespace Jerre
         public void Reset()
         {
             ReadyPlayers.Clear();
+            Scores = null;
         }
+
     }
 }

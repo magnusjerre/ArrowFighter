@@ -63,8 +63,18 @@ namespace Jerre
                 if (newScore == maxScore)
                 {
                     Debug.Log("Game over");
+                    
+
+                    var players = GameObject.FindObjectsOfType<PlayerSettings>();
+                    var scores = new List<PlayerScore>();                    
+                    for (var i = 0; i < players.Length; i++)
+                    {
+                        var p = players[i];
+                        scores.Add(new PlayerScore(p.playerNumber, p.color, 0, playerScores[p.playerNumber]));
+                    }
+                    PlayersState.INSTANCE.SetScores(scores);
                     eventManager.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
-                    SceneManager.LoadScene(SceneNames.START_MENU, LoadSceneMode.Single);
+                    SceneManager.LoadScene(SceneNames.GAME_OVER_SCENE, LoadSceneMode.Single);
                 }
             }
             else

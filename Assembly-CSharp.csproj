@@ -72,6 +72,8 @@
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerLeavePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\ScorePayload.cs" />
     <Compile Include="Assets\Scripts\FixedDirection.cs" />
+    <Compile Include="Assets\Scripts\GameOverScripts\GameOverManager.cs" />
+    <Compile Include="Assets\Scripts\GameOverScripts\ScoreEntry.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\ColorManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerColorScript.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerJoinManager.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBombWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBoost.cs" />
