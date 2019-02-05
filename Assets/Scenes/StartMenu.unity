@@ -241,6 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69b9a4423b25ec45917c375045c36fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerIconPrefab: {fileID: 8354941416406165379, guid: 58cb019ef80318046bbb8732f28fd223,
+    type: 3}
   WaitingForPlayerJoin: {fileID: 1129165513}
   JoinedPlayers: {fileID: 1051340905}
   playerExplosionParticlesPrefab: {fileID: 4350648923392498753, guid: 2999c0f5f5fc9a945b5f56f8c7095978,

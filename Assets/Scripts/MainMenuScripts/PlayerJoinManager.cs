@@ -6,6 +6,7 @@ namespace Jerre.MainMenu
 {
     public class PlayerJoinManager : MonoBehaviour
     {
+        public RectTransform PlayerIconPrefab;
         public RectTransform WaitingForPlayerJoin;
         public RectTransform JoinedPlayers;
         public ParticleSystem playerExplosionParticlesPrefab;
@@ -23,7 +24,7 @@ namespace Jerre.MainMenu
         void Start()
         {
             PlayersState.INSTANCE.Reset();
-            DisableAllChildren(JoinedPlayers);
+            //DisableAllChildren(JoinedPlayers);
             colorManager = GetComponent<ColorManager>();
         }
 
@@ -62,21 +63,18 @@ namespace Jerre.MainMenu
 
             for (var i = 0; i < JoinedPlayers.childCount; i++)
             {
-                var child = JoinedPlayers.GetChild(i).gameObject;
-                if (!child.activeInHierarchy)
+                var child = JoinedPlayers.GetChild(i);
+                if (child.transform.childCount == 0)
                 {
                     WaitingForPlayerJoin.GetChild(i).gameObject.SetActive(false);
-                    child.SetActive(true);
-                    var playerSettings = child.GetComponentInChildren<PlayerMenuSettings>();
+                    var playerIcon = Instantiate(PlayerIconPrefab, child.transform);
+                    var playerSettings = playerIcon.GetComponentInChildren<PlayerMenuSettings>();
                     playerSettings.Color = colorManager.ExtractNextColor();
                     playerSettings.Number = controllerIndex;
-                    playerSettings.mm_Ready = false;
-                    var colorScript = child.GetComponentInChildren<PlayerColorScript>();
+                    var colorScript = playerIcon.GetComponentInChildren<PlayerColorScript>();
                     colorScript.ColorManager = colorManager;
-                    colorScript.UpdateColor();
-                    var readyScript = child.GetComponentInChildren<PlayerReady>();
+                    var readyScript = playerIcon.GetComponentInChildren<PlayerReady>();
                     readyScript.playerJoinManager = this;
-                    readyScript.Reset();
                     playerNumberMap.Add(controllerIndex, playerSettings);
                     break;
                 }
@@ -91,7 +89,7 @@ namespace Jerre.MainMenu
                 return;
             }
 
-            var index = FindIndexForPlayerNumber(playerNumber, JoinedPlayers);
+            var index = FindIndexOfContainerForPlayerNumber(playerNumber, JoinedPlayers);
             var playerChild = JoinedPlayers.GetChild(index);
             var playerSettings = playerChild.GetComponentInChildren<PlayerMenuSettings>();
             if (playerSettings.mm_Ready)
@@ -100,12 +98,12 @@ namespace Jerre.MainMenu
                 return;
             }
             colorManager.ReturnColor(playerSettings.Color);
-            playerChild.gameObject.SetActive(false);
+            Destroy(playerChild.GetChild(0).gameObject);
             WaitingForPlayerJoin.GetChild(index).gameObject.SetActive(true);
             playerNumberMap.Remove(playerNumber);
         }
 
-        private int FindIndexForPlayerNumber(int playerNumber, RectTransform playerContainer)
+        private int FindIndexOfContainerForPlayerNumber(int playerNumber, RectTransform playerContainer)
         {
             for (var i = 0; i < playerContainer.childCount; i++)
             {
@@ -134,7 +132,7 @@ namespace Jerre.MainMenu
             for (var i = 0; i < JoinedPlayers.childCount; i++)
             {
                 var child = JoinedPlayers.GetChild(i);
-                if (child.gameObject.activeSelf)
+                if (child.childCount > 0)
                 {
                     var playerSettings = child.GetComponentInChildren<PlayerMenuSettings>();
                     DisableAllChildren(child);

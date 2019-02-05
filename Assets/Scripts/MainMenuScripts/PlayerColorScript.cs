@@ -14,6 +14,7 @@ namespace Jerre.MainMenu
         void Start()
         {
             settings = GetComponent<PlayerMenuSettings>();
+            UpdateColor();
         }
 
         public void Update()
