@@ -10,14 +10,14 @@ namespace Jerre
     {
         public int maxScore = 10;
 
-        private ScoreUIManager scoreUIManager;
+        private ScoreUICanvas scoreUIManager;
         private AFEventManager eventManager;
         private Dictionary<int, int> playerScores;
 
         void Awake()
         {
             playerScores = new Dictionary<int, int>();
-            scoreUIManager = GameObject.FindObjectOfType<ScoreUIManager>();
+            scoreUIManager = GameObject.FindObjectOfType<ScoreUICanvas>();
             eventManager = GetComponent<AFEventManager>();
             eventManager.AddListener(this);
         }
@@ -95,6 +95,11 @@ namespace Jerre
         {
             playerScores.Remove(payload.playerNumber);
             return false;
+        }
+
+        public Dictionary<int, int> GetPlayerScores()
+        {
+            return playerScores;
         }
     }
 }

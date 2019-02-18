@@ -1,126 +1,63 @@
-﻿using Jerre.Events;
-using UnityEngine;
+﻿using UnityEngine;
+using Jerre.UI;
+using Jerre.Events;
+using System.Collections.Generic;
 
-namespace Jerre.UI
+namespace Jerre
 {
     public class ScoreUIManager : MonoBehaviour, IAFEventListener
     {
-        public RectTransform ScoreArea;
-        public ScoreUIElement scoreUIPrefab;
-        public int scorePadding = 10;
-        private int nextNumberInLine = 1;
 
-        private ScoreManager scoreManager;
+        public ScoreUICanvas ScoreUICanvasPrefab;
+
         private AFEventManager eventManager;
+        //int: playernumber
+        private Dictionary<int, ScoreUICanvas> canvases;
+        private ScoreManager scoreManager;
 
-        void Awake()
+        private void Awake()
         {
-            scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+            canvases = new Dictionary<int, ScoreUICanvas>();
             eventManager = GameObject.FindObjectOfType<AFEventManager>();
             eventManager.AddListener(this);
+
+            scoreManager = GameObject.FindObjectOfType<ScoreManager>();
         }
 
         void Start()
         {
-            
-        }
 
-        public void AddScoreForPlayer(int playerScore, int maxScore, int playerNumber, Color color)
-        {
-            var scoreUI = Instantiate(scoreUIPrefab, ScoreArea);
-            scoreUI.PlayerNumber = playerNumber;
-            scoreUI.PlayerColor = color;
-            scoreUI.NumberInLine = nextNumberInLine++;
-            scoreUI.Padding = scorePadding;
-            scoreUI.InitialScore = playerScore;
-            scoreUI.MaxScore = maxScore;
-        }
-
-        public void UpdateScoreForPlayer(int playerScore, int maxScore, int playerNumber)
-        {
-            for (var i = 0; i < ScoreArea.childCount; i++)
-            {
-                var scoreUI = ScoreArea.GetChild(i).GetComponent<ScoreUIElement>();
-                if (scoreUI != null && scoreUI.PlayerNumber == playerNumber)
-                {
-                    scoreUI.UpdateScore(playerScore, maxScore);
-                    break;
-                }
-            }
-        }
-
-        public void RemoveScoreForPlayer(int playerNumber)
-        {
-            ScoreUIElement childToRemove = null;
-            for (var i = 0; i < ScoreArea.childCount; i++)
-            {
-                var scoreUI = ScoreArea.GetChild(i).GetComponent<ScoreUIElement>();
-                if (scoreUI != null && scoreUI.PlayerNumber == playerNumber)
-                {
-                    childToRemove = scoreUI;
-                    break;
-                }
-            }
-
-            if (childToRemove == null)
-            {
-                return;
-            }
-
-            Destroy(childToRemove.gameObject);
-
-            nextNumberInLine = 1;
-            for (var i = 0; i < ScoreArea.childCount; i++)
-            {
-                var scoreUI = ScoreArea.GetChild(i).GetComponent<ScoreUIElement>();
-                if (scoreUI != null)
-                {
-                    scoreUI.NumberInLine = nextNumberInLine++;
-                }
-            }
-        }
-
-        public void ResetNumberInLine()
-        {
-            nextNumberInLine = 1;
         }
 
         public bool HandleEvent(AFEvent afEvent)
         {
-            switch(afEvent.type)
+            switch (afEvent.type)
             {
-                case AFEventType.SCORE:
-                    {
-                        return HandleScoreUpdate((ScorePayload)afEvent.payload);
-                    }
                 case AFEventType.PLAYER_JOIN:
                     {
-                        return HandlePlayerJoin((PlayerJoinPayload)afEvent.payload);
+                        var payload = (PlayerJoinPayload)afEvent.payload;
+                        if (!canvases.ContainsKey(payload.playerNumber))
+                        {
+                            var newCanvas = Instantiate(ScoreUICanvasPrefab);
+                            newCanvas.PlayerNumber = payload.playerNumber;
+                            newCanvas.ScoreManager = scoreManager;
+                            canvases.Add(payload.playerNumber, newCanvas);
+                        }
+                        return false;
                     }
                 case AFEventType.PLAYER_LEAVE:
                     {
-                        return HandlePlayerLeave((PlayerLeavePayload)afEvent.payload);
+                        var payload = (PlayerLeavePayload)afEvent.payload;
+                        if (canvases.ContainsKey(payload.playerNumber))
+                        {
+                            var canvas = canvases[payload.playerNumber];
+                            canvas.CleanUpForDestroy();
+                            Destroy(canvas.gameObject);
+                        }
+                        return false;
                     }
-                default: return false;
             }
-            
-        }
 
-        private bool HandlePlayerJoin(PlayerJoinPayload payload)
-        {
-            AddScoreForPlayer(0, scoreManager.maxScore, payload.playerNumber, payload.color);
-            return false;
-        }
-
-        private bool HandlePlayerLeave(PlayerLeavePayload payload)
-        {
-            RemoveScoreForPlayer(payload.playerNumber);
-            return false;
-        }
-
-        private bool HandleScoreUpdate(ScorePayload payload)
-        {
-            UpdateScoreForPlayer(payload.playerScore, payload.maxScore, payload.playerNumber);
             return false;
         }
     }
