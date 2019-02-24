@@ -601,6 +601,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCameraSettingsPrefab: {fileID: 4075513751209260818, guid: 84cda53545a562b46b929f71cd17bd10,
     type: 3}
+  IndicatorCanvasPrefab: {fileID: 7401806299137941594, guid: 4df0c4b2d61f54a4093e93007819cf46,
+    type: 3}
 --- !u!1001 &1419095146
 PrefabInstance:
   m_ObjectHideFlags: 0

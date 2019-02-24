@@ -100,7 +100,7 @@ MonoBehaviour:
   TotalNumberOfCameras: 0
   PlayerNumber: 0
   CameraNumber: 0
-  MaxCenterOffset: 50
+  MaxCenterOffset: 0
   MaxCorrectionSpeed: 50
   CorrectionAcceleration: 10
   CorrectionTime: 1
@@ -128,5 +128,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8351812e6dbf344f801d5b710e0d444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpeed: 0
   FollowTarget: {fileID: 0}
+  HardFollow: 0

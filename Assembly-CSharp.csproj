@@ -109,6 +109,9 @@
     <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UI\ScoreUIElement.cs" />
+    <Compile Include="Assets\Scripts\UI\TargetIndicatorAngles.cs" />
+    <Compile Include="Assets\Scripts\UI\TargetsIndicatorCanvas.cs" />
+    <Compile Include="Assets\Scripts\UI\TargetsIndicatorCanvasSettings.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
     <Compile Include="Assets\Scripts\Utils\SceneNames.cs" />

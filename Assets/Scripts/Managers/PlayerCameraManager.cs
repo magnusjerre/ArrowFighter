@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Jerre.Events;
 using System.Collections.Generic;
+using Jerre.UI;
 
 namespace Jerre
 {
@@ -9,9 +9,11 @@ namespace Jerre
     {
 
         public CameraSettings PlayerCameraSettingsPrefab;
+        public TargetsIndicatorCanvas IndicatorCanvasPrefab;
 
         //int : PlayerNumber, not cameraNumber
         private Dictionary<int, CameraSettings> playerCameraDictionary;
+        private Dictionary<int, TargetsIndicatorCanvas> canvasesDictionary;
         private AFEventManager eventManager;
 
         private int nextCameraNumber = 1;
@@ -19,6 +21,7 @@ namespace Jerre
         void Awake()
         {
             playerCameraDictionary = new Dictionary<int, CameraSettings>();
+            canvasesDictionary = new Dictionary<int, TargetsIndicatorCanvas>();
             eventManager = GetComponent<AFEventManager>();
             eventManager.AddListener(this);
         }
@@ -63,6 +66,11 @@ namespace Jerre
             playerCameraDictionary.Add(playerNumber, playerCamera);
 
             UpdateCameras();
+
+            var canvasIndicator = Instantiate(IndicatorCanvasPrefab);
+            canvasIndicator.camera = playerCamera.GetComponent<Camera>();
+            canvasIndicator.GetComponent<TargetsIndicatorCanvasSettings>().PlayerNumber = playerNumber;
+            canvasesDictionary.Add(playerNumber, canvasIndicator);
         }
 
         private void RemoveCamera(int playerNumber)
@@ -73,6 +81,7 @@ namespace Jerre
             }
 
             Destroy(playerCameraDictionary[playerNumber].gameObject);
+            Destroy(canvasesDictionary[playerNumber].gameObject);
             UpdateCameras();
         }
 
