@@ -9,12 +9,10 @@ namespace Jerre
     {
 
         public CameraSettings PlayerCameraSettingsPrefab;
-        public TargetsIndicatorCanvas IndicatorCanvasPrefab;
         public TargetsCircleIndicatorCanvas CircleIndicatorCanvasPrefab;
 
         //int : PlayerNumber, not cameraNumber
         private Dictionary<int, CameraSettings> playerCameraDictionary;
-        private Dictionary<int, TargetsIndicatorCanvas> canvasesDictionary;
         private Dictionary<int, TargetsCircleIndicatorCanvas> circleCanvasDictionary;
         private AFEventManager eventManager;
 
@@ -23,7 +21,6 @@ namespace Jerre
         void Awake()
         {
             playerCameraDictionary = new Dictionary<int, CameraSettings>();
-            canvasesDictionary = new Dictionary<int, TargetsIndicatorCanvas>();
             circleCanvasDictionary = new Dictionary<int, TargetsCircleIndicatorCanvas>();
 
             eventManager = GetComponent<AFEventManager>();
@@ -71,11 +68,6 @@ namespace Jerre
 
             UpdateCameras();
 
-            var canvasIndicator = Instantiate(IndicatorCanvasPrefab);
-            canvasIndicator.camera = playerCamera.GetComponent<Camera>();
-            canvasIndicator.GetComponent<TargetsIndicatorCanvasSettings>().PlayerNumber = playerNumber;
-            canvasesDictionary.Add(playerNumber, canvasIndicator);
-
             var circleCanvasIndicator = Instantiate(CircleIndicatorCanvasPrefab);
             circleCanvasIndicator.camera = playerCamera.GetComponent<Camera>();
             circleCanvasIndicator.GetComponent<TargetsCircleIndicatorCanvasSettings>().PlayerNumber = playerNumber;
@@ -90,7 +82,6 @@ namespace Jerre
             }
 
             Destroy(playerCameraDictionary[playerNumber].gameObject);
-            Destroy(canvasesDictionary[playerNumber].gameObject);
             Destroy(circleCanvasDictionary[playerNumber].gameObject);
             UpdateCameras();
         }
