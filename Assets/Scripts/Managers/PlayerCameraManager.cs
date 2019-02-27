@@ -82,7 +82,10 @@ namespace Jerre
             }
 
             Destroy(playerCameraDictionary[playerNumber].gameObject);
-            Destroy(circleCanvasDictionary[playerNumber].gameObject);
+            var circleCanvas = circleCanvasDictionary[playerNumber];
+            circleCanvas.CleanUpBeforeDestroy();
+            circleCanvasDictionary.Remove(playerNumber);
+            Destroy(circleCanvas.gameObject);
             UpdateCameras();
         }
 
