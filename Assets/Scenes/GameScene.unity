@@ -603,6 +603,8 @@ MonoBehaviour:
     type: 3}
   IndicatorCanvasPrefab: {fileID: 7401806299137941594, guid: 4df0c4b2d61f54a4093e93007819cf46,
     type: 3}
+  CircleIndicatorCanvasPrefab: {fileID: 1668067544342604867, guid: 99dda2434bc06224684a1692b62043f7,
+    type: 3}
 --- !u!1001 &1419095146
 PrefabInstance:
   m_ObjectHideFlags: 0
