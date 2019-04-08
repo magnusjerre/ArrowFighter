@@ -81,10 +81,7 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerReady.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBombWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBoost.cs" />
@@ -101,10 +98,13 @@
     <Compile Include="Assets\Scripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\PlayersState.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
+    <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
+    <Compile Include="Assets\Scripts\Scoring\ScoreManager.cs" />
+    <Compile Include="Assets\Scripts\Scoring\ScoreUICanvas.cs" />
+    <Compile Include="Assets\Scripts\Scoring\ScoreUIElement.cs" />
+    <Compile Include="Assets\Scripts\Scoring\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
-    <Compile Include="Assets\Scripts\UI\ScoreUICanvas.cs" />
-    <Compile Include="Assets\Scripts\UI\ScoreUIElement.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
     <Compile Include="Assets\Scripts\Utils\SceneNames.cs" />
