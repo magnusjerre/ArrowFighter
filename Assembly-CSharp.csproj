@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerMenuSettings.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerReady.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\PlayerPositionScreenBoundEnforcerManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
