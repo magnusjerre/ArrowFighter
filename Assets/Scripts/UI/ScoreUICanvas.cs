@@ -27,17 +27,6 @@ namespace Jerre.UI
 
         void Start()
         {
-            var allCameras = GameObject.FindObjectsOfType<CameraSettings>();
-            for (var i = 0; i < allCameras.Length; i++)
-            {
-                var cameraSettings = allCameras[i];
-                if (cameraSettings.PlayerNumber == PlayerNumber)
-                {
-                    canvas.worldCamera = cameraSettings.GetComponent<Camera>();
-                    break;
-                }
-            }
-            InitialPlayerScoreSetup();
         }
 
         private void InitialPlayerScoreSetup()

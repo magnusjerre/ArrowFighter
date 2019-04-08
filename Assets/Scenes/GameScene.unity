@@ -484,7 +484,6 @@ GameObject:
   - component: {fileID: 1043987875}
   - component: {fileID: 1043987878}
   - component: {fileID: 1043987877}
-  - component: {fileID: 1043987879}
   - component: {fileID: 1043987876}
   m_Layer: 0
   m_Name: Manager
@@ -587,24 +586,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxScore: 2
---- !u!114 &1043987879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043987871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 199ded34c5a0ff14eaa1531ed345f9cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerCameraSettingsPrefab: {fileID: 4075513751209260818, guid: 84cda53545a562b46b929f71cd17bd10,
-    type: 3}
-  IndicatorCanvasPrefab: {fileID: 7401806299137941594, guid: 4df0c4b2d61f54a4093e93007819cf46,
-    type: 3}
-  CircleIndicatorCanvasPrefab: {fileID: 1668067544342604867, guid: 99dda2434bc06224684a1692b62043f7,
-    type: 3}
 --- !u!1001 &1419095146
 PrefabInstance:
   m_ObjectHideFlags: 0

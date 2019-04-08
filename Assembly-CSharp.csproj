@@ -60,9 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\CameraSettings.cs" />
-    <Compile Include="Assets\Scripts\CameraSize.cs" />
     <Compile Include="Assets\Scripts\Events\AFEvent.cs" />
     <Compile Include="Assets\Scripts\Events\AFEventManager.cs" />
     <Compile Include="Assets\Scripts\Events\AFEvents.cs" />
@@ -82,7 +79,6 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerJoinManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerMenuSettings.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerReady.cs" />
-    <Compile Include="Assets\Scripts\Managers\PlayerCameraManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ScoreManager.cs" />
@@ -105,13 +101,10 @@
     <Compile Include="Assets\Scripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\PlayersState.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
-    <Compile Include="Assets\Scripts\ScoreUICanvas.cs" />
     <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
+    <Compile Include="Assets\Scripts\UI\ScoreUICanvas.cs" />
     <Compile Include="Assets\Scripts\UI\ScoreUIElement.cs" />
-    <Compile Include="Assets\Scripts\UI\TargetCircleIndicator.cs" />
-    <Compile Include="Assets\Scripts\UI\TargetsCircleIndicatorCanvas.cs" />
-    <Compile Include="Assets\Scripts\UI\TargetsCircleIndicatorCanvasSettings.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
     <Compile Include="Assets\Scripts\Utils\SceneNames.cs" />

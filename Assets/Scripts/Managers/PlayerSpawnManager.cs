@@ -11,8 +11,6 @@ namespace Jerre
 
         private Dictionary<int, PlayerSettings> playerNumberMap;
         private SpawnPointManager spawnPointManager;
-        private ScoreUICanvas scoreUIManager;
-        private ScoreManager scoreManager;
 
         private Color[] playerColors;
         private int indexOfNextColor = 0;
@@ -28,8 +26,6 @@ namespace Jerre
             CanJoinInGame = PlayersState.INSTANCE.ReadyPlayersCount == 0;
 
             spawnPointManager = GameObject.FindObjectOfType<SpawnPointManager>();
-            scoreUIManager = GameObject.FindObjectOfType<ScoreUICanvas>();
-            scoreManager = GameObject.FindObjectOfType<ScoreManager>();
 
             eventManager = GameObject.FindObjectOfType<AFEventManager>();
             eventManager.AddListener(this);
