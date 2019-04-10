@@ -242,7 +242,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6507999089634282337
 Rigidbody:
@@ -927,6 +927,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 893912445023725741, guid: 376a13fe6b070f744a0b1244cb2b036c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 893912445023725742, guid: 376a13fe6b070f744a0b1244cb2b036c,
         type: 3}
