@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Jerre.Events;
 
 namespace Jerre
 {
@@ -78,6 +79,10 @@ namespace Jerre
         private void ReEnablePlayer(PlayerSettings playerSettings)
         {
             playerSettings.GetComponent<PlayerHealth>().ResetHealth();
+            var playerHealth = playerSettings.GetComponent<PlayerHealth>();
+            playerHealth.ResetHealth();
+            AFEventManager.INSTANCE.PostEvent(AFEvents.Respawn(playerSettings.playerNumber, playerHealth.HealthLeft));
+            
             EnableOrDisablePlayer(playerSettings, true);
 
             var newSpawnPoint = spawnPointManager.GetNextSpawnPoint();

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Jerre.Events;
+using UnityEngine;
 
 namespace Jerre
 {
@@ -33,9 +34,11 @@ namespace Jerre
             {
                 healthLeft = 0;
                 Debug.Log("Player " + settings.playerNumber + " died!");
+                AFEventManager.INSTANCE.PostEvent(AFEvents.HealthDamage(settings.playerNumber, damage, healthLeft));
                 PlayerDeathManager.instance.RegisterPlayerDeath(settings);
                 return true;
             }
+            AFEventManager.INSTANCE.PostEvent(AFEvents.HealthDamage(settings.playerNumber, damage, healthLeft));
             return false;
         }
 

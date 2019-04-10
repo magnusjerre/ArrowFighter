@@ -33,5 +33,20 @@ namespace Jerre.Events
         {
             return new AFEvent(AFEventType.BOMB_TRIGGER, new BombTriggerPayload(ownerPlayerNumber, triggeredByPlayer));
         }
+
+        public static AFEvent PlayerMenuBarUICreated(int playerNumber)
+        {
+            return new AFEvent(AFEventType.PLAYER_MENU_BAR_UI_CREATED, new PlayerMenuBarUICreatedPayload(playerNumber));
+        }
+
+        public static AFEvent HealthDamage(int damagedPlayerNumber, int damage, int healthLeft)
+        {
+            return new AFEvent(AFEventType.HEALTH_DAMAGE, new HealthDamagePayload(damagedPlayerNumber, damage, healthLeft));
+        }
+
+        public static AFEvent Respawn(int playerNumber, int health)
+        {
+            return new AFEvent(AFEventType.RESPAWN, new RespawnPayload(playerNumber, health));
+        }
     }
 }
