@@ -18,14 +18,9 @@ namespace Jerre.UI
 
         void Start()
         {
-            scoreText = GetComponentInChildren<Text>();
-            scoreButton = GetComponent<Button>();
+            scoreText = GetComponent<Text>();
+            scoreText.color = PlayerColor;
             rectTransform = GetComponent<RectTransform>();
-
-            scoreButton.interactable = false;
-            var colors = scoreButton.colors;
-            colors.disabledColor = new Color(PlayerColor.r, PlayerColor.g, PlayerColor.b, colors.disabledColor.a);
-            scoreButton.colors = colors;
 
             var newXPos = (NumberInLine - 1) * (rectTransform.rect.width + Padding);
             rectTransform.anchoredPosition = new Vector2(newXPos, 0);
