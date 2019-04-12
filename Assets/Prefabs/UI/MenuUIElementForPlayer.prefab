@@ -166,6 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Left: {fileID: 8676604532125126168}
   Right: {fileID: 8676604531120832147}
+  backgroundImage: {fileID: 3026887155991686124}
+  backgroundAlpha: 0.25
 --- !u!1 &8676604531120832148
 GameObject:
   m_ObjectHideFlags: 0

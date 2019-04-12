@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Jerre.Events;
 using System.Collections.Generic;
+using Jerre.Utils;
 
 namespace Jerre.UI
 {
@@ -30,6 +31,7 @@ namespace Jerre.UI
         private void HandleJoin(PlayerJoinPayload joinPayload)
         {
             var newContainer = Instantiate(uiElementContainerPrefab, entireMenuBarUIArea);
+            newContainer.SetBackgroundColor(PlayerFetcher.FindPlayerByPlayerNumber(joinPayload.playerNumber).color);
             playerToRect.Add(joinPayload.playerNumber, newContainer);
             UpdateSizes();
             joinLeaveHandler.PostEvent(AFEvents.PlayerMenuBarUICreated(joinPayload.playerNumber));
