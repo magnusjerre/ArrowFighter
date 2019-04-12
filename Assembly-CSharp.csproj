@@ -110,7 +110,6 @@
     <Compile Include="Assets\Scripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreManager.cs" />
-    <Compile Include="Assets\Scripts\Scoring\ScoreUICanvas.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreUIElement.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\Shield.cs" />

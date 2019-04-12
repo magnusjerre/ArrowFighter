@@ -7,8 +7,6 @@ namespace Jerre
 {
     public class ScoreUIManager : MonoBehaviour, IAFEventListener
     {
-        public ScoreUICanvas ScoreUICanvasPrefab;
-        private ScoreUICanvas singletonCanvas;
         private ScoreManager scoreManager;
 
         public ScoreUIElement scoreUIElementPrefab;
