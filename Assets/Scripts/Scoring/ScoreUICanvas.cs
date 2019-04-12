@@ -62,7 +62,7 @@ namespace Jerre.UI
                 var scoreUI = ScoreArea.GetChild(i).GetComponent<ScoreUIElement>();
                 if (scoreUI != null && scoreUI.PlayerNumber == playerNumber)
                 {
-                    scoreUI.UpdateScore(playerScore, maxScore);
+                    //scoreUI.UpdateScore(playerScore, maxScore);
                     break;
                 }
             }

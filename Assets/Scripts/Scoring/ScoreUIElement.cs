@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Jerre.Events;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Jerre.UI
 {
-    public class ScoreUIElement : MonoBehaviour
+    public class ScoreUIElement : MonoBehaviour, IAFEventListener
     {
         private Text scoreText;
         private Button scoreButton;
@@ -22,15 +23,30 @@ namespace Jerre.UI
             scoreText.color = PlayerColor;
             rectTransform = GetComponent<RectTransform>();
 
-            var newXPos = (NumberInLine - 1) * (rectTransform.rect.width + Padding);
-            rectTransform.anchoredPosition = new Vector2(newXPos, 0);
-
             UpdateScore(InitialScore, MaxScore);
+            AFEventManager.INSTANCE.AddListener(this);
         }
 
-        public void UpdateScore(int currentScore, int maxScore)
+        private void UpdateScore(int currentScore, int maxScore)
         {
             scoreText.text = currentScore + " / " + maxScore;
+        }
+
+        public bool HandleEvent(AFEvent afEvent)
+        {
+            switch(afEvent.type)
+            {
+                case AFEventType.SCORE:
+                    {
+                        var payload = (ScorePayload)afEvent.payload;
+                        if (payload.playerNumber == PlayerNumber)
+                        {
+                            UpdateScore(payload.playerScore, payload.maxScore);
+                        }
+                        break;
+                    }
+            }
+            return false;
         }
     }
 }

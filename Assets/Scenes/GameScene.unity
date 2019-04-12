@@ -478,6 +478,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScoreUICanvasPrefab: {fileID: 3604253209248700875, guid: 28c2b9e493ec0954886afc53bac05ac9,
     type: 3}
+  scoreUIElementPrefab: {fileID: 4237707889972997031, guid: 7ad998a5a1ea8444aa5f1edc89f197c2,
+    type: 3}
+  uiBarManager: {fileID: 1043987880}
 --- !u!114 &1043987877
 MonoBehaviour:
   m_ObjectHideFlags: 0

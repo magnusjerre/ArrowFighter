@@ -101,5 +101,10 @@ namespace Jerre
         {
             return playerScores;
         }
+
+        public int GetPlayerScore(int playerNumber)
+        {
+            return playerScores[playerNumber];
+        }
     }
 }
