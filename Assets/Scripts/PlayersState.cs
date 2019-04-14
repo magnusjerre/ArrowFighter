@@ -25,6 +25,8 @@ namespace Jerre
             private set;
         }
 
+        public GameModes selectedGameMode;
+
         public void SetScores(List<PlayerScore> newScores)
         {
             newScores.Sort();
@@ -63,6 +65,7 @@ namespace Jerre
         {
             ReadyPlayers.Clear();
             Scores = null;
+            selectedGameMode = GameModes.UNSELECTED;
         }
 
     }

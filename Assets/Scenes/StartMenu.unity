@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &445496949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,11 +426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8351812e6dbf344f801d5b710e0d444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  MaxCenterOffset: 10
-  MaxCorrectionSpeed: 1
-  CorrectionAcceleration: 10
-  currentSpeed: 0
 --- !u!114 &864909780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,8 +438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f1deed679c86b409187f29545fe7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalNumberOfPlayers: 0
-  PlayerNumber: 0
 --- !u!224 &1051340905 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1051340905, guid: 411bdcf9e41bfb44894d3c14b7d16f34,
