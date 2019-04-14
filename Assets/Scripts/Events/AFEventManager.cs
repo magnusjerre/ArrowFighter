@@ -3,21 +3,22 @@ using System.Collections.Generic;
 
 namespace Jerre.Events
 {
-    public class AFEventManager : MonoBehaviour
+    public class AFEventManager
     {
-        public static AFEventManager INSTANCE;
+        private static AFEventManager instance;
+        public static AFEventManager INSTANCE
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AFEventManager();
+                }
+                return instance;
+            }
+        }
 
         private List<IAFEventListener> listeners = new List<IAFEventListener> ();
-
-        private void Awake()
-        {
-            INSTANCE = this;
-        }
-
-        void Start()
-        {
-
-        }
 
         public void PostEvent(AFEvent afEvent)
         {

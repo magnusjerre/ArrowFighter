@@ -10,14 +10,12 @@ namespace Jerre
     {
         public int maxScore = 10;
 
-        private AFEventManager eventManager;
         private Dictionary<int, int> playerScores;
 
         void Awake()
         {
             playerScores = new Dictionary<int, int>();
-            eventManager = GetComponent<AFEventManager>();
-            eventManager.AddListener(this);
+            AFEventManager.INSTANCE.AddListener(this);
         }
 
         // Use this for initialization
@@ -56,7 +54,7 @@ namespace Jerre
                 var oldScore = playerScores[payload.playerNumberOfKiller];
                 var newScore = oldScore + 1;
                 playerScores[payload.playerNumberOfKiller] = newScore;
-                eventManager.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, newScore, maxScore));
+                AFEventManager.INSTANCE.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, newScore, maxScore));
 
                 if (newScore == maxScore)
                 {
@@ -71,7 +69,7 @@ namespace Jerre
                         scores.Add(new PlayerScore(p.playerNumber, p.color, 0, playerScores[p.playerNumber]));
                     }
                     PlayersState.INSTANCE.SetScores(scores);
-                    eventManager.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
+                    AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
                     SceneManager.LoadScene(SceneNames.GAME_OVER_SCENE, LoadSceneMode.Single);
                 }
             }

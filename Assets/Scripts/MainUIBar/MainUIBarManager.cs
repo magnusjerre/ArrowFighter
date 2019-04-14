@@ -15,17 +15,17 @@ namespace Jerre.UI
 
         void Awake()
         {
-            
-        }
-        
-        void Start()
-        {
+            AFEventManager.INSTANCE.AddListener(this);
+            playerToRect = new SortedDictionary<int, UIElementContainer>();
             joinLeaveHandler = new PlayerJoinLeaveHandlerHelper(
                 join => HandleJoin(join),
                 leave => HandleLeave(leave)
             );
-            joinLeaveHandler.RegisterListener(this);
-            playerToRect = new SortedDictionary<int, UIElementContainer>();
+        }
+        
+        void Start()
+        {
+            
         }
 
         private void HandleJoin(PlayerJoinPayload joinPayload)

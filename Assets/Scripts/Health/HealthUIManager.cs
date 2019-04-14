@@ -9,9 +9,14 @@ namespace Jerre.Health
         public MainUIBarManager mainUIBarCanvas;
         public HealthUIElement healthUIElementPrefab;
 
-        void Start()
+        void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
+        }
+
+        void Start()
+        {
+            
         }
 
         private void HandlePlayerJoined(PlayerMenuBarUICreatedPayload payload)

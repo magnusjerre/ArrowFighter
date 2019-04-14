@@ -15,7 +15,6 @@ namespace Jerre
         private Color[] playerColors;
         private int indexOfNextColor = 0;
 
-        private AFEventManager eventManager;
         private bool CanJoinInGame = false;
 
         private void Awake()
@@ -27,8 +26,7 @@ namespace Jerre
 
             spawnPointManager = GameObject.FindObjectOfType<SpawnPointManager>();
 
-            eventManager = GameObject.FindObjectOfType<AFEventManager>();
-            eventManager.AddListener(this);
+            AFEventManager.INSTANCE.AddListener(this);
         }
 
         void Start()
@@ -77,7 +75,7 @@ namespace Jerre
             newPlayer.MaxSpeed = gameSettings.baseSpeed;
             newPlayer.FireRate = 1f / gameSettings.baseFireRate;
             newPlayer.MaxHealth = gameSettings.baseHealth;
-            eventManager.PostEvent(AFEvents.PlayerJoin(playerNumber, color));
+            AFEventManager.INSTANCE.PostEvent(AFEvents.PlayerJoin(playerNumber, color));
         }
 
         private void RemovePlayer(int playerNumber)
@@ -90,7 +88,7 @@ namespace Jerre
                     Destroy(playerToRemove.gameObject);
                 }
             }
-            eventManager.PostEvent(AFEvents.PlayerLeave(playerNumber));
+            AFEventManager.INSTANCE.PostEvent(AFEvents.PlayerLeave(playerNumber));
         }
 
         private Color NextColor()

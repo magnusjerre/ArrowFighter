@@ -397,7 +397,6 @@ GameObject:
   - component: {fileID: 1043987874}
   - component: {fileID: 1043987875}
   - component: {fileID: 1043987878}
-  - component: {fileID: 1043987877}
   - component: {fileID: 1043987876}
   - component: {fileID: 1043987879}
   - component: {fileID: 1043987880}
@@ -476,23 +475,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b2a91f6413f57741a6ff1ca56733720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreUICanvasPrefab: {fileID: 3604253209248700875, guid: 28c2b9e493ec0954886afc53bac05ac9,
-    type: 3}
   scoreUIElementPrefab: {fileID: 4237707889972997031, guid: 7ad998a5a1ea8444aa5f1edc89f197c2,
     type: 3}
   uiBarManager: {fileID: 1043987880}
---- !u!114 &1043987877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043987871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50a88cfa4e3cf7f4d9fec8c082e081ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1043987878
 MonoBehaviour:
   m_ObjectHideFlags: 0

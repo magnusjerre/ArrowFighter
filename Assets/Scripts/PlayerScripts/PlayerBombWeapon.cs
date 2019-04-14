@@ -10,7 +10,6 @@ namespace Jerre
 
         private PlayerSettings settings;
         private PlayerInputComponent playerInput;
-        private AFEventManager eventManager;
 
         private bool BombDropped = false;
         private float minTimeBetweenFire;
@@ -20,7 +19,6 @@ namespace Jerre
         {
             settings = GetComponent<PlayerSettings>();
             playerInput = GetComponent<PlayerInputComponent>();
-            eventManager = GameObject.FindObjectOfType<AFEventManager>();
             minTimeBetweenFire = 1f / settings.Fire2Rate;
             timeSinceLastFire = minTimeBetweenFire;
         }
@@ -33,7 +31,7 @@ namespace Jerre
             {
                 BombDropped = false;
                 timeSinceLastFire = 0f;
-                eventManager.PostEvent(AFEvents.BombTrigger(settings.playerNumber, true));
+                AFEventManager.INSTANCE.PostEvent(AFEvents.BombTrigger(settings.playerNumber, true));
             } else if (playerInput.input.Fire2 && timeSinceLastFire >= minTimeBetweenFire)
             {
                 timeSinceLastFire = 0;

@@ -8,14 +8,12 @@ namespace Jerre
     {
         public ParticleSystem explosionParticlesPrefab;
         private BombSettings settings;
-        private AFEventManager eventManager;
         private bool AlreadyTriggered = false;
 
         void Start()
         {
             settings = GetComponent<BombSettings>();
-            eventManager = GameObject.FindObjectOfType<AFEventManager>();
-            eventManager.AddListener(this);
+            AFEventManager.INSTANCE.AddListener(this);
             Invoke("TriggerExplosionDueToLifeTime", settings.MaxLifeTimeWithoutExploding);
         }
 
@@ -45,12 +43,12 @@ namespace Jerre
 
                     if (playerHealth.DoDamage(blastDamage))
                     {
-                        eventManager.PostEvent(AFEvents.Kill(settings.PlayerOwnerNumber, playerSettings.playerNumber));
+                        AFEventManager.INSTANCE.PostEvent(AFEvents.Kill(settings.PlayerOwnerNumber, playerSettings.playerNumber));
                     }
                 }
             }
 
-            eventManager.RemoveListener(this);
+            AFEventManager.INSTANCE.RemoveListener(this);
             var explosionParticles = Instantiate(explosionParticlesPrefab, transform.position, transform.rotation);
             var particlesMainModule = explosionParticles.main;
             particlesMainModule.startColor = settings.color;
@@ -61,7 +59,7 @@ namespace Jerre
         {
             if (AlreadyTriggered) return;
 
-            eventManager.PostEvent(AFEvents.BombTrigger(settings.PlayerOwnerNumber, false));
+            AFEventManager.INSTANCE.PostEvent(AFEvents.BombTrigger(settings.PlayerOwnerNumber, false));
             TriggerExplosion();
         }
 

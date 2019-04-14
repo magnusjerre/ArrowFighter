@@ -16,11 +16,12 @@ namespace Jerre
         private void Awake()
         {
             scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+            AFEventManager.INSTANCE.AddListener(this);
         }
 
         void Start()
         {
-            AFEventManager.INSTANCE.AddListener(this);
+            
         }
 
         void HandleJoin(PlayerMenuBarUICreatedPayload joinPayload)
