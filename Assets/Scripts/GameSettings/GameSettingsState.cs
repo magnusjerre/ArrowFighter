@@ -4,12 +4,12 @@ namespace Jerre.GameSettings
 {
     public class GameSettingsState
     {
-        public int baseSpeed;
-        public int baseHealth;
-        public int baseFireRate;
-        public int baseFireDamage;
+        public int baseSpeed = 150;
+        public int baseHealth = 100;
+        public int baseFireRate = 4;
+        public int baseFireDamage = 10;
 
-        public int pointsToWin;
+        public int pointsToWin = 5;
 
         public void SetValue(GameSettingsField field, int value)
         {
