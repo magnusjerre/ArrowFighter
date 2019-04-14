@@ -12,6 +12,10 @@ namespace Jerre
 
         public ParticleSystem hitParticlesPrefab;
 
+        void Awake()
+        {
+            Damage = PlayersState.INSTANCE.gameSettings.baseFireDamage;
+        }
         // Start is called before the first frame update
         void Start()
         {

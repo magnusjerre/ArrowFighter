@@ -73,7 +73,7 @@ namespace Jerre
             newPlayer.color = color;
             var gameSettings = PlayersState.INSTANCE.gameSettings;
             newPlayer.MaxSpeed = gameSettings.baseSpeed;
-            newPlayer.FireRate = 1f / gameSettings.baseFireRate;
+            newPlayer.FireRate = gameSettings.baseFireRate;
             newPlayer.MaxHealth = gameSettings.baseHealth;
             AFEventManager.INSTANCE.PostEvent(AFEvents.PlayerJoin(playerNumber, color));
         }

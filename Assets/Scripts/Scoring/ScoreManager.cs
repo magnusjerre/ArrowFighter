@@ -16,6 +16,7 @@ namespace Jerre
         {
             playerScores = new Dictionary<int, int>();
             AFEventManager.INSTANCE.AddListener(this);
+            maxScore = PlayersState.INSTANCE.gameSettings.pointsToWin;
         }
 
         // Use this for initialization
