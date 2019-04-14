@@ -1,4 +1,5 @@
-﻿using Jerre.MainMenu;
+﻿using Jerre.GameSettings;
+using Jerre.MainMenu;
 using System.Collections.Generic;
 
 namespace Jerre
@@ -37,6 +38,8 @@ namespace Jerre
                 Scores.Add(new PlayerScore(s.PlayerNumber, s.PlayerColor, i + 1, s.Score));
             }
         }
+
+        public GameSettingsState gameSettings = new GameSettingsState();
 
         private PlayersState()
         {

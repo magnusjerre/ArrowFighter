@@ -79,11 +79,14 @@
     <Compile Include="Assets\Scripts\GameModes.cs" />
     <Compile Include="Assets\Scripts\GameOverScripts\GameOverManager.cs" />
     <Compile Include="Assets\Scripts\GameOverScripts\ScoreEntry.cs" />
+    <Compile Include="Assets\Scripts\GameSettings\GameSettingsState.cs" />
     <Compile Include="Assets\Scripts\Health\HealthUIElement.cs" />
     <Compile Include="Assets\Scripts\Health\HealthUIManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\ColorManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\GameModeSelection\GameModeSelectionManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\GameModeSelection\TextHighlightButton.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\GameSettingsManager.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\ValueChanger.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerColorScript.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerJoinManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerMenuSettings.cs" />
@@ -119,6 +122,7 @@
     <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
+    <Compile Include="Assets\Scripts\Utils\GameSettingsField.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerFetcher.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
     <Compile Include="Assets\Scripts\Utils\SceneNames.cs" />

@@ -13,15 +13,13 @@ namespace Jerre.MainMenu.GameMode
         public void SetFreeForAll()
         {
             PlayersState.INSTANCE.selectedGameMode = GameModes.FREE_FOR_ALL;
-            Debug.Log("SetFreeForAll");
-            SceneManager.LoadScene(SceneNames.START_MENU);
+            SceneManager.LoadScene(SceneNames.GAME_SETTINGS_SCENE);
         }
 
         public void SetCheckpointRace()
         {
             PlayersState.INSTANCE.selectedGameMode = GameModes.CHECKPOINT_RACE;
-            Debug.Log("SetCheckpointRace");
-            SceneManager.LoadScene(SceneNames.START_MENU);
+            SceneManager.LoadScene(SceneNames.GAME_SETTINGS_SCENE);
         }
     }
 }
