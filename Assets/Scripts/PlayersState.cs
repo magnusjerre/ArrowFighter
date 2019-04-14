@@ -1,6 +1,7 @@
 ﻿using Jerre.GameSettings;
 using Jerre.MainMenu;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Jerre
 {
@@ -14,6 +15,7 @@ namespace Jerre
                 if (instance == null)
                 {
                     instance = new PlayersState();
+                    instance.gameSettings = GameSettingsState.INSTANCE;
                 }
                 return instance;
             }
@@ -39,7 +41,7 @@ namespace Jerre
             }
         }
 
-        public GameSettingsState gameSettings = new GameSettingsState();
+        public GameSettingsState gameSettings;
 
         private PlayersState()
         {

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using Jerre.UI;
 using System.Collections.Generic;
 using Jerre.Events;
 using UnityEngine.SceneManagement;
+using Jerre.GameSettings;
 
 namespace Jerre
 {
@@ -14,15 +14,18 @@ namespace Jerre
 
         void Awake()
         {
+            //Debug.Log("pointsToWin:" + PlayersState.INSTANCE.gameSettings.pointsToWin);
             playerScores = new Dictionary<int, int>();
             AFEventManager.INSTANCE.AddListener(this);
-            maxScore = PlayersState.INSTANCE.gameSettings.pointsToWin;
+            //maxScore = PlayersState.INSTANCE.gameSettings.pointsToWin;
+            Debug.Log("pointsToWin:" + GameSettingsState.INSTANCE.pointsToWin);
+            maxScore = GameSettingsState.INSTANCE.pointsToWin;
         }
 
         // Use this for initialization
         void Start()
         {
-            
+            Debug.Log("pointsToWin:" + GameSettingsState.INSTANCE.pointsToWin);
         }
 
         public bool HandleEvent(AFEvent afEvent)
@@ -70,7 +73,8 @@ namespace Jerre
                         scores.Add(new PlayerScore(p.playerNumber, p.color, 0, playerScores[p.playerNumber]));
                     }
                     PlayersState.INSTANCE.SetScores(scores);
-                    AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
+                    //AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
+                    AFEventManager.INSTANCE.RemoveAllListeners();
                     SceneManager.LoadScene(SceneNames.GAME_OVER_SCENE, LoadSceneMode.Single);
                 }
             }

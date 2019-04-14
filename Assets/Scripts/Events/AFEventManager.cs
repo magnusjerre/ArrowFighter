@@ -46,5 +46,10 @@ namespace Jerre.Events
         {
             return listeners.Remove(listener);
         }
+
+        public void RemoveAllListeners()
+        {
+            listeners.Clear();
+        }
     }
 }

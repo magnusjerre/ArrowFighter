@@ -1,9 +1,28 @@
 ﻿using Jerre.Utils;
+using UnityEngine;
 
 namespace Jerre.GameSettings
 {
     public class GameSettingsState
     {
+        private static GameSettingsState instance;
+        public static GameSettingsState INSTANCE
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GameSettingsState();
+                }
+                return instance;
+            }
+        }
+
+        private GameSettingsState()
+        {
+
+        }
+
         public int baseSpeed = 150;
         public int baseHealth = 100;
         public int baseFireRate = 4;

@@ -1,4 +1,5 @@
 ﻿using Jerre.Events;
+using Jerre.GameSettings;
 using Jerre.UI;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,7 +72,7 @@ namespace Jerre
             newPlayer.playerNumber = playerNumber;
             playerNumberMap.Add(playerNumber, newPlayer);
             newPlayer.color = color;
-            var gameSettings = PlayersState.INSTANCE.gameSettings;
+            var gameSettings = GameSettingsState.INSTANCE;
             newPlayer.MaxSpeed = gameSettings.baseSpeed;
             newPlayer.FireRate = gameSettings.baseFireRate;
             newPlayer.MaxHealth = gameSettings.baseHealth;
@@ -102,12 +103,12 @@ namespace Jerre
         {
             if (afEvent.type == AFEventType.GAME_OVER)
             {
-                for (var i = 1; i <= 4; i++)
-                {
-                    RemovePlayer(i);
-                    indexOfNextColor = 0;
-                    //scoreUIManager.ResetNumberInLine();
-                }
+                //for (var i = 1; i <= 4; i++)
+                //{
+                //    RemovePlayer(i);
+                //    indexOfNextColor = 0;
+                //    //scoreUIManager.ResetNumberInLine();
+                //}
             }
             return false;
         }

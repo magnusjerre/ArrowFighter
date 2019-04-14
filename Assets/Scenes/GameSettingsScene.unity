@@ -293,6 +293,11 @@ PrefabInstance:
       propertyPath: minValue
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5698078405747540813, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: settingsField
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ded268564897e04ba77208b54f5d182, type: 3}
 --- !u!224 &492207599 stripped
@@ -933,6 +938,11 @@ PrefabInstance:
       propertyPath: maxValue
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 5698078405747540813, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: settingsField
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ded268564897e04ba77208b54f5d182, type: 3}
 --- !u!224 &1178281610 stripped
@@ -1191,6 +1201,11 @@ PrefabInstance:
         type: 3}
       propertyPath: theValue
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698078405747540813, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: settingsField
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ded268564897e04ba77208b54f5d182, type: 3}
@@ -1451,6 +1466,11 @@ PrefabInstance:
         type: 3}
       propertyPath: minValue
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698078405747540813, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: settingsField
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ded268564897e04ba77208b54f5d182, type: 3}
