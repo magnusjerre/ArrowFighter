@@ -27,12 +27,12 @@ namespace Jerre.GameOver
                 scoreEntry.Debug = Debug;
                 offsetCounter++;
             }
-            Invoke("LoadStartMenu", 3f);
+            Invoke("LoadFirstMenuScene", 3f);
         }
 
-        void LoadStartMenu()
+        void LoadFirstMenuScene()
         {
-            SceneManager.LoadScene(SceneNames.START_MENU, LoadSceneMode.Single);
+            SceneManager.LoadScene(SceneNames.GAME_MODE_SELECTION, LoadSceneMode.Single);
         }
     }
 }
