@@ -34,10 +34,10 @@ namespace Jerre.MainMenu
 
         public void UpdateColor()
         {
-            var imageComponents = transform.parent.GetComponentsInChildren<Image>();
-            for (var i = 0; i < imageComponents.Length; i++)
+            var renderers = transform.parent.GetComponentsInChildren<Renderer>();
+            for (var i = 0; i < renderers.Length; i++)
             {
-                imageComponents[i].color = settings.Color;
+                renderers[i].material.color = settings.Color;
             }
         }
     }

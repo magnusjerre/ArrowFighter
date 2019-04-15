@@ -26,7 +26,7 @@ namespace Jerre
             {
                 playerImages[i].color = PlayerColor;
             }
-
+            
             PlayerPositionText.text = "" + Position;
             PlayerPositionText.color = PlayerColor;
 
