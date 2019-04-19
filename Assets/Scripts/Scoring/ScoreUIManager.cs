@@ -21,7 +21,7 @@ namespace Jerre
 
         void Start()
         {
-            
+             
         }
 
         void HandleJoin(PlayerMenuBarUICreatedPayload joinPayload)

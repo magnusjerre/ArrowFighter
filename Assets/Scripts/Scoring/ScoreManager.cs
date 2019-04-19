@@ -73,9 +73,7 @@ namespace Jerre
                         scores.Add(new PlayerScore(p.playerNumber, p.color, 0, playerScores[p.playerNumber]));
                     }
                     PlayersState.INSTANCE.SetScores(scores);
-                    //AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
-                    AFEventManager.INSTANCE.RemoveAllListeners();
-                    SceneManager.LoadScene(SceneNames.GAME_OVER_SCENE, LoadSceneMode.Single);
+                    AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
                 }
             }
             else

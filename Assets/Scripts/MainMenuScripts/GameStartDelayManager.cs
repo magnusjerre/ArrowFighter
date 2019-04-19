@@ -1,9 +1,10 @@
 using Jerre.Events;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Jerre.Managers
 {
-    public class GameStartDelayManager : MonoBehaviour, IAFEventListener
+    public class GameStartAndEndDelayManager : MonoBehaviour, IAFEventListener
     {
         PlayerComponentsManager playerCompManager;
         void Awake()
@@ -14,7 +15,7 @@ namespace Jerre.Managers
 
         void Start()
         {
-            
+            //TODO: Add this manager to the game scene
         }
 
         public bool HandleEvent(AFEvent afEvent)
@@ -25,6 +26,12 @@ namespace Jerre.Managers
                     Invoke("ReEnableAllPlayersInputResponses", PlayersState.INSTANCE.WaitTimeForPlayersToStart);
                     break;
                 }
+                case AFEventType.GAME_OVER: {
+                    playerCompManager.EnableOrDisableAllPlayersInputResponses(false);
+                    //TODO: Move the score to the center of the screen
+                    Invoke("LoadGameOverScene", PlayersState.INSTANCE.WaitTimeToDisplayGameOver);
+                    break;
+                }
             }
             return false;
         }
@@ -32,6 +39,12 @@ namespace Jerre.Managers
         void ReEnableAllPlayersInputResponses()
         {
             playerCompManager.EnableOrDisableAllPlayersInputResponses(true);
+        }
+
+        void LoadGameOverScene()
+        {
+            AFEventManager.INSTANCE.RemoveAllListeners();
+            SceneManager.LoadScene(SceneNames.GAME_OVER_SCENE, LoadSceneMode.Single);
         }
     }
 }
