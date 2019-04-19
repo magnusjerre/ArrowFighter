@@ -43,6 +43,9 @@ namespace Jerre
 
         public GameSettingsState gameSettings;
 
+        public float WaitTimeForPlayersToStart = 2f;
+        public float WaitTimeToDisplayGameOver = 5f;
+
         private PlayersState()
         {
             ReadyPlayers = new List<PlayerMenuSettings>();

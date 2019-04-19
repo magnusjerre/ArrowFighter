@@ -80,6 +80,7 @@
      <Compile Include="Assets\Scripts\MainMenuScripts\GameModeSelection\TextHighlightButton.cs" />
      <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\GameSettingsManager.cs" />
      <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\ValueChanger.cs" />
+     <Compile Include="Assets\Scripts\MainMenuScripts\GameStartDelayManager.cs" />
      <Compile Include="Assets\Scripts\MainMenuScripts\PlayerColorScript.cs" />
      <Compile Include="Assets\Scripts\MainMenuScripts\PlayerJoinManager.cs" />
      <Compile Include="Assets\Scripts\MainMenuScripts\PlayerMenuSettings.cs" />
@@ -87,6 +88,7 @@
      <Compile Include="Assets\Scripts\MainMenuScripts\PreventDeselectionGroup.cs" />
      <Compile Include="Assets\Scripts\MainUIBar\MainUIBarManager.cs" />
      <Compile Include="Assets\Scripts\MainUIBar\UIElementContainer.cs" />
+     <Compile Include="Assets\Scripts\Managers\PlayerComponentsManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PlayerPositionScreenBoundEnforcerManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
@@ -105,6 +107,7 @@
      <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\PlayerPhysics.cs" />
      <Compile Include="Assets\Scripts\PlayerScripts\PlayerWeapon.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\UsePlayerInput.cs" />
      <Compile Include="Assets\Scripts\PlayerSettings.cs" />
      <Compile Include="Assets\Scripts\PlayersState.cs" />
      <Compile Include="Assets\Scripts\Rotator.cs" />

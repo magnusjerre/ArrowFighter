@@ -3,7 +3,7 @@
 namespace Jerre
 {
     [RequireComponent(typeof (PlayerSettings)), RequireComponent(typeof(PlayerInputComponent))]
-    public class PlayerWeapon : MonoBehaviour
+    public class PlayerWeapon : MonoBehaviour, UsePlayerInput
     {
         public Transform Muzzle;
         public BulletSettings bulletPrefab;
@@ -12,6 +12,8 @@ namespace Jerre
         private PlayerInputComponent playerInput;
         private float minTimeBetweenFire;
         private float timeSinceLastFire;
+
+        private bool UsePlayerInput = true;
 
         // Use this for initialization
         void Start()
@@ -26,16 +28,21 @@ namespace Jerre
         // Update is called once per frame
         void Update()
         {
-            var input = playerInput.input;
+            var tryToFire = UsePlayerInput ? playerInput.input.Fire : false;
             timeSinceLastFire += Time.deltaTime;
 
-            if (input.Fire && timeSinceLastFire >= minTimeBetweenFire)
+            if (tryToFire && timeSinceLastFire >= minTimeBetweenFire)
             {
                 var bullet = Instantiate(bulletPrefab, Muzzle.position, Muzzle.rotation);
                 bullet.PlayerOwnerNumber = settings.playerNumber;
                 bullet.color = settings.color;
                 timeSinceLastFire = 0f;
             }
+        }
+
+        public void SetUsePlayerInput(bool usePlayerInput)
+        {
+            this.UsePlayerInput = usePlayerInput;
         }
     }
 }

@@ -4,7 +4,7 @@ using Jerre.Events;
 namespace Jerre
 {
     [RequireComponent(typeof(PlayerSettings)), RequireComponent(typeof(PlayerInputComponent))]
-    public class PlayerBombWeapon : MonoBehaviour, IAFEventListener
+    public class PlayerBombWeapon : MonoBehaviour, IAFEventListener, UsePlayerInput
     {
         public BombSettings bombPrefab;
 
@@ -14,6 +14,8 @@ namespace Jerre
         private bool BombDropped = false;
         private float minTimeBetweenFire;
         private float timeSinceLastFire;
+
+        private bool UsePlayerInput = true;
 
         void Start()
         {
@@ -27,7 +29,9 @@ namespace Jerre
         {
             timeSinceLastFire += Time.deltaTime;
 
-            if (BombDropped && playerInput.input.Fire2)
+            var tryToDropBomb = UsePlayerInput ? playerInput.input.Fire2 : false;
+
+            if (BombDropped && tryToDropBomb)
             {
                 BombDropped = false;
                 timeSinceLastFire = 0f;
@@ -55,6 +59,11 @@ namespace Jerre
                 }
             }
             return false;
+        }
+
+        public void SetUsePlayerInput(bool usePlayerInput)
+        {
+            this.UsePlayerInput = usePlayerInput;
         }
     }
 }

@@ -3,13 +3,14 @@
 namespace Jerre
 {
     [RequireComponent(typeof (PlayerInputComponent)), RequireComponent(typeof (PlayerSettings)), RequireComponent(typeof (PlayerPhysics))]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour, UsePlayerInput
     {
 
         PlayerInputComponent playerInput;
         PlayerSettings settings;
         PlayerPhysics physics;
         PlayerBoost boost;
+        private bool UsePlayerInput = true;
 
 
         // Start is called before the first frame update
@@ -24,7 +25,7 @@ namespace Jerre
         // Update is called once per frame
         void Update()
         {
-            var newMoveDirection = playerInput.input.MoveDirection;
+            var newMoveDirection = UsePlayerInput ? Vector3.zero : playerInput.input.MoveDirection;
 
             // Speed
             var acceleration = (boost != null && boost.boosting) ? settings.BoostAcceleration : settings.MaxAcceleration;
@@ -49,6 +50,11 @@ namespace Jerre
             physics.MovementDirection = newVelocity.normalized;
 
             transform.Translate(physics.MovementDirection * physics.Speed * Time.deltaTime, Space.World);
+        }
+
+        public void SetUsePlayerInput(bool usePlayerInput)
+        {
+            this.UsePlayerInput = usePlayerInput;
         }
     }
 }
