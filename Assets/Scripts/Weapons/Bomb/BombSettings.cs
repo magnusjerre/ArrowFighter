@@ -12,6 +12,14 @@ namespace Jerre
         public Color color;
         public SpriteRenderer explosionRadiusRenderer;
 
+        void Awake()
+        {
+            var gameSettings = PlayersState.INSTANCE.gameSettings;
+            BlastDamage = gameSettings.bombDamage;
+            BlastRadius = gameSettings.bombExplosionRadius;
+            MaxLifeTimeWithoutExploding = gameSettings.bombMaxLifeTime;
+        }
+
         void Start()
         {
             var children = GetComponentsInChildren<SpriteRenderer>();

@@ -14,7 +14,7 @@ namespace Jerre
 
         void Awake()
         {
-            Damage = PlayersState.INSTANCE.gameSettings.baseFireDamage;
+            Damage = PlayersState.INSTANCE.gameSettings.fireDamage;
         }
         // Start is called before the first frame update
         void Start()

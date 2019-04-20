@@ -23,37 +23,71 @@ namespace Jerre.GameSettings
 
         }
 
-        public int baseSpeed = 150;
-        public int baseHealth = 100;
-        public int baseFireRate = 4;
-        public int baseFireDamage = 10;
-
+        public int speed = 150;
+        public int boostSpeed = 300;
+        public int boostDuration = 2;
+        public int boostPause = 2;
+        public int health = 100;
+        public int fireRate = 4;
+        public int fireDamage = 10;
+        public int bombDamage = 50;
+        public int bombMaxLifeTime = 7;
+        public int bombPauseTime = 2;
+        public int bombExplosionRadius = 75;
         public int pointsToWin = 5;
 
         public void SetValue(GameSettingsField field, int value)
         {
             switch(field)
             {
-                case GameSettingsField.BASE_SPEED:
+                case GameSettingsField.SPEED:
                     {
-                        baseSpeed = value;
+                        speed = value;
                         break;
                     }
-                case GameSettingsField.BASE_HEALTH:
+                case GameSettingsField.BOOST_SPEED: {
+                    boostSpeed = value;
+                    break;
+                }
+                case GameSettingsField.BOOST_DURATION: {
+                    boostDuration = value;
+                    break;
+                }
+                case GameSettingsField.BOOST_PAUSE: {
+                    boostPause = value;
+                    break;
+                }
+                case GameSettingsField.HEALTH:
                     {
-                        baseHealth = value;
+                        health = value;
                         break;
                     }
-                case GameSettingsField.BASE_FIRE_RATE:
+                case GameSettingsField.FIRE_RATE:
                     {
-                        baseFireRate = value;
+                        fireRate = value;
                         break;
                     }
-                case GameSettingsField.BASE_FIRE_STRENGTH:
+                case GameSettingsField.FIRE_DAMAGE:
                     {
-                        baseFireDamage = value;
+                        fireDamage = value;
                         break;
                     }
+                case GameSettingsField.BOMB_DAMAGE: {
+                    bombDamage = value;
+                    break;
+                }
+                case GameSettingsField.BOMB_MAX_LIFETIME: {
+                    bombMaxLifeTime = value;
+                    break;
+                }
+                case GameSettingsField.BOMB_PAUSE_TIME: {
+                    bombPauseTime = value;
+                    break;
+                }
+                case GameSettingsField.BOMB_EXPLOSION_RADIUS: {
+                    bombExplosionRadius = value;
+                    break;
+                }
                 case GameSettingsField.POINTS_TO_WIN:
                     {
                         pointsToWin = value;

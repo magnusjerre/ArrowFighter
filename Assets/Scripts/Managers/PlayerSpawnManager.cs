@@ -8,7 +8,7 @@ namespace Jerre
 {
     public class PlayerSpawnManager : MonoBehaviour, IAFEventListener
     {
-        public PlayerSettings playerPrefab;
+        public PlayerSettings playerPrefab;//yolo
 
         private Dictionary<int, PlayerSettings> playerNumberMap;
         private SpawnPointManager spawnPointManager;
@@ -74,9 +74,13 @@ namespace Jerre
             playerNumberMap.Add(playerNumber, newPlayer);
             newPlayer.color = color;
             var gameSettings = GameSettingsState.INSTANCE;
-            newPlayer.MaxSpeed = gameSettings.baseSpeed;
-            newPlayer.FireRate = gameSettings.baseFireRate;
-            newPlayer.MaxHealth = gameSettings.baseHealth;
+            newPlayer.MaxSpeed = gameSettings.speed;
+            newPlayer.BoostSpeed = gameSettings.boostSpeed;
+            newPlayer.BoostDuration = gameSettings.boostDuration;
+            newPlayer.BoostPauseDuration = gameSettings.boostPause;
+            newPlayer.MaxHealth = gameSettings.health;
+            newPlayer.FireRate = gameSettings.fireRate;
+            newPlayer.BombPauseTime = gameSettings.bombPauseTime;
             newPlayer.transform.parent = PlayersContainer;
             AFEventManager.INSTANCE.PostEvent(AFEvents.PlayerJoin(playerNumber, color));
         }

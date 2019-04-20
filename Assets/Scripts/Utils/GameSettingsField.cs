@@ -2,6 +2,17 @@
 {
     public enum GameSettingsField
     {
-        BASE_SPEED, BASE_HEALTH, BASE_FIRE_RATE, BASE_FIRE_STRENGTH, POINTS_TO_WIN
+        SPEED, 
+        BOOST_SPEED,
+        BOOST_DURATION,
+        BOOST_PAUSE,
+        HEALTH, 
+        FIRE_RATE, 
+        FIRE_DAMAGE,
+        BOMB_DAMAGE,
+        BOMB_MAX_LIFETIME,
+        BOMB_PAUSE_TIME, 
+        BOMB_EXPLOSION_RADIUS,
+        POINTS_TO_WIN
     }
 }

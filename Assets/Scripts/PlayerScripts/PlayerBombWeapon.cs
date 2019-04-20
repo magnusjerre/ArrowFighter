@@ -21,7 +21,7 @@ namespace Jerre
         {
             settings = GetComponent<PlayerSettings>();
             playerInput = GetComponent<PlayerInputComponent>();
-            minTimeBetweenFire = 1f / settings.Fire2Rate;
+            minTimeBetweenFire = settings.BombPauseTime;
             timeSinceLastFire = minTimeBetweenFire;
         }
 

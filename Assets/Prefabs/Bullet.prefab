@@ -64,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 500
   TimeToLive: 1
-  Damage: 1
+  Damage: 10
   PlayerOwnerNumber: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   hitParticlesPrefab: {fileID: 4512442324150540652, guid: 589160b62bd40a94a8f199e9bd29cdf4,

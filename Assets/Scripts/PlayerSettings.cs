@@ -12,7 +12,7 @@ namespace Jerre
 
         public float MaxLookRotationSpeedDegs = 360 * Mathf.Deg2Rad;
         public float FireRate = 4;
-        public float Fire2Rate = 1f / 4f;
+        public float BombPauseTime = 4f;
 
         public Color color;
 
