@@ -23,6 +23,7 @@ namespace Jerre.Managers
             switch(afEvent.type) {
                 case AFEventType.PLAYER_MENU_BAR_UI_CREATED: {
                     playerCompManager.EnableOrDisableAllPlayersInputResponses(false);
+                    Debug.Log("Delaying player input start");
                     Invoke("ReEnableAllPlayersInputResponses", PlayersState.INSTANCE.WaitTimeForPlayersToStart);
                     break;
                 }
@@ -39,6 +40,7 @@ namespace Jerre.Managers
         void ReEnableAllPlayersInputResponses()
         {
             playerCompManager.EnableOrDisableAllPlayersInputResponses(true);
+            Debug.Log("Player input is now processed");
         }
 
         void LoadGameOverScene()
