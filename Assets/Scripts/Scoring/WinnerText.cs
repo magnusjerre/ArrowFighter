@@ -33,6 +33,12 @@ namespace Jerre.Scoring
                     image.color = payload.playerColor;
                     WinningScoreText.text = payload.score + " Kills";
                     gameObject.SetActive(true);
+
+                    var playersContainer = GameObject.FindGameObjectWithTag("PlayersContainer");
+                    ScaleFrom playersScaler = playersContainer.AddComponent(typeof (ScaleFrom)) as ScaleFrom;
+                    playersScaler.UseInitialScaleAsFrom = true;
+                    playersScaler.To = Vector3.zero;
+                    playersScaler.Do();
                     if (Scaler != null) {
                         Scaler.Do();
                     }

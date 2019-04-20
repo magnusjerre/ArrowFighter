@@ -178,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6326969492153835060}
   - component: {fileID: 6326969492153835061}
+  - component: {fileID: 4058188672445604392}
   m_Layer: 5
   m_Name: Winner
   m_TagString: Untagged
@@ -223,7 +224,25 @@ MonoBehaviour:
   WinningScoreText: {fileID: 6326969492252086810}
   PlayerWinnerColor: {r: 1, g: 0, b: 0, a: 1}
   WinningScore: 0
-  WinningScorePostFix: Kills
+  Scaler: {fileID: 4058188672445604392}
+--- !u!114 &4058188672445604392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326969492153835059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9792a5d151d4b1ea535dee2baefd89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {x: 0, y: 0, z: 0}
+  To: {x: 1, y: 1, z: 1}
+  UseInitialScaleAsFrom: 0
+  UseInitialScaleAsTo: 1
+  ScaleOnStart: 0
+  time: 0.2
 --- !u!1 &6326969492252086808
 GameObject:
   m_ObjectHideFlags: 0

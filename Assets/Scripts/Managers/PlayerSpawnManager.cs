@@ -17,6 +17,7 @@ namespace Jerre
         private int indexOfNextColor = 0;
 
         private bool CanJoinInGame = false;
+        public Transform PlayersContainer;
 
         private void Awake()
         {
@@ -76,6 +77,7 @@ namespace Jerre
             newPlayer.MaxSpeed = gameSettings.baseSpeed;
             newPlayer.FireRate = gameSettings.baseFireRate;
             newPlayer.MaxHealth = gameSettings.baseHealth;
+            newPlayer.transform.parent = PlayersContainer;
             AFEventManager.INSTANCE.PostEvent(AFEvents.PlayerJoin(playerNumber, color));
         }
 
