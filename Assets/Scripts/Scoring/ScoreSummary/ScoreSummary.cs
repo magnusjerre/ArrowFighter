@@ -26,10 +26,7 @@ namespace Jerre.Scoring
             totalScoreText.text = scoreManager.maxScore + "";
             leaderScoreText.text = "0";
 
-            var playerSettings = GameObject.FindObjectsOfType<PlayerSettings>();
-            for (var i = 0; i < playerSettings.Length; i++) {
-                playerColorMap.Add(playerSettings[i].playerNumber, playerSettings[i].color);
-            }
+            InitializeColorMap();
         }
 
         public bool HandleEvent(AFEvent afEvent)
@@ -40,12 +37,23 @@ namespace Jerre.Scoring
                     if (payload.playerScore > leaderScore) {
                         leaderScore = payload.playerScore;
                         leaderPlayerNumber = payload.playerNumber;
+                        if (!playerColorMap.ContainsKey(leaderPlayerNumber)) {
+                            InitializeColorMap();
+                        }
                         leaderScoreText.color = playerColorMap[leaderPlayerNumber];
+                        leaderScoreText.text = leaderScore + "";
                     }
                     break;
                 }
             }
             return false;
+        }
+        void InitializeColorMap() {
+            playerColorMap = new Dictionary<int, Color>();
+            var playerSettings = GameObject.FindObjectsOfType<PlayerSettings>();
+            for (var i = 0; i < playerSettings.Length; i++) {
+                playerColorMap.Add(playerSettings[i].playerNumber, playerSettings[i].color);
+            }
         }
     }
 }
