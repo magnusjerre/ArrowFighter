@@ -25,7 +25,7 @@ namespace Jerre
         // Update is called once per frame
         void Update()
         {
-            var newMoveDirection = UsePlayerInput ? Vector3.zero : playerInput.input.MoveDirection;
+            var newMoveDirection = UsePlayerInput ? playerInput.input.MoveDirection : Vector3.zero;
 
             // Speed
             var acceleration = (boost != null && boost.boosting) ? settings.BoostAcceleration : settings.MaxAcceleration;
