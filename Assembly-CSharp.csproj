@@ -116,6 +116,7 @@
      <Compile Include="Assets\Scripts\Scoring\ScoreSummary\ScoreSummary.cs" />
      <Compile Include="Assets\Scripts\Scoring\ScoreUIElement.cs" />
      <Compile Include="Assets\Scripts\Scoring\ScoreUIManager.cs" />
+     <Compile Include="Assets\Scripts\Scoring\TotalScoreInitializer.cs" />
      <Compile Include="Assets\Scripts\Shield.cs" />
      <Compile Include="Assets\Scripts\SpawnPoint.cs" />
      <Compile Include="Assets\Scripts\UIStuff\CanvasMover.cs" />

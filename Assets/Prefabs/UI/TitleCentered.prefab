@@ -137,6 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5282316092843535157}
+  - component: {fileID: 7779462781526264055}
   m_Layer: 5
   m_Name: TitleCentered
   m_TagString: Untagged
@@ -165,6 +166,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7779462781526264055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5282316092843535162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defd1d94e81f94a479ee5d798988b7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 5282316092605045148}
 --- !u!1 &5282316093266687665
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +191,6 @@ GameObject:
   - component: {fileID: 5282316093266687666}
   - component: {fileID: 5282316093266687667}
   - component: {fileID: 5282316093266687629}
-  - component: {fileID: 5282316093266687628}
   - component: {fileID: 5282316093266687631}
   m_Layer: 5
   m_Name: Score title
@@ -265,19 +278,6 @@ MonoBehaviour:
   UseInitialScaleAsTo: 0
   ScaleOnStart: 0
   time: 0.1
---- !u!114 &5282316093266687628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5282316093266687665}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 828997e1b132d4a289264c56b70cd886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetToMaintainOffsetTo: {fileID: 5282316092605045149}
 --- !u!114 &5282316093266687631
 MonoBehaviour:
   m_ObjectHideFlags: 0

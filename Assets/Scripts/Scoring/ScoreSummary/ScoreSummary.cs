@@ -21,7 +21,8 @@ namespace Jerre.Scoring
         
         void Start()
         {
-            var scoreManager = GetComponent<ScoreManager>();
+            var scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+            Debug.Log("Max score");
             totalScoreText.text = scoreManager.maxScore + "";
             leaderScoreText.text = "0";
 
