@@ -9,9 +9,9 @@ namespace Jerre.Events
             return new AFEvent(AFEventType.KILLED, new KilledEventPayload(killerPlayerNumber, killedPlayerNumber));
         }
 
-        public static AFEvent GameOver(int winnerPlayerNumber)
+        public static AFEvent GameOver(int winnerPlayerNumber, int score, Color playerColor)
         {
-            return new AFEvent(AFEventType.GAME_OVER, new GameOverPayload(winnerPlayerNumber));
+            return new AFEvent(AFEventType.GAME_OVER, new GameOverPayload(winnerPlayerNumber, score, playerColor));
         }
 
         public static AFEvent PlayerJoin(int playerNumber, Color playerColor)

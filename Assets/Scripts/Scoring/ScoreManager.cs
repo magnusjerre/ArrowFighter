@@ -66,14 +66,18 @@ namespace Jerre
                     
 
                     var players = GameObject.FindObjectsOfType<PlayerSettings>();
+                    PlayerSettings winningPlayer = null;
                     var scores = new List<PlayerScore>();                    
                     for (var i = 0; i < players.Length; i++)
                     {
                         var p = players[i];
+                        if (p.playerNumber == payload.playerNumberOfKiller) {
+                            winningPlayer = p;
+                        }
                         scores.Add(new PlayerScore(p.playerNumber, p.color, 0, playerScores[p.playerNumber]));
                     }
                     PlayersState.INSTANCE.SetScores(scores);
-                    AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(payload.playerNumberOfKiller));
+                    AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningPlayer.playerNumber, playerScores[winningPlayer.playerNumber], winningPlayer.color));
                 }
             }
             else
