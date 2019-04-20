@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Jerre.Events;
+using Jerre.UIStuff;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ namespace Jerre.Scoring
         public Text WinningScoreText;
         public Color PlayerWinnerColor;
         public int WinningScore = 0;
+        public ScaleFrom Scaler;
 
         void Awake() 
         {
@@ -31,6 +33,9 @@ namespace Jerre.Scoring
                     image.color = payload.playerColor;
                     WinningScoreText.text = payload.score + " Kills";
                     gameObject.SetActive(true);
+                    if (Scaler != null) {
+                        Scaler.Do();
+                    }
                     break;
                 }
             }
