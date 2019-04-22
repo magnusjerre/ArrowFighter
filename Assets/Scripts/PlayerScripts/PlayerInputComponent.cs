@@ -6,6 +6,7 @@ namespace Jerre
     public class PlayerInputComponent : MonoBehaviour
     {
         public PlayerInput input;
+        public bool InputIsFresh = false;
         private PlayerSettings settings;
         
         // Start is called before the first frame update
@@ -29,6 +30,7 @@ namespace Jerre
                 Input.GetButtonDown(PlayerInputTags.DODGE_LEFT + playerNumber),
                 Input.GetAxis(PlayerInputTags.BOOST + playerNumber) > 0.5f
             );
+            InputIsFresh = true;
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Jerre
             AlreadyTriggered = true;
 
             var colliders = Physics.OverlapSphere(transform.position, settings.BlastRadius);
+            var playerCollidersCount = 0;
             for (var i = 0; i < colliders.Length; i++)
             {
                 var playerSettings = colliders[i].GetComponent<PlayerSettings>();
@@ -32,6 +33,7 @@ namespace Jerre
 
                 if (playerSettings != null && playerHealth != null && playerPhysics != null)
                 {
+                    playerCollidersCount++;
                     var explosionDirection = (playerSettings.transform.position - transform.position);
                     var distance = explosionDirection.magnitude;
                     var multiplier = 1f - distance / settings.BlastRadius;
@@ -71,6 +73,13 @@ namespace Jerre
                 if (payload.OwnerPlayerNumber == settings.PlayerOwnerNumber && payload.TriggeredByPlayerInput)
                 {
                     TriggerExplosion();
+                }
+            } else if (afEvent.type == AFEventType.KILLED)
+            {
+                var payload = (KilledEventPayload)afEvent.payload;
+                if (payload.playerNumberOfKilledPlayer == settings.PlayerOwnerNumber)
+                {
+                    TriggerExplosionDueToLifeTime();
                 }
             }
             return false;

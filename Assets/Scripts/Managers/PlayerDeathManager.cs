@@ -44,7 +44,9 @@ namespace Jerre
         {
             playerSettings.GetComponent<PlayerHealth>().enabled = enabled;
             playerSettings.GetComponent<Collider>().enabled = enabled;
-            playerSettings.GetComponent<PlayerInputComponent>().enabled = enabled;
+            var playerInputComponent = playerSettings.GetComponent<PlayerInputComponent>();
+            playerInputComponent.InputIsFresh = enabled ? playerInputComponent.InputIsFresh : false;
+            playerInputComponent.enabled = enabled;
             SetActiveForAllChildren(playerSettings.transform, enabled);
         }
 

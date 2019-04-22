@@ -19,6 +19,7 @@ namespace Jerre
 
         void Start()
         {
+            AFEventManager.INSTANCE.AddListener(this);
             settings = GetComponent<PlayerSettings>();
             playerInput = GetComponent<PlayerInputComponent>();
             minTimeBetweenFire = settings.BombPauseTime;
@@ -27,16 +28,16 @@ namespace Jerre
 
         void Update()
         {
+            if (!playerInput.InputIsFresh) return;
+
             timeSinceLastFire += Time.deltaTime;
 
             var tryToDropBomb = UsePlayerInput ? playerInput.input.Fire2 : false;
 
             if (BombDropped && tryToDropBomb)
             {
-                BombDropped = false;
-                timeSinceLastFire = 0f;
                 AFEventManager.INSTANCE.PostEvent(AFEvents.BombTrigger(settings.playerNumber, true));
-            } else if (playerInput.input.Fire2 && timeSinceLastFire >= minTimeBetweenFire)
+            } else if (tryToDropBomb && timeSinceLastFire >= minTimeBetweenFire)
             {
                 timeSinceLastFire = 0;
 
