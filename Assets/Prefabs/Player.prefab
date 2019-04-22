@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1793310555}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MainEngineParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 7106944308335024696}
   - component: {fileID: 8670595436449926809}
   - component: {fileID: 859880171175122147}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   MaxAcceleration: 250
   MaxLookRotationSpeedDegs: 720
   FireRate: 4
-  Fire2Rate: 0.25
+  BombPauseTime: 4
   color: {r: 0, g: 0, b: 0, a: 1}
   DodgeSpeed: 250
   DodgeDuration: 0.2
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a821d3b8e99936c449be0d1aed0218e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InputIsFresh: 0
 --- !u!114 &2075523055437041301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5057804183160108071}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightDodgeParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +359,7 @@ GameObject:
   - component: {fileID: 1792810809686034292}
   - component: {fileID: 982684149270720517}
   - component: {fileID: 7593011260833479825}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlaneSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6459393256375075923}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5525931996177866561}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftDodgeParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,6 +523,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainEngineParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760227394501026832, guid: a94a674e07fc2e9428905ad27c786e67,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1760227394501026847, guid: a94a674e07fc2e9428905ad27c786e67,
         type: 3}
@@ -604,6 +610,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoostEngineParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 9166873731738739293, guid: abc345cf145c279489620d8be6171134,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8801585943089290033, guid: abc345cf145c279489620d8be6171134,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -685,6 +696,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoostEngineParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 9166873731738739293, guid: abc345cf145c279489620d8be6171134,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8801585943089290033, guid: abc345cf145c279489620d8be6171134,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -765,6 +781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BoostEngineParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166873731738739293, guid: abc345cf145c279489620d8be6171134,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8801585943089290033, guid: abc345cf145c279489620d8be6171134,
         type: 3}
