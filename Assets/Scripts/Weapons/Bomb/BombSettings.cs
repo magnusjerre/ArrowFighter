@@ -5,7 +5,9 @@ namespace Jerre
     public class BombSettings : MonoBehaviour
     {
         public int BlastDamage = 2;
+        public float MaxBlastDamageSetting = 100f;
         public float BlastAcceleration = 1000f;
+        public float BlastAccelerationDuration = 0.2f;
         public float BlastRadius = 10f;
         public float MaxLifeTimeWithoutExploding = 10f;
         public int PlayerOwnerNumber;
@@ -18,6 +20,7 @@ namespace Jerre
             BlastDamage = gameSettings.bombDamage;
             BlastRadius = gameSettings.bombExplosionRadius;
             MaxLifeTimeWithoutExploding = gameSettings.bombMaxLifeTime;
+            BlastAcceleration = gameSettings.bombExplosionAcceleration;
         }
 
         void Start()

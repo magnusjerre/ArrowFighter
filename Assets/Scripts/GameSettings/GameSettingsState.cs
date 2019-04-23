@@ -35,6 +35,7 @@ namespace Jerre.GameSettings
         public int bombPauseTime = 2;
         public int bombExplosionRadius = 75;
         public int pointsToWin = 5;
+        public int bombExplosionAcceleration = 200_000;
 
         public void SetValue(GameSettingsField field, int value)
         {
@@ -88,6 +89,11 @@ namespace Jerre.GameSettings
                     bombExplosionRadius = value;
                     break;
                 }
+                case GameSettingsField.BOMB_EXPLOSION_ACCELERATION:
+                    {
+                        bombExplosionAcceleration = value;
+                        break;
+                    }
                 case GameSettingsField.POINTS_TO_WIN:
                     {
                         pointsToWin = value;

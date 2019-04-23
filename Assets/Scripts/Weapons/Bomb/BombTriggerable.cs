@@ -36,10 +36,10 @@ namespace Jerre
                     playerCollidersCount++;
                     var explosionDirection = (playerSettings.transform.position - transform.position);
                     var distance = explosionDirection.magnitude;
-                    var multiplier = 1f - distance / settings.BlastRadius;
-                    var blastDamage = Mathf.Max(1, Mathf.RoundToInt(settings.BlastDamage * multiplier));
-
-                    var resultingSpeed = playerPhysics.Speed * playerPhysics.MovementDirection + explosionDirection.normalized * settings.BlastAcceleration * Time.deltaTime;
+                    var centerDistanceMultiplier = 1f - distance / settings.BlastRadius;
+                    var blastDamage = Mathf.Max(1, Mathf.RoundToInt(settings.BlastDamage * centerDistanceMultiplier));
+                    var blastDamageMultiplier = settings.BlastDamage / settings.MaxBlastDamageSetting;
+                    var resultingSpeed = playerPhysics.Speed * playerPhysics.MovementDirection + explosionDirection.normalized * settings.BlastAcceleration * settings.BlastAccelerationDuration * centerDistanceMultiplier * blastDamageMultiplier;
                     playerPhysics.Speed = resultingSpeed.magnitude;
                     playerPhysics.MovementDirection = resultingSpeed.normalized;
 
