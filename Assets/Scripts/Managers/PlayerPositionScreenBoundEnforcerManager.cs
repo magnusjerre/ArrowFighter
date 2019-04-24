@@ -41,14 +41,14 @@ namespace Jerre
                     adjusted = true;
                     adjustedX = screenBoundsInWorldSize.xMax;
                     adjustedSpeed = Mathf.Sqrt(playerPhysics.Speed * playerPhysics.Speed - playerPhysics.MovementDirection.x * playerPhysics.MovementDirection.x);
-                    adjustedMovementDirection = new Vector3(0, playerPhysics.MovementDirection.y, playerPhysics.MovementDirection.z);
+                    adjustedMovementDirection = new Vector3(-playerPhysics.MovementDirection.x, playerPhysics.MovementDirection.y, playerPhysics.MovementDirection.z);
                 }
                 else if (adjustedX < screenBoundsInWorldSize.xMin)
                 {
                     adjusted = true;
                     adjustedX = screenBoundsInWorldSize.xMin;
                     adjustedSpeed = Mathf.Sqrt(playerPhysics.Speed * playerPhysics.Speed - playerPhysics.MovementDirection.x * playerPhysics.MovementDirection.x);
-                    adjustedMovementDirection = new Vector3(0, playerPhysics.MovementDirection.y, playerPhysics.MovementDirection.z);
+                    adjustedMovementDirection = new Vector3(-playerPhysics.MovementDirection.x, playerPhysics.MovementDirection.y, playerPhysics.MovementDirection.z);
                 }
 
                 if (adjustedY > screenBoundsInWorldSize.yMax)
@@ -56,14 +56,14 @@ namespace Jerre
                     adjusted = true;
                     adjustedY = screenBoundsInWorldSize.yMax;
                     adjustedSpeed = Mathf.Sqrt(playerPhysics.Speed * playerPhysics.Speed - playerPhysics.MovementDirection.z * playerPhysics.MovementDirection.z);
-                    adjustedMovementDirection = new Vector3(playerPhysics.MovementDirection.x, playerPhysics.MovementDirection.y, 0);
+                    adjustedMovementDirection = new Vector3(playerPhysics.MovementDirection.x, playerPhysics.MovementDirection.y, -playerPhysics.MovementDirection.z);
                 }
                 else if (adjustedY < screenBoundsInWorldSize.yMin)
                 {
                     adjusted = true;
                     adjustedY = screenBoundsInWorldSize.yMin;
                     adjustedSpeed = Mathf.Sqrt(playerPhysics.Speed * playerPhysics.Speed - playerPhysics.MovementDirection.z * playerPhysics.MovementDirection.z);
-                    adjustedMovementDirection = new Vector3(playerPhysics.MovementDirection.x, playerPhysics.MovementDirection.y, 0);
+                    adjustedMovementDirection = new Vector3(playerPhysics.MovementDirection.x, playerPhysics.MovementDirection.y, -playerPhysics.MovementDirection.z);
                 }
 
                 if (adjusted)
