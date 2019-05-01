@@ -9,7 +9,7 @@ namespace Jerre
 
         void Update()
         {
-            transform.Rotate(RotationAxis, DegreesPerSecond * Time.deltaTime);
+            transform.Rotate(RotationAxis, DegreesPerSecond * Time.unscaledDeltaTime);
         }
     }
 }
