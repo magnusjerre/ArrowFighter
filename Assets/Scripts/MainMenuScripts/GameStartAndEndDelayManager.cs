@@ -7,6 +7,19 @@ namespace Jerre.Managers
     public class GameStartAndEndDelayManager : MonoBehaviour, IAFEventListener
     {
         PlayerComponentsManager playerCompManager;
+        private bool isAwaiting = false;
+        public bool IsAwaiting
+        {
+            get
+            {
+                return isAwaiting;
+            }
+            set
+            {
+                isAwaiting = value;
+            }
+        }
+
         void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
@@ -25,6 +38,7 @@ namespace Jerre.Managers
                     playerCompManager.EnableOrDisableAllPlayersInputResponses(false);
                     Debug.Log("Delaying player input start");
                     Invoke("ReEnableAllPlayersInputResponses", PlayersState.INSTANCE.WaitTimeForPlayersToStart);
+                    isAwaiting = true;
                     break;
                 }
                 case AFEventType.GAME_OVER: {
@@ -39,6 +53,7 @@ namespace Jerre.Managers
 
         void ReEnableAllPlayersInputResponses()
         {
+            isAwaiting = false;
             playerCompManager.EnableOrDisableAllPlayersInputResponses(true);
             Debug.Log("Player input is now processed");
         }

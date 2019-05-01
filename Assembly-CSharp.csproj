@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Events\Payloads\GameOverPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\HealthDamagePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\KilledEventPayload.cs" />
+    <Compile Include="Assets\Scripts\Events\Payloads\PauseMenuEnablePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerJoinPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerLeavePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerMenuBarUICreatedPayload.cs" />
@@ -102,6 +103,8 @@
     <Compile Include="Assets\Scripts\Managers\PlayerPositionScreenBoundEnforcerManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
+    <Compile Include="Assets\Scripts\PauseMenu\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBombWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBoost.cs" />

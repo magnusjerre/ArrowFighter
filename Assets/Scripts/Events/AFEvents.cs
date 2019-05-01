@@ -48,5 +48,10 @@ namespace Jerre.Events
         {
             return new AFEvent(AFEventType.RESPAWN, new RespawnPayload(playerNumber, health));
         }
+
+        public static AFEvent PauseMenuEnable(int playerNumber, Color playerColor)
+        {
+            return new AFEvent(AFEventType.PAUSE_MENU_ENABLE, new PauseMenuEnablePayload(playerNumber, playerColor));
+        }
     }
 }

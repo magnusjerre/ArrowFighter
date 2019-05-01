@@ -13,8 +13,10 @@ namespace Jerre
         public bool DodgeRight;
         public bool DodgeLeft;
         public bool Boost;
+        public bool Accept;
+        public bool JoinLeave;
 
-        public PlayerInput(float moveX, float moveY, float lookX, float lookY, bool fire, bool fire2, bool dodgeRight, bool dodgeLeft, bool boost)
+        public PlayerInput(float moveX, float moveY, float lookX, float lookY, bool fire, bool fire2, bool dodgeRight, bool dodgeLeft, bool boost, bool accept, bool joinLeave)
         {
             MoveX = moveX;
             MoveY = moveY;
@@ -25,6 +27,8 @@ namespace Jerre
             DodgeRight = dodgeRight;
             DodgeLeft = dodgeLeft;
             Boost = boost;
+            Accept = accept;
+            JoinLeave = joinLeave;
         }
 
         public Vector3 MoveDirection => new Vector3(MoveX, 0, MoveY);
@@ -32,8 +36,8 @@ namespace Jerre
 
         public override string ToString()
         {
-            return string.Format("{{moveX: {0}, moveY: {1}, lookX: {2}, lookY: {3}, fire: {4}, fire2: {5}, dodgeRight: {6}, dodgeLeft: {7}, boost: {8}}}",
-            MoveX, MoveY, LookX, LookY, Fire, Fire2, DodgeRight, DodgeLeft, Boost);
+            return string.Format("{{moveX: {0}, moveY: {1}, lookX: {2}, lookY: {3}, fire: {4}, fire2: {5}, dodgeRight: {6}, dodgeLeft: {7}, boost: {8}}, accept: {9}, joinLeave: {10}}",
+            MoveX, MoveY, LookX, LookY, Fire, Fire2, DodgeRight, DodgeLeft, Boost, Accept, JoinLeave);
         }
     }
 }

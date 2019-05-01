@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 7106944308335024696}
   - component: {fileID: 8670595436449926809}
   - component: {fileID: 859880171175122147}
+  - component: {fileID: -5335211005275371072}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -315,6 +316,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DodgeEngineParticles: {fileID: 1987713250789981492}
   RightDodgeDirection: 0
+--- !u!114 &-5335211005275371072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091042639049842558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e221232e46819f540afcacd42a109420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1369341429014477098
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,15 +599,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a94a674e07fc2e9428905ad27c786e67, type: 3}
---- !u!198 &1760227394527048913 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1760227394501026846, guid: a94a674e07fc2e9428905ad27c786e67,
-    type: 3}
-  m_PrefabInstance: {fileID: 60231887}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1760227394527048912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1760227394501026847, guid: a94a674e07fc2e9428905ad27c786e67,
+    type: 3}
+  m_PrefabInstance: {fileID: 60231887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1760227394527048913 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1760227394501026846, guid: a94a674e07fc2e9428905ad27c786e67,
     type: 3}
   m_PrefabInstance: {fileID: 60231887}
   m_PrefabAsset: {fileID: 0}
