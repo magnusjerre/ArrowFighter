@@ -3,6 +3,7 @@
     public enum GameSettingsField
     {
         SPEED, 
+        MAX_ACCELERATION,
         BOOST_SPEED,
         BOOST_DURATION,
         BOOST_PAUSE,

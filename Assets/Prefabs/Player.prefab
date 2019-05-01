@@ -98,7 +98,7 @@ MonoBehaviour:
   playerNumber: 1
   MaxHealth: 3
   MaxSpeed: 150
-  MaxAcceleration: 250
+  MaxAcceleration: 1000
   MaxLookRotationSpeedDegs: 720
   FireRate: 4
   BombPauseTime: 4

@@ -75,6 +75,7 @@ namespace Jerre
             newPlayer.color = color;
             var gameSettings = GameSettingsState.INSTANCE;
             newPlayer.MaxSpeed = gameSettings.speed;
+            newPlayer.MaxAcceleration = gameSettings.maxAcceleration;
             newPlayer.BoostSpeed = gameSettings.boostSpeed;
             newPlayer.BoostDuration = gameSettings.boostDuration;
             newPlayer.BoostPauseDuration = gameSettings.boostPause;

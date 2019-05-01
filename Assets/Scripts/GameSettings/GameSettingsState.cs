@@ -24,6 +24,7 @@ namespace Jerre.GameSettings
         }
 
         public int speed = 150;
+        public int maxAcceleration = 250;
         public int boostSpeed = 300;
         public int boostDuration = 2;
         public int boostPause = 2;
@@ -44,6 +45,11 @@ namespace Jerre.GameSettings
                 case GameSettingsField.SPEED:
                     {
                         speed = value;
+                        break;
+                    }
+                case GameSettingsField.MAX_ACCELERATION:
+                    {
+                        maxAcceleration = value;
                         break;
                     }
                 case GameSettingsField.BOOST_SPEED: {
