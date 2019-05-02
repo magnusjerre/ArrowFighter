@@ -37,7 +37,9 @@ namespace Jerre.Pause
         {
             if (!IsPausing) return;
             
-            if (Input.GetButtonDown(PlayerInputTags.DODGE_RIGHT + PlayerNumber))
+            if (Input.GetButton(PlayerInputTags.DODGE_RIGHT + PlayerNumber) 
+                && Input.GetButton(PlayerInputTags.DODGE_LEFT + PlayerNumber) 
+                && Input.GetButton(PlayerInputTags.ACCEPT + PlayerNumber))
             {
                 QuitGame();
             }

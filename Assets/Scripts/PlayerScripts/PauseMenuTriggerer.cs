@@ -21,10 +21,9 @@ namespace Jerre
 
         void Update()
         {
-            
-            if (!startDelayManager.IsAwaiting  && playerInputComponent.input.JoinLeave)
+            var input = playerInputComponent.input;
+            if (!startDelayManager.IsAwaiting && input.JoinLeave)
             {
-                Debug.Log("Player is triggering the pause menu event");
                 AFEventManager.INSTANCE.PostEvent(AFEvents.PauseMenuEnable(playerSettings.playerNumber, playerSettings.color));
             }
         }
