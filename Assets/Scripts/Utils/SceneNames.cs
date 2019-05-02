@@ -7,5 +7,6 @@
         public const string GAME_OVER_SCENE = "GameOverScene";
         public const string GAME_MODE_SELECTION = "GameModeSelectionScene";
         public const string GAME_SETTINGS_SCENE = "GameSettingsScene";
+        public const string BYE_BYE_SCENE = "ByeByeScene";
     }
 }

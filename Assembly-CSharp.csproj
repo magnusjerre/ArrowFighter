@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\PreventDeselectionGroup.cs" />
     <Compile Include="Assets\Scripts\MainUIBar\MainUIBarManager.cs" />
     <Compile Include="Assets\Scripts\MainUIBar\UIElementContainer.cs" />
+    <Compile Include="Assets\Scripts\Managers\ByeByeManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerComponentsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerPositionScreenBoundEnforcerManager.cs" />
