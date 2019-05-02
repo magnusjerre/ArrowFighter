@@ -6,11 +6,15 @@ namespace Jerre.MainMenu
 {
     public class PlayerJoinManager : MonoBehaviour
     {
-        public RectTransform PlayerIconPrefab;
-        public RectTransform WaitingForPlayerJoin;
-        public RectTransform JoinedPlayers;
         public ParticleSystem playerExplosionParticlesPrefab;
         public float StartWaitTime = 0.25f;
+
+        public RectTransform WaitForPlayerPrefab;
+        public RectTransform PlayerJoinedPrefab;
+        public RectTransform[] PlayerPositions;
+
+
+
 
         private ColorManager colorManager;
 
@@ -24,7 +28,7 @@ namespace Jerre.MainMenu
         void Start()
         {
             PlayersState.INSTANCE.Reset();
-            //DisableAllChildren(JoinedPlayers);
+            FirstTimeSetupOfWaitingForPlayers();
             colorManager = GetComponent<ColorManager>();
         }
 
@@ -61,25 +65,24 @@ namespace Jerre.MainMenu
                 return;
             }
 
-            for (var i = 0; i < JoinedPlayers.childCount; i++)
+            for (var i = 0; i < PlayerPositions.Length; i++)
             {
-                var child = JoinedPlayers.GetChild(i);
-                if (child.transform.childCount == 0)
-                {
-                    WaitingForPlayerJoin.GetChild(i).gameObject.SetActive(false);
-                    var playerIcon = Instantiate(PlayerIconPrefab, child.transform);
-                    var playerSettings = playerIcon.GetComponentInChildren<PlayerMenuSettings>();
-                    playerSettings.Color = colorManager.ExtractNextColor();
-                    playerSettings.Number = controllerIndex;
-                    var colorScript = playerIcon.GetComponentInChildren<PlayerColorScript>();
-                    colorScript.ColorManager = colorManager;
-                    var readyScript = playerIcon.GetComponentInChildren<PlayerReady>();
-                    readyScript.playerJoinManager = this;
-                    playerNumberMap.Add(controllerIndex, playerSettings);
-                    break;
-                }
-            }
+                var playerPosition = PlayerPositions[i];
+                var waitingForPlayerChild = playerPosition.GetComponentInChildren<WaitingForPlayer>();
+                if (waitingForPlayerChild == null) continue;    // This transform already has a player child, can't add to it
+                Destroy(waitingForPlayerChild.gameObject);
 
+                var playerIcon = Instantiate(PlayerJoinedPrefab, playerPosition);
+                var playerSettings = playerIcon.GetComponentInChildren<PlayerMenuSettings>();
+                playerSettings.Color = colorManager.ExtractNextColor();
+                playerSettings.Number = controllerIndex;
+                var colorScript = playerIcon.GetComponentInChildren<PlayerColorScript>();
+                colorScript.ColorManager = colorManager;
+                var readyScript = playerIcon.GetComponentInChildren<PlayerReady>();
+                readyScript.playerJoinManager = this;
+                playerNumberMap.Add(controllerIndex, playerSettings);
+                break;
+            }
         }
 
         void RemovePlayerIfNotReady(int playerNumber)
@@ -89,26 +92,32 @@ namespace Jerre.MainMenu
                 return;
             }
 
-            var index = FindIndexOfContainerForPlayerNumber(playerNumber, JoinedPlayers);
-            var playerChild = JoinedPlayers.GetChild(index);
-            var playerSettings = playerChild.GetComponentInChildren<PlayerMenuSettings>();
+            var index = FindIndexOfContainerForPlayerNumber(playerNumber);
+            var playerSettings = playerNumberMap[playerNumber];
+
             if (playerSettings.mm_Ready)
             {
                 playerSettings.GetComponent<PlayerReady>().Reset();
                 return;
             }
             colorManager.ReturnColor(playerSettings.Color);
-            Destroy(playerChild.GetChild(0).gameObject);
-            WaitingForPlayerJoin.GetChild(index).gameObject.SetActive(true);
+            Destroy(playerSettings.gameObject);
+            var playerPositionToUpdate = PlayerPositions[index];
+            Instantiate(WaitForPlayerPrefab, playerPositionToUpdate);
             playerNumberMap.Remove(playerNumber);
         }
 
-        private int FindIndexOfContainerForPlayerNumber(int playerNumber, RectTransform playerContainer)
+        private int FindIndexOfContainerForPlayerNumber(int playerNumber)
         {
-            for (var i = 0; i < playerContainer.childCount; i++)
+            for (var i = 0; i < PlayerPositions.Length; i++)
             {
-                var settings = playerContainer.GetChild(i).GetComponentInChildren<PlayerMenuSettings>();
-                if (settings.Number == playerNumber) return i;
+                var playerPosition = PlayerPositions[i];
+                var playerSettings = playerPosition.GetComponentInChildren<PlayerMenuSettings>();
+                Debug.Log("i: " + i + ", PlayerSettings: " + playerSettings);
+                if (playerSettings != null && playerSettings.Number == playerNumber)
+                {
+                    return i;
+                }
             }
             return -1;
         }
@@ -129,21 +138,15 @@ namespace Jerre.MainMenu
         void TriggerStart()
         {
             var timeUntilNextSceneLoad = 1f;
-            for (var i = 0; i < JoinedPlayers.childCount; i++)
+            foreach (var keyValue in playerNumberMap)
             {
-                var child = JoinedPlayers.GetChild(i);
-                if (child.childCount > 0)
-                {
-                    var playerSettings = child.GetComponentInChildren<PlayerMenuSettings>();
-                    DisableAllChildren(child);
-                    var rectTransform = child.GetComponent<RectTransform>();
+                var playerSettings = keyValue.Value;
 
-                    var particles = Instantiate(playerExplosionParticlesPrefab, child.transform.position, child.transform.rotation);
-                    ParticleSystem.MinMaxGradient gradient = new ParticleSystem.MinMaxGradient(playerSettings.Color, playerSettings.Color);
-                    var mainModule = particles.main;
-                    mainModule.startColor = gradient;
-                    timeUntilNextSceneLoad = mainModule.duration;
-                }
+                var particles = Instantiate(playerExplosionParticlesPrefab, playerSettings.transform.position, playerSettings.transform.rotation);
+                ParticleSystem.MinMaxGradient gradient = new ParticleSystem.MinMaxGradient(playerSettings.Color, playerSettings.Color);
+                var mainModule = particles.main;
+                mainModule.startColor = gradient;
+                timeUntilNextSceneLoad = mainModule.duration;
             }
             Invoke("TriggerNextSceneLoad", timeUntilNextSceneLoad);
         }
@@ -157,6 +160,15 @@ namespace Jerre.MainMenu
         public void NotifyPlayerNotReady(int playerNumber)
         {
             PlayersState.INSTANCE.RemovePlayer(playerNumberMap[playerNumber]);
+        }
+
+        void FirstTimeSetupOfWaitingForPlayers()
+        {
+            for (var i = 0; i < PlayerPositions.Length; i++)
+            {
+                var playerPosition = PlayerPositions[i];
+                Instantiate(WaitForPlayerPrefab, playerPosition);
+            }
         }
     }
 }

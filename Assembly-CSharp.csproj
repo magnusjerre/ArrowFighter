@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerMenuSettings.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerReady.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PreventDeselectionGroup.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\WaitingForPlayer.cs" />
     <Compile Include="Assets\Scripts\MainUIBar\MainUIBarManager.cs" />
     <Compile Include="Assets\Scripts\MainUIBar\UIElementContainer.cs" />
     <Compile Include="Assets\Scripts\Managers\ByeByeManager.cs" />

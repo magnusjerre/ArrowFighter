@@ -7,6 +7,7 @@ namespace Jerre.MainMenu
     public class PlayerColorScript : MonoBehaviour
     {
         public ColorManager ColorManager;
+        public Image image;
 
         private PlayerMenuSettings settings;
 
@@ -27,6 +28,7 @@ namespace Jerre.MainMenu
                 return;
             } else if (changeColor)
             {
+                Debug.Log("Player " + settings.Number + " is changing color!");
                 settings.Color = ColorManager.SwapForNextColor(settings.Color);
                 UpdateColor();
             }
@@ -34,11 +36,7 @@ namespace Jerre.MainMenu
 
         public void UpdateColor()
         {
-            var renderers = transform.parent.GetComponentsInChildren<Renderer>();
-            for (var i = 0; i < renderers.Length; i++)
-            {
-                renderers[i].material.color = settings.Color;
-            }
+            image.color = settings.Color;
         }
     }
 }
