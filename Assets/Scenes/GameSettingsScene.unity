@@ -1785,6 +1785,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2763585037986764591, guid: 986205435d883884d84a17dd7954ab8c,
+        type: 3}
+      propertyPath: m_Text
+      value: SQUARE OFF
+      objectReference: {fileID: 0}
     - target: {fileID: 2763585038592048909, guid: 986205435d883884d84a17dd7954ab8c,
         type: 3}
       propertyPath: m_IsActive
@@ -1794,11 +1799,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2763585037986764591, guid: 986205435d883884d84a17dd7954ab8c,
-        type: 3}
-      propertyPath: m_Text
-      value: SQUARE OFF
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 986205435d883884d84a17dd7954ab8c, type: 3}
