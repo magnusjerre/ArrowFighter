@@ -8,6 +8,7 @@ namespace Jerre
         public ParticleSystem MainEngineParticleSystem;
         public float MaxEmissionRate = 100;
         public float MinEmissionRate = 10;
+        public Color ParticleColor;
 
         private PlayerSettings settings;
         private PlayerPhysics physics;
@@ -19,7 +20,7 @@ namespace Jerre
             physics = GetComponent<PlayerPhysics>();
             emission = MainEngineParticleSystem.emission;
             var mainModule = MainEngineParticleSystem.main;
-            mainModule.startColor = settings.color;
+            mainModule.startColor = ParticleColor;
         }
 
         void Update()
@@ -28,6 +29,16 @@ namespace Jerre
             if (!MainEngineParticleSystem.isPlaying)
             {
                 MainEngineParticleSystem.Play();
+            }
+        }
+
+        public void ChangeColor(Color newColor)
+        {
+            ParticleColor = newColor;
+            if (MainEngineParticleSystem != null)
+            {
+                var mainModule = MainEngineParticleSystem.main;
+                mainModule.startColor = ParticleColor;
             }
         }
     }

@@ -66,6 +66,18 @@ namespace Jerre
             return ReadyPlayers.Remove(player);
         }
 
+        public Color GetPlayerColor(int playerNumber)
+        {
+            foreach (var settings in ReadyPlayers)
+            {
+                if (settings.Number == playerNumber)
+                {
+                    return settings.Color;
+                }
+            }
+            return Color.white;
+        }
+
         public int ReadyPlayersCount => ReadyPlayers.Count;
         public PlayerMenuSettings GetSettings(int index) => ReadyPlayers[index];
 

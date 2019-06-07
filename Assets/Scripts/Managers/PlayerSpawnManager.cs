@@ -83,6 +83,9 @@ namespace Jerre
             newPlayer.FireRate = gameSettings.fireRate;
             newPlayer.BombPauseTime = gameSettings.bombPauseTime;
             newPlayer.transform.parent = PlayersContainer;
+
+            var mainEngineParticles = newPlayer.GetComponent<PlayerMainEngineParticles>();
+            mainEngineParticles.ParticleColor = color;
             AFEventManager.INSTANCE.PostEvent(AFEvents.PlayerJoin(playerNumber, color));
         }
 
