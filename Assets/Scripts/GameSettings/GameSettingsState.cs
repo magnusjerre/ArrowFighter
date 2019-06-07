@@ -20,8 +20,10 @@ namespace Jerre.GameSettings
 
         private GameSettingsState()
         {
-
+            RoundState = new GameRoundState();
         }
+
+        public GameRoundState RoundState;
 
         public int speed = 150;
         public int maxAcceleration = 250;

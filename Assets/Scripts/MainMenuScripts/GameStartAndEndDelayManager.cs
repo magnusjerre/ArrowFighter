@@ -47,6 +47,12 @@ namespace Jerre.Managers
                     Invoke("LoadGameOverScene", PlayersState.INSTANCE.WaitTimeToDisplayGameOver);
                     break;
                 }
+                case AFEventType.ROUND_OVER:
+                    {
+                        playerCompManager.EnableOrDisableAllPlayersInputResponses(false);
+                        Invoke("LoadRoundOverScene", PlayersState.INSTANCE.WaitTimeToDisplayGameOver);
+                        break;
+                    }
             }
             return false;
         }
@@ -62,6 +68,12 @@ namespace Jerre.Managers
         {
             AFEventManager.INSTANCE.RemoveAllListeners();
             SceneManager.LoadScene(SceneNames.GAME_OVER_SCENE, LoadSceneMode.Single);
+        }
+
+        void LoadRoundOverScene()
+        {
+            AFEventManager.INSTANCE.RemoveAllListeners();
+            SceneManager.LoadScene(SceneNames.ROUND_OVER_SCENE, LoadSceneMode.Single);
         }
     }
 }

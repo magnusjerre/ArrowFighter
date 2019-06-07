@@ -15,8 +15,8 @@ namespace Jerre.GameMode.Undead
 
         void Awake()
         {
-            playerSettings = GetComponent<PlayerSettings>();
             playerColor = GetComponent<PlayerColor>();
+            playerSettings = GetComponent<PlayerSettings>();
             playerMainEngineParticles = GetComponent<PlayerMainEngineParticles>();
             OriginalPlayerColor = playerSettings.color;
         }

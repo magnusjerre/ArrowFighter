@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ByeByeScene.unity
     guid: 5e0ce27de83200c47b4bf8cae92ca9bb
+  - enabled: 1
+    path: Assets/Scenes/RoundOverScene.unity
+    guid: 26fab0caa845ca44dbaab40db9a59e52
   m_configObjects: {}

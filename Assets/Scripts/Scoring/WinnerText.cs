@@ -28,6 +28,24 @@ namespace Jerre.Scoring
         public bool HandleEvent(AFEvent afEvent)
         {
             switch(afEvent.type) {
+                case AFEventType.ROUND_OVER:
+                    {
+                        var payload = (RoundOverPayload)afEvent.payload;
+                        image.color = payload.playerColor;
+                        WinningScoreText.text = payload.roundScore + " Points";
+                        gameObject.SetActive(true);
+
+                        var playersContainer = GameObject.FindGameObjectWithTag("PlayersContainer");
+                        ScaleFrom playersScaler = playersContainer.AddComponent(typeof(ScaleFrom)) as ScaleFrom;
+                        playersScaler.UseInitialScaleAsFrom = true;
+                        playersScaler.To = Vector3.zero;
+                        playersScaler.Do();
+                        if (Scaler != null)
+                        {
+                            Scaler.Do();
+                        }
+                        break;
+                    }
                 case AFEventType.GAME_OVER: {
                     var payload = (GameOverPayload)afEvent.payload;
                     image.color = payload.playerColor;

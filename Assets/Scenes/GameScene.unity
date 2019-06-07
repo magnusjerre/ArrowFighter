@@ -1466,7 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GamePlayTimeInSeconds: 30
-  NumberOfGameRounds: 1
+  NumberOfGameRounds: 2
   NumberOfStartingUndead: 1
   UndeadRespawnTimeInSeconds: 1
   AliveKillPoints: 1

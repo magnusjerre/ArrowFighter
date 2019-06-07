@@ -53,5 +53,10 @@ namespace Jerre.Events
         {
             return new AFEvent(AFEventType.PAUSE_MENU_ENABLE, new PauseMenuEnablePayload(playerNumber, playerColor));
         }
+
+        public static AFEvent RoundOver(int roundWinnerPlayerNumber, int roundScore, Color playerColor)
+        {
+            return new AFEvent(AFEventType.ROUND_OVER, new RoundOverPayload(roundWinnerPlayerNumber, roundScore, playerColor));
+        }
     }
 }

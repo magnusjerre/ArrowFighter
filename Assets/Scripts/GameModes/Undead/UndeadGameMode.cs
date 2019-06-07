@@ -1,4 +1,5 @@
 ﻿using Jerre.Events;
+using Jerre.GameSettings;
 using Jerre.Utils;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,6 @@ namespace Jerre.GameMode.Undead
         {
             AFEventManager.INSTANCE.AddListener(this);
             score = new WholeGameUndeadScore();
-            score.NewRound();
         }
 
         // Start is called before the first frame update
@@ -48,7 +48,7 @@ namespace Jerre.GameMode.Undead
 
         public List<PlayerScore> GeneratePlayerScores()
         {
-            var totalScore = score.CalculatePlayerScoresWithoutPositionOrColor();
+            var totalScore = score.CalcualtePlayerScoresWithoutPositionOrColorForRound(score.roundScores);
             var scoresSorted = new List<PlayerScore>();
             foreach (var keyValue in totalScore)
             {
@@ -122,20 +122,27 @@ namespace Jerre.GameMode.Undead
 
                         killedScore.Undead = true;
                         killedScore.Deaths++;
-
-                        if (score.AllPlayersDead())
+                        Debug.Log("number of game rounds: " + NumberOfGameRounds);
+                        Debug.Log("game state, current round number: " + GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber);
+                        if (score.AllPlayersDead() || killerScore.Score >= GameSettingsState.INSTANCE.pointsToWin)
                         {
-                            if (score.RoundCount() == NumberOfGameRounds)
+                            if (GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber == NumberOfGameRounds)
                             {
                                 Debug.Log("Game over, all players are undead!");
                                 var scores = GeneratePlayerScores();
                                 var winningScore = scores[0];
                                 PlayersState.INSTANCE.SetScores(scores);
+                                GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
                                 AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
                             }
                             else
                             {
-                                // Round is over, wait a few secs and start a new round. Move players to a new location
+                                Debug.Log("Round over, all players are undead!");
+                                var scores = GeneratePlayerScores();
+                                var winningScore = scores[0];
+                                PlayersState.INSTANCE.SetScores(scores);
+                                GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
+                                AFEventManager.INSTANCE.PostEvent(AFEvents.RoundOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
                             }
                         }
                         else
@@ -143,7 +150,6 @@ namespace Jerre.GameMode.Undead
                             var playerSettings = PlayerFetcher.FindPlayerByPlayerNumber(killedScore.PlayerNumber);
                             MakeUndead(playerSettings);
                         }
-
 
                         return true;
                     }

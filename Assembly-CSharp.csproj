@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerLeavePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerMenuBarUICreatedPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\RespawnPayload.cs" />
+    <Compile Include="Assets\Scripts\Events\Payloads\RoundOverPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\ScorePayload.cs" />
     <Compile Include="Assets\Scripts\Events\PlayerJoinLeaveHandlerHelper.cs" />
     <Compile Include="Assets\Scripts\FixedDirection.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Scripts\GameModes\Undead\WholeGameUndeadScore.cs" />
     <Compile Include="Assets\Scripts\GameOverScripts\GameOverManager.cs" />
     <Compile Include="Assets\Scripts\GameOverScripts\ScoreEntry.cs" />
+    <Compile Include="Assets\Scripts\GameSettings\GameRoundState.cs" />
     <Compile Include="Assets\Scripts\GameSettings\GameSettingsState.cs" />
     <Compile Include="Assets\Scripts\Health\HealthUIElement.cs" />
     <Compile Include="Assets\Scripts\Health\HealthUIManager.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="Assets\Scripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\PlayersState.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
+    <Compile Include="Assets\Scripts\RoundOverScripts\RoundOverManager.cs" />
     <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreSummary\ScoreSummary.cs" />
