@@ -1,11 +1,9 @@
 ﻿using Jerre.GameSettings;
-using UnityEngine;
 
 namespace Jerre.GameMode.Undead
 {
     public class UndeadGameSettings: GameModeSettingsBase
     {
-        
         private const string GAME_PLAYER_TIME_IN_SECONDS = "GamePlayerTimeInSeconds";
         private const string NUMBER_OF_GAME_ROUNDS = "GameRounds";
         private const string STARTING_UNDEAD = "StartingUndead";
@@ -70,6 +68,5 @@ namespace Jerre.GameMode.Undead
                 return IntSettingByName(UNDEAD_KILL_POINTS);
             }
         }
-
     }
 }

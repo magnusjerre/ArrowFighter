@@ -1,4 +1,5 @@
-﻿using Jerre.GameMode.Undead;
+﻿using Jerre.GameMode.FreeForAll;
+using Jerre.GameMode.Undead;
 using Jerre.GameSettings;
 using Jerre.MainMenu;
 using System.Collections.Generic;
@@ -32,9 +33,19 @@ namespace Jerre
         public GameModes selectedGameMode;
         public void SetSelectedGameMode(GameModes mode) {
             selectedGameMode = mode;
-            if (selectedGameMode == GameModes.UNDEAD)
+            switch(mode)
             {
-                gameSettings.GameModeSettings = new UndeadGameSettings();
+                case GameModes.FREE_FOR_ALL:
+                    {
+                        gameSettings.GameModeSettings = new FreeForAllGameSettings();
+                        break;
+
+                    }
+                case GameModes.UNDEAD:
+                    {
+                        gameSettings.GameModeSettings = new UndeadGameSettings();
+                        break;
+                    }
             }
         }
 

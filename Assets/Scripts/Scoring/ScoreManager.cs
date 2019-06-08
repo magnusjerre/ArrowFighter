@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Jerre.Events;
 using UnityEngine.SceneManagement;
 using Jerre.GameSettings;
+using Jerre.GameMode.FreeForAll;
 
 namespace Jerre
 {
@@ -14,12 +15,11 @@ namespace Jerre
 
         void Awake()
         {
-            //Debug.Log("pointsToWin:" + PlayersState.INSTANCE.gameSettings.pointsToWin);
             playerScores = new Dictionary<int, int>();
             AFEventManager.INSTANCE.AddListener(this);
-            //maxScore = PlayersState.INSTANCE.gameSettings.pointsToWin;
-            Debug.Log("pointsToWin:" + GameSettingsState.INSTANCE.pointsToWin);
-            maxScore = GameSettingsState.INSTANCE.pointsToWin;
+            var freeForAllSettings = (FreeForAllGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
+            Debug.Log("pointsToWin:" + freeForAllSettings.MaxScore);
+            maxScore = freeForAllSettings.MaxScore;
         }
 
         // Use this for initialization
