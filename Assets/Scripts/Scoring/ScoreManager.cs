@@ -1,9 +1,8 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
-using Jerre.Events;
-using UnityEngine.SceneManagement;
-using Jerre.GameSettings;
+﻿using Jerre.Events;
 using Jerre.GameMode.FreeForAll;
+using Jerre.GameSettings;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Jerre
 {
@@ -22,10 +21,9 @@ namespace Jerre
             maxScore = freeForAllSettings.MaxScore;
         }
 
-        // Use this for initialization
         void Start()
         {
-            Debug.Log("pointsToWin:" + GameSettingsState.INSTANCE.pointsToWin);
+            
         }
 
         public bool HandleEvent(AFEvent afEvent)

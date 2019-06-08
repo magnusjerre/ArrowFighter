@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Jerre.GameSettings;
+using UnityEngine;
 
 namespace Jerre
 {
@@ -14,7 +15,7 @@ namespace Jerre
 
         void Awake()
         {
-            Damage = PlayersState.INSTANCE.gameSettings.fireDamage;
+            Damage = GameSettingsState.INSTANCE.BasicGameSettings.FireDamage;
         }
         // Start is called before the first frame update
         void Start()

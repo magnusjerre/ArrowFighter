@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Max Acceleration
       objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -291,6 +296,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boost Duration
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
@@ -505,6 +515,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health
       objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -659,6 +674,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bomb Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
@@ -824,6 +844,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
@@ -1040,6 +1065,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bomb Explosion Acceleration
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
@@ -1288,6 +1318,7 @@ GameObject:
   - component: {fileID: 860789906}
   - component: {fileID: 860789907}
   - component: {fileID: 860789908}
+  - component: {fileID: 860789909}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1336,6 +1367,25 @@ MonoBehaviour:
   KeyValueSettingsPrefab: {fileID: -774844572799402554, guid: 23f181f88cf75ee4cacd62e0c62ad968,
     type: 3}
   GameModeSpecificUIRectangle: {fileID: 1572641701}
+  HandleBasicGameSettings: 0
+  EventSystemForSelectingFirstFocusedElement: {fileID: 0}
+--- !u!114 &860789909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860789905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda60a2f4e0ba0945b085a4624f8c8de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyValueSettingsPrefab: {fileID: -774844572799402554, guid: 23f181f88cf75ee4cacd62e0c62ad968,
+    type: 3}
+  GameModeSpecificUIRectangle: {fileID: 200906030}
+  HandleBasicGameSettings: 1
+  EventSystemForSelectingFirstFocusedElement: {fileID: 645833662}
 --- !u!1001 &1011638175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1347,6 +1397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bomb Explosion Radius
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
@@ -1512,6 +1567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boost Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
@@ -1984,6 +2044,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomb Pause Time
       objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2148,6 +2213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bomb Max Time
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
@@ -2433,6 +2503,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Rate
       objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2705,6 +2780,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boost Speed
       objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2869,6 +2949,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}

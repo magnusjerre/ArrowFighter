@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Jerre.GameSettings;
+using UnityEngine;
 
 namespace Jerre
 {
@@ -16,11 +17,11 @@ namespace Jerre
 
         void Awake()
         {
-            var gameSettings = PlayersState.INSTANCE.gameSettings;
-            BlastDamage = gameSettings.bombDamage;
-            BlastRadius = gameSettings.bombExplosionRadius;
-            MaxLifeTimeWithoutExploding = gameSettings.bombMaxLifeTime;
-            BlastAcceleration = gameSettings.bombExplosionAcceleration;
+            var settings = GameSettingsState.INSTANCE.BasicGameSettings;
+            BlastDamage = settings.BombDamage;
+            BlastRadius = settings.BombExplosionRadius;
+            MaxLifeTimeWithoutExploding = settings.BombMaxLifetime;
+            BlastAcceleration = settings.BombExplosionAcceleration;
         }
 
         void Start()

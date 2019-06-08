@@ -132,7 +132,7 @@ namespace Jerre.GameMode.Undead
                         killedScore.Deaths++;
                         Debug.Log("number of game rounds: " + NumberOfGameRounds);
                         Debug.Log("game state, current round number: " + GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber);
-                        if (score.AllPlayersDead() || killerScore.Score >= GameSettingsState.INSTANCE.pointsToWin)
+                        if (score.AllPlayersDead())
                         {
                             if (GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber == NumberOfGameRounds)
                             {
