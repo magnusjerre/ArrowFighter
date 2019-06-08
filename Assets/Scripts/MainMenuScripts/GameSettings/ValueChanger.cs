@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Jerre.MainMenu.GameSettings
 {
-    public class ValueChangerV2 : Selectable
+    public class ValueChanger : Selectable
     {
         public KeyValueWithOptionsSetting backingSetting;
 
@@ -13,7 +13,7 @@ namespace Jerre.MainMenu.GameSettings
         public Text ValueText;
         public Text LabelText;
 
-        protected ValueChangerV2() : base()
+        protected ValueChanger() : base()
         {
 
         }

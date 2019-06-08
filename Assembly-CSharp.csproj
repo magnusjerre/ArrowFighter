@@ -101,7 +101,7 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\GameModeSelection\GameModeSelectionManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\GameModeSelection\TextHighlightButton.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\GameSettingsManager.cs" />
-    <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\ValueChangerV2.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\ValueChanger.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\GameStartAndEndDelayManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerColorScript.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerJoinManager.cs" />

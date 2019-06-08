@@ -7,7 +7,7 @@ namespace Jerre.MainMenu.GameSettings
 {
     public class GameSettingsManager : MonoBehaviour
     {
-        public ValueChangerV2 KeyValueSettingsPrefab;
+        public ValueChanger KeyValueSettingsPrefab;
         public RectTransform GameModeSpecificUIRectangle;
         public bool HandleBasicGameSettings;
         public EventSystem EventSystemForSelectingFirstFocusedElement;
