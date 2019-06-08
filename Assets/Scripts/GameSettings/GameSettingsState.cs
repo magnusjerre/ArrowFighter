@@ -1,4 +1,5 @@
-﻿using Jerre.Utils;
+﻿
+using Jerre.Utils;
 using UnityEngine;
 
 namespace Jerre.GameSettings
@@ -24,6 +25,7 @@ namespace Jerre.GameSettings
         }
 
         public GameRoundState RoundState;
+        public GameModeSettingsBase GameModeSettings;
 
         public int speed = 150;
         public int maxAcceleration = 250;
@@ -108,6 +110,11 @@ namespace Jerre.GameSettings
                         break;
                     }
             }
+        }
+
+        public void SetGameModeSpecificValue(string name, string value)
+        {
+            GameModeSettings.SetValue(name, value);
         }
     }
 }

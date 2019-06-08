@@ -1,4 +1,5 @@
-﻿using Jerre.GameSettings;
+﻿using Jerre.GameMode.Undead;
+using Jerre.GameSettings;
 using Jerre.MainMenu;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,13 @@ namespace Jerre
         }
 
         public GameModes selectedGameMode;
+        public void SetSelectedGameMode(GameModes mode) {
+            selectedGameMode = mode;
+            if (selectedGameMode == GameModes.UNDEAD)
+            {
+                gameSettings.GameModeSettings = new UndeadGameSettings();
+            }
+        }
 
         public void SetScores(List<PlayerScore> newScores)
         {

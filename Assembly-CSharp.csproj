@@ -84,12 +84,15 @@
     <Compile Include="Assets\Scripts\GameModes\GameModeSelectedSpawner.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\SingleRoundUndeadScore.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadGameMode.cs" />
+    <Compile Include="Assets\Scripts\GameModes\Undead\UndeadGameSettings.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadPlayerColor.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\WholeGameUndeadScore.cs" />
     <Compile Include="Assets\Scripts\GameOverScripts\GameOverManager.cs" />
     <Compile Include="Assets\Scripts\GameOverScripts\ScoreEntry.cs" />
+    <Compile Include="Assets\Scripts\GameSettings\GameModeSettingsBase.cs" />
     <Compile Include="Assets\Scripts\GameSettings\GameRoundState.cs" />
     <Compile Include="Assets\Scripts\GameSettings\GameSettingsState.cs" />
+    <Compile Include="Assets\Scripts\GameSettings\KeyValueWithOptionsSetting.cs" />
     <Compile Include="Assets\Scripts\Health\HealthUIElement.cs" />
     <Compile Include="Assets\Scripts\Health\HealthUIManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\ColorManager.cs" />
@@ -97,6 +100,7 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\GameModeSelection\TextHighlightButton.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\GameSettingsManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\ValueChanger.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\ValueChangerV2.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\GameStartAndEndDelayManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerColorScript.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerJoinManager.cs" />
@@ -148,6 +152,7 @@
     <Compile Include="Assets\Scripts\UIStuff\OffsetMaintainer.cs" />
     <Compile Include="Assets\Scripts\UIStuff\ScaleFrom.cs" />
     <Compile Include="Assets\Scripts\UIStuff\TextChangeAnimator.cs" />
+    <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
     <Compile Include="Assets\Scripts\Utils\GameSettingsField.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayAreaIndicator.cs" />

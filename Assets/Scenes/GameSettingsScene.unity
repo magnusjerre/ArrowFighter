@@ -1333,6 +1333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda60a2f4e0ba0945b085a4624f8c8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyValueSettingsPrefab: {fileID: -774844572799402554, guid: 23f181f88cf75ee4cacd62e0c62ad968,
+    type: 3}
+  GameModeSpecificUIRectangle: {fileID: 1572641701}
 --- !u!1001 &1011638175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1825,6 +1828,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Points To Win
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125904686579051764, guid: 3ded268564897e04ba77208b54f5d182,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3298538878409331372, guid: 3ded268564897e04ba77208b54f5d182,
         type: 3}

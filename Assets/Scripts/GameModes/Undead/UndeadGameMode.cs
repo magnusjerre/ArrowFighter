@@ -23,7 +23,15 @@ namespace Jerre.GameMode.Undead
         void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
-            score = new WholeGameUndeadScore();            
+            score = new WholeGameUndeadScore();
+
+            var settings = (UndeadGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
+            GamePlayTimeInSeconds = settings.GamePlayerTimeInSeconds;
+            NumberOfGameRounds = settings.NumberOfGameRounds;
+            NumberOfStartingUndead = settings.StartingUndead;
+            UndeadRespawnTimeInSeconds = settings.UndeadRespawnTimeInSeconds;
+            AliveKillPoints = settings.AliveKillPoints;
+            UndeadKillPoints = settings.UndeadKillPoints;
         }
 
         // Start is called before the first frame update
