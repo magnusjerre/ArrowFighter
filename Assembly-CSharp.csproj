@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Events\PlayerJoinLeaveHandlerHelper.cs" />
     <Compile Include="Assets\Scripts\FixedDirection.cs" />
     <Compile Include="Assets\Scripts\GameModes.cs" />
+    <Compile Include="Assets\Scripts\GameModes\GameModeSelectedSpawner.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\SingleRoundUndeadScore.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadGameMode.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadPlayerColor.cs" />

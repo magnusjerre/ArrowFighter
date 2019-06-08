@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Jerre.Scoring
@@ -8,10 +6,27 @@ namespace Jerre.Scoring
     public class TotalScoreInitializer : MonoBehaviour
     {
         public Text text;
+
+        void Awake()
+        {
+            text.text = null;
+        }
         
         void Start()
         {
-            text.text = GameObject.FindObjectOfType<ScoreManager>().maxScore + "";
+            
+        }
+
+        private void Update()
+        {
+            if (text.text == null)
+            {
+                var scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+                if (scoreManager != null)
+                {
+                    text.text = scoreManager.maxScore + "";
+                }
+            }
         }
 
     }

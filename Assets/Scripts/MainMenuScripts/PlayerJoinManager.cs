@@ -27,7 +27,6 @@ namespace Jerre.MainMenu
 
         void Start()
         {
-            PlayersState.INSTANCE.Reset();
             FirstTimeSetupOfWaitingForPlayers();
             colorManager = GetComponent<ColorManager>();
         }

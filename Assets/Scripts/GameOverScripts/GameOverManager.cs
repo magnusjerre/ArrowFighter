@@ -32,6 +32,7 @@ namespace Jerre.GameOver
 
         void LoadFirstMenuScene()
         {
+            PlayersState.INSTANCE.Reset();
             SceneManager.LoadScene(SceneNames.GAME_MODE_SELECTION, LoadSceneMode.Single);
         }
     }

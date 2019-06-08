@@ -9,7 +9,7 @@ namespace Jerre.GameMode.Undead
     public class UndeadGameMode : MonoBehaviour, IAFEventListener
     {
         public int GamePlayTimeInSeconds = 30;
-        public int NumberOfGameRounds = 1;
+        public int NumberOfGameRounds = 2;
         public int NumberOfStartingUndead = 1;
         public int UndeadRespawnTimeInSeconds = 1;
         public int AliveKillPoints = 1;
@@ -23,7 +23,7 @@ namespace Jerre.GameMode.Undead
         void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
-            score = new WholeGameUndeadScore();
+            score = new WholeGameUndeadScore();            
         }
 
         // Start is called before the first frame update

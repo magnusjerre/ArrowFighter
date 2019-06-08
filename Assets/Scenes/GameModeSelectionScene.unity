@@ -292,7 +292,7 @@ PrefabInstance:
     - target: {fileID: 3563036892706141926, guid: 9a5ba9f2325c7ae4b84a2e79124d0bb6,
         type: 3}
       propertyPath: m_Name
-      value: Checkpoint race
+      value: Undead
       objectReference: {fileID: 0}
     - target: {fileID: 3563036892706141927, guid: 9a5ba9f2325c7ae4b84a2e79124d0bb6,
         type: 3}
@@ -437,7 +437,7 @@ PrefabInstance:
     - target: {fileID: 3563036892706141928, guid: 9a5ba9f2325c7ae4b84a2e79124d0bb6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetCheckpointRace
+      value: SetUndead
       objectReference: {fileID: 0}
     - target: {fileID: 3563036892706141928, guid: 9a5ba9f2325c7ae4b84a2e79124d0bb6,
         type: 3}
@@ -447,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 3563036892324694542, guid: 9a5ba9f2325c7ae4b84a2e79124d0bb6,
         type: 3}
       propertyPath: m_Text
-      value: CHECKPOINT RACE
+      value: UNDEAD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a5ba9f2325c7ae4b84a2e79124d0bb6, type: 3}
@@ -563,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 8198934594791865141, guid: b0d9603302aaa7c4e80cd73e0ee784f2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8198934594791865141, guid: b0d9603302aaa7c4e80cd73e0ee784f2,
         type: 3}

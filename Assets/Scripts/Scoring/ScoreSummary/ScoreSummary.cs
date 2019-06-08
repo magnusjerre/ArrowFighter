@@ -1,7 +1,5 @@
-﻿using System.Collections;
+﻿using Jerre.Events;
 using System.Collections.Generic;
-using Jerre.Events;
-using Jerre.UIStuff;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,16 +15,24 @@ namespace Jerre.Scoring
 
         void Awake() {
             AFEventManager.INSTANCE.AddListener(this);
+            InitializeColorMap();
         }
         
         void Start()
         {
-            var scoreManager = GameObject.FindObjectOfType<ScoreManager>();
-            Debug.Log("Max score");
-            totalScoreText.text = scoreManager.maxScore + "";
             leaderScoreText.text = "0";
+        }
 
-            InitializeColorMap();
+        private void Update()
+        {
+            if (totalScoreText.text == null)
+            {
+                var scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+                if (scoreManager != null)
+                {
+                    totalScoreText.text = scoreManager.maxScore + "";
+                }
+            }
         }
 
         public bool HandleEvent(AFEvent afEvent)
@@ -50,9 +56,10 @@ namespace Jerre.Scoring
         }
         void InitializeColorMap() {
             playerColorMap = new Dictionary<int, Color>();
-            var playerSettings = GameObject.FindObjectsOfType<PlayerSettings>();
-            for (var i = 0; i < playerSettings.Length; i++) {
-                playerColorMap.Add(playerSettings[i].playerNumber, playerSettings[i].color);
+            for (var i = 0; i < PlayersState.INSTANCE.ReadyPlayersCount; i++)
+            {
+                var playerMenuSettings = PlayersState.INSTANCE.GetSettings(i);
+                playerColorMap.Add(playerMenuSettings.Number, playerMenuSettings.Color);
             }
         }
     }
