@@ -1,13 +1,12 @@
 ﻿using Jerre.Utils;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Jerre.JPhysics
 {
     public class PhysicsManager : MonoBehaviour
     {
-        public static float AbsoluteMaxSpeed = 5000;
+        public static float AbsoluteMaxSpeed = 2500;
         public bool Debugbounds = false;
         public RectTransform DebugView;
         public Renderer themesh;
@@ -19,41 +18,6 @@ namespace Jerre.JPhysics
             {
                 DebugView.GetChild(i).gameObject.SetActive(false);
             }
-
-            var worldBounds = CameraHelper.GetCameraWorldCoordinateBounds();
-            Debug.Log("World Bounds: " + worldBounds);
-
-            var rect = DebugView.GetChild(0).GetComponent<RectTransform>();
-            var csize = new Bounds(new Vector3(-538, 1, 244), new Vector3(625, 1, 250));
-
-
-            var screenHeight = themesh.bounds.size.z / worldBounds.size.z * Display.main.renderingHeight;
-            var screenWidth = themesh.bounds.size.x / worldBounds.size.x * Display.main.renderingWidth;
-            var positionX = themesh.bounds.center.x / worldBounds.size.x * Display.main.renderingWidth;
-            var positionY = themesh.bounds.center.z / worldBounds.size.z * Display.main.renderingHeight;
-
-
-
-            Debug.Log("cSize.width: " + csize.size.x);
-            Debug.Log("cSize.center: " + csize.center);
-
-            Debug.Log("themesh.width: " + themesh.bounds.size.x);
-            Debug.Log("themesh.center: " + themesh.bounds.center);
-
-
-            Debug.Log("camera info: " + Camera.main.rect);
-            Debug.Log("camera orthosize: " + Camera.main.orthographicSize);
-            Debug.Log("display width: " + Display.main.renderingWidth);
-            Debug.Log("display height: " + Display.main.renderingHeight);
-
-
-            var pointOnScreen = Camera.main.WorldToScreenPoint(csize.center);
-            Debug.Log("Point on Screen: " + pointOnScreen);
-            rect.anchoredPosition = new Vector2(positionX, positionY);
-            rect.anchoredPosition = new Vector2(pointOnScreen.x, pointOnScreen.z);
-            rect.sizeDelta = new Vector2(csize.size.x, csize.size.z);
-            rect.sizeDelta = new Vector2(screenWidth, screenHeight);
-            rect.gameObject.SetActive(true);
         }
 
         // Update is called once per frame
@@ -80,7 +44,6 @@ namespace Jerre.JPhysics
             var collisionMap = CollisionMap.GenerateMapFor(bodies, 2, CameraHelper.GetCameraWorldCoordinateBounds());
             var processQueue = new List<CollisionMap>();
             processQueue.Add(collisionMap);
-            Debug.Log("Number of collisionMaps: " + collisionMap.GetTotalCollisionMapsCount());
             var index = 0;
             while (processQueue.Count > 0)
             {
@@ -190,8 +153,14 @@ namespace Jerre.JPhysics
             var dotProduct = Vector3.Dot(surfaceNormal, playerPhysics.MovementDirection);
             var bounceDirection = playerPhysics.MovementDirection - 2 * dotProduct * surfaceNormal;
 
-            playerPhysics.MovementDirection = bounceDirection;
-            playerPhysics.SetSpeed(playerPhysics.Speed * surfaceBounceFactor);
+            var resultingSpeedVector = bounceDirection * playerPhysics.Speed;
+            var lengthOfResultingBoucneDirecitonOntoNormal = Vector3.Dot(surfaceNormal, resultingSpeedVector);
+            var bounceSpeedInDirectionOfNormal = surfaceNormal * lengthOfResultingBoucneDirecitonOntoNormal * surfaceBounceFactor;
+            var totalSpeedVector = resultingSpeedVector + bounceSpeedInDirectionOfNormal;
+
+            playerPhysics.MovementDirection = totalSpeedVector.normalized;
+            var oldSpeed = playerPhysics.Speed;
+            playerPhysics.SetSpeed(totalSpeedVector.magnitude);
         }
     }
 }
