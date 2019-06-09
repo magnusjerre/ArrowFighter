@@ -17,7 +17,7 @@ namespace Jerre
 
         void Awake()
         {
-            var settings = GameSettingsState.INSTANCE.BasicGameSettings;
+            var settings = GameSettingsState.INSTANCE.BasicWeaponsSettings;
             BlastDamage = settings.BombDamage;
             BlastRadius = settings.BombExplosionRadius;
             MaxLifeTimeWithoutExploding = settings.BombMaxLifetime;

@@ -15,7 +15,7 @@ namespace Jerre
 
         void Awake()
         {
-            Damage = GameSettingsState.INSTANCE.BasicGameSettings.FireDamage;
+            Damage = GameSettingsState.INSTANCE.BasicWeaponsSettings.FireDamage;
         }
         // Start is called before the first frame update
         void Start()

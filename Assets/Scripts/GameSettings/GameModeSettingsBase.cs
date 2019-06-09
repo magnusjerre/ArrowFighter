@@ -18,5 +18,7 @@ namespace Jerre.GameSettings
             setting.Value = value;
         }
 
+        public abstract string GetSettingsName();
+
     }
 }

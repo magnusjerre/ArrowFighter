@@ -13,5 +13,6 @@
         public const string BOOST = "Boost_";
         public const string JOIN_LEAVE = "JoinLeave_";
         public const string ACCEPT = "Accept_";
+        public const string CYCLE_SETTINGS = "CycleSettings_";
     }
 }

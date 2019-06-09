@@ -68,5 +68,10 @@ namespace Jerre.GameMode.Undead
                 return IntSettingByName(UNDEAD_KILL_POINTS);
             }
         }
+
+        public override string GetSettingsName()
+        {
+            return "UNDEAD SPECIFIC SETTINGS";
+        }
     }
 }

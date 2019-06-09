@@ -73,15 +73,16 @@ namespace Jerre
             newPlayer.playerNumber = playerNumber;
             playerNumberMap.Add(playerNumber, newPlayer);
             newPlayer.color = color;
-            var settings = GameSettingsState.INSTANCE.BasicGameSettings;
-            newPlayer.MaxSpeed = settings.Speed;
-            newPlayer.MaxAcceleration = settings.MaxAcceleration;
-            newPlayer.BoostSpeed = settings.BoostSpeed;
-            newPlayer.BoostDuration = settings.BoostDuration;
-            newPlayer.BoostPauseDuration = settings.BoostPause;
-            newPlayer.MaxHealth = settings.Health;
-            newPlayer.FireRate = settings.FireRate;
-            newPlayer.BombPauseTime = settings.BombPauseTime;
+            var basicGameSettings = GameSettingsState.INSTANCE.BasicGameSettings;
+            var basicWeaponsSettings = GameSettingsState.INSTANCE.BasicWeaponsSettings;
+            newPlayer.MaxSpeed = basicGameSettings.Speed;
+            newPlayer.MaxAcceleration = basicGameSettings.MaxAcceleration;
+            newPlayer.BoostSpeed = basicGameSettings.BoostSpeed;
+            newPlayer.BoostDuration = basicGameSettings.BoostDuration;
+            newPlayer.BoostPauseDuration = basicGameSettings.BoostPause;
+            newPlayer.MaxHealth = basicGameSettings.Health;
+            newPlayer.FireRate = basicWeaponsSettings.FireRate;
+            newPlayer.BombPauseTime = basicWeaponsSettings.BombPauseTime;
             newPlayer.transform.parent = PlayersContainer;
 
             var mainEngineParticles = newPlayer.GetComponent<PlayerMainEngineParticles>();

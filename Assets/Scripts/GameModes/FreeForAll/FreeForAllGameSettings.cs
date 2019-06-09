@@ -28,5 +28,10 @@ namespace Jerre.GameMode.FreeForAll
                 return IntSettingByName(PLAY_TIME);
             }
         }
+
+        public override string GetSettingsName()
+        {
+            return "FREE FOR ALL SPECIFIC SETTINGS";
+        }
     }
 }

@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\GameOverScripts\GameOverManager.cs" />
     <Compile Include="Assets\Scripts\GameOverScripts\ScoreEntry.cs" />
     <Compile Include="Assets\Scripts\GameSettings\BasicGameSettings.cs" />
+    <Compile Include="Assets\Scripts\GameSettings\BasicWeaponsSettings.cs" />
     <Compile Include="Assets\Scripts\GameSettings\GameModeSettingsBase.cs" />
     <Compile Include="Assets\Scripts\GameSettings\GameRoundState.cs" />
     <Compile Include="Assets\Scripts\GameSettings\GameSettingsState.cs" />
