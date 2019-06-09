@@ -36,7 +36,26 @@ namespace Jerre.JPhysics
             );
         }
 
-        public static bool IsBInsideA(Bounds a, Bounds b)   //Ignore y-axis, only checks that B is inside A, not the other way around
+        public static bool Intersect(Bounds a, Bounds b)
+        {
+            return HasBPointInsideA(a, b) || HasBPointInsideA(b, a) || BoundsOverlapWithoutPointsInside(a, b) || BoundsOverlapWithoutPointsInside(b, a);
+        }
+
+        public static bool BoundsOverlapWithoutPointsInside(Bounds a, Bounds b)
+        {
+            var aMin = a.min;
+            var aMax = a.max;
+            var bMin = b.min;
+            var bMax = b.max;
+
+            return (
+                    (bMin.x < aMin.x && aMax.x < bMax.x) &&     // Is B wider than A?
+                    (aMin.z <= bMin.z && bMin.z < aMax.z) &&    // Is B bottom line inside A?
+                    (aMin.z <= bMax.z && bMax.z < aMax.z)       // Is B top line inside A?
+                );
+        }
+
+        public static bool HasBPointInsideA(Bounds a, Bounds b)   //Ignore y-axis, only checks that B is inside A, not the other way around
         {
             var aMin = a.min;
             var aMax = a.max;
@@ -53,10 +72,10 @@ namespace Jerre.JPhysics
 
         public static PushResult CalculateObjectSeparation(Bounds a, Bounds b)
         {
-            if (IsBInsideA(a, b))
+            if (HasBPointInsideA(a, b))
             {
                 return new PushResult(true, CalculatePushDirectionFromAToB(a, b), a);
-            } else if (IsBInsideA(b, a))
+            } else if (HasBPointInsideA(b, a))
             {
                 return new PushResult(true, CalculatePushDirectionFromAToB(b, a), b);
             }

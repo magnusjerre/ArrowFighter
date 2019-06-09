@@ -122,6 +122,7 @@
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
     <Compile Include="Assets\Scripts\PauseMenu\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Physics\CollisionMap.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsbodyRectangular.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsHelper.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsManager.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Assets\Scripts\UIStuff\OffsetMaintainer.cs" />
     <Compile Include="Assets\Scripts\UIStuff\ScaleFrom.cs" />
     <Compile Include="Assets\Scripts\UIStuff\TextChangeAnimator.cs" />
+    <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
     <Compile Include="Assets\Scripts\Utils\LookDirectionConstr.cs" />
