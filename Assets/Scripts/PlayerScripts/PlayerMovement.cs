@@ -46,7 +46,7 @@ namespace Jerre
                 }
             }
 
-            physics.Speed = newVelocity.magnitude;
+            physics.SetSpeed(newVelocity.magnitude);
             physics.MovementDirection = newVelocity.normalized;
 
             transform.Translate(physics.MovementDirection * physics.Speed * Time.deltaTime, Space.World);
