@@ -33,7 +33,7 @@ namespace Jerre
         {
             countDownTimerInstance = Instantiate(countDownTimerPrefab, TopBar);
             countDownTimerInstance.TimerName = GameTimerName;
-            countDownTimerInstance.TimeInSeconds = freeForAllSettings.PlayTime;
+            countDownTimerInstance.TimeInSeconds = GameSettingsState.INSTANCE.BasicGameSettings.PlayTime;
         }
 
         public bool HandleEvent(AFEvent afEvent)

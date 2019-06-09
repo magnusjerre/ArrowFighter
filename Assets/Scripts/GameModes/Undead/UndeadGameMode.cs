@@ -43,7 +43,7 @@ namespace Jerre.GameMode.Undead
         {
             countDownTimerInstance = Instantiate(countDownTimerPrefab, TopBar);
             countDownTimerInstance.TimerName = RoundTimerName;
-            countDownTimerInstance.TimeInSeconds = undeadSettings.GamePlayerTimeInSeconds;
+            countDownTimerInstance.TimeInSeconds = GameSettingsState.INSTANCE.BasicGameSettings.PlayTime;
         }
 
         // Update is called once per frame

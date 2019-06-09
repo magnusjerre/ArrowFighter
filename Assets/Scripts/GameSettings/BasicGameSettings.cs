@@ -12,13 +12,13 @@
         
         public BasicGameSettings()
         {
+            settings.Add(KeyValueWithOptionsSetting.NumberedValue(PLAY_TIME, "Max play time", 90, 30, 300, 30));
+            settings.Add(KeyValueWithOptionsSetting.NumberedValue(HEALTH, "Health", 100, 10, 300, 10));
             settings.Add(KeyValueWithOptionsSetting.NumberedValue(SPEED, "Speed", 200, 50, 400, 25));
             settings.Add(KeyValueWithOptionsSetting.NumberedValue(MAX_ACCELERATION, "Max acceleration", 500, 100, 1500, 100));
             settings.Add(KeyValueWithOptionsSetting.NumberedValue(BOOST_SPEED, "Boost speed", 500, 250, 1000, 50));
             settings.Add(KeyValueWithOptionsSetting.NumberedValue(BOOST_DURATION, "Boost duration in seconds", 2, 1, 5, 1));
             settings.Add(KeyValueWithOptionsSetting.NumberedValue(BOOST_PAUSE, "Time between boosts", 2, 0, 10, 1));
-            settings.Add(KeyValueWithOptionsSetting.NumberedValue(HEALTH, "Health", 100, 10, 300, 10));
-            settings.Add(KeyValueWithOptionsSetting.NumberedValue(PLAY_TIME, "Max play time", 90, 30, 300, 30));
         }
 
         public int Speed
