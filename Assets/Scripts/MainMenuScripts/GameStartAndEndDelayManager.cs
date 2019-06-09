@@ -20,6 +20,8 @@ namespace Jerre.Managers
             }
         }
 
+        private bool hasCalledNotifyGameCanStart = false;
+
         void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
@@ -38,6 +40,10 @@ namespace Jerre.Managers
                     playerCompManager.EnableOrDisableAllPlayersInputResponses(false);
                     Debug.Log("Delaying player input start");
                     Invoke("ReEnableAllPlayersInputResponses", PlayersState.INSTANCE.WaitTimeForPlayersToStart);
+                    if (!hasCalledNotifyGameCanStart) {
+                        hasCalledNotifyGameCanStart = true;
+                        Invoke("NotifyGameCanStart", PlayersState.INSTANCE.WaitTimeForPlayersToStart);
+                    }
                     isAwaiting = true;
                     break;
                 }
@@ -62,6 +68,11 @@ namespace Jerre.Managers
             isAwaiting = false;
             playerCompManager.EnableOrDisableAllPlayersInputResponses(true);
             Debug.Log("Player input is now processed");
+        }
+
+        void NotifyGameCanStart()
+        {
+            AFEventManager.INSTANCE.PostEvent(AFEvents.GameStart());
         }
 
         void LoadGameOverScene()

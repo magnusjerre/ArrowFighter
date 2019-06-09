@@ -483,6 +483,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActiveAfterStart: 0
+--- !u!1 &273011259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 273011260}
+  m_Layer: 5
+  m_Name: TopBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &273011260
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273011259}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1901364207}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.05, y: 1}
+  m_AnchorMax: {x: 0.95, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 50}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1001 &300923350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1377,6 +1412,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreUIElementPrefab: {fileID: 4237707889972997031, guid: 7ad998a5a1ea8444aa5f1edc89f197c2,
     type: 3}
+  countDownTimerPrefab: {fileID: 4570668055259459217, guid: 6db3928c5756de940b7df057f7ae7e80,
+    type: 3}
+  TopBar: {fileID: 273011260}
 --- !u!1001 &1419095146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1741,6 +1779,7 @@ RectTransform:
   - {fileID: 109254368}
   - {fileID: 329221089}
   - {fileID: 938728855}
+  - {fileID: 273011260}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

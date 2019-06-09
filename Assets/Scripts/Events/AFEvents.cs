@@ -58,5 +58,15 @@ namespace Jerre.Events
         {
             return new AFEvent(AFEventType.ROUND_OVER, new RoundOverPayload(roundWinnerPlayerNumber, roundScore, playerColor));
         }
+
+        public static AFEvent ContDownOver(string timerName)
+        {
+            return new AFEvent(AFEventType.COUNT_DOWN_FINISHED, new CountDownFinishedPayload(timerName));
+        }
+
+        public static AFEvent GameStart()
+        {
+            return new AFEvent(AFEventType.GAME_START, new GameStartPayload());
+        }
     }
 }

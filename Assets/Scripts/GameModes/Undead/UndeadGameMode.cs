@@ -1,5 +1,6 @@
 ﻿using Jerre.Events;
 using Jerre.GameSettings;
+using Jerre.UIStuff;
 using Jerre.Utils;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,36 +9,41 @@ namespace Jerre.GameMode.Undead
 {
     public class UndeadGameMode : MonoBehaviour, IAFEventListener
     {
-        public int GamePlayTimeInSeconds = 30;
         public int NumberOfGameRounds = 2;
         public int NumberOfStartingUndead = 1;
         public int UndeadRespawnTimeInSeconds = 1;
         public int AliveKillPoints = 1;
         public int UndeadKillPoints = 2;
         public Color UndeadColor = Color.gray;
-        // TODO: Gi straff for å drepe team mates?
+        public CountDownTimer countDownTimerPrefab;
+        public RectTransform TopBar;
 
+        private string RoundTimerName = "RoundTimer";
+        private CountDownTimer countDownTimerInstance;
+
+        private UndeadGameSettings undeadSettings;
 
         WholeGameUndeadScore score;
 
+        // Called as part of gameObject.AddComponent<...>(). Can therefore not have initialization here that is added after addComponent, use Start() instead
         void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
             score = new WholeGameUndeadScore();
 
-            var settings = (UndeadGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
-            GamePlayTimeInSeconds = settings.GamePlayerTimeInSeconds;
-            NumberOfGameRounds = settings.NumberOfGameRounds;
-            NumberOfStartingUndead = settings.StartingUndead;
-            UndeadRespawnTimeInSeconds = settings.UndeadRespawnTimeInSeconds;
-            AliveKillPoints = settings.AliveKillPoints;
-            UndeadKillPoints = settings.UndeadKillPoints;
+            undeadSettings = (UndeadGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
+            NumberOfGameRounds = undeadSettings.NumberOfGameRounds;
+            NumberOfStartingUndead = undeadSettings.StartingUndead;
+            UndeadRespawnTimeInSeconds = undeadSettings.UndeadRespawnTimeInSeconds;
+            AliveKillPoints = undeadSettings.AliveKillPoints;
+            UndeadKillPoints = undeadSettings.UndeadKillPoints;
         }
 
-        // Start is called before the first frame update
         void Start()
         {
-            
+            countDownTimerInstance = Instantiate(countDownTimerPrefab, TopBar);
+            countDownTimerInstance.TimerName = RoundTimerName;
+            countDownTimerInstance.TimeInSeconds = undeadSettings.GamePlayerTimeInSeconds;
         }
 
         // Update is called once per frame
@@ -165,6 +171,39 @@ namespace Jerre.GameMode.Undead
                     {
                         HandleGameStart();
                         return true;
+                    }
+                case AFEventType.COUNT_DOWN_FINISHED:
+                    {
+                        var payload = (CountDownFinishedPayload)afEvent.payload;
+                        if (!payload.TimerName.Equals(RoundTimerName))
+                        {
+                            break;
+                        }
+                        countDownTimerInstance.StopTimer();
+                        if (GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber == NumberOfGameRounds)
+                        {
+                            Debug.Log("Game over, time ran out!");
+                            var scores = GeneratePlayerScores();
+                            var winningScore = scores[0];
+                            PlayersState.INSTANCE.SetScores(scores);
+                            GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
+                            AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
+                        }
+                        else
+                        {
+                            Debug.Log("Round over, time ran out!");
+                            var scores = GeneratePlayerScores();
+                            var winningScore = scores[0];
+                            PlayersState.INSTANCE.SetScores(scores);
+                            GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
+                            AFEventManager.INSTANCE.PostEvent(AFEvents.RoundOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
+                        }
+                        break;
+                    }
+                case AFEventType.GAME_START:
+                    {
+                        countDownTimerInstance.StartTimer();
+                        break;
                     }
             }
             return false;

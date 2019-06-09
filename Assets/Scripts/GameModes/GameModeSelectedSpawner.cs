@@ -1,5 +1,6 @@
 ﻿using Jerre.GameMode.Undead;
 using Jerre.UI;
+using Jerre.UIStuff;
 using UnityEngine;
 
 namespace Jerre.GameMode
@@ -7,6 +8,8 @@ namespace Jerre.GameMode
     public class GameModeSelectedSpawner : MonoBehaviour
     {
         public ScoreUIElement scoreUIElementPrefab;
+        public CountDownTimer countDownTimerPrefab;
+        public RectTransform TopBar;
 
         private void Awake()
         {
@@ -17,6 +20,9 @@ namespace Jerre.GameMode
                 case GameModes.UNDEAD:
                     {
                         var undeadMode = gameObject.AddComponent<UndeadGameMode>();
+                        undeadMode.countDownTimerPrefab = countDownTimerPrefab;
+                        undeadMode.TopBar = TopBar;
+
                         var scoreUIManager = gameObject.AddComponent<ScoreUIManager>();
                         scoreUIManager.scoreUIElementPrefab = scoreUIElementPrefab;
                         break;
@@ -24,6 +30,9 @@ namespace Jerre.GameMode
                 case GameModes.FREE_FOR_ALL:
                     {
                         var scoreMode = gameObject.AddComponent<ScoreManager>();
+                        scoreMode.countDownTimerPrefab = countDownTimerPrefab;
+                        scoreMode.TopBar = TopBar;
+
                         var scoreUIManager = gameObject.AddComponent<ScoreUIManager>();
                         scoreUIManager.scoreUIElementPrefab = scoreUIElementPrefab;
                         break;

@@ -68,7 +68,9 @@
     <Compile Include="Assets\Scripts\Events\AFEventType.cs" />
     <Compile Include="Assets\Scripts\Events\IAFEventListener.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\BombTriggerPayload.cs" />
+    <Compile Include="Assets\Scripts\Events\Payloads\CountDownFinishedPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\GameOverPayload.cs" />
+    <Compile Include="Assets\Scripts\Events\Payloads\GameStartPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\HealthDamagePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\KilledEventPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PauseMenuEnablePayload.cs" />
@@ -149,6 +151,7 @@
     <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UIStuff\CanvasMover.cs" />
+    <Compile Include="Assets\Scripts\UIStuff\CountDownTimer.cs" />
     <Compile Include="Assets\Scripts\UIStuff\DoCall.cs" />
     <Compile Include="Assets\Scripts\UIStuff\IDo.cs" />
     <Compile Include="Assets\Scripts\UIStuff\OffsetMaintainer.cs" />

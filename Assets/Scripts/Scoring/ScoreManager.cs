@@ -1,6 +1,7 @@
 ﻿using Jerre.Events;
 using Jerre.GameMode.FreeForAll;
 using Jerre.GameSettings;
+using Jerre.UIStuff;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,21 +10,30 @@ namespace Jerre
     public class ScoreManager : MonoBehaviour, IAFEventListener
     {
         public int maxScore = 10;
+        public CountDownTimer countDownTimerPrefab;
+        public RectTransform TopBar;
 
         private Dictionary<int, int> playerScores;
+        private CountDownTimer countDownTimerInstance;
+        private string GameTimerName = "GameTimer";
+
+        private FreeForAllGameSettings freeForAllSettings;
+
 
         void Awake()
         {
             playerScores = new Dictionary<int, int>();
             AFEventManager.INSTANCE.AddListener(this);
-            var freeForAllSettings = (FreeForAllGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
+            freeForAllSettings = (FreeForAllGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
             Debug.Log("pointsToWin:" + freeForAllSettings.MaxScore);
             maxScore = freeForAllSettings.MaxScore;
         }
 
         void Start()
         {
-            
+            countDownTimerInstance = Instantiate(countDownTimerPrefab, TopBar);
+            countDownTimerInstance.TimerName = GameTimerName;
+            countDownTimerInstance.TimeInSeconds = freeForAllSettings.PlayTime;
         }
 
         public bool HandleEvent(AFEvent afEvent)
@@ -41,6 +51,20 @@ namespace Jerre
                 case AFEventType.PLAYER_LEAVE:
                     {
                         return HandlePlayerLeaveEvent((PlayerLeavePayload)afEvent.payload);
+                    }
+                case AFEventType.GAME_START:
+                    {
+                        countDownTimerInstance.StartTimer();
+                        return false;
+                    }
+                case AFEventType.COUNT_DOWN_FINISHED:
+                    {
+                        var payload = (CountDownFinishedPayload)afEvent.payload;
+                        if (payload.TimerName.Equals(GameTimerName))
+                        {
+                            HandleGameOver();
+                        }
+                        return false;
                     }
                 default:
                     {
@@ -60,22 +84,8 @@ namespace Jerre
 
                 if (newScore == maxScore)
                 {
-                    Debug.Log("Game over");
-                    
-
-                    var players = GameObject.FindObjectsOfType<PlayerSettings>();
-                    PlayerSettings winningPlayer = null;
-                    var scores = new List<PlayerScore>();                    
-                    for (var i = 0; i < players.Length; i++)
-                    {
-                        var p = players[i];
-                        if (p.playerNumber == payload.playerNumberOfKiller) {
-                            winningPlayer = p;
-                        }
-                        scores.Add(new PlayerScore(p.playerNumber, p.color, 0, playerScores[p.playerNumber]));
-                    }
-                    PlayersState.INSTANCE.SetScores(scores);
-                    AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningPlayer.playerNumber, playerScores[winningPlayer.playerNumber], winningPlayer.color));
+                    countDownTimerInstance.StopTimer();
+                    HandleGameOver();
                 }
             }
             else
@@ -84,6 +94,22 @@ namespace Jerre
             }
 
             return false;
+        }
+
+        private void HandleGameOver()
+        {
+            Debug.Log("Game over");
+            var players = GameObject.FindObjectsOfType<PlayerSettings>();
+            var scores = new List<PlayerScore>();
+            for (var i = 0; i < players.Length; i++)
+            {
+                var p = players[i];
+                scores.Add(new PlayerScore(p.playerNumber, p.color, 0, playerScores[p.playerNumber]));
+            }
+            scores.Sort();
+            var winningPlayer = scores[0];
+            PlayersState.INSTANCE.SetScores(scores);
+            AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningPlayer.PlayerNumber, playerScores[winningPlayer.PlayerNumber], winningPlayer.PlayerColor));
         }
 
         private bool HandlePlayerJoinEvent(PlayerJoinPayload payload)
