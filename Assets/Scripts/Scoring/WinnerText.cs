@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Jerre.Events;
+﻿using Jerre.Events;
+using Jerre.GameSettings;
 using Jerre.UIStuff;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,12 +9,13 @@ namespace Jerre.Scoring
     public class WinnerText : MonoBehaviour, IAFEventListener
     {
         public Image image;
-        public Text WinningScoreText;
+        public Text ScoreText;
+        public Text TitleText;
         public Color PlayerWinnerColor;
         public int WinningScore = 0;
         public ScaleFrom Scaler;
 
-        void Awake() 
+        void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
         }
@@ -27,43 +27,42 @@ namespace Jerre.Scoring
 
         public bool HandleEvent(AFEvent afEvent)
         {
-            switch(afEvent.type) {
+            switch (afEvent.type)
+            {
                 case AFEventType.ROUND_OVER:
                     {
                         var payload = (RoundOverPayload)afEvent.payload;
+                        TitleText.text = "WINNER OF ROUND " + GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber;
                         image.color = payload.playerColor;
-                        WinningScoreText.text = payload.roundScore + " Points";
-                        gameObject.SetActive(true);
-
-                        var playersContainer = GameObject.FindGameObjectWithTag("PlayersContainer");
-                        ScaleFrom playersScaler = playersContainer.AddComponent(typeof(ScaleFrom)) as ScaleFrom;
-                        playersScaler.UseInitialScaleAsFrom = true;
-                        playersScaler.To = Vector3.zero;
-                        playersScaler.Do();
-                        if (Scaler != null)
-                        {
-                            Scaler.Do();
-                        }
+                        ScoreText.text = payload.roundScore + " Points";
+                        Show();
                         break;
                     }
-                case AFEventType.GAME_OVER: {
-                    var payload = (GameOverPayload)afEvent.payload;
-                    image.color = payload.playerColor;
-                    WinningScoreText.text = payload.score + " Kills";
-                    gameObject.SetActive(true);
-
-                    var playersContainer = GameObject.FindGameObjectWithTag("PlayersContainer");
-                    ScaleFrom playersScaler = playersContainer.AddComponent(typeof (ScaleFrom)) as ScaleFrom;
-                    playersScaler.UseInitialScaleAsFrom = true;
-                    playersScaler.To = Vector3.zero;
-                    playersScaler.Do();
-                    if (Scaler != null) {
-                        Scaler.Do();
+                case AFEventType.GAME_OVER:
+                    {
+                        var payload = (GameOverPayload)afEvent.payload;
+                        TitleText.text = "WINNER";
+                        image.color = payload.playerColor;
+                        ScoreText.text = payload.score + " Kills";
+                        Show();
+                        break;
                     }
-                    break;
-                }
             }
             return false;
+        }
+
+        private void Show()
+        {
+            gameObject.SetActive(true);
+            var playersContainer = GameObject.FindGameObjectWithTag("PlayersContainer");
+            ScaleFrom playersScaler = playersContainer.AddComponent(typeof(ScaleFrom)) as ScaleFrom;
+            playersScaler.UseInitialScaleAsFrom = true;
+            playersScaler.To = Vector3.zero;
+            playersScaler.Do();
+            if (Scaler != null)
+            {
+                Scaler.Do();
+            }
         }
     }
 }

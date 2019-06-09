@@ -221,7 +221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 6326969491241066166}
-  WinningScoreText: {fileID: 6326969492252086810}
+  ScoreText: {fileID: 6326969492252086810}
+  TitleText: {fileID: 6326969491593057613}
   PlayerWinnerColor: {r: 1, g: 0, b: 0, a: 1}
   WinningScore: 0
   Scaler: {fileID: 4058188672445604392}

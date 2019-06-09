@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\GameModes.cs" />
     <Compile Include="Assets\Scripts\GameModes\FreeForAll\FreeForAllGameSettings.cs" />
     <Compile Include="Assets\Scripts\GameModes\GameModeSelectedSpawner.cs" />
+    <Compile Include="Assets\Scripts\GameModes\SetTextToMatchameMode.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\SingleRoundUndeadScore.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadGameMode.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadGameSettings.cs" />
