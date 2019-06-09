@@ -160,7 +160,6 @@
     <Compile Include="Assets\Scripts\UIStuff\TextChangeAnimator.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
-    <Compile Include="Assets\Scripts\Utils\GameSettingsField.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayAreaIndicator.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerFetcher.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
