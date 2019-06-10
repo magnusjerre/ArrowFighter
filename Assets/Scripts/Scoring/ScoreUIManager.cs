@@ -1,10 +1,11 @@
-﻿using Jerre.UI;
-using Jerre.Utils;
+﻿using Jerre.Events;
+using Jerre.UI;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jerre
 {
-    public class ScoreUIManager : MonoBehaviour
+    public class ScoreUIManager : MonoBehaviour, IAFEventListener
     {
         private ScoreManager scoreManager;
 
@@ -16,31 +17,35 @@ namespace Jerre
         {
             scoreManager = GameObject.FindObjectOfType<ScoreManager>();
             uiBarManager = GameObject.FindObjectOfType<MainUIBarManager>();
+            AFEventManager.INSTANCE.AddListener(this);
         }
 
-        void Start()
+        private void AddScoreIndicatorsForPlayers(List<PlayerSettings> players)
         {
-            for (var i = 0; i < PlayersState.INSTANCE.ReadyPlayersCount; i++)
+            for (var i = 0; i < players.Count; i++)
             {
-                var playerMenuSettings = PlayersState.INSTANCE.GetSettings(i);
-                HandleJoin(playerMenuSettings.Number);
+                AddScoreIndicatorForPlayer(players[i]);
             }
         }
 
-        void HandleJoin(int playerNumber)
+        private void AddScoreIndicatorForPlayer(PlayerSettings player)
         {
-            var settings = PlayerFetcher.FindPlayerByPlayerNumber(playerNumber);
-            if (settings == null)
-            {
-                throw new System.Exception("Couldn't find player with playerNumber " + playerNumber);
-            }
-
-            var parent = uiBarManager.GetRectTransformHolderForPlayerNumber(playerNumber);
+            var parent = uiBarManager.GetRectTransformHolderForPlayerNumber(player.playerNumber);
             var scoreIndicator = Instantiate(scoreUIElementPrefab, parent.Right);
-            scoreIndicator.PlayerNumber = settings.playerNumber;
-            scoreIndicator.PlayerColor = settings.color;
+            scoreIndicator.PlayerNumber = player.playerNumber;
+            scoreIndicator.PlayerColor = player.color;
             scoreIndicator.MaxScore = scoreManager != null ? scoreManager.maxScore : -1;
-            scoreIndicator.InitialScore = scoreManager != null ? scoreManager.GetPlayerScore(settings.playerNumber) : -1;
+            scoreIndicator.InitialScore = scoreManager != null ? scoreManager.GetPlayerScore(player.playerNumber) : -1;
+        }
+
+        public bool HandleEvent(AFEvent afEvent)
+        {
+            if (afEvent.type == AFEventType.PLAYERS_ALL_CREATED)
+            {
+                var payload = (PlayersAllCreatedPayload)afEvent.payload;
+                AddScoreIndicatorsForPlayers(payload.AllPlayers);
+            }
+            return false;
         }
     }
 }
