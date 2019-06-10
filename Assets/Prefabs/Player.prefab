@@ -345,6 +345,8 @@ MonoBehaviour:
   MeshRenderer: {fileID: 1792810809686034292}
   IsStationary: 0
   SurfaceBounceFactor: 1
+  Layer: 1
+  jLayer: 1
 --- !u!1 &1369341429014477098
 GameObject:
   m_ObjectHideFlags: 0

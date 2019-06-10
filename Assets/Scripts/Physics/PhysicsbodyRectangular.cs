@@ -8,6 +8,8 @@ namespace Jerre.JPhysics
         public bool IsStationary = false;
         public float SurfaceBounceFactor = 1f;
 
+        public JLayer jLayer = JLayer.SCENERY;
+
         void Start()
         {
             if (MeshRenderer == null)

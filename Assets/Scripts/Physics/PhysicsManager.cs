@@ -11,7 +11,6 @@ namespace Jerre.JPhysics
         public RectTransform DebugView;
         public Renderer themesh;
 
-        // Use this for initialization
         void Start()
         {
             for (var i = 0; i < DebugView.childCount; i++)
@@ -20,7 +19,6 @@ namespace Jerre.JPhysics
             }
         }
 
-        // Update is called once per frame
         void LateUpdate()
         {
             var allPhysicsBodies = GameObject.FindObjectsOfType<PhysicsbodyRectangular>();
@@ -53,7 +51,8 @@ namespace Jerre.JPhysics
                 if (current.bodies != null)
                 {
                     HandlePhysics(current.bodies.ToArray(), completedCollisionsThisFrame);
-                } else
+                }
+                else
                 {
                     processQueue.AddRange(current.subMaps);
                 }
@@ -90,6 +89,14 @@ namespace Jerre.JPhysics
             }
         }
 
+        void LogForPlayerCollisionsOnly(string message, PhysicsbodyRectangular body1, PhysicsbodyRectangular body2)
+        {
+            if (body1.jLayer == JLayer.PLAYER || body2.jLayer == JLayer.PLAYER)
+            {
+                Debug.Log(message);
+            }
+        }
+
         void HandlePhysics(PhysicsbodyRectangular[] allPhysicsBodies, HashSet<CollisionPair> completedCollisions)
         {
             for (var i = 0; i < allPhysicsBodies.Length - 1; i++)
@@ -98,10 +105,17 @@ namespace Jerre.JPhysics
                 {
                     var physicsObjA = allPhysicsBodies[i];
                     var physicsObjB = allPhysicsBodies[j];
+
+                    if (!JLayerMaskUtil.MaskCheck(JLayerMaskUtil.GetLayerMask(physicsObjA.jLayer), physicsObjB.jLayer))
+                    {
+                        LogForPlayerCollisionsOnly("Shouldn't handle collisions between these objects: " + physicsObjA.gameObject.name + " : " + physicsObjB.gameObject.name, physicsObjA, physicsObjB);
+                        continue;
+                    }
+
                     var collisionPair = new CollisionPair(physicsObjA, physicsObjB);
                     if (completedCollisions.Contains(collisionPair))
                     {
-                        Debug.Log("This collision has already been processed, moving onto next");
+                        LogForPlayerCollisionsOnly("This collision has already been processed, moving onto next", physicsObjA, physicsObjB);
                         continue;
                     }
                     completedCollisions.Add(collisionPair);
