@@ -70,7 +70,7 @@ namespace Jerre
                 {
                     if (!float.IsNaN(adjustedSpeed))
                     {
-                        playerPhysics.Speed = adjustedSpeed;
+                        playerPhysics.SetSpeed(adjustedSpeed);
                     }
 
                     playerPhysics.MovementDirection = adjustedMovementDirection;

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Jerre.Events
 {
@@ -36,6 +37,7 @@ namespace Jerre.Events
 
         public static AFEvent PlayerMenuBarUICreated(int playerNumber)
         {
+            Debug.Log("Dispatching PlayerMenuBarUICreated");
             return new AFEvent(AFEventType.PLAYER_MENU_BAR_UI_CREATED, new PlayerMenuBarUICreatedPayload(playerNumber));
         }
 
@@ -67,6 +69,12 @@ namespace Jerre.Events
         public static AFEvent GameStart()
         {
             return new AFEvent(AFEventType.GAME_START, new GameStartPayload());
+        }
+
+        public static AFEvent PlayersAllCreated(List<PlayerSettings> players)
+        {
+            Debug.Log("Dispatching PlayersAllCreated");
+            return new AFEvent(AFEventType.PLAYERS_ALL_CREATED, new PlayersAllCreatedPayload(players));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Jerre.JPhysics;
+using UnityEngine;
 
 namespace Jerre
 {
@@ -16,7 +17,19 @@ namespace Jerre
         // Update is called once per frame
         void Update()
         {
+            
+        }
 
+        public void SetSpeed(float speed)
+        {
+            if (speed > PhysicsManager.AbsoluteMaxSpeed)
+            {
+                Speed = PhysicsManager.AbsoluteMaxSpeed;
+            }
+            else
+            {
+                Speed = speed;
+            }
         }
     }
 }

@@ -35,11 +35,13 @@ namespace Jerre
         {
             if (!CanJoinInGame)
             {
+                var allPlayerSettings = new List<PlayerSettings>(PlayersState.INSTANCE.ReadyPlayersCount);
                 for (var i = 0; i < PlayersState.INSTANCE.ReadyPlayersCount; i++)
                 {
                     var playerMenuSettings = PlayersState.INSTANCE.GetSettings(i);
-                    AddPlayer(playerMenuSettings.Number, playerMenuSettings.Color);
+                    allPlayerSettings.Add(AddPlayer(playerMenuSettings.Number, playerMenuSettings.Color));
                 }
+                AFEventManager.INSTANCE.PostEvent(AFEvents.PlayersAllCreated(allPlayerSettings));
             }
         }
 
@@ -66,7 +68,7 @@ namespace Jerre
             AddPlayer(playerNumber, NextColor());
         }
 
-        private void AddPlayer(int playerNumber, Color color)
+        private PlayerSettings AddPlayer(int playerNumber, Color color)
         {
             var spawnPoint = spawnPointManager.GetNextSpawnPoint();
             var newPlayer = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
@@ -88,6 +90,7 @@ namespace Jerre
             var mainEngineParticles = newPlayer.GetComponent<PlayerMainEngineParticles>();
             mainEngineParticles.ParticleColor = color;
             AFEventManager.INSTANCE.PostEvent(AFEvents.PlayerJoin(playerNumber, color));
+            return newPlayer;
         }
 
         private void RemovePlayer(int playerNumber)

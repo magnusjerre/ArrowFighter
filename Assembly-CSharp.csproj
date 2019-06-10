@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerJoinPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerLeavePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerMenuBarUICreatedPayload.cs" />
+    <Compile Include="Assets\Scripts\Events\Payloads\PlayersAllCreatedPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\RespawnPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\RoundOverPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\ScorePayload.cs" />
@@ -122,6 +123,13 @@
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
     <Compile Include="Assets\Scripts\PauseMenu\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Physics\CollisionMap.cs" />
+    <Compile Include="Assets\Scripts\Physics\JCollision.cs" />
+    <Compile Include="Assets\Scripts\Physics\JLayer.cs" />
+    <Compile Include="Assets\Scripts\Physics\JLayerMaskUtil.cs" />
+    <Compile Include="Assets\Scripts\Physics\PhysicsbodyRectangular.cs" />
+    <Compile Include="Assets\Scripts\Physics\PhysicsHelper.cs" />
+    <Compile Include="Assets\Scripts\Physics\PhysicsManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBombWeapon.cs" />
@@ -158,8 +166,10 @@
     <Compile Include="Assets\Scripts\UIStuff\OffsetMaintainer.cs" />
     <Compile Include="Assets\Scripts\UIStuff\ScaleFrom.cs" />
     <Compile Include="Assets\Scripts\UIStuff\TextChangeAnimator.cs" />
+    <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
+    <Compile Include="Assets\Scripts\Utils\LookDirectionConstr.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayAreaIndicator.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerFetcher.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />

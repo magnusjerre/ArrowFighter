@@ -52,7 +52,7 @@ namespace Jerre.GameMode.Undead
 
         }
 
-        public int[] SelectPlayersToStartAsUndead(PlayerSettings[] playerSettings)
+        public int[] SelectPlayersToStartAsUndead(List<PlayerSettings> playerSettings)
         {
 
 
@@ -80,11 +80,10 @@ namespace Jerre.GameMode.Undead
             return scores;
         }
 
-        void HandleGameStart()
+        void HandleGameStart(List<PlayerSettings> allPlayers)
         {
-            var playerSettings = GameObject.FindObjectsOfType<PlayerSettings>();
-            var undeadPlayerNumbers = SelectPlayersToStartAsUndead(playerSettings);
-            foreach (var ps in playerSettings)
+            var undeadPlayerNumbers = SelectPlayersToStartAsUndead(allPlayers);
+            foreach (var ps in allPlayers)
             {
                 var currentRoundScore = score.GetCurrentRoundScoreForPlayer(ps.playerNumber);
                 MakeLiving(ps);
@@ -167,9 +166,10 @@ namespace Jerre.GameMode.Undead
 
                         return true;
                     }
-                case AFEventType.PLAYER_MENU_BAR_UI_CREATED:
+                case AFEventType.PLAYERS_ALL_CREATED:
                     {
-                        HandleGameStart();
+                        var payload = (PlayersAllCreatedPayload)afEvent.payload;
+                        HandleGameStart(payload.AllPlayers);
                         return true;
                     }
                 case AFEventType.COUNT_DOWN_FINISHED:
