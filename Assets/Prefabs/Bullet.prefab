@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4647767403863908385}
   - component: {fileID: 4647767403863908388}
   - component: {fileID: 7936496267054984807}
+  - component: {fileID: 8468643957836589700}
   m_Layer: 9
   m_Name: Bullet
   m_TagString: Untagged
@@ -110,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05726c3ce874c0f4b8749ba642d7f6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
 --- !u!114 &4647767403863908388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +140,19 @@ MonoBehaviour:
   MeshRenderer: {fileID: 6589645552005308402}
   IsStationary: 0
   SurfaceBounceFactor: 1
-  Layer: 2
   jLayer: 2
+--- !u!114 &8468643957836589700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647767403863908397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d27e1d51ee9b04ea04607d843f6a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5100744275307756462
 GameObject:
   m_ObjectHideFlags: 0

@@ -123,6 +123,7 @@
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
     <Compile Include="Assets\Scripts\PauseMenu\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Physics\CollisionMap.cs" />
+    <Compile Include="Assets\Scripts\Physics\JCollision.cs" />
     <Compile Include="Assets\Scripts\Physics\JLayer.cs" />
     <Compile Include="Assets\Scripts\Physics\JLayerMaskUtil.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsbodyRectangular.cs" />

@@ -163,6 +163,16 @@ namespace Jerre.JPhysics
                     {
                         BounceBullet(bulletMover, direction, toPushFrom.SurfaceBounceFactor);
                     }
+                    var aJCollision = toPush.GetComponent<JCollision>();
+                    if (aJCollision != null)
+                    {
+                        aJCollision.OnJCollsion(toPushFrom);
+                    }
+                    var bJCollision = toPushFrom.GetComponent<JCollision>();
+                    if (bJCollision != null)
+                    {
+                        bJCollision.OnJCollsion(toPush);
+                    }
                 }
             }
         }
