@@ -158,6 +158,11 @@ namespace Jerre.JPhysics
                     {
                         BouncePlayer(playerPhysics, direction, toPushFrom.SurfaceBounceFactor);
                     }
+                    var bulletMover = toPush.GetComponent<BulletMover>();
+                    if (bulletMover != null)
+                    {
+                        BounceBullet(bulletMover, direction, toPushFrom.SurfaceBounceFactor);
+                    }
                 }
             }
         }
@@ -175,6 +180,20 @@ namespace Jerre.JPhysics
             playerPhysics.MovementDirection = totalSpeedVector.normalized;
             var oldSpeed = playerPhysics.Speed;
             playerPhysics.SetSpeed(totalSpeedVector.magnitude);
+        }
+
+        void BounceBullet(BulletMover bulletMover, Vector3 surfaceNormal, float surfaceBounceFactor)
+        {
+            var dotProduct = Vector3.Dot(surfaceNormal, bulletMover.transform.forward);
+            var bounceDirection = bulletMover.transform.forward - 2 * dotProduct * surfaceNormal;
+
+            var resultingSpeedVector = bounceDirection * bulletMover.Speed;
+            var lengthOfResultingBounceDirectionOntoNormal = Vector3.Dot(surfaceNormal, resultingSpeedVector);
+            var bounceSpeedInDirectionOfNormal = surfaceNormal * lengthOfResultingBounceDirectionOntoNormal * surfaceBounceFactor;
+            var totalSpeedVector = resultingSpeedVector + bounceSpeedInDirectionOfNormal;
+
+            bulletMover.transform.LookAt(bulletMover.transform.position + totalSpeedVector.normalized);
+            bulletMover.Speed = totalSpeedVector.magnitude;
         }
     }
 }
