@@ -36,7 +36,7 @@ namespace Jerre.Managers
         public bool HandleEvent(AFEvent afEvent)
         {
             switch(afEvent.type) {
-                case AFEventType.PLAYER_MENU_BAR_UI_CREATED: {
+                case AFEventType.PLAYERS_ALL_CREATED: {
                     playerCompManager.EnableOrDisableAllPlayersInputResponses(false);
                     Debug.Log("Delaying player input start");
                     Invoke("ReEnableAllPlayersInputResponses", PlayersState.INSTANCE.WaitTimeForPlayersToStart);
