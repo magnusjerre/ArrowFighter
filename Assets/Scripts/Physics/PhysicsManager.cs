@@ -27,8 +27,15 @@ namespace Jerre.JPhysics
                 return;
             }
 
-            var bodies = new List<PhysicsbodyRectangular>();
-            bodies.AddRange(allPhysicsBodies);
+            var bodies = new List<PhysicsbodyRectangular>(allPhysicsBodies.Length);
+            var allPBLength = allPhysicsBodies.Length;
+            for (var i = 0; i < allPBLength; i++)
+            {
+                if (allPhysicsBodies[i].enabled)
+                {
+                    bodies.Add(allPhysicsBodies[i]);
+                }
+            }
 
             if (Debugbounds)
             {

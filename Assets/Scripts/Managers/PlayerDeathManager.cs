@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Jerre.Events;
+using Jerre.JPhysics;
 
 namespace Jerre
 {
@@ -44,6 +45,7 @@ namespace Jerre
         {
             playerSettings.GetComponent<PlayerHealth>().enabled = enabled;
             playerSettings.GetComponent<Collider>().enabled = enabled;
+            playerSettings.GetComponent<PhysicsbodyRectangular>().enabled = enabled;
             var playerInputComponent = playerSettings.GetComponent<PlayerInputComponent>();
             playerInputComponent.InputIsFresh = enabled ? playerInputComponent.InputIsFresh : false;
             playerInputComponent.enabled = enabled;
