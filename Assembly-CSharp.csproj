@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Events\Payloads\ScorePayload.cs" />
     <Compile Include="Assets\Scripts\FixedDirection.cs" />
     <Compile Include="Assets\Scripts\GameModes.cs" />
+    <Compile Include="Assets\Scripts\GameModes\FreeForAll\FreeForAllGameModeManager.cs" />
     <Compile Include="Assets\Scripts\GameModes\FreeForAll\FreeForAllGameSettings.cs" />
     <Compile Include="Assets\Scripts\GameModes\GameModeSelectedSpawner.cs" />
     <Compile Include="Assets\Scripts\GameModes\SetTextToMatchameMode.cs" />
@@ -148,7 +149,6 @@
     <Compile Include="Assets\Scripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\RoundOverScripts\RoundOverManager.cs" />
     <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
-    <Compile Include="Assets\Scripts\Scoring\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreSummary\ScoreSummary.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreUIElement.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreUIManager.cs" />

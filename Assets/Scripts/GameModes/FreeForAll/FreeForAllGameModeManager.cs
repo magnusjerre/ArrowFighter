@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Jerre
 {
-    public class ScoreManager : MonoBehaviour, IAFEventListener
+    public class FreeForAllGameModeManager : MonoBehaviour, IAFEventListener
     {
         public int maxScore = 10;
         public CountDownTimer countDownTimerPrefab;

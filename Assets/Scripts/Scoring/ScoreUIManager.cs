@@ -7,7 +7,7 @@ namespace Jerre
 {
     public class ScoreUIManager : MonoBehaviour, IAFEventListener
     {
-        private ScoreManager scoreManager;
+        private FreeForAllGameModeManager scoreManager;
 
         public ScoreUIElement scoreUIElementPrefab;
 
@@ -15,7 +15,7 @@ namespace Jerre
 
         private void Awake()
         {
-            scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+            scoreManager = GameObject.FindObjectOfType<FreeForAllGameModeManager>();
             uiBarManager = GameObject.FindObjectOfType<MainUIBarManager>();
             AFEventManager.INSTANCE.AddListener(this);
         }

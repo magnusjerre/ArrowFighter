@@ -29,7 +29,7 @@ namespace Jerre.GameMode
                     }
                 case GameModes.FREE_FOR_ALL:
                     {
-                        var scoreMode = gameObject.AddComponent<ScoreManager>();
+                        var scoreMode = gameObject.AddComponent<FreeForAllGameModeManager>();
                         scoreMode.countDownTimerPrefab = countDownTimerPrefab;
                         scoreMode.TopBar = TopBar;
 

@@ -27,7 +27,7 @@ namespace Jerre.Scoring
         {
             if (totalScoreText.text == null)
             {
-                var scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+                var scoreManager = GameObject.FindObjectOfType<FreeForAllGameModeManager>();
                 if (scoreManager != null)
                 {
                     totalScoreText.text = scoreManager.maxScore + "";
