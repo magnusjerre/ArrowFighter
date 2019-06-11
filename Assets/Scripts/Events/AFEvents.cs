@@ -15,16 +15,6 @@ namespace Jerre.Events
             return new AFEvent(AFEventType.GAME_OVER, new GameOverPayload(winnerPlayerNumber, score, playerColor));
         }
 
-        public static AFEvent PlayerJoin(int playerNumber, Color playerColor)
-        {
-            return new AFEvent(AFEventType.PLAYER_JOIN, new PlayerJoinPayload(playerNumber, playerColor));
-        }
-
-        public static AFEvent PlayerLeave(int playerNumber)
-        {
-            return new AFEvent(AFEventType.PLAYER_LEAVE, new PlayerLeavePayload(playerNumber));
-        }
-
         public static AFEvent Score(int playerNumber, int playerScore, int maxScore)
         {
             return new AFEvent(AFEventType.SCORE, new ScorePayload(playerNumber, playerScore, maxScore));
@@ -37,7 +27,6 @@ namespace Jerre.Events
 
         public static AFEvent PlayerMenuBarUICreated(int playerNumber)
         {
-            Debug.Log("Dispatching PlayerMenuBarUICreated");
             return new AFEvent(AFEventType.PLAYER_MENU_BAR_UI_CREATED, new PlayerMenuBarUICreatedPayload(playerNumber));
         }
 
@@ -73,7 +62,6 @@ namespace Jerre.Events
 
         public static AFEvent PlayersAllCreated(List<PlayerSettings> players)
         {
-            Debug.Log("Dispatching PlayersAllCreated");
             return new AFEvent(AFEventType.PLAYERS_ALL_CREATED, new PlayersAllCreatedPayload(players));
         }
     }

@@ -31,12 +31,6 @@ namespace Jerre
                         spawnPointManager.GetNextSpawnPoint()
                     )
                 );
-                AFEventManager.INSTANCE.PostEvent(
-                    AFEvents.PlayerJoin(
-                        playerMenuSettings.Number, 
-                        playerMenuSettings.Color
-                    )
-                );
             }
             AFEventManager.INSTANCE.PostEvent(AFEvents.PlayersAllCreated(allPlayerSettings));
         }

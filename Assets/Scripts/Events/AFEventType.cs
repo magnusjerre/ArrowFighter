@@ -5,8 +5,6 @@
         KILLED,
         HEALTH_DAMAGE,
         GAME_OVER,
-        PLAYER_JOIN,
-        PLAYER_LEAVE,
         SCORE,
         BOMB_TRIGGER,
         PLAYER_MENU_BAR_UI_CREATED,
