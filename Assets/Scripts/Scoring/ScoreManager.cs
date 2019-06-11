@@ -44,13 +44,9 @@ namespace Jerre
                     {
                         return HandleKilledEvent((KilledEventPayload)afEvent.payload);
                     }
-                case AFEventType.PLAYER_JOIN:
+                case AFEventType.PLAYERS_ALL_CREATED:
                     {
-                        return HandlePlayerJoinEvent((PlayerJoinPayload)afEvent.payload);
-                    }
-                case AFEventType.PLAYER_LEAVE:
-                    {
-                        return HandlePlayerLeaveEvent((PlayerLeavePayload)afEvent.payload);
+                        return HandlePlayersAllCreatedEvent((PlayersAllCreatedPayload)afEvent.payload);
                     }
                 case AFEventType.GAME_START:
                     {
@@ -112,15 +108,12 @@ namespace Jerre
             AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningPlayer.PlayerNumber, playerScores[winningPlayer.PlayerNumber], winningPlayer.PlayerColor));
         }
 
-        private bool HandlePlayerJoinEvent(PlayerJoinPayload payload)
+        private bool HandlePlayersAllCreatedEvent(PlayersAllCreatedPayload payload)
         {
-            playerScores.Add(payload.playerNumber, 0);
-            return false;
-        }
-
-        private bool HandlePlayerLeaveEvent(PlayerLeavePayload payload)
-        {
-            playerScores.Remove(payload.playerNumber);
+            for (var i = 0; i < payload.AllPlayers.Count; i++)
+            {
+                playerScores.Add(payload.AllPlayers[i].playerNumber, 0);
+            }
             return false;
         }
 
