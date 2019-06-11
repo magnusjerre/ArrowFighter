@@ -24,6 +24,7 @@ namespace Jerre
         }
 
         private List<PlayerMenuSettings> ReadyPlayers;
+        public List<PlayerMenuSettings> GetPlayers() { return ReadyPlayers;  }
         public List<PlayerScore> Scores
         {
             get;

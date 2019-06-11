@@ -74,14 +74,11 @@
     <Compile Include="Assets\Scripts\Events\Payloads\HealthDamagePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\KilledEventPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PauseMenuEnablePayload.cs" />
-    <Compile Include="Assets\Scripts\Events\Payloads\PlayerJoinPayload.cs" />
-    <Compile Include="Assets\Scripts\Events\Payloads\PlayerLeavePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayerMenuBarUICreatedPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\PlayersAllCreatedPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\RespawnPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\RoundOverPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\ScorePayload.cs" />
-    <Compile Include="Assets\Scripts\Events\PlayerJoinLeaveHandlerHelper.cs" />
     <Compile Include="Assets\Scripts\FixedDirection.cs" />
     <Compile Include="Assets\Scripts\GameModes.cs" />
     <Compile Include="Assets\Scripts\GameModes\FreeForAll\FreeForAllGameSettings.cs" />

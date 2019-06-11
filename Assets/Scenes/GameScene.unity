@@ -533,7 +533,7 @@ PrefabInstance:
     - target: {fileID: 2412616263911131949, guid: 2f0af682aa60b8749aa33d034a6d7564,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1053
+      value: -802
       objectReference: {fileID: 0}
     - target: {fileID: 2412616263911131949, guid: 2f0af682aa60b8749aa33d034a6d7564,
         type: 3}
@@ -543,7 +543,7 @@ PrefabInstance:
     - target: {fileID: 2412616263911131949, guid: 2f0af682aa60b8749aa33d034a6d7564,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -234
+      value: -82
       objectReference: {fileID: 0}
     - target: {fileID: 2412616263911131949, guid: 2f0af682aa60b8749aa33d034a6d7564,
         type: 3}
@@ -807,7 +807,7 @@ MonoBehaviour:
   MeshRenderer: {fileID: 332145582}
   IsStationary: 1
   SurfaceBounceFactor: 2
-  Layer: 4
+  jLayer: 4
 --- !u!23 &332145582
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1615,7 +1615,7 @@ MonoBehaviour:
   MeshRenderer: {fileID: 854666460}
   IsStationary: 1
   SurfaceBounceFactor: 2
-  Layer: 4
+  jLayer: 4
 --- !u!224 &938728855 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2654991024080976023, guid: 86fa3fab47a2926419fb387d5fedbda3,
@@ -1643,7 +1643,7 @@ PrefabInstance:
     - target: {fileID: 2412616263911131949, guid: 2f0af682aa60b8749aa33d034a6d7564,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1046
+      value: -922
       objectReference: {fileID: 0}
     - target: {fileID: 2412616263911131949, guid: 2f0af682aa60b8749aa33d034a6d7564,
         type: 3}
@@ -1653,7 +1653,7 @@ PrefabInstance:
     - target: {fileID: 2412616263911131949, guid: 2f0af682aa60b8749aa33d034a6d7564,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 480
+      value: 466
       objectReference: {fileID: 0}
     - target: {fileID: 2412616263911131949, guid: 2f0af682aa60b8749aa33d034a6d7564,
         type: 3}
@@ -2727,7 +2727,7 @@ MonoBehaviour:
   MeshRenderer: {fileID: 1511339849}
   IsStationary: 1
   SurfaceBounceFactor: 3
-  Layer: 4
+  jLayer: 4
 --- !u!23 &1511339849
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3462,7 +3462,7 @@ MonoBehaviour:
   MeshRenderer: {fileID: 1966261858}
   IsStationary: 1
   SurfaceBounceFactor: 3
-  Layer: 4
+  jLayer: 4
 --- !u!23 &1966261858
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3547,7 +3547,7 @@ PrefabInstance:
     - target: {fileID: 2412616263911131949, guid: 2f0af682aa60b8749aa33d034a6d7564,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -116
+      value: -84
       objectReference: {fileID: 0}
     - target: {fileID: 2412616263911131949, guid: 2f0af682aa60b8749aa33d034a6d7564,
         type: 3}

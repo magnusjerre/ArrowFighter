@@ -1,13 +1,11 @@
-﻿using UnityEngine;
-using Jerre.Events;
+﻿using Jerre.Events;
 using System.Collections.Generic;
-using Jerre.Utils;
+using UnityEngine;
 
 namespace Jerre.UI
 {
     public class MainUIBarManager : MonoBehaviour, IAFEventListener
     {
-        private PlayerJoinLeaveHandlerHelper joinLeaveHandler;
         public RectTransform entireMenuBarUIArea;
         public UIElementContainer uiElementContainerPrefab;
 
@@ -17,42 +15,6 @@ namespace Jerre.UI
         {
             AFEventManager.INSTANCE.AddListener(this);
             playerToRect = new SortedDictionary<int, UIElementContainer>();
-            joinLeaveHandler = new PlayerJoinLeaveHandlerHelper(
-                join => HandleJoin(join),
-                leave => HandleLeave(leave)
-            );
-        }
-        
-        void Start()
-        {
-            
-        }
-
-        private void HandleJoin(PlayerJoinPayload joinPayload)
-        {
-            var newContainer = Instantiate(uiElementContainerPrefab, entireMenuBarUIArea);
-            newContainer.SetBackgroundColor(PlayerFetcher.FindPlayerByPlayerNumber(joinPayload.playerNumber).color);
-            playerToRect.Add(joinPayload.playerNumber, newContainer);
-            UpdateSizes();
-            joinLeaveHandler.PostEvent(AFEvents.PlayerMenuBarUICreated(joinPayload.playerNumber));
-        }
-
-        private void HandleLeave(PlayerLeavePayload leavePayload)
-        {
-            var containerToRemove = playerToRect[leavePayload.playerNumber];
-            playerToRect.Remove(leavePayload.playerNumber);
-            Destroy(containerToRemove.gameObject);
-            UpdateSizes();
-        }
-
-        private void UpdateSizes()
-        {
-            var counter = 0;
-            var width = 1f / playerToRect.Count;
-            foreach (var entry in playerToRect)
-            {
-                entry.Value.SetSize(counter * width, ++counter * width);
-            }
         }
 
         public UIElementContainer GetRectTransformHolderForPlayerNumber(int playerNumber)
@@ -62,7 +24,26 @@ namespace Jerre.UI
 
         public bool HandleEvent(AFEvent afEvent)
         {
-            return joinLeaveHandler.HandleEvent(afEvent);
+            if (afEvent.type == AFEventType.PLAYERS_ALL_CREATED)
+            {
+                var payload = (PlayersAllCreatedPayload)afEvent.payload;
+                AddUIForAllPlayers(payload.AllPlayers);
+            }
+            return false;
+        }
+
+        private void AddUIForAllPlayers(List<PlayerSettings> players)
+        {
+            var width = 1f / players.Count;
+            for (var i = 0; i < players.Count; i++)
+            {
+                var player = players[i];
+                var newContainer = Instantiate(uiElementContainerPrefab, entireMenuBarUIArea);
+                newContainer.SetBackgroundColor(player.color);
+                newContainer.SetSize(i * width, (i + 1) * width);
+                playerToRect.Add(player.playerNumber, newContainer);
+                AFEventManager.INSTANCE.PostEvent(AFEvents.PlayerMenuBarUICreated(player.playerNumber));
+            }
         }
     }
 }
