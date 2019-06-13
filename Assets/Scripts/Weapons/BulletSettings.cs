@@ -20,7 +20,7 @@ namespace Jerre
         // Start is called before the first frame update
         void Start()
         {
-            GetComponentInChildren<SpriteRenderer>().color = color;
+            GetComponentInChildren<MeshRenderer>().material.color = color;
         }
     }
 }

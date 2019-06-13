@@ -22,7 +22,7 @@ namespace Jerre.JPhysics
         void LateUpdate()
         {
             var allPhysicsBodies = GameObject.FindObjectsOfType<PhysicsbodyRectangular>();
-            if (allPhysicsBodies.Length < 2)
+            if (allPhysicsBodies.Length < 1)
             {
                 return;
             }
@@ -31,9 +31,11 @@ namespace Jerre.JPhysics
             var allPBLength = allPhysicsBodies.Length;
             for (var i = 0; i < allPBLength; i++)
             {
-                if (allPhysicsBodies[i].enabled)
-                {
-                    bodies.Add(allPhysicsBodies[i]);
+                var body = allPhysicsBodies[i];
+                if (body.enabled)
+                {   // Update physics body, and add it to the list
+                    body.jMeshFrameInstance = JMeshFrameInstance.FromMeshAndTransform(body.jMeshDefintion, body.transform);
+                    bodies.Add(body);
                 }
             }
 
@@ -129,8 +131,8 @@ namespace Jerre.JPhysics
 
                     if (physicsObjA.IsStationary && physicsObjB.IsStationary) continue;
 
-                    var boundsA = physicsObjA.MeshRenderer.bounds;
-                    var boundsB = physicsObjB.MeshRenderer.bounds;
+                    var boundsA = physicsObjA.jMeshFrameInstance.Aabb;
+                    var boundsB = physicsObjB.jMeshFrameInstance.Aabb;
 
                     var physicsResult = PhysicsHelper.CalculateObjectSeparation(boundsA, boundsB);
                     if (!physicsResult.CanPush) continue;

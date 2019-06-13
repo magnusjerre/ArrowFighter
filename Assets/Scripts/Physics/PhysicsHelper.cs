@@ -5,6 +5,26 @@ namespace Jerre.JPhysics
 
     public class PhysicsHelper : MonoBehaviour
     {
+        public static bool IsPointInsideMesh(Vector3 point, JMeshDefintion meshDefinition , JMeshFrameInstance meshFrameInstance)
+        {   // Using the racast method, count the intersection with edges. Always raycast to the left.
+            var edgesCrossed = 0;
+            for (var i = 1; i < meshDefinition.EdgeIndices.Length; i++)
+            {
+                var pointA = meshFrameInstance.VerticesTransformed[meshDefinition.EdgeIndices[i - 1]];
+                var pointB = meshFrameInstance.VerticesTransformed[meshDefinition.EdgeIndices[i]];
+
+                if ((pointA.z <= point.z && point.z <= pointB.z) || (pointB.z <= point.z && point.z <= pointA.z))
+                {   // Can cross vertically
+                    if (pointA.x <= point.x || pointB.x <= point.x)
+                    {   // The edge starts or ends to the left of our poin, meaning we cross the edge with our raycast
+                        edgesCrossed++;
+                    }
+                }
+            }
+
+            return edgesCrossed % 2 == 0;
+        }
+        
         public static bool IsPointInsideAABB(Vector3 point, Bounds bound, bool ignoreY)
         {
             bool yAxis = true;
