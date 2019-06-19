@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{3675D952-0309-B571-6CA0-112243DFF20F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareOffAssemblyDefinition", "SquareOffAssemblyDefinition.csproj", "{36145B21-BE5F-E6B1-6358-61E6A7CC03A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests.csproj", "{73AD2F1D-DFF4-57F8-9568-873263F0D53E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3675D952-0309-B571-6CA0-112243DFF20F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3675D952-0309-B571-6CA0-112243DFF20F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3675D952-0309-B571-6CA0-112243DFF20F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3675D952-0309-B571-6CA0-112243DFF20F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36145B21-BE5F-E6B1-6358-61E6A7CC03A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36145B21-BE5F-E6B1-6358-61E6A7CC03A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36145B21-BE5F-E6B1-6358-61E6A7CC03A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36145B21-BE5F-E6B1-6358-61E6A7CC03A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73AD2F1D-DFF4-57F8-9568-873263F0D53E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73AD2F1D-DFF4-57F8-9568-873263F0D53E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73AD2F1D-DFF4-57F8-9568-873263F0D53E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73AD2F1D-DFF4-57F8-9568-873263F0D53E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -62,7 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Tests\NewTestScript.cs" />
+    <Compile Include="Assets\Scripts\Tests\JMeshPhysicsMeshes.cs" />
+    <Compile Include="Assets\Scripts\Tests\JMeshTest.cs" />
+    <Compile Include="Assets\Scripts\Tests\TestMethods.cs" />
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
@@ -635,9 +637,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="SquareOffAssemblySettings.csproj">
-      <Project>{61083CBE-C48B-893B-DA45-95AE531B871B}</Project>
-      <Name>SquareOffAssemblySettings</Name>
+    <ProjectReference Include="SquareOffAssemblyDefinition.csproj">
+      <Project>{36145B21-BE5F-E6B1-6358-61E6A7CC03A6}</Project>
+      <Name>SquareOffAssemblyDefinition</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
