@@ -7,16 +7,47 @@ namespace Tests
     {
         public const float VECTOR_DIFF = 0.00001f;
 
-        public static void AreEqualIsh(Vector3 expected, Vector3 actual, float maxDiff)
+        public static void AreEqualIsh(Vector3 expected, Vector3 actual, float maxDiff, string errorPrefix)
         {
-            Assert.IsTrue(Mathf.Abs(expected.x - actual.x) < maxDiff);
-            Assert.IsTrue(Mathf.Abs(expected.y - actual.y) < maxDiff);
-            Assert.IsTrue(Mathf.Abs(expected.z - actual.z) < maxDiff);
+            var failed = false;
+            string errorString = errorPrefix != null ? errorPrefix + "\n" : "";
+            if (Mathf.Abs(expected.x - actual.x) > maxDiff)
+            {
+                failed = true;
+                errorString += "exp.x: " + expected.x + ", act.x: " + actual.x + "\n";
+            }
+            if (Mathf.Abs(expected.y - actual.y) > maxDiff)
+            {
+                failed = true;
+                errorString += "exp.y: " + expected.y + ", act.y: " + actual.y + "\n";
+            }
+            if (Mathf.Abs(expected.z - actual.z) > maxDiff)
+            {
+                failed = true;
+                errorString += "exp.z: " + expected.z + ", act.z: " + actual.z + "\n";
+            }
+            if (failed)
+            {
+                throw new AssertionException(errorString);
+            }
         }
 
         public static void AreEqualIsh(Vector3 expected, Vector3 actual)
         {
-            AreEqualIsh(expected, actual, VECTOR_DIFF);
+            AreEqualIsh(expected, actual, VECTOR_DIFF, "");
+        }
+
+        public static void AreEqualIsh(Vector3 expected, Vector3 actual, string errorPrefix)
+        {
+            AreEqualIsh(expected, actual, VECTOR_DIFF, errorPrefix);
+        }
+
+        public static void AreEqualIsh(float expected, float actual, float maxDiff)
+        {
+            if (Mathf.Abs(expected - actual) > maxDiff)
+            {
+                throw new AssertionException("Expected: " + expected + ", actual: " + actual);
+            }
         }
     }
 }

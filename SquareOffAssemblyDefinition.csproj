@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\Managers\PlayerPositionScreenBoundEnforcerManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
+    <Compile Include="Assets\Scripts\MatrixPrinter.cs" />
     <Compile Include="Assets\Scripts\PauseMenu\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Physics\CollisionMap.cs" />
     <Compile Include="Assets\Scripts\Physics\JCollision.cs" />

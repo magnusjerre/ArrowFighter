@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Jerre.JPhysics;
+using UnityEngine;
 
 namespace Tests
 {
@@ -19,6 +20,7 @@ namespace Tests
             new Vector3(1, 0, 0),
             new Vector3(-Mathf.Cos(45f), 0, Mathf.Cos(45f)).normalized
         };
+        public static readonly JMesh triangleMeshIdentity = JMesh.CalculateJMesh(triangle, triangleTriangles);
 
         public static readonly Vector3[] square = new Vector3[] {
                 new Vector3(0, 0, 0),
@@ -43,6 +45,7 @@ namespace Tests
             new Vector3(0, 0, 1),
             new Vector3(-1, 0, 0)
         };
+        public static readonly JMesh squareMeshIdentity = JMesh.CalculateJMesh(square, squareTriangles);
 
         public static readonly Vector3[] squareFive = new Vector3[] {
                 new Vector3(0, 0, 0),

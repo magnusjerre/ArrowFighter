@@ -24,7 +24,33 @@ namespace Jerre.JPhysics
 
             return edgesCrossed % 2 == 0;
         }
-        
+
+        public static float[] FindMinimumPushDistancesForPointInsidePolygon(Vector3 point, JMeshFrameInstance meshFrameInstance)
+        {
+            var vertices = meshFrameInstance.VerticesTransformed;
+            var output = new float[100];  //TODO: Fix this length
+            for (var i = 0; i < vertices.Length - 1; i++)
+            {
+                var v1 = vertices[i];
+                var v2 = vertices[i + 1];
+                var direction = v2 - v1;
+                var normal = new Vector3(direction.z, 0, -direction.x); // Maybe this should be inversed in unity?
+                var dirFromPointToV1 = v1 - point;
+                var projection = Vector3.Dot(dirFromPointToV1, normal.normalized);
+                output[i] = projection;
+            }
+            {   // Need to handle the last edge
+                var v1 = vertices[vertices.Length - 1];
+                var v2 = vertices[0];
+                var direction = v2 - v1;
+                var normal = new Vector3(direction.z, 0, -direction.x); // Maybe this should be inversed in unity?
+                var dirFromPointToV1 = v1 - point;
+                var projection = Vector3.Dot(dirFromPointToV1, normal.normalized);
+            }
+            return output;
+        }
+
+
         public static bool IsPointInsideAABB(Vector3 point, Bounds bound, bool ignoreY)
         {
             bool yAxis = true;

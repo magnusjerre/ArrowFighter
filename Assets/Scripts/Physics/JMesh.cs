@@ -102,9 +102,16 @@ namespace Jerre.JPhysics
                 outputNormals[i] = new Vector3(edgeDirection.z * normalMultiplier.x, edgeDirection.y * normalMultiplier.y, edgeDirection.x * normalMultiplier.z);
             }
             var endEdge = (edgePointsSorted[0] - edgePointsSorted[end]).normalized;
-            outputNormals[end] = new Vector3(endEdge.z * normalMultiplier.x, endEdge.y * normalMultiplier.y, endEdge.x * normalMultiplier.z);
+            outputNormals[end] = new Vector3(endEdge.z * normalMultiplier.x, endEdge.y * normalMultiplier.y, endEdge.x * normalMultiplier.z).normalized;
 
             return outputNormals;
+        }
+
+        public static JMesh CalculateJMesh(Vector3[] allVertices, int[] triangles)
+        {
+            var edgeVertices = ExtractEdgeVertices(allVertices, triangles);
+            var outwardNormals = CalculateOutwardNormals(edgeVertices);
+            return new JMesh(edgeVertices, outwardNormals);
         }
 
         struct EdgeV2 : IEquatable<EdgeV2>
