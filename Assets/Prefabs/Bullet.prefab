@@ -145,6 +145,7 @@ MonoBehaviour:
   SurfaceBounceFactor: 1
   jLayer: 2
   DebugMesh: 1
+  DebugAABB: 0
 --- !u!114 &8468643957836589700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4647767403863908397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6d27e1d51ee9b04ea04607d843f6a95, type: 3}
+  m_Script: {fileID: 11500000, guid: 3318fabacd776564cb88b9ea09ad823e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5100744275307756462

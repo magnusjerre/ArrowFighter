@@ -1697,11 +1697,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043987871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8ca0df0c01f0a54dbfd6f61caebd266, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e70af6f77f672f41834ef2d2d78d95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Debugbounds: 0
-  DebugView: {fileID: 1649011038}
+  DebugView: {fileID: 1160618140}
   themesh: {fileID: 0}
 --- !u!114 &1043987877
 MonoBehaviour:
@@ -3134,8 +3134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ac515316fda2548ba7c561460759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeshRenderer: {fileID: 0}
-  meshFilter: {fileID: 0}
+  MeshRenderer: {fileID: 1817646640}
+  meshFilter: {fileID: 1817646641}
   mesh: {fileID: 0}
   IsStationary: 1
   SurfaceBounceFactor: 2
@@ -3227,12 +3227,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1853461663}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf74875b35897dc469889b8cf2b652fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7172ded1f20966a49ab92185f56374a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EdgePrfeab: {fileID: 564041050467375054, guid: ea8093b9ed48ff541bd1a68a9f17ead7,
     type: 3}
-  LineRenderersParent: {fileID: 1853461664}
+  LineRenderersParent: {fileID: 1160618140}
 --- !u!1 &1901364203
 GameObject:
   m_ObjectHideFlags: 0

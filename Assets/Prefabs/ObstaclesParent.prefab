@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ac515316fda2548ba7c561460759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeshRenderer: {fileID: 0}
-  meshFilter: {fileID: 0}
+  MeshRenderer: {fileID: 3158315840848053950}
+  meshFilter: {fileID: 3158315840848053951}
   mesh: {fileID: 0}
   IsStationary: 1
   SurfaceBounceFactor: 2
@@ -222,8 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ac515316fda2548ba7c561460759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeshRenderer: {fileID: 0}
-  meshFilter: {fileID: 0}
+  MeshRenderer: {fileID: 3158315841397836236}
+  meshFilter: {fileID: 3158315841397836237}
   mesh: {fileID: 0}
   IsStationary: 1
   SurfaceBounceFactor: 2
@@ -320,8 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ac515316fda2548ba7c561460759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeshRenderer: {fileID: 0}
-  meshFilter: {fileID: 0}
+  MeshRenderer: {fileID: 3158315841850649600}
+  meshFilter: {fileID: 3158315841850649601}
   mesh: {fileID: 0}
   IsStationary: 1
   SurfaceBounceFactor: 3
@@ -418,8 +418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ac515316fda2548ba7c561460759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeshRenderer: {fileID: 0}
-  meshFilter: {fileID: 0}
+  MeshRenderer: {fileID: 3158315842603113771}
+  meshFilter: {fileID: 3158315842603113768}
   mesh: {fileID: 0}
   IsStationary: 1
   SurfaceBounceFactor: 3

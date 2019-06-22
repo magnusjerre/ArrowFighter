@@ -3,7 +3,7 @@
 namespace Jerre.JPhysics
 {
 
-    public class PhysicsHelper : MonoBehaviour
+    public class PhysicsHelper
     {
         public static bool Intersect(Bounds a, Bounds b)
         {
