@@ -49,5 +49,21 @@ namespace Tests
                 throw new AssertionException("Expected: " + expected + ", actual: " + actual);
             }
         }
+
+        public static void AreEqualIsh(float[] expected, float[] actual, float maxDiff)
+        {
+            if (expected.Length != actual.Length)
+            {
+                throw new AssertionException("Different array lengths");
+            }
+
+            for (var i = 0; i < expected.Length; i++) {
+
+                if (Mathf.Abs(expected[i] - actual[i]) > maxDiff)
+                {
+                    throw new AssertionException("expected[" + i + "]: " + expected[i] + ", actual[" + i + "]: " + actual[i] + ". Maxdiff: " + maxDiff);
+                }
+            }
+        }
     }
 }

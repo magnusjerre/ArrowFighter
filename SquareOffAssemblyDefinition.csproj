@@ -134,6 +134,7 @@
     <Compile Include="Assets\Scripts\Physics\PhysicsbodyRectangular.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsHelper.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsManager.cs" />
+    <Compile Include="Assets\Scripts\Physics\Push.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBombWeapon.cs" />

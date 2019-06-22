@@ -180,22 +180,22 @@ namespace Jerre.JPhysics
             }
         }
 
-        public struct Push
-        {
-            public Vector3 Direction;
-            public float Magnitude;
+        //public struct Push
+        //{
+        //public Vector3 Direction;
+        //public float Magnitude;
 
-            public Push(Vector3 pushVector, float pushMagnitude)
-            {
-                Direction = pushVector;
-                Magnitude = pushMagnitude;
-            }
+        //    public Push(Vector3 pushVector, float pushMagnitude)
+        //    {
+        //        Direction = pushVector;
+        //        Magnitude = pushMagnitude;
+        //    }
 
-            public override string ToString()
-            {
-                return "{direction: " + logVector3(Direction) + ", magnitude: " + Magnitude + "}";
-            }
-        }
+        //    public override string ToString()
+        //    {
+        //        return "{direction: " + logVector3(Direction) + ", magnitude: " + Magnitude + "}";
+        //    }
+        //}
 
         public struct PushResult
         {

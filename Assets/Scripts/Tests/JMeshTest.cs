@@ -1,5 +1,6 @@
 ﻿using Jerre.JPhysics;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace Tests
 {
@@ -49,6 +50,7 @@ namespace Tests
         {
             var vertices = JMesh.ExtractEdgeVertices(JMeshPhysicsMeshes.triangle, JMeshPhysicsMeshes.triangleTriangles);
             var normals = JMesh.CalculateOutwardNormals(vertices);
+            Assert.AreEqual(3, normals.Length);
             TestMethods.AreEqualIsh(JMeshPhysicsMeshes.triangleNormals[0], normals[0]);
             TestMethods.AreEqualIsh(JMeshPhysicsMeshes.triangleNormals[1], normals[1]);
             TestMethods.AreEqualIsh(JMeshPhysicsMeshes.triangleNormals[2], normals[2]);
@@ -76,5 +78,12 @@ namespace Tests
             TestMethods.AreEqualIsh(JMeshPhysicsMeshes.squareFiveNormals[3], normals[3]);
         }
 
+        [Test]
+        public void Calculate_AABB()
+        {
+            var bounds = JMesh.CalculateBounds(JMeshPhysicsMeshes.triangle);
+            TestMethods.AreEqualIsh(bounds.center, new Vector3(0.5f, 0, 0.5f));
+            TestMethods.AreEqualIsh(bounds.size, new Vector3(1f, 0, 1f));
+        }
     }
 }

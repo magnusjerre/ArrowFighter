@@ -1,5 +1,6 @@
 ﻿using Jerre.JPhysics;
 using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 using static Jerre.JPhysics.JMeshCollisionUtil;
 
@@ -143,6 +144,84 @@ namespace Tests
         {
             var slope = new Slope(1f, 0f);
             Assert.IsFalse(slope.IsPointOnLineInXZPlane(new Vector3(2f, 0, 1f), POINT_MAX_DIFF));
+        }
+
+        [Test]
+        public void FindMaxesForEachValueTest()
+        {
+            var values = new List<float[]>();
+            values.Add(new float[] { 1, 2, 3, 4 });
+            values.Add(new float[] { 5, 1, 7, 0 });
+            values.Add(new float[] { 3, 8, 2, 4 });
+
+            var result = JMeshCollisionUtil.FindMaxesForEachValue(values);
+            Assert.AreEqual(5, result[0]);
+            Assert.AreEqual(8, result[1]);
+            Assert.AreEqual(7, result[2]);
+            Assert.AreEqual(4, result[3]);
+        }
+
+        [Test]
+        public void IndexOfSmallestValueTest()
+        {
+            Assert.AreEqual(2, JMeshCollisionUtil.IndexOfSmallestValue(new float[] { 5, 8, 2, 3, 4}));
+        }
+
+        [Test]
+        public void CaclulatePushLenghtsForPoint_inside_triangle()
+        {
+            TestMethods.AreEqualIsh(
+                new float[] { 0.25f, 0.25f, Mathf.Sqrt(0.25f*0.25f + 0.25f*0.25f) },
+                JMeshCollisionUtil.CalculatePushLengthsForPoint(JMeshPhysicsMeshes.triangleMeshIdentity, new Vector3(0.75f, 0, 0.25f)), 
+                0.0001f
+            );
+            TestMethods.AreEqualIsh(
+                new float[] { 0.25f, 0.5f, Mathf.Sqrt(0.25f * 0.25f / 2) },
+                JMeshCollisionUtil.CalculatePushLengthsForPoint(JMeshPhysicsMeshes.triangleMeshIdentity, new Vector3(0.5f, 0, 0.25f)), 
+                0.0001f
+            );
+        }
+
+        [Test]
+        public void FindMinimumPushFromAToB_for_triangle_and_square()
+        {
+            var triangle = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.Translate(new Vector3(0.5f, 0, 0.25f)));
+            var square = JMeshPhysicsMeshes.squareMeshIdentity;
+
+            var push = FindMinimumPushFromAToB(square, triangle.TransformedMesh);
+            TestMethods.AreEqualIsh(0.25f, push.Magnitude, POINT_MAX_DIFF);
+            TestMethods.AreEqualIsh(new Vector3(0, 0, -1), push.Direction);
+        }
+
+        [Test]
+        public void FindMinimumPushFromATob_for_rotated_triangle_with_multiple_points_inside_square()
+        {
+            var triangle = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.TRS(
+                new Vector3(0.5f, 0, 0.75f),
+                Quaternion.Euler(Vector3.up * 45),
+                Vector3.one * 0.5f
+            ));
+            var square = JMeshPhysicsMeshes.squareMeshIdentity;
+
+            var push = FindMinimumPushFromAToB(square, triangle.TransformedMesh);
+            TestMethods.AreEqualIsh(0.5f, push.Magnitude, POINT_MAX_DIFF);
+            TestMethods.AreEqualIsh(new Vector3(1, 0, 0), push.Direction);
+        }
+
+        [Test]
+        public void FindMinimumPushFromATob_for_rotated_square_with_multiple_points_inside_square()
+        {
+            var size = 0.5f;
+            var triangle = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.squareMeshIdentity, Matrix4x4.TRS(
+                new Vector3(0, 0, 0.5f),
+                Quaternion.Euler(Vector3.up * 45),
+                Vector3.one * size
+            ));
+            var square = JMeshPhysicsMeshes.squareMeshIdentity;
+
+            var push = FindMinimumPushFromAToB(square, triangle.TransformedMesh);
+            TestMethods.AreEqualIsh(Mathf.Sqrt(size * size + size * size), push.Magnitude, POINT_MAX_DIFF);
+            TestMethods.AreEqualIsh(new Vector3(-1, 0, 0), push.Direction);
         }
     }
 }

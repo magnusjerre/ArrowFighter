@@ -8,11 +8,48 @@ namespace Jerre.JPhysics
     {
         public Vector3[] EdgeVertices;
         public Vector3[] EdgeOutwardNormals;
+        public Bounds AABB;
 
         public JMesh(Vector3[] edgeVertices, Vector3[] edgeOutwardNormals)
         {
             EdgeVertices = edgeVertices;
             EdgeOutwardNormals = edgeOutwardNormals;
+            AABB = CalculateBounds(edgeVertices);
+        }
+
+        public static Bounds CalculateBounds(Vector3[] vertices)
+        {
+            var minX = float.MaxValue;
+            var minZ = float.MaxValue;
+            var maxX = float.MinValue;
+            var maxZ = float.MinValue;
+
+            foreach (Vector3 vertex in vertices)
+            {
+                var x = vertex.x;
+                var z = vertex.z;
+                if (x < minX)
+                {
+                    minX = x;
+                } else if (x > maxX)
+                {
+                    maxX = x;
+                }
+
+                if (z < minZ)
+                {
+                    minZ = z;
+                } else if (z > maxZ)
+                {
+                    maxZ = z;
+                }
+            }
+
+            var width = maxX - minX;
+            var height = maxZ - minZ;
+            return new Bounds(
+                new Vector3(minX + width / 2, 0, minZ + height / 2), 
+                new Vector3(width, 0, height));
         }
 
         static void AddEdgeOrMoveToInnerEdges(EdgeV2 edge, List<EdgeV2> edges, List<EdgeV2> innerEdges)
