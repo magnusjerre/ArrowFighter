@@ -94,15 +94,13 @@ namespace Jerre.JPhysics
 
             Vector3 normalMultiplier = normalAngle > normalInvAngle ? normal : normalInv;
 
-            var outputNormals = new Vector3[edgePointsSorted.Length];
-            var end = edgePointsSorted.Length - 1;
+            var outputNormals = new Vector3[edgePointsSorted.Length - 1];
+            var end = outputNormals.Length;
             for (var i = 0; i < end; i++)
             {
                 var edgeDirection = (edgePointsSorted[i + 1] - edgePointsSorted[i]).normalized;
                 outputNormals[i] = new Vector3(edgeDirection.z * normalMultiplier.x, edgeDirection.y * normalMultiplier.y, edgeDirection.x * normalMultiplier.z);
             }
-            var endEdge = (edgePointsSorted[0] - edgePointsSorted[end]).normalized;
-            outputNormals[end] = new Vector3(endEdge.z * normalMultiplier.x, endEdge.y * normalMultiplier.y, endEdge.x * normalMultiplier.z).normalized;
 
             return outputNormals;
         }
