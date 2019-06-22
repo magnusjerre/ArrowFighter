@@ -128,7 +128,6 @@
     <Compile Include="Assets\Scripts\Physics\JMesh.cs" />
     <Compile Include="Assets\Scripts\Physics\JMeshCollisionUtil.cs" />
     <Compile Include="Assets\Scripts\Physics\JMeshDefinition.cs" />
-    <Compile Include="Assets\Scripts\Physics\JMeshFrameInstance.cs" />
     <Compile Include="Assets\Scripts\Physics\MeshDebuggerManager.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsbodyRectangular.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsHelper.cs" />

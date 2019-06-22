@@ -30,32 +30,32 @@ namespace Tests
         public void Point_should_be_inside_the_transformed_square_mesh()
         {
             var mesh = JMeshPhysicsMeshes.squareMeshIdentity;
-            var meshFrameInstance = JMeshFrameInstance.FromMeshAndTransform(mesh, Matrix4x4.TRS(
+            var meshFrameInstance = JMesh.FromMeshAndTransform(mesh, Matrix4x4.TRS(
                 new Vector3(1, 0, 1),
                 Quaternion.Euler(Vector3.up * 45),
                 Vector3.one * 2
             ));
 
-            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(new Vector3(1.001f, 0, 1f), meshFrameInstance.TransformedMesh));
-            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(new Vector3(1f, 0, 1f), meshFrameInstance.TransformedMesh));
+            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(new Vector3(1.001f, 0, 1f), meshFrameInstance));
+            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(new Vector3(1f, 0, 1f), meshFrameInstance));
         }
 
         [Test]
         public void Point_shold_be_inside_mesh_when_point_is_exactly_on_a_mesh_edge_vertex()
         {
             var mesh = JMeshPhysicsMeshes.squareMeshIdentity;
-            var meshFrameInstance = JMeshFrameInstance.FromMeshAndTransform(mesh, Matrix4x4.TRS(
+            var meshFrameInstance = JMesh.FromMeshAndTransform(mesh, Matrix4x4.TRS(
                 new Vector3(1, 0, 1),
                 Quaternion.Euler(Vector3.up * 45),
                 Vector3.one * 2
             ));
 
-            var instanceMesh = meshFrameInstance.TransformedMesh;
+            var instanceMesh = meshFrameInstance;
 
-            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(instanceMesh.EdgeVertices[0], meshFrameInstance.TransformedMesh));
-            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(instanceMesh.EdgeVertices[1], meshFrameInstance.TransformedMesh));
-            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(instanceMesh.EdgeVertices[2], meshFrameInstance.TransformedMesh));
-            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(instanceMesh.EdgeVertices[3], meshFrameInstance.TransformedMesh));
+            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(instanceMesh.EdgeVertices[0], meshFrameInstance));
+            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(instanceMesh.EdgeVertices[1], meshFrameInstance));
+            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(instanceMesh.EdgeVertices[2], meshFrameInstance));
+            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(instanceMesh.EdgeVertices[3], meshFrameInstance));
         }
 
         [Test]
@@ -186,10 +186,10 @@ namespace Tests
         [Test]
         public void FindMinimumPushFromAToB_for_triangle_and_square()
         {
-            var triangle = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.Translate(new Vector3(0.5f, 0, 0.25f)));
+            var triangle = JMesh.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.Translate(new Vector3(0.5f, 0, 0.25f)));
             var square = JMeshPhysicsMeshes.squareMeshIdentity;
 
-            var push = FindMinimumPushFromAToB(square, triangle.TransformedMesh);
+            var push = FindMinimumPushFromAToB(square, triangle);
             TestMethods.AreEqualIsh(0.25f, push.Magnitude, POINT_MAX_DIFF);
             TestMethods.AreEqualIsh(new Vector3(0, 0, -1), push.Direction);
         }
@@ -197,14 +197,14 @@ namespace Tests
         [Test]
         public void FindMinimumPushFromATob_for_rotated_triangle_with_multiple_points_inside_square()
         {
-            var triangle = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.TRS(
+            var triangle = JMesh.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.TRS(
                 new Vector3(0.5f, 0, 0.75f),
                 Quaternion.Euler(Vector3.up * 45),
                 Vector3.one * 0.5f
             ));
             var square = JMeshPhysicsMeshes.squareMeshIdentity;
 
-            var push = FindMinimumPushFromAToB(square, triangle.TransformedMesh);
+            var push = FindMinimumPushFromAToB(square, triangle);
             TestMethods.AreEqualIsh(0.5f, push.Magnitude, POINT_MAX_DIFF);
             TestMethods.AreEqualIsh(new Vector3(1, 0, 0), push.Direction);
         }
@@ -213,14 +213,14 @@ namespace Tests
         public void FindMinimumPushFromATob_for_rotated_square_with_multiple_points_inside_square()
         {
             var size = 0.5f;
-            var triangle = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.squareMeshIdentity, Matrix4x4.TRS(
+            var triangle = JMesh.FromMeshAndTransform(JMeshPhysicsMeshes.squareMeshIdentity, Matrix4x4.TRS(
                 new Vector3(0, 0, 0.5f),
                 Quaternion.Euler(Vector3.up * 45),
                 Vector3.one * size
             ));
             var square = JMeshPhysicsMeshes.squareMeshIdentity;
 
-            var push = FindMinimumPushFromAToB(square, triangle.TransformedMesh);
+            var push = FindMinimumPushFromAToB(square, triangle);
             TestMethods.AreEqualIsh(Mathf.Sqrt(size * size + size * size), push.Magnitude, POINT_MAX_DIFF);
             TestMethods.AreEqualIsh(new Vector3(-1, 0, 0), push.Direction);
         }
@@ -228,24 +228,24 @@ namespace Tests
         [Test]
         public void FindMinimumPushFromAToB_for_small_square_inside_triangle()
         {
-            var triangle = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.Scale(new Vector3(1, 1f, 2f)));
-            var square = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.squareMeshIdentity, Matrix4x4.TRS(new Vector3(0, 0, 0.5f), Quaternion.identity, Vector3.one * 0.5f));
-            Debug.Log("triangle.size: " + triangle.TransformedMesh.AABB.size);
-            Debug.Log("triangles.vertices: " + Logging.AsString(triangle.TransformedMesh.EdgeVertices));
-            Debug.Log("triangles.normals: " + Logging.AsString(triangle.TransformedMesh.EdgeOutwardNormals));
+            var triangle = JMesh.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.Scale(new Vector3(1, 1f, 2f)));
+            var square = JMesh.FromMeshAndTransform(JMeshPhysicsMeshes.squareMeshIdentity, Matrix4x4.TRS(new Vector3(0, 0, 0.5f), Quaternion.identity, Vector3.one * 0.5f));
+            Debug.Log("triangle.size: " + triangle.AABB.size);
+            Debug.Log("triangles.vertices: " + Logging.AsString(triangle.EdgeVertices));
+            Debug.Log("triangles.normals: " + Logging.AsString(triangle.EdgeOutwardNormals));
 
 
-            Debug.Log("square.size: " + square.TransformedMesh.AABB.size);
-            Debug.Log("square.vertices: " + Logging.AsString(square.TransformedMesh.EdgeVertices));
-            Debug.Log("square.normals: " + Logging.AsString(square.TransformedMesh.EdgeOutwardNormals));
-            var push = FindMinimumPushFromAToB(triangle.TransformedMesh, square.TransformedMesh);
+            Debug.Log("square.size: " + square.AABB.size);
+            Debug.Log("square.vertices: " + Logging.AsString(square.EdgeVertices));
+            Debug.Log("square.normals: " + Logging.AsString(square.EdgeOutwardNormals));
+            var push = FindMinimumPushFromAToB(triangle, square);
             Debug.Log("pushMagnitude: " + push.Magnitude);
-            var size = triangle.TransformedMesh.AABB.size;
+            var size = triangle.AABB.size;
             var triangleHypothenus = Mathf.Sqrt(size.x * size.x + size.z * size.z);
             var angle = Mathf.Acos(size.z / triangleHypothenus);
 
-            var expecedPushMagnitude = Mathf.Sin(angle) * square.TransformedMesh.AABB.size.x;
-            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(square.TransformedMesh.EdgeVertices[1], triangle.TransformedMesh));
+            var expecedPushMagnitude = Mathf.Sin(angle) * square.AABB.size.x;
+            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(square.EdgeVertices[1], triangle));
             TestMethods.AreEqualIsh(new Vector3(-2, 0, 1).normalized, push.Direction);
             TestMethods.AreEqualIsh(expecedPushMagnitude, push.Magnitude, POINT_MAX_DIFF);
 

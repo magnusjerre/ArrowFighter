@@ -44,11 +44,11 @@ namespace Jerre.JPhysics
                 for (var i = 0; i < bodies.Count; i++)
                 {
                     var body = bodies[i];
-                    if (PhysicsHelper.Intersect(boundsChildA, body.jMeshFrameInstance.Aabb))
+                    if (PhysicsHelper.Intersect(boundsChildA, body.jMeshFrameInstance.AABB))
                     {
                         childABodies.Add(body);
                     }
-                    if (PhysicsHelper.Intersect(boundsChildB, body.jMeshFrameInstance.Aabb))
+                    if (PhysicsHelper.Intersect(boundsChildB, body.jMeshFrameInstance.AABB))
                     {
                         childBBodies.Add(body);
                     }

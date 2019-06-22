@@ -34,7 +34,7 @@ namespace Jerre.JPhysics
                 var body = allPhysicsBodies[i];
                 if (body.enabled)
                 {   // Update physics body, and add it to the list
-                    body.jMeshFrameInstance = JMeshFrameInstance.FromMeshAndTransform(body.jMeshIdentity, body.transform.localToWorldMatrix);
+                    body.jMeshFrameInstance = JMesh.FromMeshAndTransform(body.jMeshIdentity, body.transform.localToWorldMatrix);
                     bodies.Add(body);
                 }
             }
@@ -131,14 +131,14 @@ namespace Jerre.JPhysics
 
                     if (physicsObjA.IsStationary && physicsObjB.IsStationary) continue;
 
-                    var boundsA = physicsObjA.jMeshFrameInstance.TransformedMesh.AABB;
-                    var boundsB = physicsObjB.jMeshFrameInstance.TransformedMesh.AABB;
+                    var boundsA = physicsObjA.jMeshFrameInstance.AABB;
+                    var boundsB = physicsObjB.jMeshFrameInstance.AABB;
 
                     if (!PhysicsHelper.Intersect(boundsA, boundsB)) continue;
 
                     var physicsResult = JMeshCollisionUtil.CalculateObjectSeparation(
-                        physicsObjA.jMeshFrameInstance.TransformedMesh, 
-                        physicsObjB.jMeshFrameInstance.TransformedMesh
+                        physicsObjA.jMeshFrameInstance, 
+                        physicsObjB.jMeshFrameInstance
                     );
                     if (!physicsResult.CanPush) continue;
                     Debug.Log("i: " + i + ", j: " + j + ", PushDirection: " + physicsResult.push.Direction + ", magnitude: " + physicsResult.push.Magnitude + ", time: " + Time.time);

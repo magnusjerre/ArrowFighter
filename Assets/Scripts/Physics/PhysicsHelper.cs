@@ -5,52 +5,6 @@ namespace Jerre.JPhysics
 
     public class PhysicsHelper : MonoBehaviour
     {
-        public static bool IsPointInsideMesh(Vector3 point, JMeshDefintion meshDefinition , JMeshFrameInstance meshFrameInstance)
-        {   // Using the racast method, count the intersection with edges. Always raycast to the left.
-            var edgesCrossed = 0;
-            for (var i = 1; i < meshDefinition.EdgeIndices.Length; i++)
-            {
-                var pointA = meshFrameInstance.VerticesTransformed[meshDefinition.EdgeIndices[i - 1]];
-                var pointB = meshFrameInstance.VerticesTransformed[meshDefinition.EdgeIndices[i]];
-
-                if ((pointA.z <= point.z && point.z <= pointB.z) || (pointB.z <= point.z && point.z <= pointA.z))
-                {   // Can cross vertically
-                    if (pointA.x <= point.x || pointB.x <= point.x)
-                    {   // The edge starts or ends to the left of our poin, meaning we cross the edge with our raycast
-                        edgesCrossed++;
-                    }
-                }
-            }
-
-            return edgesCrossed % 2 == 0;
-        }
-
-        public static float[] FindMinimumPushDistancesForPointInsidePolygon(Vector3 point, JMeshFrameInstance meshFrameInstance)
-        {
-            var vertices = meshFrameInstance.VerticesTransformed;
-            var output = new float[100];  //TODO: Fix this length
-            for (var i = 0; i < vertices.Length - 1; i++)
-            {
-                var v1 = vertices[i];
-                var v2 = vertices[i + 1];
-                var direction = v2 - v1;
-                var normal = new Vector3(direction.z, 0, -direction.x); // Maybe this should be inversed in unity?
-                var dirFromPointToV1 = v1 - point;
-                var projection = Vector3.Dot(dirFromPointToV1, normal.normalized);
-                output[i] = projection;
-            }
-            {   // Need to handle the last edge
-                var v1 = vertices[vertices.Length - 1];
-                var v2 = vertices[0];
-                var direction = v2 - v1;
-                var normal = new Vector3(direction.z, 0, -direction.x); // Maybe this should be inversed in unity?
-                var dirFromPointToV1 = v1 - point;
-                var projection = Vector3.Dot(dirFromPointToV1, normal.normalized);
-            }
-            return output;
-        }
-
-
         public static bool IsPointInsideAABB(Vector3 point, Bounds bound, bool ignoreY)
         {
             bool yAxis = true;

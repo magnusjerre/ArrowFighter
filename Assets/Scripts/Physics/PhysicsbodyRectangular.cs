@@ -9,7 +9,7 @@ namespace Jerre.JPhysics
         public Mesh mesh;
         public bool IsStationary = false;
         public float SurfaceBounceFactor = 1f;
-        public JMeshFrameInstance jMeshFrameInstance;
+        public JMesh jMeshFrameInstance;
         public JMesh jMeshIdentity;
 
         public JLayer jLayer = JLayer.SCENERY;
@@ -36,8 +36,7 @@ namespace Jerre.JPhysics
 
         public Vector3[] GetEdgeCoordinates()
         {
-            if (jMeshFrameInstance.VerticesTransformed == null) return new Vector3[0];
-            return jMeshFrameInstance.TransformedMesh.EdgeVertices;
+            return jMeshFrameInstance.EdgeVertices;
         }
 
     }

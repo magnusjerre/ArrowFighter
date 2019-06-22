@@ -37,7 +37,7 @@ namespace Tests
         public void Calculate_frame_instance_for_triangle_rotated_90_degrees_anti_clockwise_with_translation()
         {
             var startMesh = JMeshPhysicsMeshes.triangleMeshIdentity;
-            var jMesh = JMeshFrameInstance.FromMeshAndTransform(startMesh, Matrix4x4.TRS(
+            var jMesh = JMesh.FromMeshAndTransform(startMesh, Matrix4x4.TRS(
                     new Vector3(1, 0, 1),
                     Quaternion.Euler(Vector3.up * -90),
                     Vector3.one
@@ -45,17 +45,17 @@ namespace Tests
 
             TestMethods.AreEqualIsh(Vector3.right, startMesh.EdgeOutwardNormals[1], "bc normal");
 
-            var vcs = jMesh.TransformedMesh.EdgeVertices;
+            var vcs = jMesh.EdgeVertices;
             TestMethods.AreEqualIsh(new Vector3(1, 0, 1), vcs[0], "v0");
             TestMethods.AreEqualIsh(new Vector3(1, 0, 2), vcs[1], "v1");
             TestMethods.AreEqualIsh(new Vector3(0, 0, 2), vcs[2], "v2");
 
-            var ns = jMesh.TransformedMesh.EdgeOutwardNormals;
+            var ns = jMesh.EdgeOutwardNormals;
             TestMethods.AreEqualIsh(Vector3.right, ns[0], "ns0");
             TestMethods.AreEqualIsh(Vector3.forward, ns[1], "ns1");
             TestMethods.AreEqualIsh(new Vector3(-1, 0, -1).normalized, ns[2], "ns2");
 
-            var bounds = jMesh.Aabb;
+            var bounds = jMesh.AABB;
             var center = bounds.center;
             var min = bounds.min;
             var max = bounds.max;
@@ -70,7 +70,7 @@ namespace Tests
         public void Calculate_frame_instance_for_square_rotated_45_degrees_clockwise()
         {
             var startMesh = JMeshPhysicsMeshes.squareMeshIdentity;
-            var jMesh = JMeshFrameInstance.FromMeshAndTransform(startMesh, Matrix4x4.TRS(
+            var jMesh = JMesh.FromMeshAndTransform(startMesh, Matrix4x4.TRS(
                     new Vector3(1, 0, 1),
                     Quaternion.Euler(Vector3.up * 45),
                     Vector3.one * 2
@@ -79,13 +79,13 @@ namespace Tests
             var halfHeight = Mathf.Sqrt(2);
             var upRightDirection = new Vector3(1, 0, 1).normalized;
 
-            var vcs = jMesh.TransformedMesh.EdgeVertices;
+            var vcs = jMesh.EdgeVertices;
             TestMethods.AreEqualIsh(new Vector3(1, 0, 1), vcs[0], "v0");
             TestMethods.AreEqualIsh(new Vector3(1 + halfHeight, 0, 1 - halfHeight), vcs[1], "v1");
             TestMethods.AreEqualIsh(new Vector3(1 + 2 * halfHeight, 0, 1), vcs[2], "v2");
             TestMethods.AreEqualIsh(new Vector3(1 + halfHeight, 0, 1 + halfHeight), vcs[3], "v3");
 
-            var ns = jMesh.TransformedMesh.EdgeOutwardNormals;
+            var ns = jMesh.EdgeOutwardNormals;
             TestMethods.AreEqualIsh(-upRightDirection, ns[0], "ns0");
             TestMethods.AreEqualIsh(new Vector3(upRightDirection.x, 0, -upRightDirection.z), ns[1], "ns1");
             TestMethods.AreEqualIsh(upRightDirection, ns[2], "ns2");
@@ -95,10 +95,10 @@ namespace Tests
         [Test]
         public void Calculate_frame_instance_for_nonunformly_scaled_triangle()
         {
-            var transformed = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.Scale(new Vector3(1, 1, 2)));
+            var transformed = JMesh.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.Scale(new Vector3(1, 1, 2)));
             var expected = JMeshPhysicsMeshes.triangleTallMeshIdentity;
 
-            var tMesh = transformed.TransformedMesh;
+            var tMesh = transformed;
             TestMethods.AreEqualIsh(expected.AABB.size, tMesh.AABB.size);
             TestMethods.AreEqualIsh(expected.EdgeOutwardNormals[0], tMesh.EdgeOutwardNormals[0]);
             TestMethods.AreEqualIsh(expected.EdgeOutwardNormals[1], tMesh.EdgeOutwardNormals[1]);

@@ -149,6 +149,23 @@ namespace Jerre.JPhysics
             return new JMesh(edgeVertices, outwardNormals);
         }
 
+        public static JMesh FromMeshAndTransform(JMesh meshIdentity, Matrix4x4 transformMatrix)
+        {
+            var vertices = meshIdentity.EdgeVertices;
+            var verticesLength = vertices.Length;
+            var transformedVertices = new Vector3[verticesLength];
+
+            for (var i = 0; i < verticesLength; i++)
+            {
+                var transformedVertex = transformMatrix.MultiplyPoint3x4(vertices[i]);
+                transformedVertices[i] = transformedVertex;
+            }
+
+            var transformedNormals = CalculateOutwardNormals(transformedVertices);
+
+            return new JMesh(transformedVertices, transformedNormals);
+        }
+
         struct EdgeV2 : IEquatable<EdgeV2>
         {
             public int a;

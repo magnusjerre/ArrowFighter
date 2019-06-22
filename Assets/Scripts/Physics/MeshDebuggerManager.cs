@@ -56,8 +56,8 @@ namespace Jerre.JPhysics
                         lineRenderers.Add(lr);
                     }
 
-                    var min = body.jMeshFrameInstance.Aabb.min;
-                    var max = body.jMeshFrameInstance.Aabb.max;
+                    var min = body.jMeshFrameInstance.AABB.min;
+                    var max = body.jMeshFrameInstance.AABB.max;
 
                     lr.positionCount = 5;
                     lr.SetPositions(new Vector3[] {
