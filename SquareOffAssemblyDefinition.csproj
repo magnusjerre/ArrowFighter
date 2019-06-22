@@ -133,7 +133,6 @@
     <Compile Include="Assets\Scripts\Physics\Models\Slope.cs" />
     <Compile Include="Assets\Scripts\Physics\Utils\JLayerMaskUtil.cs" />
     <Compile Include="Assets\Scripts\Physics\Utils\JMeshCollisionUtil.cs" />
-    <Compile Include="Assets\Scripts\Physics\Utils\PhysicsHelper.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBombWeapon.cs" />

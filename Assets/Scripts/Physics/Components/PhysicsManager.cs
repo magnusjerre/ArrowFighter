@@ -134,7 +134,7 @@ namespace Jerre.JPhysics
                     var boundsA = physicsObjA.jMeshFrameInstance.AABB;
                     var boundsB = physicsObjB.jMeshFrameInstance.AABB;
 
-                    if (!PhysicsHelper.Intersect(boundsA, boundsB)) continue;
+                    if (!JMeshCollisionUtil.Intersect(boundsA, boundsB)) continue;
 
                     var physicsResult = JMeshCollisionUtil.CalculateObjectSeparation(
                         physicsObjA.jMeshFrameInstance, 
