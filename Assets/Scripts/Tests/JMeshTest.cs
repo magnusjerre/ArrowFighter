@@ -57,6 +57,17 @@ namespace Tests
         }
 
         [Test]
+        public void Calculate_outwards_normals_of_tall_triangle()
+        {
+            var vertices = JMesh.ExtractEdgeVertices(JMeshPhysicsMeshes.triangleTall, JMeshPhysicsMeshes.triangleTallTriangles);
+            var normals = JMesh.CalculateOutwardNormals(vertices);
+            Assert.AreEqual(3, normals.Length);
+            TestMethods.AreEqualIsh(JMeshPhysicsMeshes.triangleTallNormals[0], normals[0]);
+            TestMethods.AreEqualIsh(JMeshPhysicsMeshes.triangleTallNormals[1], normals[1]);
+            TestMethods.AreEqualIsh(JMeshPhysicsMeshes.triangleTallNormals[2], normals[2]);
+        }
+
+        [Test]
         public void Calculate_outward_normals_of_square()
         {
             var vertices = JMesh.ExtractEdgeVertices(JMeshPhysicsMeshes.square, JMeshPhysicsMeshes.squareTriangles);
@@ -84,6 +95,21 @@ namespace Tests
             var bounds = JMesh.CalculateBounds(JMeshPhysicsMeshes.triangle);
             TestMethods.AreEqualIsh(bounds.center, new Vector3(0.5f, 0, 0.5f));
             TestMethods.AreEqualIsh(bounds.size, new Vector3(1f, 0, 1f));
+        }
+
+
+        [Test]
+        public void Check_calculated_tall_triangle_JMesh()
+        {
+            var triangle = JMeshPhysicsMeshes.triangleTallMeshIdentity;
+            TestMethods.AreEqualIsh(new Vector3(1f, 0, 2f), triangle.AABB.size);
+            TestMethods.AreEqualIsh(new Vector3(0, 0, -1), triangle.EdgeOutwardNormals[0]);
+            TestMethods.AreEqualIsh(new Vector3(1, 0, 0), triangle.EdgeOutwardNormals[1]);
+            TestMethods.AreEqualIsh(new Vector3(-2, 0, 1).normalized, triangle.EdgeOutwardNormals[2]);
+
+            TestMethods.AreEqualIsh(new Vector3(0, 0, 0), triangle.EdgeVertices[0]);
+            TestMethods.AreEqualIsh(new Vector3(1, 0, 0), triangle.EdgeVertices[1]);
+            TestMethods.AreEqualIsh(new Vector3(1, 0, 2), triangle.EdgeVertices[2]);
         }
     }
 }

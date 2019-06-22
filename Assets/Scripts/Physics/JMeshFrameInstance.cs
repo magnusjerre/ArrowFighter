@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Jerre.Utils;
+using UnityEngine;
 
 namespace Jerre.JPhysics
 {
@@ -12,7 +13,6 @@ namespace Jerre.JPhysics
 
         public JMeshFrameInstance(Bounds aabb, Vector3[] verticesTransformed, Vector3[] normalsTransformed, JMesh transformedMesh)
         {
-            Debug.Log("JMeshFrameInstance: aab: " + aabb + ", verticesTransformed: " + verticesTransformed + ", normalsTransformed. " + normalsTransformed);
             Aabb = aabb;
             VerticesTransformed = verticesTransformed;
             NormalsTransformed = normalsTransformed;
@@ -124,16 +124,8 @@ namespace Jerre.JPhysics
                     minZ = newZ;
                 }
             }
-
-            var normals = meshIdentity.EdgeOutwardNormals;
-            var normalsLength = normals.Length;
-            var transformedNormals = new Vector3[normalsLength];
-            var rotationMatrix = Matrix4x4.Rotate(transformMatrix.rotation);
-            for (var i = 0; i < normalsLength; i++)
-            {
-                // Need to only use the rotation matrix to keep the normalized length, not translate or scale.
-                transformedNormals[i] = rotationMatrix.MultiplyVector(normals[i]);
-            }
+            
+            var transformedNormals = JMesh.CalculateOutwardNormals(transformedVertices);
 
             var width = Mathf.Abs(maxX - minX);
             var depth = Mathf.Abs(maxY - minY);

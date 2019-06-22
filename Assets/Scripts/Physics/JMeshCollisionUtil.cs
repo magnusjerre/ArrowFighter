@@ -6,6 +6,35 @@ namespace Jerre.JPhysics
     public class JMeshCollisionUtil
     {
         public const float POINT_MAX_DIFF = 0.00001f;
+
+        public static PushResult CalculateObjectSeparation(JMesh meshA, JMesh meshB)
+        {
+            if (HasPointInsideOtherMesh(meshB, meshA))
+            {
+                return new PushResult(true, FindMinimumPushFromAToB(meshA, meshB), true);
+            }
+            else if (HasPointInsideOtherMesh(meshA, meshB))
+            {
+                return new PushResult(true, FindMinimumPushFromAToB(meshB, meshA), false);
+            }
+            else
+            {
+                Debug.Log("no pushing");
+                return new PushResult(false, new Push(Vector3.zero, 0f), false);
+            }
+        }
+
+        public static bool HasPointInsideOtherMesh(JMesh mesh, JMesh otherMesh)
+        {
+            var vertices = mesh.EdgeVertices;
+            var length = vertices.Length;
+            for (var i = 0; i < length; i++)
+            {
+                if (IsPointInsideMesh(vertices[i], otherMesh)) return true;
+            }
+            return false;
+        }
+
         public static bool IsPointInsideMesh(Vector3 point, JMesh meshTransformed)
         {
             // Assumes that the point is withing the AABB
@@ -66,7 +95,6 @@ namespace Jerre.JPhysics
                 edgeCount++;
             }
 
-            Debug.Log("IsPointInsideMesh? edgeCount: " + edgeCount + ", edgesCrossed: " + edgesCrossed);
             return edgesCrossed % 2 != 0;
         }
 
@@ -119,11 +147,11 @@ namespace Jerre.JPhysics
             // Ignores Y-axis of Vector3
             public bool IsPointOnLineInXZPlane(Vector3 point, float maxDiff)
             {
-                if (isVertical && Mathf.Abs(point.x - b) < maxDiff)
+                if (isVertical && Mathf.Abs(point.x - b) == 0f)
                 {
                     return true;
                 }
-                if (Mathf.Abs(CalculateY(point.x) - point.z) < maxDiff)
+                if (Mathf.Abs(CalculateY(point.x) - point.z) == 0f)
                 {
                     return true;
                 }
@@ -152,8 +180,8 @@ namespace Jerre.JPhysics
             }
 
             var maxDistances = FindMaxesForEachValue(pushDistances);
-            var index = IndexOfSmallestValue(maxDistances);
-            return new Push(meshA.EdgeOutwardNormals[index], maxDistances[index]);
+            var indexOfSmallest = IndexOfSmallestValue(maxDistances);
+            return new Push(meshA.EdgeOutwardNormals[indexOfSmallest], maxDistances[indexOfSmallest]);
         }
 
         public static float[] CalculatePushLengthsForPoint(JMesh meshA, Vector3 vertex)
@@ -166,8 +194,9 @@ namespace Jerre.JPhysics
             {
                 var PAVector = (aVertices[a] - vertex);
                 var normal = aNormals[a];
-                var distance = Vector3.Dot(PAVector, normal);
+                var distance = Mathf.Abs(Vector3.Dot(normal, PAVector));
                 pushLengths[a] = distance;
+                //Debug.Log("vertex: " + vertex + ", PAVector: " + PAVector + ", normal: " + normal + ", distance: " + distance);
             }
 
             return pushLengths;

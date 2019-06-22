@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Jerre.JPhysics;
 using NUnit.Framework;
-using Jerre.JPhysics;
+using UnityEngine;
 
 namespace Tests
 {
@@ -91,6 +90,23 @@ namespace Tests
             TestMethods.AreEqualIsh(new Vector3(upRightDirection.x, 0, -upRightDirection.z), ns[1], "ns1");
             TestMethods.AreEqualIsh(upRightDirection, ns[2], "ns2");
             TestMethods.AreEqualIsh(new Vector3(-upRightDirection.x, 0, upRightDirection.z), ns[3], "ns3");
+        }
+
+        [Test]
+        public void Calculate_frame_instance_for_nonunformly_scaled_triangle()
+        {
+            var transformed = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.Scale(new Vector3(1, 1, 2)));
+            var expected = JMeshPhysicsMeshes.triangleTallMeshIdentity;
+
+            var tMesh = transformed.TransformedMesh;
+            TestMethods.AreEqualIsh(expected.AABB.size, tMesh.AABB.size);
+            TestMethods.AreEqualIsh(expected.EdgeOutwardNormals[0], tMesh.EdgeOutwardNormals[0]);
+            TestMethods.AreEqualIsh(expected.EdgeOutwardNormals[1], tMesh.EdgeOutwardNormals[1]);
+            TestMethods.AreEqualIsh(expected.EdgeOutwardNormals[2], tMesh.EdgeOutwardNormals[2]);
+
+            TestMethods.AreEqualIsh(expected.EdgeVertices[0], tMesh.EdgeVertices[0]);
+            TestMethods.AreEqualIsh(expected.EdgeVertices[1], tMesh.EdgeVertices[1]);
+            TestMethods.AreEqualIsh(expected.EdgeVertices[2], tMesh.EdgeVertices[2]);
         }
     }
 }

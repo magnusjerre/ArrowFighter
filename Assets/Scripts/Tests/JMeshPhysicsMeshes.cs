@@ -22,6 +22,25 @@ namespace Tests
         };
         public static readonly JMesh triangleMeshIdentity = JMesh.CalculateJMesh(triangle, triangleTriangles);
 
+
+        public static readonly Vector3[] triangleTall = new Vector3[]
+        {
+            new Vector3(0, 0, 0),
+            new Vector3(1, 0, 0),
+            new Vector3(1, 0, 2)
+        };
+        public static readonly int[] triangleTallTriangles = new int[]
+        {
+            0, 1, 2
+        };
+        public static readonly Vector3[] triangleTallNormals = new Vector3[]
+        {
+            new Vector3(0, 0, -1),
+            new Vector3(1, 0, 0),
+            new Vector3(-2, 0, 1).normalized
+        };
+        public static readonly JMesh triangleTallMeshIdentity = JMesh.CalculateJMesh(triangleTall, triangleTallTriangles);
+
         public static readonly Vector3[] square = new Vector3[] {
                 new Vector3(0, 0, 0),
                 new Vector3(1, 0, 0),

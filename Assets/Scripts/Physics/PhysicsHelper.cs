@@ -120,12 +120,12 @@ namespace Jerre.JPhysics
         {
             if (HasBPointInsideA(a, b))
             {
-                return new PushResult(true, CalculatePushDirectionFromAToB(a, b), a);
+                return new PushResult(true, CalculatePushDirectionFromAToB(a, b), true);
             } else if (HasBPointInsideA(b, a))
             {
-                return new PushResult(true, CalculatePushDirectionFromAToB(b, a), b);
+                return new PushResult(true, CalculatePushDirectionFromAToB(b, a), false);
             }
-            return new PushResult(false, new Push(Vector3.zero, 0f), a);
+            return new PushResult(false, new Push(Vector3.zero, 0f), true);
         }
 
 
@@ -197,24 +197,24 @@ namespace Jerre.JPhysics
         //    }
         //}
 
-        public struct PushResult
-        {
-            public bool CanPush;
-            public Push push;
-            public Bounds PushSource;
+        //public struct PushResult
+        //{
+        //    public bool CanPush;
+        //    public Push push;
+        //    public Bounds PushSource;
 
-            public PushResult(bool canPush, Push push, Bounds pushSource)
-            {
-                CanPush = canPush;
-                this.push = push;
-                PushSource = pushSource;
-            }
+        //    public PushResult(bool canPush, Push push, Bounds pushSource)
+        //    {
+        //        CanPush = canPush;
+        //        this.push = push;
+        //        PushSource = pushSource;
+        //    }
 
-            public override string ToString()
-            {
-                return "canPush: " + CanPush + ", push: " + push + ", pushSource: " + logVector3(PushSource.center);
-            }
-        }
+        //    public override string ToString()
+        //    {
+        //        return "canPush: " + CanPush + ", push: " + push + ", pushSource: " + logVector3(PushSource.center);
+        //    }
+        //}
 
         public static string arrToString(Vector3[] arr)
         {

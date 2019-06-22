@@ -120,7 +120,6 @@
     <Compile Include="Assets\Scripts\Managers\PlayerPositionScreenBoundEnforcerManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
-    <Compile Include="Assets\Scripts\MatrixPrinter.cs" />
     <Compile Include="Assets\Scripts\PauseMenu\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Physics\CollisionMap.cs" />
     <Compile Include="Assets\Scripts\Physics\JCollision.cs" />
@@ -135,6 +134,7 @@
     <Compile Include="Assets\Scripts\Physics\PhysicsHelper.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsManager.cs" />
     <Compile Include="Assets\Scripts\Physics\Push.cs" />
+    <Compile Include="Assets\Scripts\Physics\PushResult.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBombWeapon.cs" />
@@ -173,6 +173,7 @@
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
+    <Compile Include="Assets\Scripts\Utils\Logging.cs" />
     <Compile Include="Assets\Scripts\Utils\LookDirectionConstr.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayAreaIndicator.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerFetcher.cs" />

@@ -34,7 +34,7 @@ namespace Jerre.JPhysics
                 var body = allPhysicsBodies[i];
                 if (body.enabled)
                 {   // Update physics body, and add it to the list
-                    body.jMeshFrameInstance = JMeshFrameInstance.FromMeshAndTransform(body.jMeshDefintion, body.transform);
+                    body.jMeshFrameInstance = JMeshFrameInstance.FromMeshAndTransform(body.jMeshIdentity, body.transform.localToWorldMatrix);
                     bodies.Add(body);
                 }
             }
@@ -131,14 +131,20 @@ namespace Jerre.JPhysics
 
                     if (physicsObjA.IsStationary && physicsObjB.IsStationary) continue;
 
-                    var boundsA = physicsObjA.jMeshFrameInstance.Aabb;
-                    var boundsB = physicsObjB.jMeshFrameInstance.Aabb;
+                    var boundsA = physicsObjA.jMeshFrameInstance.TransformedMesh.AABB;
+                    var boundsB = physicsObjB.jMeshFrameInstance.TransformedMesh.AABB;
 
-                    var physicsResult = PhysicsHelper.CalculateObjectSeparation(boundsA, boundsB);
+                    if (!PhysicsHelper.Intersect(boundsA, boundsB)) continue;
+
+                    var physicsResult = JMeshCollisionUtil.CalculateObjectSeparation(
+                        physicsObjA.jMeshFrameInstance.TransformedMesh, 
+                        physicsObjB.jMeshFrameInstance.TransformedMesh
+                    );
                     if (!physicsResult.CanPush) continue;
+                    Debug.Log("i: " + i + ", j: " + j + ", PushDirection: " + physicsResult.push.Direction + ", magnitude: " + physicsResult.push.Magnitude + ", time: " + Time.time);
 
-                    PhysicsbodyRectangular toPushFrom = physicsResult.PushSource == boundsA ? physicsObjA : physicsObjB;
-                    PhysicsbodyRectangular toPush = physicsResult.PushSource == boundsA ? physicsObjB : physicsObjA;
+                    PhysicsbodyRectangular toPushFrom = physicsResult.APushB ? physicsObjA : physicsObjB;
+                    PhysicsbodyRectangular toPush = physicsResult.APushB ? physicsObjB : physicsObjA;
                     Vector3 direction = physicsResult.push.Direction;
 
                     if (toPush == physicsObjA)    // Going to try to push A

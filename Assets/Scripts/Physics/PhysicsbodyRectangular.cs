@@ -9,8 +9,8 @@ namespace Jerre.JPhysics
         public Mesh mesh;
         public bool IsStationary = false;
         public float SurfaceBounceFactor = 1f;
-        public JMeshDefintion jMeshDefintion;
         public JMeshFrameInstance jMeshFrameInstance;
+        public JMesh jMeshIdentity;
 
         public JLayer jLayer = JLayer.SCENERY;
 
@@ -31,22 +31,13 @@ namespace Jerre.JPhysics
 
             mesh = meshFilter.mesh;
 
-            jMeshDefintion = JMeshDefintion.FromMesh(mesh);
+            jMeshIdentity = JMesh.CalculateJMesh(mesh.vertices, mesh.triangles);
         }
 
         public Vector3[] GetEdgeCoordinates()
         {
             if (jMeshFrameInstance.VerticesTransformed == null) return new Vector3[0];
-            var coordinates = new Vector3[jMeshDefintion.EdgeIndices.Length];
-            var length = coordinates.Length;
-            var instanceVertices = jMeshFrameInstance.VerticesTransformed;
-            var edgeIndices = jMeshDefintion.EdgeIndices;
-            for (var i = 0; i < length; i++)
-            {
-                coordinates[i] = instanceVertices[edgeIndices[i]];
-            }
-
-            return coordinates;
+            return jMeshFrameInstance.TransformedMesh.EdgeVertices;
         }
 
     }

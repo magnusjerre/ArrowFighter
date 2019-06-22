@@ -1,4 +1,5 @@
 ﻿using Jerre.JPhysics;
+using Jerre.Utils;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
@@ -222,6 +223,32 @@ namespace Tests
             var push = FindMinimumPushFromAToB(square, triangle.TransformedMesh);
             TestMethods.AreEqualIsh(Mathf.Sqrt(size * size + size * size), push.Magnitude, POINT_MAX_DIFF);
             TestMethods.AreEqualIsh(new Vector3(-1, 0, 0), push.Direction);
+        }
+
+        [Test]
+        public void FindMinimumPushFromAToB_for_small_square_inside_triangle()
+        {
+            var triangle = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.triangleMeshIdentity, Matrix4x4.Scale(new Vector3(1, 1f, 2f)));
+            var square = JMeshFrameInstance.FromMeshAndTransform(JMeshPhysicsMeshes.squareMeshIdentity, Matrix4x4.TRS(new Vector3(0, 0, 0.5f), Quaternion.identity, Vector3.one * 0.5f));
+            Debug.Log("triangle.size: " + triangle.TransformedMesh.AABB.size);
+            Debug.Log("triangles.vertices: " + Logging.AsString(triangle.TransformedMesh.EdgeVertices));
+            Debug.Log("triangles.normals: " + Logging.AsString(triangle.TransformedMesh.EdgeOutwardNormals));
+
+
+            Debug.Log("square.size: " + square.TransformedMesh.AABB.size);
+            Debug.Log("square.vertices: " + Logging.AsString(square.TransformedMesh.EdgeVertices));
+            Debug.Log("square.normals: " + Logging.AsString(square.TransformedMesh.EdgeOutwardNormals));
+            var push = FindMinimumPushFromAToB(triangle.TransformedMesh, square.TransformedMesh);
+            Debug.Log("pushMagnitude: " + push.Magnitude);
+            var size = triangle.TransformedMesh.AABB.size;
+            var triangleHypothenus = Mathf.Sqrt(size.x * size.x + size.z * size.z);
+            var angle = Mathf.Acos(size.z / triangleHypothenus);
+
+            var expecedPushMagnitude = Mathf.Sin(angle) * square.TransformedMesh.AABB.size.x;
+            Assert.IsTrue(JMeshCollisionUtil.IsPointInsideMesh(square.TransformedMesh.EdgeVertices[1], triangle.TransformedMesh));
+            TestMethods.AreEqualIsh(new Vector3(-2, 0, 1).normalized, push.Direction);
+            TestMethods.AreEqualIsh(expecedPushMagnitude, push.Magnitude, POINT_MAX_DIFF);
+
         }
     }
 }
