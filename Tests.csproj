@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Tests\JMeshCollisionUtilTest.cs" />
     <Compile Include="Assets\Scripts\Tests\JMeshFrameInstanceTest.cs" />
     <Compile Include="Assets\Scripts\Tests\JMeshPhysicsMeshes.cs" />
     <Compile Include="Assets\Scripts\Tests\JMeshTest.cs" />
