@@ -250,5 +250,35 @@ namespace Tests
             TestMethods.AreEqualIsh(expecedPushMagnitude, push.Magnitude, POINT_MAX_DIFF);
 
         }
+
+        [Test]
+        public void Real_world_bug()
+        {
+            var playerSquare = JMesh.CalculateJMesh(new Vector3[] {
+                new Vector3(-510.6969f, 0f, 14.98178f),
+                new Vector3(-510.6969f, 0f, 64.98178f),
+                new Vector3(-460.6969f, 0f, 64.98178f),
+                new Vector3(-460.6969f, 0f, 14.98178f),
+                new Vector3(-510.6969f, 0f, 14.98178f)
+            }, new int[] {
+                0, 3, 1,
+                3, 0, 2
+            });
+
+            var rotatedObject = JMesh.CalculateJMesh(new Vector3[]
+            {
+                new Vector3(-329.7427f, 0f, 17.44579f),
+                new Vector3(-206.6368f, 0f, -200.1431f),
+                new Vector3(-746.2573f, 0f, -505.4458f),
+                new Vector3(-869.3632f, 0f, -287.8569f),
+                new Vector3(-329.7427f, 0f, 17.44579f)
+            }, new int[] {
+                0, 3, 1,
+                3, 0, 2
+            });
+
+            Assert.IsFalse(JMeshCollisionUtil.HasPointInsideOtherMesh(playerSquare, rotatedObject));
+            Assert.IsFalse(JMeshCollisionUtil.HasPointInsideOtherMesh(rotatedObject, playerSquare));
+        }
     }
 }

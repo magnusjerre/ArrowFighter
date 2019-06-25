@@ -42,5 +42,14 @@ namespace Jerre.JPhysics
             return false;
         }
 
+        public float CalculateIntersection(Slope otherSlope)
+        {
+            return (otherSlope.b - b) / (a - otherSlope.a);
+        }
+
+        public float CalculateIntersectionWithHorizontalLine(float z)
+        {
+            return (z - b) / a;
+        }
     }
 }

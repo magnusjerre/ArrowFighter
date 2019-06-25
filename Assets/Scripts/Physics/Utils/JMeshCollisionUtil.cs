@@ -19,7 +19,7 @@ namespace Jerre.JPhysics
             }
             else
             {
-                Debug.Log("no pushing");
+                Debug.Log("PD:: no pushing");
                 return new PushResult(false, new Push(Vector3.zero, 0f), false);
             }
         }
@@ -73,7 +73,8 @@ namespace Jerre.JPhysics
                          * Check if point is on an edge. This must be done before the next type of check
                          * that checks for a single point being added twice to edgesCrossed.
                          **/
-                        if (CalculateSlope(pointA, pointB).IsPointOnLineInXZPlane(point, POINT_MAX_DIFF))
+                        var slope = CalculateSlope(pointA, pointB);
+                        if (slope.IsPointOnLineInXZPlane(point, POINT_MAX_DIFF))
                         {
                             return true;
                         }
@@ -89,12 +90,23 @@ namespace Jerre.JPhysics
                             continue;
                         }
 
-                        edgesCrossed++;
+                        var xIntersection = slope.CalculateIntersectionWithHorizontalLine(point.z);
+                        var minX = Mathf.Min(pointA.x, pointB.x);
+                        if (minX <= xIntersection && xIntersection <= point.x)
+                        {
+                            edgesCrossed++;
+                        }
+
+                        //Debug.Log("pointA: " + pointA);
+                        //Debug.Log("PointB: " + pointB);
+                        //Debug.Log("point: " + point);
+                        //edgesCrossed++;
                     }
                 }
                 edgeCount++;
             }
 
+            //Debug.Log("edges crossed: " + edgesCrossed);
             return edgesCrossed % 2 != 0;
         }
 

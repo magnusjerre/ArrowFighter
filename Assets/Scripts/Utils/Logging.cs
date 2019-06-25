@@ -18,5 +18,19 @@ namespace Jerre.Utils
             }
             return str + "]";
         }
+
+        public static string AsString(int[] values)
+        {
+            string str = "[";
+            for (var i = 0; i < values.Length; i++)
+            {
+                str += values[i] ;
+                if (i < values.Length - 1)
+                {
+                    str += ",";
+                }
+            }
+            return str + "]";
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace Jerre.JPhysics
                 var body = allPhysicsBodies[i];
                 if (body.enabled)
                 {   // Update physics body, and add it to the list
-                    body.jMeshFrameInstance = JMesh.FromMeshAndTransform(body.jMeshIdentity, body.transform.localToWorldMatrix);
+                    body.jMeshFrameInstance = JMesh.FromMeshAndTransform(body.jMeshIdentity, body.meshFilter.transform.localToWorldMatrix);
                     bodies.Add(body);
                 }
             }
@@ -141,7 +141,28 @@ namespace Jerre.JPhysics
                         physicsObjB.jMeshFrameInstance
                     );
                     if (!physicsResult.CanPush) continue;
-                    Debug.Log("i: " + i + ", j: " + j + ", PushDirection: " + physicsResult.push.Direction + ", magnitude: " + physicsResult.push.Magnitude + ", time: " + Time.time);
+                    Debug.Log("PD: result.APushB: " + physicsResult.APushB);
+                    Debug.Log("PD::i: " + i + ", j: " + j + ", PushDirection: " + physicsResult.push.Direction + ", magnitude: " + physicsResult.push.Magnitude + ", time: " + Time.time);
+                    Debug.Log("PD:: name: " + physicsObjA.name + ", position: " + physicsObjA.transform.position + "; name: " + physicsObjB.name + ", posiion: " + physicsObjB.transform.position);
+                    Debug.Log("PD:: bodyA edge vertices" + Logging.AsString(physicsObjA.jMeshFrameInstance.EdgeVertices));
+                    Debug.Log("PD:: bodyA.triangles. " + Logging.AsString(physicsObjA.mesh.triangles));
+                    Debug.Log("PD:: bodyB edge vertices" + Logging.AsString(physicsObjB.jMeshFrameInstance.EdgeVertices));
+                    Debug.Log("PD:: bodyB.triangles. " + Logging.AsString(physicsObjB.mesh.triangles));
+
+
+
+
+                    // TODO:  Det er noe veldig rart med visuell størrelse og størrelsen på bounding boxes. Det ser nå ut til at bouning box ikke håndteres riktig. 
+                    // Mulig jeg nå også må sørge for å støtte alle tre koordinater så jeg ikke får stusselige feil relatert til at jeg kun bruker X og Z.
+                    // Kanskje jeg skal vurdere å endre fra XZ-plane til XY-plane. Tror det er det som gjøres i 2D unity-spill.
+
+
+
+
+
+
+
+
 
                     PhysicsbodyRectangular toPushFrom = physicsResult.APushB ? physicsObjA : physicsObjB;
                     PhysicsbodyRectangular toPush = physicsResult.APushB ? physicsObjB : physicsObjA;
