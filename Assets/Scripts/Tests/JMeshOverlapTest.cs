@@ -117,7 +117,7 @@ namespace Tests
         [Test]
         public void Meshes_should_not_overlap()
         {
-            //Assert.IsFalse(JMeshOverlap.MeshesOverlap(meshA, JMesh.FromMeshAndTransform(meshB, Matrix4x4.Translate(new Vector3(10, 0, 0)))));
+            Assert.IsFalse(JMeshOverlap.MeshesOverlap(meshA, JMesh.FromMeshAndTransform(meshB, Matrix4x4.Translate(new Vector3(10, 0, 0)))));
             Assert.IsFalse(JMeshOverlap.MeshesOverlap(meshA, JMesh.FromMeshAndTransform(meshB, Matrix4x4.Translate(new Vector3(4, 0, 0)))));
         }
 

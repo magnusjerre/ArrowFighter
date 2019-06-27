@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using static Jerre.JPhysics.Intersection;
 
 namespace Jerre.JPhysics
 {
@@ -52,23 +53,24 @@ namespace Jerre.JPhysics
         {
             var slopeA = Slope.FromPoints(aStart, aEnd);
             var slopeB = Slope.FromPoints(bStart, bEnd);
-            var intersection = slopeA.CalculateXIntersection(slopeB);
+            var intersection = slopeA.CalculateIntersection(slopeB);
 
+            if (intersection.Type == IntersectionType.NONE) return false;
+            if (intersection.Type == IntersectionType.OVERLAP) return true;
 
+            var p = intersection.Point;
+            var minAX = Mathf.Min(aStart.x, aEnd.x);
+            var maxAX = Mathf.Max(aStart.x, aEnd.x);
+            var minAZ = Mathf.Min(aStart.z, aEnd.z);
+            var maxAZ = Mathf.Max(aStart.z, aEnd.z);
 
+            if (p.x < minAX || p.x > maxAX || p.z < minAZ || p.z > maxAZ) return false;
 
-            //var edge = (aEnd - aStart).normalized;
-            //var toPointStart = (bStart - aStart).normalized;
-            //var toPointEnd = (bEnd - aStart).normalized;
-            //var angleStart = Vector3.SignedAngle(edge, toPointEnd, Vector3.up);
-            //var angleEnd = Vector3.SignedAngle(edge, toPointStart, Vector3.up);
-
-            //if ((angleStart > 0f && angleEnd > 0f) || (angleStart < 0f && angleEnd < 0f))
-            //{
-            //    return false;
-            //}
-
-            return true;
+            var minBX = Mathf.Min(bStart.x, bEnd.x);
+            var maxBX = Mathf.Max(bStart.x, bEnd.x);
+            var minBZ = Mathf.Min(bStart.z, bEnd.z);
+            var maxBZ = Mathf.Max(bStart.z, bEnd.z);
+            return !(p.x < minBX || p.x > maxBX || p.z < minBZ || p.z > maxBZ);
         }
 
     }
