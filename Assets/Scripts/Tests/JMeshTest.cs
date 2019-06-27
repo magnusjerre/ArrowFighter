@@ -1,6 +1,7 @@
 ﻿using Jerre.JPhysics;
 using NUnit.Framework;
 using UnityEngine;
+using static Jerre.JPhysics.Intersection;
 
 namespace Tests
 {
@@ -111,5 +112,153 @@ namespace Tests
             TestMethods.AreEqualIsh(new Vector3(1, 0, 0), triangle.EdgeVertices[1]);
             TestMethods.AreEqualIsh(new Vector3(1, 0, 2), triangle.EdgeVertices[2]);
         }
+
+
+        [Test]
+        public void Check_that_the_slopes_intersect()
+        {
+            var verticalFromOrigo = Slope.FromPoints(Vector3.zero, Vector3.forward);
+            var horizontalFromOrigo = Slope.FromPoints(Vector3.zero, Vector3.right);
+
+            var verticalOffset = Slope.FromPoints(new Vector3(1, 0, 0), new Vector3(1, 0, 1));
+            var horizontalOffset = Slope.FromPoints(new Vector3(0, 0, 1), new Vector3(2, 0, 1));
+
+            var upRightFromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, 1));
+            var upRightOffsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 2), new Vector3(2, 0, 3));
+
+            var downRightFromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, -1));
+            var downRightOffsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 1), new Vector3(2, 0, 0));
+
+            var fromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, 3));
+            var offsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 1), new Vector3(2, 0, 4));
+
+            checkIntersect(verticalFromOrigo, horizontalFromOrigo, Vector3.zero);
+            checkIntersect(verticalFromOrigo, horizontalOffset, new Vector3(0, 0, 1));
+            checkIntersect(verticalFromOrigo, upRightFromOrigo, Vector3.zero);
+            checkIntersect(verticalFromOrigo, upRightOffsetFromOrigo, new Vector3(0, 0, 1));
+            checkIntersect(verticalFromOrigo, downRightFromOrigo, Vector3.zero);
+            checkIntersect(verticalFromOrigo, downRightOffsetFromOrigo, new Vector3(0, 0, 2));
+            checkIntersect(verticalFromOrigo, fromOrigo, Vector3.zero);
+            checkIntersect(verticalFromOrigo, offsetFromOrigo, new Vector3(0, 0, -2));
+            checkIntersect(horizontalFromOrigo, verticalFromOrigo, Vector3.zero);
+            checkIntersect(horizontalFromOrigo, upRightFromOrigo, Vector3.zero);
+            checkIntersect(horizontalFromOrigo, upRightOffsetFromOrigo, new Vector3(-1, 0, 0));
+            checkIntersect(horizontalFromOrigo, downRightFromOrigo, Vector3.zero);
+            checkIntersect(horizontalFromOrigo, fromOrigo, Vector3.zero);
+            checkIntersect(verticalOffset, upRightFromOrigo, new Vector3(1, 0, 1));
+            checkIntersect(verticalOffset, downRightFromOrigo, new Vector3(1, 0, -1));
+            checkIntersect(verticalOffset, fromOrigo, new Vector3(1, 0, 3));
+            checkIntersect(upRightFromOrigo, downRightFromOrigo, Vector3.zero);
+            checkIntersect(upRightFromOrigo, offsetFromOrigo, new Vector3(1, 0, 1));
+        }
+
+        private void checkIntersect(Slope slopeA, Slope slopeB, Vector3 intersectionPoint)
+        {
+            var intersection = slopeA.CalculateIntersection(slopeB);
+            Assert.AreEqual(IntersectionType.INTERSECT, intersection.Type);
+            TestMethods.AreEqualIsh(intersectionPoint, intersection.Point);
+        }
+
+        [Test]
+        public void Check_that_slopes_overlap()
+        {
+            var verticalFromOrigo = Slope.FromPoints(Vector3.zero, Vector3.forward);
+            var horizontalFromOrigo = Slope.FromPoints(Vector3.zero, Vector3.right);
+
+            var verticalOffset = Slope.FromPoints(new Vector3(1, 0, 0), new Vector3(1, 0, 1));
+            var horizontalOffset = Slope.FromPoints(new Vector3(0, 0, 1), new Vector3(2, 0, 1));
+
+            var upRightFromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, 1));
+            var upRightOffsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 2), new Vector3(2, 0, 3));
+
+            var downRightFromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, -1));
+            var downRightOffsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 1), new Vector3(2, 0, 0));
+
+            var fromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, 3));
+            var offsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 1), new Vector3(2, 0, 4));
+
+            checkOverlapsSelf(verticalFromOrigo);
+            checkOverlapsSelf(horizontalFromOrigo);
+            checkOverlapsSelf(verticalOffset);
+            checkOverlapsSelf(horizontalOffset);
+            checkOverlapsSelf(upRightFromOrigo);
+            checkOverlapsSelf(upRightOffsetFromOrigo);
+            checkOverlapsSelf(downRightFromOrigo);
+            checkOverlapsSelf(downRightOffsetFromOrigo);
+            checkOverlapsSelf(fromOrigo);
+            checkOverlapsSelf(offsetFromOrigo);
+        }
+
+        private void checkOverlapsSelf(Slope slope)
+        {
+            Assert.AreEqual(IntersectionType.OVERLAP, slope.CalculateIntersection(slope).Type);
+        }
+
+        [Test]
+        public void Check_that_slopes_do_not_overlap()
+        {
+            var verticalFromOrigo = Slope.FromPoints(Vector3.zero, Vector3.forward);
+            var horizontalFromOrigo = Slope.FromPoints(Vector3.zero, Vector3.right);
+
+            var verticalOffset = Slope.FromPoints(new Vector3(1, 0, 0), new Vector3(1, 0, 1));
+            var horizontalOffset = Slope.FromPoints(new Vector3(0, 0, 1), new Vector3(2, 0, 1));
+
+            var upRightFromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, 1));
+            var upRightOffsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 2), new Vector3(2, 0, 3));
+
+            var downRightFromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, -1));
+            var downRightOffsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 1), new Vector3(2, 0, 0));
+
+            var fromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, 3));
+            var offsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 1), new Vector3(2, 0, 4));
+
+            checkNotOverlap(verticalFromOrigo, horizontalFromOrigo);
+            checkNotOverlap(verticalFromOrigo, verticalOffset);
+            checkNotOverlap(verticalFromOrigo, horizontalOffset);
+            checkNotOverlap(verticalFromOrigo, upRightFromOrigo);
+            checkNotOverlap(verticalFromOrigo, upRightOffsetFromOrigo);
+            checkNotOverlap(verticalFromOrigo, upRightFromOrigo);
+            checkNotOverlap(verticalFromOrigo, upRightOffsetFromOrigo);
+            checkNotOverlap(verticalFromOrigo, downRightFromOrigo);
+            checkNotOverlap(verticalFromOrigo, downRightOffsetFromOrigo);
+            checkNotOverlap(verticalFromOrigo, fromOrigo);
+            checkNotOverlap(verticalFromOrigo, offsetFromOrigo);
+        }
+
+        private void checkNotOverlap(Slope slopeA, Slope slopeB)
+        {
+            Assert.AreNotEqual(IntersectionType.OVERLAP, slopeA.CalculateIntersection(slopeB).Type);
+        }
+
+        [Test]
+        public void Check_that_slopes_do_not_intersect_or_overlap()
+        {
+            var verticalFromOrigo = Slope.FromPoints(Vector3.zero, Vector3.forward);
+            var verticalOffset = Slope.FromPoints(new Vector3(1, 0, 0), new Vector3(1, 0, 1));
+
+            var horizontalFromOrigo = Slope.FromPoints(Vector3.zero, Vector3.right);
+            var horizontalOffset = Slope.FromPoints(new Vector3(0, 0, 1), new Vector3(2, 0, 1));
+
+            var upRightFromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, 1));
+            var upRightOffsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 2), new Vector3(2, 0, 3));
+
+            var downRightFromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, -1));
+            var downRightOffsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 1), new Vector3(2, 0, 0));
+
+            var fromOrigo = Slope.FromPoints(Vector3.zero, new Vector3(1, 0, 3));
+            var offsetFromOrigo = Slope.FromPoints(new Vector3(1, 0, 1), new Vector3(2, 0, 4));
+
+            checkIntersectionNone(verticalFromOrigo, verticalOffset);
+            checkIntersectionNone(horizontalFromOrigo, horizontalOffset);
+            checkIntersectionNone(upRightFromOrigo, upRightOffsetFromOrigo);
+            checkIntersectionNone(downRightFromOrigo, downRightOffsetFromOrigo);
+            checkIntersectionNone(fromOrigo, offsetFromOrigo);
+        }
+
+        private void checkIntersectionNone(Slope slopeA, Slope slopeB)
+        {
+            Assert.AreEqual(IntersectionType.NONE, slopeA.CalculateIntersection(slopeB).Type);
+        }
+
     }
 }
