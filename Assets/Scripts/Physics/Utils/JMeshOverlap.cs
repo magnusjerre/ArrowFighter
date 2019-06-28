@@ -28,7 +28,7 @@ namespace Jerre.JPhysics
                     var bStart = bVertices[j];
                     var bEnd = bVertices[j + 1];
 
-                    Debug.Log("i: " + i + ", j: " + j + ", aStart: " + aStart + ", aEnd: " + aEnd + ", bStart: " + bStart + ", bEnd: " + bEnd);
+                    //Debug.Log("i: " + i + ", j: " + j + ", aStart: " + aStart + ", aEnd: " + aEnd + ", bStart: " + bStart + ", bEnd: " + bEnd);
                     if (LinesCross(aStart, aEnd, bStart, bEnd))
                     {
                         return true;
@@ -36,7 +36,7 @@ namespace Jerre.JPhysics
                 }
             }
 
-            Debug.Log("No lines crossed, looking for points inside each mesh");
+            //Debug.Log("No lines crossed, looking for points inside each mesh");
 
             // Check if any vertices from meshA is inside meshB
             for (var i = 0; i < aLength; i++)
@@ -45,7 +45,7 @@ namespace Jerre.JPhysics
                 if (IsPointInsideMesh(pointA, meshB)) return true;
             }
 
-            Debug.Log("No points from meshA inside meshB");
+            //Debug.Log("No points from meshA inside meshB");
 
             for (var i = 0; i < bLength; i++)
             {
@@ -53,8 +53,8 @@ namespace Jerre.JPhysics
                 if (IsPointInsideMesh(pointB, meshA)) return true;
             }
 
-            Debug.Log("No points from meshB inside meshA");
-            Debug.Log("No mesh overlap");
+            //Debug.Log("No points from meshB inside meshA");
+            //Debug.Log("No mesh overlap");
 
             return false;
         }
@@ -118,21 +118,21 @@ namespace Jerre.JPhysics
                  **/
                 if (pointA.x == point.x && pointA.z == point.z)
                 {
-                    Debug.Log("Point is exactly on an existing point, should return true");
+                    //Debug.Log("Point is exactly on an existing point, should return true");
                     return true;
                 }
 
                 var edgeSlope = Slope.FromPoints(pointA, pointB);
                 if (edgeSlope.IsPointOnLineInXZPlane(point, POINT_MAX_DIFF))
                 {
-                    Debug.Log("Point is on line in XZ plane, edge: " + (pointB - pointA));
+                    //Debug.Log("Point is on line in XZ plane, edge: " + (pointB - pointA));
                     return true;
                 }
 
                 var intersection = edgeSlope.CalculateIntersection(horizontalPointSlope);
                 if (LinesCross(point, endOfRayCast, pointA, pointB))
                 {
-                    Debug.Log("Crossed edge! " + (pointB - pointA));
+                    //Debug.Log("Crossed edge! " + (pointB - pointA));
                     edgesCrossed++;
                 }
 

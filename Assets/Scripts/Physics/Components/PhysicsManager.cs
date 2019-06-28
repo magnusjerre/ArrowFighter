@@ -124,7 +124,7 @@ namespace Jerre.JPhysics
                     var collisionPair = new CollisionPair(physicsObjA, physicsObjB);
                     if (completedCollisions.Contains(collisionPair))
                     {
-                        LogForPlayerCollisionsOnly("This collision has already been processed, moving onto next", physicsObjA, physicsObjB);
+                        //LogForPlayerCollisionsOnly("This collision has already been processed, moving onto next", physicsObjA, physicsObjB);
                         continue;
                     }
                     completedCollisions.Add(collisionPair);
@@ -136,6 +136,72 @@ namespace Jerre.JPhysics
 
                     if (!JMeshCollisionUtil.Intersect(boundsA, boundsB)) continue;
 
+                    if (!JMeshOverlap.MeshesOverlap(physicsObjA.jMeshFrameInstance, physicsObjB.jMeshFrameInstance)) continue;
+
+                    var pushResult = JMeshOverlapPushUtil.CalculateMinimumPush(physicsObjA.jMeshFrameInstance, physicsObjB.jMeshFrameInstance);
+
+                    if (physicsObjA.IsStationary)
+                    {
+                        var centerDirection = physicsObjB.jMeshFrameInstance.AABB.center - physicsObjA.jMeshFrameInstance.AABB.center;
+                        var pushScalarDirection = Vector3.Dot(pushResult.Direction, centerDirection);
+                        pushScalarDirection /= Mathf.Abs(pushScalarDirection);
+                        var pushVector = pushResult.Direction * pushResult.Magnitude * pushScalarDirection;
+                        physicsObjB.transform.Translate(pushVector, Space.World);
+                        var player = physicsObjB.GetComponent<PlayerPhysics>();
+                        if (player != null)
+                        {
+                            BouncePlayer(player, pushResult.Direction * pushScalarDirection, physicsObjA.SurfaceBounceFactor);
+                        }
+                        var bulletMover = physicsObjB.GetComponent<BulletMover>();
+                        if (bulletMover != null)
+                        {
+                            BounceBullet(bulletMover, pushResult.Direction * pushScalarDirection, physicsObjA.SurfaceBounceFactor);
+                        }
+                    }
+                    else if (physicsObjB.IsStationary)
+                    {
+                        var centerDirection = physicsObjA.jMeshFrameInstance.AABB.center - physicsObjB.jMeshFrameInstance.AABB.center;
+                        var pushScalarDirection = Vector3.Dot(pushResult.Direction, centerDirection);
+                        pushScalarDirection /= Mathf.Abs(pushScalarDirection);
+                        var pushVector = pushResult.Direction * pushResult.Magnitude * pushScalarDirection;
+                        physicsObjA.transform.Translate(pushVector, Space.World);
+                        var player = physicsObjA.GetComponent<PlayerPhysics>();
+                        if (player != null)
+                        {
+                            BouncePlayer(player, pushResult.Direction * pushScalarDirection, physicsObjB.SurfaceBounceFactor);
+                        }
+                        var bulletMover = physicsObjA.GetComponent<BulletMover>();
+                        if (bulletMover != null)
+                        {
+                            BounceBullet(bulletMover, pushResult.Direction * pushScalarDirection, physicsObjB.SurfaceBounceFactor);
+                        }
+                    }
+                    else
+                    {
+                        var centerAToB = physicsObjB.jMeshFrameInstance.AABB.center - physicsObjA.jMeshFrameInstance.AABB.center;
+                        var pushScalarDirectionAToB = Vector3.Dot(pushResult.Direction, centerAToB);
+                        var pushVectorAToB = pushResult.Direction * (pushResult.Magnitude / 2f) * pushScalarDirectionAToB;
+                        physicsObjA.transform.Translate(pushVectorAToB, Space.World);
+                        
+                        var centerBToA = physicsObjA.jMeshFrameInstance.AABB.center - physicsObjB.jMeshFrameInstance.AABB.center;
+                        var pushScalarDirectionBToA = Vector3.Dot(pushResult.Direction, centerBToA);
+                        var pushVectorBToA = pushResult.Direction * (pushResult.Magnitude / 2f) * pushScalarDirectionBToA;
+                        physicsObjB.transform.Translate(pushVectorBToA, Space.World);
+
+                        // Not including bounce at this time, maybe later...
+                    }
+
+                    var aJCollision = physicsObjA.GetComponent<JCollision>();
+                    if (aJCollision != null)
+                    {
+                        aJCollision.OnJCollsion(physicsObjB);
+                    }
+                    var bJCollision = physicsObjB.GetComponent<JCollision>();
+                    if (bJCollision != null)
+                    {
+                        bJCollision.OnJCollsion(physicsObjA);
+                    }
+                    /*
                     var physicsResult = JMeshCollisionUtil.CalculateObjectSeparation(
                         physicsObjA.jMeshFrameInstance, 
                         physicsObjB.jMeshFrameInstance
@@ -209,6 +275,7 @@ namespace Jerre.JPhysics
                     {
                         bJCollision.OnJCollsion(toPush);
                     }
+                    */
                 }
             }
         }

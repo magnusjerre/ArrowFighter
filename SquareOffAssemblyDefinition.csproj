@@ -135,6 +135,7 @@
     <Compile Include="Assets\Scripts\Physics\Utils\JLayerMaskUtil.cs" />
     <Compile Include="Assets\Scripts\Physics\Utils\JMeshCollisionUtil.cs" />
     <Compile Include="Assets\Scripts\Physics\Utils\JMeshOverlap.cs" />
+    <Compile Include="Assets\Scripts\Physics\Utils\JMeshOverlapPushUtil.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerBombWeapon.cs" />

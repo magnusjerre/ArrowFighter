@@ -65,5 +65,16 @@ namespace Tests
                 }
             }
         }
+
+        public static void AreEqualIshOrOppositeIsh(Vector3 expected, Vector3 actual)
+        {
+            try
+            {
+                AreEqualIsh(expected, actual);
+            } catch (AssertionException e)
+            {
+                AreEqualIsh(expected, actual * -1);
+            }
+        }
     }
 }
