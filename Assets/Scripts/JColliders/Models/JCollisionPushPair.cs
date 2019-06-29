@@ -2,14 +2,14 @@
 {
     public struct JCollisionPushPair
     {
-        public JCollider body1;
-        public JCollider body2;
+        public JCollider pushable;
+        public JCollider pushingFrom;
         public Push push;
 
-        public JCollisionPushPair(JCollider body1, JCollider body2, Push push)
+        public JCollisionPushPair(JCollider collider, JCollider pushingFrom, Push push)
         {
-            this.body1 = body1;
-            this.body2 = body2;
+            this.pushable = collider;
+            this.pushingFrom = pushingFrom;
             this.push = push;
         }
     }

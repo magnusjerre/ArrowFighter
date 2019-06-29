@@ -20,11 +20,11 @@ namespace Jerre
 
         private void CollisionHandler(JCollider thisBody, JCollider otherBody)
         {
-            collision.NotifyDestroyCollider();
             var playerHealth = otherBody.GetComponent<PlayerHealth>();
             var otherColor = settings.color;
             if (playerHealth != null)
             {
+                collision.NotifyDestroyCollider();
                 var playerSettings = otherBody.GetComponent<PlayerSettings>();
                 otherColor = playerSettings.color;
                 Debug.Log("Player " + settings.PlayerOwnerNumber + " hit player " + playerSettings.playerNumber + "! Doing damage: " + settings.Damage);

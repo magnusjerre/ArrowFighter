@@ -12,6 +12,8 @@ namespace Jerre.JColliders
 
         void LateUpdate()
         {
+            pushPairs.Clear();
+            collisionMapQueue.Clear();
 
             var allActiveJColliders = JColliderContainer.INSTANCE.ActiveColliders();
             var lengthAllActiveJColliders = allActiveJColliders.Count;
@@ -26,7 +28,6 @@ namespace Jerre.JColliders
 
             var completedCollisionsThisFrame = new HashSet<JCollisionPair>();
             var collisionMap = CollisionMap.GenerateMapFor(allActiveJColliders, 4, CameraHelper.GetCameraWorldCoordinateBounds());
-            collisionMapQueue.Clear();
             collisionMapQueue.Add(collisionMap);
             while (collisionMapQueue.HasNext())
             {
@@ -94,8 +95,10 @@ namespace Jerre.JColliders
             var pushScalarDirection = Vector3.Dot(pushDirection, centerDirection);
             pushScalarDirection /= Mathf.Abs(pushScalarDirection);
 
-            var pushVector = pushDirection * pushScalarDirection * magnitude;
+            var actualPushDirection = pushDirection * pushScalarDirection;
+            var pushVector = actualPushDirection * magnitude;
             pushable.transform.Translate(pushVector, Space.World);
+            pushPairs.Add(new JCollisionPushPair(pushable, pushingFrom, new Push(actualPushDirection, magnitude)));
         }
 
         // Modifies completedCollisions by always trying to add the new collision pair to the list
