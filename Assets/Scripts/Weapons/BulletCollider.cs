@@ -1,5 +1,5 @@
 ﻿using Jerre.Events;
-using Jerre.JPhysics;
+using Jerre.JColliders;
 using UnityEngine;
 
 namespace Jerre
@@ -8,18 +8,19 @@ namespace Jerre
     public class BulletCollider : MonoBehaviour
     {
         BulletSettings settings;
-        JCollision collision;
+        JCollider collision;
 
         // Start is called before the first frame update
         void Start()
         {
             settings = GetComponent<BulletSettings>();
-            collision = GetComponent<JCollision>();
+            collision = GetComponent<JCollider>();
             collision.SetHandler(CollisionHandler);
         }
 
-        private void CollisionHandler(PhysicsbodyRectangular thisBody, PhysicsbodyRectangular otherBody)
+        private void CollisionHandler(JCollider thisBody, JCollider otherBody)
         {
+            collision.NotifyDestroyCollider();
             var playerHealth = otherBody.GetComponent<PlayerHealth>();
             var otherColor = settings.color;
             if (playerHealth != null)

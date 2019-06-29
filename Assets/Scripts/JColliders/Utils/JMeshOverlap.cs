@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using System.Collections;
-using static Jerre.JPhysics.Intersection;
+﻿using Jerre.JMath;
+using UnityEngine;
 
-namespace Jerre.JPhysics
+namespace Jerre.JColliders
 {
     public class JMeshOverlap
     {

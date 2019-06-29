@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Jerre.JPhysics
+namespace Jerre.JColliders
 {
     public struct Push
     {

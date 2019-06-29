@@ -45,7 +45,7 @@ namespace Jerre
         {
             playerSettings.GetComponent<PlayerHealth>().enabled = enabled;
             playerSettings.GetComponent<Collider>().enabled = enabled;
-            playerSettings.GetComponent<PhysicsbodyRectangular>().enabled = enabled;
+            playerSettings.GetComponent<JPhysicsBody>().enabled = enabled;
             var playerInputComponent = playerSettings.GetComponent<PlayerInputComponent>();
             playerInputComponent.InputIsFresh = enabled ? playerInputComponent.InputIsFresh : false;
             playerInputComponent.enabled = enabled;

@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace Jerre.JPhysics
+﻿namespace Jerre.JColliders
 {
     public struct PushResult
     {

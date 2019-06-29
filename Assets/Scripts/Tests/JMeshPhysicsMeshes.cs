@@ -1,4 +1,4 @@
-﻿using Jerre.JPhysics;
+﻿using Jerre.JColliders;
 using UnityEngine;
 
 namespace Tests

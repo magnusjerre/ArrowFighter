@@ -1,7 +1,7 @@
-﻿using Jerre.JPhysics;
+﻿using Jerre.JColliders;
+using Jerre.JMath;
 using NUnit.Framework;
 using UnityEngine;
-using static Jerre.JPhysics.Intersection;
 
 namespace Tests
 {

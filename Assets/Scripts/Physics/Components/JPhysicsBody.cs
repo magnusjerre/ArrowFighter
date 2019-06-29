@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Jerre.JColliders;
+using UnityEngine;
 
 namespace Jerre.JPhysics
 {
-    public class PhysicsbodyRectangular : MonoBehaviour
+    public class JPhysicsBody : MonoBehaviour
     {
         public Renderer MeshRenderer;
         public MeshFilter meshFilter;

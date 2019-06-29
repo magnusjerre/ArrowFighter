@@ -1,4 +1,4 @@
-﻿namespace Jerre.JPhysics
+﻿namespace Jerre.JColliders
 {
     public class JLayerMaskUtil
     {

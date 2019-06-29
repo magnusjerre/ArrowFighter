@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Jerre.JPhysics;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Jerre.JPhysics
+namespace Jerre.JColliders
 {
-    class CollisionMap
+    public class CollisionMap
     {
-        public List<PhysicsbodyRectangular> bodies;
+        public List<JCollider> bodies;
         public Bounds bounds;
         public List<CollisionMap> subMaps;
 
@@ -16,13 +17,13 @@ namespace Jerre.JPhysics
             
         }
 
-        public static CollisionMap GenerateMapFor(List<PhysicsbodyRectangular> bodies, int maxNumberOfElements, Bounds bounds)
+        public static CollisionMap GenerateMapFor(List<JCollider> bodies, int maxNumberOfElements, Bounds bounds)
         {
             var rootCollisionMap = new CollisionMap();
 
             if (bodies.Count <= maxNumberOfElements || bounds.size.x <= MinBoundsWidth)
             {
-                rootCollisionMap.bodies = new List<PhysicsbodyRectangular>();
+                rootCollisionMap.bodies = new List<JCollider>();
                 rootCollisionMap.bounds = bounds;
                 rootCollisionMap.bodies.AddRange(bodies);
             }
@@ -38,17 +39,18 @@ namespace Jerre.JPhysics
                     new Vector3(newXSize / 2 + bounds.center.x, 0, bounds.center.z),
                     new Vector3(newXSize, 0, bounds.size.z));
 
-                List<PhysicsbodyRectangular> childABodies = new List<PhysicsbodyRectangular>();
-                List<PhysicsbodyRectangular> childBBodies = new List<PhysicsbodyRectangular>();
+                List<JCollider> childABodies = new List<JCollider>();
+                List<JCollider> childBBodies = new List<JCollider>();
 
                 for (var i = 0; i < bodies.Count; i++)
                 {
+                    // TODO - Replace deprecated JMeshCollisionUtil with JMeshOverlap
                     var body = bodies[i];
-                    if (JMeshCollisionUtil.Intersect(boundsChildA, body.jMeshFrameInstance.AABB))
+                    if (JMeshCollisionUtil.Intersect(boundsChildA, body.meshFrame.AABB))
                     {
                         childABodies.Add(body);
                     }
-                    if (JMeshCollisionUtil.Intersect(boundsChildB, body.jMeshFrameInstance.AABB))
+                    if (JMeshCollisionUtil.Intersect(boundsChildB, body.meshFrame.AABB))
                     {
                         childBBodies.Add(body);
                     }

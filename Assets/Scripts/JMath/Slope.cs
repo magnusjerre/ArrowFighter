@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using static Jerre.JPhysics.Intersection;
 
-namespace Jerre.JPhysics
+namespace Jerre.JMath
 {
     public struct Slope
     {

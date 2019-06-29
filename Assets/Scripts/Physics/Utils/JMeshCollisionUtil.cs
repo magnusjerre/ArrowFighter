@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Jerre.JColliders;
+using Jerre.JMath;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jerre.JPhysics

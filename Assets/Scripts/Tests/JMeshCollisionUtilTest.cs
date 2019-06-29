@@ -1,4 +1,6 @@
-﻿using Jerre.JPhysics;
+﻿using Jerre.JColliders;
+using Jerre.JMath;
+using Jerre.JPhysics;
 using Jerre.Utils;
 using NUnit.Framework;
 using System.Collections.Generic;

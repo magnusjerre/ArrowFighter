@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-
-namespace Jerre.JPhysics
+namespace Jerre.JColliders
 {
-    public class MeshDebuggerManager : MonoBehaviour
+    public class JColliderDebuggerManager : MonoBehaviour
     {
+
         List<LineRenderer> lineRenderers;
 
         public LineRenderer EdgePrfeab;
@@ -19,31 +19,33 @@ namespace Jerre.JPhysics
 
         void LateUpdate()
         {
-            var physicsBodies = GameObject.FindObjectsOfType<JPhysicsBody>();
-            var pbLength = physicsBodies.Length;
+            var physicsBodies = JColliderContainer.INSTANCE.ActiveColliders();
+            var pbLength = physicsBodies.Count;
+
 
             var nextLineRendererIndex = 0;
             for (var i = 0; i < pbLength; i++)
             {
                 var body = physicsBodies[i];
-                if (body.DebugMesh)
+                if (body.debugMesh)
                 {
                     LineRenderer lr;
                     if (nextLineRendererIndex < lineRenderers.Count)
                     {
                         lr = lineRenderers[nextLineRendererIndex];
-                    } else
+                    }
+                    else
                     {
                         lr = Instantiate(EdgePrfeab, LineRenderersParent);
                         lineRenderers.Add(lr);
                     }
 
-                    var edgeCoordinates = body.GetEdgeCoordinates();
+                    var edgeCoordinates = body.meshFrame.EdgeVertices;
                     lr.positionCount = edgeCoordinates.Length;
-                    lr.SetPositions(body.GetEdgeCoordinates());
+                    lr.SetPositions(body.meshFrame.EdgeVertices);
                     nextLineRendererIndex++;
                 }
-                if (body.DebugAABB)
+                if (body.debugAABB)
                 {
                     LineRenderer lr;
                     if (nextLineRendererIndex < lineRenderers.Count)
@@ -56,8 +58,8 @@ namespace Jerre.JPhysics
                         lineRenderers.Add(lr);
                     }
 
-                    var min = body.jMeshFrameInstance.AABB.min;
-                    var max = body.jMeshFrameInstance.AABB.max;
+                    var min = body.meshFrame.AABB.min;
+                    var max = body.meshFrame.AABB.max;
 
                     lr.positionCount = 5;
                     lr.SetPositions(new Vector3[] {
@@ -67,33 +69,6 @@ namespace Jerre.JPhysics
                         new Vector3(min.x, 1, max.z),
                         new Vector3(min.x, 1, min.z),
                     });
-                    nextLineRendererIndex++;
-                }
-                if (body.DebugAABB && body.MeshRenderer != null)
-                {
-                    LineRenderer lr;
-                    if (nextLineRendererIndex < lineRenderers.Count)
-                    {
-                        lr = lineRenderers[nextLineRendererIndex];
-                    }
-                    else
-                    {
-                        lr = Instantiate(EdgePrfeab, LineRenderersParent);
-                        lineRenderers.Add(lr);
-                    }
-
-                    var min = body.MeshRenderer.bounds.min;
-                    var max = body.MeshRenderer.bounds.max;
-
-                    lr.positionCount = 5;
-                    lr.SetPositions(new Vector3[] {
-                        new Vector3(min.x, 1, min.z),
-                        new Vector3(max.x, 1, min.z),
-                        new Vector3(max.x, 1, max.z),
-                        new Vector3(min.x, 1, max.z),
-                        new Vector3(min.x, 1, min.z),
-                    });
-
                     nextLineRendererIndex++;
                 }
             }

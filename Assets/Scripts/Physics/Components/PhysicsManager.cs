@@ -1,4 +1,5 @@
-﻿using Jerre.Utils;
+﻿using Jerre.JColliders;
+using Jerre.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,66 +22,66 @@ namespace Jerre.JPhysics
 
         void LateUpdate()
         {
-            var allPhysicsBodies = GameObject.FindObjectsOfType<PhysicsbodyRectangular>();
-            if (allPhysicsBodies.Length < 1)
-            {
-                return;
-            }
+            //var allPhysicsBodies = GameObject.FindObjectsOfType<JPhysicsBody>();
+            //if (allPhysicsBodies.Length < 1)
+            //{
+            //    return;
+            //}
 
-            var bodies = new List<PhysicsbodyRectangular>(allPhysicsBodies.Length);
-            var allPBLength = allPhysicsBodies.Length;
-            for (var i = 0; i < allPBLength; i++)
-            {
-                var body = allPhysicsBodies[i];
-                if (body.enabled)
-                {   // Update physics body, and add it to the list
-                    body.jMeshFrameInstance = JMesh.FromMeshAndTransform(body.jMeshIdentity, body.meshFilter.transform.localToWorldMatrix);
-                    bodies.Add(body);
-                }
-            }
+            //var bodies = new List<JPhysicsBody>(allPhysicsBodies.Length);
+            //var allPBLength = allPhysicsBodies.Length;
+            //for (var i = 0; i < allPBLength; i++)
+            //{
+            //    var body = allPhysicsBodies[i];
+            //    if (body.enabled)
+            //    {   // Update physics body, and add it to the list
+            //        body.jMeshFrameInstance = JMesh.FromMeshAndTransform(body.jMeshIdentity, body.meshFilter.transform.localToWorldMatrix);
+            //        bodies.Add(body);
+            //    }
+            //}
 
-            if (Debugbounds)
-            {
-                for (var i = 0; i < DebugView.childCount; i++)
-                {
-                    DebugView.GetChild(i).gameObject.SetActive(false);
-                }
-            }
+            //if (Debugbounds)
+            //{
+            //    for (var i = 0; i < DebugView.childCount; i++)
+            //    {
+            //        DebugView.GetChild(i).gameObject.SetActive(false);
+            //    }
+            //}
 
-            var completedCollisionsThisFrame = new HashSet<CollisionPair>();
-            var collisionMap = CollisionMap.GenerateMapFor(bodies, 2, CameraHelper.GetCameraWorldCoordinateBounds());
-            var processQueue = new List<CollisionMap>();
-            processQueue.Add(collisionMap);
-            var index = 0;
-            while (processQueue.Count > 0)
-            {
-                var current = processQueue[0];
-                processQueue.RemoveAt(0);
+            //var completedCollisionsThisFrame = new HashSet<CollisionPair>();
+            //var collisionMap = CollisionMap.GenerateMapFor(bodies, 2, CameraHelper.GetCameraWorldCoordinateBounds());
+            //var processQueue = new List<CollisionMap>();
+            //processQueue.Add(collisionMap);
+            //var index = 0;
+            //while (processQueue.Count > 0)
+            //{
+            //    var current = processQueue[0];
+            //    processQueue.RemoveAt(0);
 
-                if (current.bodies != null)
-                {
-                    HandlePhysics(current.bodies.ToArray(), completedCollisionsThisFrame);
-                }
-                else
-                {
-                    processQueue.AddRange(current.subMaps);
-                }
-                if (Debugbounds && index < DebugView.childCount)
-                {
-                    var rect = DebugView.GetChild(index).GetComponent<RectTransform>();
+            //    if (current.bodies != null)
+            //    {
+            //        HandlePhysics(current.bodies.ToArray(), completedCollisionsThisFrame);
+            //    }
+            //    else
+            //    {
+            //        processQueue.AddRange(current.subMaps);
+            //    }
+            //    if (Debugbounds && index < DebugView.childCount)
+            //    {
+            //        var rect = DebugView.GetChild(index).GetComponent<RectTransform>();
 
-                    CameraHelper.PaintBoundsOnScreen(current.bounds, rect);
-                }
-                index++;
-            }
+            //        CameraHelper.PaintBoundsOnScreen(current.bounds, rect);
+            //    }
+            //    index++;
+            //}
         }
 
         struct CollisionPair
         {
-            public PhysicsbodyRectangular body1;
-            public PhysicsbodyRectangular body2;
+            public JPhysicsBody body1;
+            public JPhysicsBody body2;
 
-            public CollisionPair(PhysicsbodyRectangular body1, PhysicsbodyRectangular body2)
+            public CollisionPair(JPhysicsBody body1, JPhysicsBody body2)
             {
                 this.body1 = body1;
                 this.body2 = body2;
@@ -94,11 +95,11 @@ namespace Jerre.JPhysics
 
             public override int GetHashCode()
             {
-                return EqualityComparer<PhysicsbodyRectangular>.Default.GetHashCode(body1) + EqualityComparer<PhysicsbodyRectangular>.Default.GetHashCode(body2);
+                return EqualityComparer<JPhysicsBody>.Default.GetHashCode(body1) + EqualityComparer<JPhysicsBody>.Default.GetHashCode(body2);
             }
         }
 
-        void LogForPlayerCollisionsOnly(string message, PhysicsbodyRectangular body1, PhysicsbodyRectangular body2)
+        void LogForPlayerCollisionsOnly(string message, JPhysicsBody body1, JPhysicsBody body2)
         {
             if (body1.jLayer == JLayer.PLAYER || body2.jLayer == JLayer.PLAYER)
             {
@@ -106,7 +107,7 @@ namespace Jerre.JPhysics
             }
         }
 
-        void HandlePhysics(PhysicsbodyRectangular[] allPhysicsBodies, HashSet<CollisionPair> completedCollisions)
+        void HandlePhysics(JPhysicsBody[] allPhysicsBodies, HashSet<CollisionPair> completedCollisions)
         {
             for (var i = 0; i < allPhysicsBodies.Length - 1; i++)
             {
@@ -191,15 +192,15 @@ namespace Jerre.JPhysics
                         // Not including bounce at this time, maybe later...
                     }
 
-                    var aJCollision = physicsObjA.GetComponent<JCollision>();
+                    var aJCollision = physicsObjA.GetComponent<JCollider>();
+                    var bJCollision = physicsObjB.GetComponent<JCollider>();
                     if (aJCollision != null)
                     {
-                        aJCollision.OnJCollsion(physicsObjB);
+                        aJCollision.OnJCollsion(bJCollision);
                     }
-                    var bJCollision = physicsObjB.GetComponent<JCollision>();
                     if (bJCollision != null)
                     {
-                        bJCollision.OnJCollsion(physicsObjA);
+                        bJCollision.OnJCollsion(aJCollision);
                     }
                     /*
                     var physicsResult = JMeshCollisionUtil.CalculateObjectSeparation(

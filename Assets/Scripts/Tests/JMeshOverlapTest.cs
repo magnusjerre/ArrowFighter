@@ -1,7 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using Jerre.JColliders;
 using NUnit.Framework;
-using Jerre.JPhysics;
+using UnityEngine;
 
 namespace Tests
 {

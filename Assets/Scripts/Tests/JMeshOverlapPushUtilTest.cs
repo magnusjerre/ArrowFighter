@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using NUnit.Framework;
 using Jerre.JPhysics;
+using Jerre.JColliders;
 
 namespace Tests
 {

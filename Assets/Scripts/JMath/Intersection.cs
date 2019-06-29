@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Jerre.JPhysics
+namespace Jerre.JMath
 {
     public struct Intersection
     {
@@ -11,11 +11,6 @@ namespace Jerre.JPhysics
         {
             Type = type;
             Point = point;
-        }
-
-        public enum IntersectionType
-        {
-            INTERSECT, OVERLAP, NONE
         }
     }
 }
