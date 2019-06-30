@@ -2472,6 +2472,11 @@ PrefabInstance:
       propertyPath: debugAABB
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3158315841850649603, guid: 0a8fc28e897dec440a4cab449e25923a,
+        type: 3}
+      propertyPath: SurfaceBounceFactor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3158315842603113768, guid: 0a8fc28e897dec440a4cab449e25923a,
         type: 3}
       propertyPath: m_Mesh

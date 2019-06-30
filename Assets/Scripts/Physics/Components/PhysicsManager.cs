@@ -36,33 +36,37 @@ namespace Jerre.JPhysics
 
         void BouncePlayer(PlayerPhysics playerPhysics, Vector3 surfaceNormal, float surfaceBounceFactor)
         {
-            var dotProduct = Vector3.Dot(surfaceNormal, playerPhysics.MovementDirection);
-            var bounceDirection = playerPhysics.MovementDirection - 2 * dotProduct * surfaceNormal;
+            var reflectionVector = ReflectIncomingVector(playerPhysics.MovementDirection * playerPhysics.Speed, surfaceNormal);
+            var scaledOutgoingVector = ScaleVectorInNormalDirection(reflectionVector, surfaceNormal, surfaceBounceFactor);
 
-            var resultingSpeedVector = bounceDirection * playerPhysics.Speed;
-            var lengthOfResultingBounceDirecitonOntoNormal = Vector3.Dot(surfaceNormal, resultingSpeedVector);
-            var bounceSpeedInDirectionOfNormal = surfaceNormal * lengthOfResultingBounceDirecitonOntoNormal * surfaceBounceFactor;
-            var totalSpeedVector = resultingSpeedVector + bounceSpeedInDirectionOfNormal;
-
-            playerPhysics.MovementDirection = totalSpeedVector.normalized;
-            var oldSpeed = playerPhysics.Speed;
-            playerPhysics.SetSpeed(totalSpeedVector.magnitude);
-            playerPhysics.transform.Translate(playerPhysics.MovementDirection * playerPhysics.Speed * Time.deltaTime, Space.World); // HACKY whacky, should probably handle this in some other way?
+            playerPhysics.MovementDirection = scaledOutgoingVector.normalized;
+            playerPhysics.SetSpeed(scaledOutgoingVector.magnitude);
+            playerPhysics.transform.Translate(scaledOutgoingVector * Time.deltaTime, Space.World);
         }
 
         void BounceBullet(BulletMover bulletMover, Vector3 surfaceNormal, float surfaceBounceFactor)
         {
-            var dotProduct = Vector3.Dot(surfaceNormal, bulletMover.transform.forward);
-            var bounceDirection = bulletMover.transform.forward - 2 * dotProduct * surfaceNormal;
+            var reflectionVector = ReflectIncomingVector(bulletMover.transform.forward * bulletMover.Speed, surfaceNormal);
+            var scaledOutgoingVector = ScaleVectorInNormalDirection(reflectionVector, surfaceNormal, surfaceBounceFactor);
 
-            var resultingSpeedVector = bounceDirection * bulletMover.Speed;
-            var lengthOfResultingBounceDirectionOntoNormal = Vector3.Dot(surfaceNormal, resultingSpeedVector);
-            var bounceSpeedInDirectionOfNormal = surfaceNormal * lengthOfResultingBounceDirectionOntoNormal * surfaceBounceFactor;
-            var totalSpeedVector = resultingSpeedVector + bounceSpeedInDirectionOfNormal;
+            bulletMover.transform.LookAt(bulletMover.transform.position + scaledOutgoingVector);
+            bulletMover.Speed = scaledOutgoingVector.magnitude;
+            bulletMover.transform.Translate(Vector3.forward * bulletMover.Speed * Time.deltaTime);
+        }
 
-            bulletMover.transform.LookAt(bulletMover.transform.position + totalSpeedVector.normalized);
-            bulletMover.Speed = totalSpeedVector.magnitude;
-            bulletMover.transform.Translate(Vector3.forward * bulletMover.Speed * Time.deltaTime * 0.5f);   // HACKY whacky, doesn't look very good in game...
+        // Returns the reflected vector of magnitude equal to the input movementdirection
+        public static Vector3 ReflectIncomingVector(Vector3 incomingVector, Vector3 surfaceNormal)
+        {
+            var dotProduct = Vector3.Dot(surfaceNormal, incomingVector);
+            return incomingVector - 2 * dotProduct * surfaceNormal;
+        }
+
+        // Scales the vector in the normaldirection. Calculated by finding how much the normal-direction increases and then adding the normaldirection * increase to the vector
+        public static Vector3 ScaleVectorInNormalDirection(Vector3 vector, Vector3 normalDirection, float scale)
+        {
+            var lengthOfVectorOnNormal = Vector3.Dot(normalDirection, vector);
+            var scaledLengthOfVectorOnNormal = lengthOfVectorOnNormal * scale;
+            return vector + normalDirection * (scaledLengthOfVectorOnNormal - lengthOfVectorOnNormal);
         }
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Tests\JMeshOverlapTest.cs" />
     <Compile Include="Assets\Scripts\Tests\JMeshPhysicsMeshes.cs" />
     <Compile Include="Assets\Scripts\Tests\JMeshTest.cs" />
+    <Compile Include="Assets\Scripts\Tests\JPhysicsManagerTest.cs" />
     <Compile Include="Assets\Scripts\Tests\TestMethods.cs" />
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
