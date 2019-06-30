@@ -43,13 +43,12 @@ namespace Jerre.JColliders
 
                 for (var i = 0; i < bodies.Count; i++)
                 {
-                    // TODO - Replace deprecated JMeshCollisionUtil with JMeshOverlap
                     var body = bodies[i];
-                    if (JMeshCollisionUtil.Intersect(boundsChildA, body.meshFrame.AABB))
+                    if (JMeshOverlap.AABBOverlap(boundsChildA, body.meshFrame.AABB))
                     {
                         childABodies.Add(body);
                     }
-                    if (JMeshCollisionUtil.Intersect(boundsChildB, body.meshFrame.AABB))
+                    if (JMeshOverlap.AABBOverlap(boundsChildB, body.meshFrame.AABB))
                     {
                         childBBodies.Add(body);
                     }

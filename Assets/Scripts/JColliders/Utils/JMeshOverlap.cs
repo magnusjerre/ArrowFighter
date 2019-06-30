@@ -67,8 +67,8 @@ namespace Jerre.JColliders
 
 
             return !(
-                    (aMax.x < bMin.x || bMax.x < aMin.x) ||     // Other is to the right
-                    (aMax.z < bMin.z || bMax.z < aMin.z)     // Other is above
+                    (aMax.x < bMin.x || bMax.x < aMin.x) ||     // Is one to the right of the other
+                    (aMax.z < bMin.z || bMax.z < aMin.z)     // Is one above the other
                 );
         }
 

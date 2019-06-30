@@ -158,7 +158,7 @@ namespace Jerre.JPhysics
                     var boundsA = physicsObjA.jMeshFrameInstance.AABB;
                     var boundsB = physicsObjB.jMeshFrameInstance.AABB;
 
-                    if (!JMeshCollisionUtil.Intersect(boundsA, boundsB)) continue;
+                    if (!JMeshOverlap.AABBOverlap(boundsA, boundsB)) continue;
 
                     if (!JMeshOverlap.MeshesOverlap(physicsObjA.jMeshFrameInstance, physicsObjB.jMeshFrameInstance)) continue;
 
