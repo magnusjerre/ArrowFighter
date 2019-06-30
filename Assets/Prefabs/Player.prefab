@@ -360,8 +360,8 @@ MonoBehaviour:
   jLayer: 1
   meshFilter: {fileID: 3318281008047161025}
   IdGenerated: 0
-  debugMesh: 1
-  debugAABB: 1
+  debugMesh: 0
+  debugAABB: 0
 --- !u!1 &1369341429014477098
 GameObject:
   m_ObjectHideFlags: 0
