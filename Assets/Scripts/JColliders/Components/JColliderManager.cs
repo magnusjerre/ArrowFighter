@@ -10,6 +10,8 @@ namespace Jerre.JColliders
         public static QueueRerunnable<CollisionMap> collisionMapQueue = new QueueRerunnable<CollisionMap>();
         public static List<JCollisionPushPair> pushPairs = new List<JCollisionPushPair>();
 
+        private EnterStayExitManager enterStayExitManager = new EnterStayExitManager();
+
         void LateUpdate()
         {
             pushPairs.Clear();
@@ -41,6 +43,8 @@ namespace Jerre.JColliders
                     collisionMapQueue.Add(currentCollisionMap.subMaps);
                 }
             }
+
+            enterStayExitManager.CompleteFrame();
         }
 
         private void DoCollisionChecks(List<JCollider> colliders, HashSet<JCollisionPair> completedCollisions)
@@ -58,8 +62,7 @@ namespace Jerre.JColliders
                         continue;
                     }
 
-                    colliderA.OnJCollsion(colliderB);
-                    colliderB.OnJCollsion(colliderA);
+                    enterStayExitManager.Add(new JCollisionPair(colliderA, colliderB));
 
                     if (colliderA.CheckOnlyForOverlap && colliderB.CheckOnlyForOverlap)
                     {
@@ -69,8 +72,9 @@ namespace Jerre.JColliders
                     var pushResult = JMeshOverlapPushUtil.CalculateMinimumPush(colliderA.meshFrame, colliderB.meshFrame);
                     HandlePushResult(pushResult, colliderA, colliderB);
                 }
-
             }
+
+
         }
 
         private void HandlePushResult(Push pushResult, JCollider colliderA, JCollider colliderB)

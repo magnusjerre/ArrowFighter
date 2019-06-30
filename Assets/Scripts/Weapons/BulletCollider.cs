@@ -15,7 +15,7 @@ namespace Jerre
         {
             settings = GetComponent<BulletSettings>();
             collision = GetComponent<JCollider>();
-            collision.SetHandler(CollisionHandler);
+            collision.SetOnJCollisionStayHandler(CollisionHandler);
         }
 
         private void CollisionHandler(JCollider thisBody, JCollider otherBody)

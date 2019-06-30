@@ -219,11 +219,11 @@ namespace Jerre.JPhysics
                     var bJCollision = physicsObjB.GetComponent<JCollider>();
                     if (aJCollision != null)
                     {
-                        aJCollision.OnJCollsion(bJCollision);
+                        aJCollision.OnJCollsionStay(bJCollision);
                     }
                     if (bJCollision != null)
                     {
-                        bJCollision.OnJCollsion(aJCollision);
+                        bJCollision.OnJCollsionStay(aJCollision);
                     }
                     /*
                     var physicsResult = JMeshCollisionUtil.CalculateObjectSeparation(

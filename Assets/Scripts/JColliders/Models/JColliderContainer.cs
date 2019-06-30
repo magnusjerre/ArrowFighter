@@ -24,7 +24,7 @@ namespace Jerre.JColliders
 
 
         private HashSet<JCollider> allCollidersInScene;
-
+        private ulong nextJColliderId = 0;
 
         public bool Add(JCollider collider)
         {
@@ -58,6 +58,17 @@ namespace Jerre.JColliders
         public int ColliderCount()
         {
             return allCollidersInScene.Count;
+        }
+
+        public ulong NextId()
+        {
+            return nextJColliderId++;
+        }
+
+        public void Reset()
+        {
+            ClearColliderList();
+            nextJColliderId = 0;
         }
     }
 

@@ -104,6 +104,7 @@
     <Compile Include="Assets\Scripts\JColliders\Components\JColliderDebuggerManager.cs" />
     <Compile Include="Assets\Scripts\JColliders\Components\JColliderManager.cs" />
     <Compile Include="Assets\Scripts\JColliders\Models\CollisionMap.cs" />
+    <Compile Include="Assets\Scripts\JColliders\Models\EnterStayExitManager.cs" />
     <Compile Include="Assets\Scripts\JColliders\Models\JColliderContainer.cs" />
     <Compile Include="Assets\Scripts\JColliders\Models\JCollisionPair.cs" />
     <Compile Include="Assets\Scripts\JColliders\Models\JCollisionPushPair.cs" />

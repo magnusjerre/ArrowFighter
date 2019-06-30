@@ -9,16 +9,20 @@ namespace Jerre.JColliders
         public MeshFilter meshFilter;
         public JMesh meshIdentity;
         public JMesh meshFrame;
+        public ulong IdGenerated;
 
         public bool debugMesh = false;
         public bool debugAABB = false;
 
         public delegate void CollisionHandler(JCollider thisBody, JCollider  otherBody);
-        private CollisionHandler handler;
+        private CollisionHandler onStayHandler;
+        private CollisionHandler onEnterHandler;
+        private CollisionHandler onExitHandler;
 
         private void Awake()
         {
             JColliderContainer.INSTANCE.Add(this);
+            IdGenerated = JColliderContainer.INSTANCE.NextId();
         }
 
         void Start()
@@ -36,14 +40,34 @@ namespace Jerre.JColliders
             meshFrame = meshIdentity;
         }
 
-        public void SetHandler(CollisionHandler handler)
+        public void SetOnJCollisionStayHandler(CollisionHandler handler)
         {
-            this.handler = handler;
+            this.onStayHandler = handler;
         }
 
-        public void OnJCollsion(JCollider otherCollider)
+        public void SetOnJCollisionEnterHandler(CollisionHandler handler)
         {
-            handler?.Invoke(this, otherCollider);
+            this.onEnterHandler = handler;
+        }
+
+        public void SetOnJCollisionExitHandler(CollisionHandler handler)
+        {
+            this.onExitHandler = handler;
+        }
+
+        public void OnJCollsionStay(JCollider otherCollider)
+        {
+            onStayHandler?.Invoke(this, otherCollider);
+        }
+
+        public void OnJCollisionEnter(JCollider otherCollider)
+        {
+            onEnterHandler?.Invoke(this, otherCollider);
+        }
+
+        public void OnJCollsionExit(JCollider otherCollider)
+        {
+            onExitHandler?.Invoke(this, otherCollider);
         }
 
         public void OnDestroy()
