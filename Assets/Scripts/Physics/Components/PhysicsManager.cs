@@ -16,6 +16,7 @@ namespace Jerre.JPhysics
             {
                 var pushable = pushPairs[i].pushable;
                 var pushingFrom = pushPairs[i].pushingFrom;
+                if (pushingFrom == null || pushable == null) continue;
                 var push = pushPairs[i].push;
 
                 var pushingFromPhysicsBody = pushingFrom.GetComponent<JPhysicsBody>();
