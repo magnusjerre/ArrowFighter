@@ -14,10 +14,10 @@ namespace Jerre.JPhysics
 
         void Start()
         {
-            for (var i = 0; i < DebugView.childCount; i++)
-            {
-                DebugView.GetChild(i).gameObject.SetActive(false);
-            }
+            //for (var i = 0; i < DebugView.childCount; i++)
+            //{
+            //    DebugView.GetChild(i).gameObject.SetActive(false);
+            //}
         }
 
         void LateUpdate()

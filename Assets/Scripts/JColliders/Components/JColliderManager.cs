@@ -34,7 +34,7 @@ namespace Jerre.JColliders
             while (collisionMapQueue.HasNext())
             {
                 var currentCollisionMap = collisionMapQueue.Next();
-                if (currentCollisionMap.bodies != null && currentCollisionMap.bodies.Count > 0)
+                if (currentCollisionMap.bodies != null)
                 {
                     DoCollisionChecks(currentCollisionMap.bodies, completedCollisionsThisFrame);
                 }

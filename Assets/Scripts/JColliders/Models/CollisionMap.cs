@@ -23,9 +23,8 @@ namespace Jerre.JColliders
 
             if (bodies.Count <= maxNumberOfElements || bounds.size.x <= MinBoundsWidth)
             {
-                rootCollisionMap.bodies = new List<JCollider>();
+                rootCollisionMap.bodies = new List<JCollider>(bodies);
                 rootCollisionMap.bounds = bounds;
-                rootCollisionMap.bodies.AddRange(bodies);
             }
             else
             {

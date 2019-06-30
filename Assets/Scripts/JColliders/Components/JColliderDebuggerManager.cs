@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Jerre.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jerre.JColliders
@@ -12,12 +13,24 @@ namespace Jerre.JColliders
 
         public Transform LineRenderersParent;
 
+        public RectTransform CollisionMapDebugView;
+        public bool DebugCollisionMap = false;
+
         private void Awake()
         {
             lineRenderers = new List<LineRenderer>(100);
         }
 
         void LateUpdate()
+        {
+            DebugAABBAndEdges();
+            if (DebugCollisionMap)
+            {
+                DebugCollisionMaps();
+            }
+        }
+
+        private void DebugAABBAndEdges()
         {
             var physicsBodies = JColliderContainer.INSTANCE.ActiveColliders();
             var pbLength = physicsBodies.Count;
@@ -77,6 +90,31 @@ namespace Jerre.JColliders
             {
                 lineRenderers.RemoveRange(nextLineRendererIndex, (lineRenderers.Count - nextLineRendererIndex));
             }
+        }
+
+        private void DebugCollisionMaps()
+        {
+            var queue = JColliderManager.collisionMapQueue;
+            queue.ResetQueueIteration();
+
+            var childIndex = 0;
+
+            for (var i = 0; i < CollisionMapDebugView.childCount; i++)
+            {
+                CollisionMapDebugView.GetChild(i).gameObject.SetActive(false);
+            }
+
+            while (queue.HasNext() && childIndex < CollisionMapDebugView.childCount)
+            {
+                var map = queue.Next();
+                if (map.bodies != null) {
+                    var childRect = CollisionMapDebugView.GetChild(childIndex).GetComponent<RectTransform>();
+                    CameraHelper.PaintBoundsOnScreen(map.bounds, childRect);
+                }
+
+                childIndex++;
+            }
+
         }
     }
 }
