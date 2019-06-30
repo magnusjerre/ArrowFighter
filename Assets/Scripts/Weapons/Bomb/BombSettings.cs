@@ -13,7 +13,6 @@ namespace Jerre
         public float MaxLifeTimeWithoutExploding = 10f;
         public int PlayerOwnerNumber;
         public Color color;
-        public SpriteRenderer explosionRadiusRenderer;
 
         void Awake()
         {
@@ -31,7 +30,15 @@ namespace Jerre
             {
                 children[i].color = color;
             }
-            explosionRadiusRenderer.transform.localScale = Vector3.one * (BlastRadius / 10f);
+
+            var meshChildren = GetComponentsInChildren<MeshRenderer>();
+            for (var i = 0; i < meshChildren.Length; i++)
+            {
+                var meshChild = meshChildren[i];
+                meshChild.material.color = color;
+                meshChild.transform.localScale = Vector3.one * (BlastRadius / 10f) * meshChild.transform.localScale.x;
+            }
+            
         }
     }
 }

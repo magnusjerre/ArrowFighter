@@ -5,7 +5,7 @@ namespace Jerre
     [RequireComponent(typeof(BombSettings))]
     public class BombLifetimeIndicator : MonoBehaviour
     {
-        public SpriteRenderer spriteRenderer;
+        public MeshRenderer[] meshRenderers;
         public float BlinksPerSecond = 2f;
         public float MaxBlinksPerSecond = 10f;
         public float TimeLeftBeforeBlinking = 2f;
@@ -21,6 +21,7 @@ namespace Jerre
 
         void Start()
         {
+            meshRenderers = GetComponentsInChildren<MeshRenderer>();
             settings = GetComponent<BombSettings>();
             currentBlinkDuration = 1f / BlinksPerSecond;
             minBlinkDuration = 1f / MaxBlinksPerSecond;
@@ -44,7 +45,10 @@ namespace Jerre
                     StartColor = EndColor;
                     EndColor = temp;
                 }
-                spriteRenderer.color = Color.Lerp(StartColor, EndColor, elapsedBlinkTime / currentBlinkDuration);
+                for (var i = 0; i < meshRenderers.Length; i++)
+                {
+                    meshRenderers[i].material.color = Color.Lerp(StartColor, EndColor, elapsedBlinkTime / currentBlinkDuration);
+                }
             }
         }
 

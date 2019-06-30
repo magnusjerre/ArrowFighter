@@ -125,6 +125,9 @@
     <Compile Include="Assets\Scripts\Physics\JCollision.cs" />
     <Compile Include="Assets\Scripts\Physics\JLayer.cs" />
     <Compile Include="Assets\Scripts\Physics\JLayerMaskUtil.cs" />
+    <Compile Include="Assets\Scripts\Physics\JMeshDefinition.cs" />
+    <Compile Include="Assets\Scripts\Physics\JMeshFrameInstance.cs" />
+    <Compile Include="Assets\Scripts\Physics\MeshDebuggerManager.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsbodyRectangular.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsHelper.cs" />
     <Compile Include="Assets\Scripts\Physics\PhysicsManager.cs" />

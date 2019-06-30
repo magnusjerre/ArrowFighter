@@ -11,6 +11,7 @@ namespace Jerre.UIStuff
         public bool UseInitialScaleAsFrom = false;
         public bool UseInitialScaleAsTo = false;
         public bool ScaleOnStart = false;
+        public bool ScaleBackAndForth = false;
 
         public float time = 0.2f;
 
@@ -40,6 +41,13 @@ namespace Jerre.UIStuff
                     scaling = false;
                     elapsedTime = 0f;
                     transform.localScale = To;
+                    if (ScaleBackAndForth)
+                    {
+                        var originalTo = To;
+                        To = From;
+                        From = originalTo;
+                        DoScale();
+                    }
                 }
             }
         }
