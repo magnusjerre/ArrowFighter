@@ -242,10 +242,10 @@ SphereCollider:
   m_GameObject: {fileID: 1091042639049842558}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 7.8}
 --- !u!54 &6507999089634282337
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -343,14 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ac515316fda2548ba7c561460759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeshRenderer: {fileID: 1792810809686034292}
-  meshFilter: {fileID: 3318281008047161025}
-  mesh: {fileID: 0}
-  IsStationary: 0
   SurfaceBounceFactor: 1
-  jLayer: 1
-  DebugMesh: 1
-  DebugAABB: 0
 --- !u!114 &4740470132364535468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +359,7 @@ MonoBehaviour:
   CheckOnlyForOverlap: 0
   jLayer: 1
   meshFilter: {fileID: 3318281008047161025}
+  IdGenerated: 0
   debugMesh: 1
   debugAABB: 1
 --- !u!1 &1369341429014477098
