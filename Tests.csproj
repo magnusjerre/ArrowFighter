@@ -62,7 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Tests\JMeshCollisionUtilTest.cs" />
     <Compile Include="Assets\Scripts\Tests\JMeshFrameInstanceTest.cs" />
     <Compile Include="Assets\Scripts\Tests\JMeshOverlapPushUtilTest.cs" />
     <Compile Include="Assets\Scripts\Tests\JMeshOverlapTest.cs" />

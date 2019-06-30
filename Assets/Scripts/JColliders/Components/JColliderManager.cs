@@ -122,7 +122,7 @@ namespace Jerre.JColliders
             var boundsA = colliderA.meshFrame.AABB;
             var boundsB = colliderB.meshFrame.AABB;
 
-            if (!JMeshCollisionUtil.Intersect(boundsA, boundsB))    // TODO replace with JMeshOverlap.AABOverlap
+            if (!JMeshOverlap.AABBOverlap(boundsA, boundsB))    // TODO replace with JMeshOverlap.AABOverlap
             {
                 return true;
             }
