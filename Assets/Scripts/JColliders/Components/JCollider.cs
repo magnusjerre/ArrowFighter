@@ -23,10 +23,7 @@ namespace Jerre.JColliders
         {
             JColliderContainer.INSTANCE.Add(this);
             IdGenerated = JColliderContainer.INSTANCE.NextId();
-        }
 
-        void Start()
-        {
             if (meshFilter == null)
             {
                 meshFilter = GetComponent<MeshFilter>();

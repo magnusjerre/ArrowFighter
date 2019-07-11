@@ -167,6 +167,7 @@
     <Compile Include="Assets\Scripts\Scoring\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\Scoring\TotalScoreInitializer.cs" />
     <Compile Include="Assets\Scripts\Scoring\WinnerText.cs" />
+    <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Shield.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UIStuff\CanvasMover.cs" />
