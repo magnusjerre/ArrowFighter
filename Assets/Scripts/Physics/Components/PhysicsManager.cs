@@ -37,6 +37,8 @@ namespace Jerre.JPhysics
 
         void BouncePlayer(PlayerPhysics playerPhysics, Vector3 surfaceNormal, float surfaceBounceFactor)
         {
+            if (Vector3.Angle(playerPhysics.MovementDirection, surfaceNormal) < 90f) return;
+
             var reflectionVector = ReflectIncomingVector(playerPhysics.MovementDirection * playerPhysics.Speed, surfaceNormal);
             var scaledOutgoingVector = ScaleVectorInNormalDirection(reflectionVector, surfaceNormal, surfaceBounceFactor);
 
@@ -47,6 +49,8 @@ namespace Jerre.JPhysics
 
         void BounceBullet(BulletMover bulletMover, Vector3 surfaceNormal, float surfaceBounceFactor)
         {
+            if (Vector3.Angle(bulletMover.transform.forward, surfaceNormal) < 90f) return;
+
             var reflectionVector = ReflectIncomingVector(bulletMover.transform.forward * bulletMover.Speed, surfaceNormal);
             var scaledOutgoingVector = ScaleVectorInNormalDirection(reflectionVector, surfaceNormal, surfaceBounceFactor);
 
