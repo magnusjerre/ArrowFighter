@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: -5335211005275371072}
   - component: {fileID: 7942182629948627225}
   - component: {fileID: 4740470132364535468}
+  - component: {fileID: -6988984862605231732}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -185,7 +186,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091042639049842558}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acff643f70b1c7541bb9e2eece355e87, type: 3}
   m_Name: 
@@ -362,6 +363,21 @@ MonoBehaviour:
   IdGenerated: 0
   debugMesh: 0
   debugAABB: 0
+--- !u!114 &-6988984862605231732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091042639049842558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797c20230c49f144d92433d3c46f76b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultWeaponPrefab: {fileID: 988344928678959367, guid: a5e28476cbfea2c45aa08267b8087921,
+    type: 3}
+  resetToDefaultWhenSpent: 0
 --- !u!1 &1369341429014477098
 GameObject:
   m_ObjectHideFlags: 0
