@@ -2,7 +2,7 @@
 {
     public class JLayerMaskUtil
     {
-        private static int PlayerMask = (int)JLayer.BULLET | (int)JLayer.SCENERY;
+        private static int PlayerMask = (int)JLayer.BULLET | (int)JLayer.SCENERY | (int)JLayer.PICKUP;
         private static int BulletMask = (int)JLayer.PLAYER | (int)JLayer.SCENERY;
         private static int SceneryMask = (int)JLayer.PLAYER | (int)JLayer.BULLET;
         private static int PickupMask = (int)JLayer.PLAYER;
