@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4647767403863908397, guid: f384b61a5a4565846820064fd423c79e,
         type: 3}
       propertyPath: m_Name
-      value: BulletStraightBounce_Fast_Short_TTL
+      value: BulletStraightNoBounce_Fast_Short_TTL
       objectReference: {fileID: 0}
     - target: {fileID: 4647767403863908384, guid: f384b61a5a4565846820064fd423c79e,
         type: 3}
@@ -26,6 +26,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Damage
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647767403863908384, guid: f384b61a5a4565846820064fd423c79e,
+        type: 3}
+      propertyPath: DestroyOnAnyOverlap
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4647767403863908399, guid: f384b61a5a4565846820064fd423c79e,
         type: 3}
@@ -90,7 +95,8 @@ PrefabInstance:
     - target: {fileID: 1640427026038902208, guid: f384b61a5a4565846820064fd423c79e,
         type: 3}
       propertyPath: CheckOnlyForOverlap
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7936496267054984807, guid: f384b61a5a4565846820064fd423c79e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f384b61a5a4565846820064fd423c79e, type: 3}

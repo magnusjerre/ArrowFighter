@@ -22,13 +22,13 @@ namespace Jerre.JPhysics
                 var pushingFromPhysicsBody = pushingFrom.GetComponent<JPhysicsBody>();
 
                 var playerPhysics = pushable.GetComponent<PlayerPhysics>();
-                if (playerPhysics != null && pushingFromPhysicsBody != null)
+                if (!pushable.CheckOnlyForOverlap && playerPhysics != null && pushingFromPhysicsBody != null)
                 {
                     BouncePlayer(playerPhysics, push.Direction, pushingFromPhysicsBody.SurfaceBounceFactor);
                 }
 
                 var bulletPhysics = pushable.GetComponent<BulletMover>();
-                if (bulletPhysics != null && pushingFromPhysicsBody != null)
+                if (!pushable.CheckOnlyForOverlap && bulletPhysics != null && pushingFromPhysicsBody != null)
                 {
                     BounceBullet(bulletPhysics, push.Direction, pushingFromPhysicsBody.SurfaceBounceFactor);
                 }

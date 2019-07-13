@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91c949444e44464e856bf24dd004f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckOnlyForOverlap: 0
+  CheckOnlyForOverlap: 1
   jLayer: 4
   meshFilter: {fileID: 714100215}
   IdGenerated: 0

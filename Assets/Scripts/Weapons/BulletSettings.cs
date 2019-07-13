@@ -10,6 +10,7 @@ namespace Jerre
         public int Damage = 1;
         public int PlayerOwnerNumber;
         public Color color;
+        public bool DestroyOnAnyOverlap;
 
         public ParticleSystem hitParticlesPrefab;
 
