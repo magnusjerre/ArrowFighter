@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797c20230c49f144d92433d3c46f76b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeaponPrefab: {fileID: 988344928678959367, guid: a5e28476cbfea2c45aa08267b8087921,
+  defaultWeaponPrefab: {fileID: 7430427575736047849, guid: d5998a24be3518544ae59ceae160c202,
     type: 3}
   resetToDefaultWhenSpent: 0
 --- !u!1 &1369341429014477098

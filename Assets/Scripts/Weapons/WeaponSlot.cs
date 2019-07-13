@@ -39,7 +39,10 @@ namespace Jerre.Weapons
             var tryToFire = UsePlayerInput ? playerInput.input.Fire : false;
             if (tryToFire)
             {
-                activeWeaponInstance.Fire();
+                if (activeWeaponInstance.Fire() && activeWeaponInstance.IsSpent())
+                {
+                    AttachWeapon(defaultWeaponPrefab);
+                }
             }
         }
 
