@@ -9,23 +9,24 @@ namespace Jerre.Weapons
         public string[] WeaponsUpgradesNames;
         public Weapon[] WeaponsUpgrades;
 
-
         private JCollider jCollider;
-
-        private void Awake()
-        {
-            jCollider = GetComponent<JCollider>();
-            jCollider.SetOnJCollisionEnterHandler(OnEnterHandler);
-        }
-
         
         void Start()
         {
+            jCollider = GetComponent<JCollider>();
+            jCollider.SetOnJCollisionEnterHandler(OnEnterHandler);
+            jCollider.SetOnJCollisionStayHandler(OnStayHandler);
+            Debug.Log("WeaponPickup.Start(). colliderId: " + jCollider.IdGenerated);
+        }
 
+        public void OnStayHandler(JCollider thisBody, JCollider otherBody)
+        {
+            Debug.Log("OnStayHandler for weaponPickup: " + gameObject.name);
         }
 
         public void OnEnterHandler(JCollider thisBody, JCollider otherBody)
         {
+            Debug.Log("OnEnterHandler for WeaponPickup: " + gameObject.name);
             var weaponSlot = otherBody.GetComponent<WeaponSlot>();
             if (weaponSlot == null) return;
 
