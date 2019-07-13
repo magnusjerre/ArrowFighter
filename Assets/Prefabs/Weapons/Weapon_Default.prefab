@@ -44,15 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbab8bafc68fb844824a4e348fe9353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponName: DEFAULT
   Muzzles:
   - {fileID: 7430427576517612803}
   FireRate: 4
-  bulletPrefab: {fileID: 4647767403863908384, guid: f384b61a5a4565846820064fd423c79e,
-    type: 3}
-  bulletColor: {r: 0, g: 0, b: 0, a: 0}
   PlayerNumber: 0
   InfiniteBullets: 0
   MaxRounds: 5
+  bulletPrefab: {fileID: 4647767403863908384, guid: f384b61a5a4565846820064fd423c79e,
+    type: 3}
+  bulletColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7430427576517612802
 GameObject:
   m_ObjectHideFlags: 0

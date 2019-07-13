@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbab8bafc68fb844824a4e348fe9353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponName: SHOTGUN_1
   Muzzles:
   - {fileID: 988344927847781613}
   - {fileID: 1056233020}

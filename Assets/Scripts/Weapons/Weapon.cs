@@ -4,6 +4,7 @@ namespace Jerre.Weapons
 {
     public class Weapon : MonoBehaviour, IWeapon
     {
+        public string WeaponName;
         public Transform[] Muzzles;
         public float FireRate = 4;  // Rounds per second
         public int PlayerNumber;
@@ -13,13 +14,12 @@ namespace Jerre.Weapons
         public BulletSettings bulletPrefab;
         public Color bulletColor;
 
-        private float minTimeBetweenFire;
         private float timeSinceLastFire;
         private int RoundsLeft;
 
         void Start()
         {
-            timeSinceLastFire = minTimeBetweenFire;
+            timeSinceLastFire = 1f / FireRate;
             RoundsLeft = MaxRounds;
         }
 

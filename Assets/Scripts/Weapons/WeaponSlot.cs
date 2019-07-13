@@ -8,6 +8,10 @@ namespace Jerre.Weapons
         public Weapon defaultWeaponPrefab;
 
         private Weapon activeWeaponInstance;
+        public string ActiveWeaponName
+        {
+            get { return activeWeaponInstance?.WeaponName; }
+        }
         private PlayerSettings settings;
         private PlayerInputComponent playerInput;
 
@@ -39,7 +43,7 @@ namespace Jerre.Weapons
             }
         }
 
-        void AttachWeapon(Weapon weaponPrefab)
+        public void AttachWeapon(Weapon weaponPrefab)
         {
             var weaponInstance = Instantiate(weaponPrefab, transform);
             weaponInstance.bulletColor = settings.color;
