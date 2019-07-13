@@ -35,6 +35,11 @@ namespace Jerre.JColliders
             var physicsBodies = JColliderContainer.INSTANCE.ActiveColliders();
             var pbLength = physicsBodies.Count;
 
+            for (var i = 0; i < lineRenderers.Count; i++)
+            {
+                lineRenderers[i].gameObject.SetActive(false);
+            }
+
 
             var nextLineRendererIndex = 0;
             for (var i = 0; i < pbLength; i++)
@@ -56,6 +61,7 @@ namespace Jerre.JColliders
                     var edgeCoordinates = body.meshFrame.EdgeVertices;
                     lr.positionCount = edgeCoordinates.Length;
                     lr.SetPositions(body.meshFrame.EdgeVertices);
+                    lr.gameObject.SetActive(true);
                     nextLineRendererIndex++;
                 }
                 if (body.debugAABB)
@@ -82,6 +88,7 @@ namespace Jerre.JColliders
                         new Vector3(min.x, 1, max.z),
                         new Vector3(min.x, 1, min.z),
                     });
+                    lr.gameObject.SetActive(true);
                     nextLineRendererIndex++;
                 }
             }

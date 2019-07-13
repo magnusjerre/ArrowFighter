@@ -50,7 +50,7 @@ MonoBehaviour:
   jLayer: 8
   meshFilter: {fileID: 3656039078469129605}
   IdGenerated: 0
-  debugMesh: 1
+  debugMesh: 0
   debugAABB: 0
 --- !u!114 &3656039077024569611
 MonoBehaviour:
