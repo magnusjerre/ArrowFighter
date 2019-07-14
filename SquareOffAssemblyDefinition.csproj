@@ -171,7 +171,6 @@
     <Compile Include="Assets\Scripts\UIStuff\CanvasMover.cs" />
     <Compile Include="Assets\Scripts\UIStuff\CountDownTimer.cs" />
     <Compile Include="Assets\Scripts\UIStuff\DoCall.cs" />
-    <Compile Include="Assets\Scripts\UIStuff\OffsetMaintainer.cs" />
     <Compile Include="Assets\Scripts\UIStuff\TextChangeAnimator.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
