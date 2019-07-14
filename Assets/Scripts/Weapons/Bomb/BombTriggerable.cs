@@ -1,4 +1,5 @@
 ﻿using Jerre.Events;
+using Jerre.JColliders;
 using UnityEngine;
 
 namespace Jerre
@@ -9,9 +10,13 @@ namespace Jerre
         public ParticleSystem explosionParticlesPrefab;
         private BombSettings settings;
         private bool AlreadyTriggered = false;
+        private JColliderManager colliderManager;
+        private JCollider collider;
 
         void Start()
         {
+            colliderManager = GameObject.FindObjectOfType<JColliderManager>();
+            collider = GetComponent<JCollider>();
             settings = GetComponent<BombSettings>();
             AFEventManager.INSTANCE.AddListener(this);
             Invoke("TriggerExplosionDueToLifeTime", settings.MaxLifeTimeWithoutExploding);
@@ -23,10 +28,10 @@ namespace Jerre
             
             AlreadyTriggered = true;
 
-            var colliders = Physics.OverlapSphere(transform.position, settings.BlastRadius);
+            var colliders = colliderManager.FindOverlaps(collider);
             var playerCollidersCount = 0;
-            for (var i = 0; i < colliders.Length; i++)
-            {
+            for (var i = 0; i < colliders.Count; i++)
+                {
                 var playerSettings = colliders[i].GetComponent<PlayerSettings>();
                 var playerHealth = colliders[i].GetComponent<PlayerHealth>();
                 var playerPhysics = colliders[i].GetComponent<PlayerPhysics>();

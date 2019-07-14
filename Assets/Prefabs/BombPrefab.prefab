@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 7730678022640361869}
   - component: {fileID: 7730678022640361868}
   - component: {fileID: 8888982134402599282}
+  - component: {fileID: 1946940077487510524}
   m_Layer: 0
   m_Name: BombPrefab
   m_TagString: Untagged
@@ -240,7 +241,6 @@ MonoBehaviour:
   MaxLifeTimeWithoutExploding: 7
   PlayerOwnerNumber: 0
   color: {r: 0, g: 0, b: 0, a: 0}
-  explosionMeshRenderer: {fileID: 0}
 --- !u!114 &7730678022640361868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,10 +267,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e5a2a941a4fe745816d645af99ee45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 3960511275085392579}
+  meshRenderers: []
   BlinksPerSecond: 4
   MaxBlinksPerSecond: 10
   TimeLeftBeforeBlinking: 3
+--- !u!114 &1946940077487510524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730678022640361858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91c949444e44464e856bf24dd004f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsTrigger: 1
+  IsPushable: 0
+  jLayer: 2
+  meshFilter: {fileID: 4145672378379640362}
+  IdGenerated: 0
+  debugMesh: 0
+  debugAABB: 1
 --- !u!1 &8309279766323271560
 GameObject:
   m_ObjectHideFlags: 0

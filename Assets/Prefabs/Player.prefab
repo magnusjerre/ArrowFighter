@@ -327,7 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91c949444e44464e856bf24dd004f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckOnlyForOverlap: 0
+  IsTrigger: 0
+  IsPushable: 1
   jLayer: 1
   meshFilter: {fileID: 3318281008047161025}
   IdGenerated: 0

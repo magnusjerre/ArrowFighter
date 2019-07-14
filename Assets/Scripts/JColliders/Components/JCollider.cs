@@ -4,7 +4,8 @@ namespace Jerre.JColliders
 {
     public class JCollider : MonoBehaviour
     {
-        public bool CheckOnlyForOverlap;    // Don't calculate push
+        public bool IsTrigger;
+        public bool IsStationary;    // Don't calculate push
         public JLayer jLayer;
         public MeshFilter meshFilter;
         public JMesh meshIdentity;

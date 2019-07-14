@@ -58,13 +58,19 @@ namespace Jerre.JColliders
                 {
                     var colliderB = colliders[j];
 
-                    if (ShouldSkipCollisionCheck(colliderA, colliderB, completedCollisions)) {
+                    if (ShouldSkipCollisionCheck(colliderA, colliderB, completedCollisions))
+                    {
                         continue;
                     }
 
                     enterStayExitManager.Add(new JCollisionPair(colliderA, colliderB));
 
-                    if (colliderA.CheckOnlyForOverlap && colliderB.CheckOnlyForOverlap)
+                    if (colliderA.IsTrigger || colliderB.IsTrigger)
+                    {
+                        continue;
+                    }
+
+                    if (colliderA.IsStationary && colliderB.IsStationary)
                     {
                         continue;
                     }
@@ -73,18 +79,17 @@ namespace Jerre.JColliders
                     HandlePushResult(pushResult, colliderA, colliderB);
                 }
             }
-
-
         }
 
         private void HandlePushResult(Push pushResult, JCollider colliderA, JCollider colliderB)
         {
-            if (colliderA.CheckOnlyForOverlap || colliderB.CheckOnlyForOverlap)
+            if (colliderA.IsStationary || colliderB.IsStationary)
             {
-                var pushable = colliderA.CheckOnlyForOverlap ? colliderB : colliderA;
-                var nonPushable = colliderA.CheckOnlyForOverlap ? colliderA : colliderB;
+                var pushable = colliderA.IsStationary ? colliderB : colliderA;
+                var nonPushable = colliderA.IsStationary ? colliderA : colliderB;
                 Push(pushable, nonPushable, pushResult.Direction, pushResult.Magnitude);
-            } else
+            }
+            else
             {
                 var halfMagnitude = pushResult.Magnitude / 2f;
 
@@ -108,38 +113,22 @@ namespace Jerre.JColliders
         // Modifies completedCollisions by always trying to add the new collision pair to the list
         private bool ShouldSkipCollisionCheck(JCollider colliderA, JCollider colliderB, HashSet<JCollisionPair> completedCollisions)
         {
-            var isABullet = colliderA.GetComponent<BulletSettings>() != null;
-            var isBBullet = colliderB.GetComponent<BulletSettings>() != null;
-            var isAPlayer = colliderA.GetComponent<PlayerSettings>() != null;
-            var isBPlayer = colliderB.GetComponent<PlayerSettings>() != null;
             if (!JLayerMaskUtil.MaskCheck(JLayerMaskUtil.GetLayerMask(colliderA.jLayer), colliderB.jLayer))
             {
-                if ((isABullet && isBPlayer) || (isAPlayer && isBBullet))
-                {
-                    Debug.Log("Bullet and player mask check failed");
-                }
                 return true;
             }
 
             var collisionPair = new JCollisionPair(colliderA, colliderB);
             if (!completedCollisions.Add(collisionPair))    // This is where the methods mutates completedCollisions
             {
-                if ((isABullet && isBPlayer) || (isAPlayer && isBBullet))
-                {
-                    Debug.Log("Collision already registered");
-                }
                 return true;
             }
 
             var boundsA = colliderA.meshFrame.AABB;
             var boundsB = colliderB.meshFrame.AABB;
 
-            if (!JMeshOverlap.AABBOverlap(boundsA, boundsB))    // TODO replace with JMeshOverlap.AABOverlap
+            if (!JMeshOverlap.AABBOverlap(boundsA, boundsB))
             {
-                if ((isABullet && isBPlayer) || (isAPlayer && isBBullet))
-                {
-                    Debug.Log("player and bullet dont overlap.");
-                }
                 return true;
             }
 
@@ -151,6 +140,35 @@ namespace Jerre.JColliders
             }
             return false;
         }
-        
+
+        public List<JCollider> FindOverlaps(JCollider colliderA)
+        {
+            var output = new List<JCollider>(10);
+            var boundsA = colliderA.meshFrame.AABB;
+            var meshA = colliderA.meshFrame;
+
+            collisionMapQueue.ResetQueueIteration();
+            while (collisionMapQueue.HasNext())
+            {
+                var map = collisionMapQueue.Next();
+                if (map.bodies != null && JMeshOverlap.AABBOverlap(boundsA, map.bounds))
+                {
+                    for (var i = 0; i < map.bodies.Count; i++)
+                    {
+                        var colliderB = map.bodies[i];
+                        if (output.Contains(colliderB)) continue;
+
+                        if (JLayerMaskUtil.MaskCheck(JLayerMaskUtil.GetLayerMask(colliderA.jLayer), colliderB.jLayer) &&
+                            JMeshOverlap.AABBOverlap(boundsA, colliderB.meshFrame.AABB) &&
+                                JMeshOverlap.MeshesOverlap(meshA, colliderB.meshFrame))
+                        {
+                            output.Add(colliderB);
+                        }
+                    }
+                }
+            }
+
+            return output;
+        }
     }
 }

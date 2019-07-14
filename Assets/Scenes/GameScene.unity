@@ -631,7 +631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91c949444e44464e856bf24dd004f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckOnlyForOverlap: 1
+  IsTrigger: 0
+  IsNotPushable: 1
   jLayer: 4
   meshFilter: {fileID: 183743433}
   IdGenerated: 0
@@ -1577,7 +1578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91c949444e44464e856bf24dd004f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckOnlyForOverlap: 1
+  IsTrigger: 0
+  IsNotPushable: 1
   jLayer: 4
   meshFilter: {fileID: 714100215}
   IdGenerated: 0
@@ -1811,7 +1813,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91c949444e44464e856bf24dd004f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckOnlyForOverlap: 1
+  IsTrigger: 0
+  IsNotPushable: 1
   jLayer: 4
   meshFilter: {fileID: 555684559}
   IdGenerated: 0
@@ -2541,8 +2544,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entireMenuBarUIArea: {fileID: 1015158252}
-  uiElementContainerPrefab: {fileID: 162030613787468935, guid: 9d5e4cd225847fd43a362c206b150e27,
-    type: 3}
   uiPlayerElementPrefab: {fileID: 4896359985248049168, guid: c6360915eaaafa444834f3bd789e7081,
     type: 3}
 --- !u!114 &1043987881
@@ -2557,9 +2558,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7b13c762a19bc43980a0d3079ee8aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainUIBarCanvas: {fileID: 1043987880}
-  healthUIElementPrefab: {fileID: 3517691170874592632, guid: 418e75a026eb0b74fa9d409206f62a28,
-    type: 3}
 --- !u!114 &1043987882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2615,8 +2613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c934c6a4d00c96458a6a14739aa7c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreUIElementPrefab: {fileID: 4237707889972997031, guid: 7ad998a5a1ea8444aa5f1edc89f197c2,
-    type: 3}
   countDownTimerPrefab: {fileID: 4570668055259459217, guid: 6db3928c5756de940b7df057f7ae7e80,
     type: 3}
   TopBar: {fileID: 273011260}
@@ -4394,7 +4390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91c949444e44464e856bf24dd004f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckOnlyForOverlap: 1
+  IsTrigger: 0
+  IsNotPushable: 0
   jLayer: 4
   meshFilter: {fileID: 0}
   IdGenerated: 0
@@ -4548,7 +4545,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91c949444e44464e856bf24dd004f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckOnlyForOverlap: 1
+  IsTrigger: 0
+  IsNotPushable: 1
   jLayer: 4
   meshFilter: {fileID: 563104424}
   IdGenerated: 0
@@ -4944,7 +4942,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91c949444e44464e856bf24dd004f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckOnlyForOverlap: 1
+  IsTrigger: 0
+  IsNotPushable: 1
   jLayer: 4
   meshFilter: {fileID: 1983198640}
   IdGenerated: 0
@@ -5072,7 +5071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91c949444e44464e856bf24dd004f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheckOnlyForOverlap: 1
+  IsTrigger: 0
+  IsNotPushable: 1
   jLayer: 4
   meshFilter: {fileID: 2060735669}
   IdGenerated: 0
