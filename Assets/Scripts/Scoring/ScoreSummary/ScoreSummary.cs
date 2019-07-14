@@ -21,17 +21,10 @@ namespace Jerre.Scoring
         void Start()
         {
             leaderScoreText.text = "0";
-        }
-
-        private void Update()
-        {
-            if (totalScoreText.text == null)
+            var scoreManager = GameObject.FindObjectOfType<FreeForAllGameModeManager>();
+            if (scoreManager != null)
             {
-                var scoreManager = GameObject.FindObjectOfType<FreeForAllGameModeManager>();
-                if (scoreManager != null)
-                {
-                    totalScoreText.text = scoreManager.maxScore + "";
-                }
+                totalScoreText.text = scoreManager.maxScore + "";
             }
         }
 
