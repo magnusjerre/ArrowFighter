@@ -1,6 +1,6 @@
 ﻿using Jerre.Events;
 using Jerre.GameSettings;
-using Jerre.UI.Utils;
+using Jerre.GC;
 using UnityEngine;
 using UnityEngine.UI;
 

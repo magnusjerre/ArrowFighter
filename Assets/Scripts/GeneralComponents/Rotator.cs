@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Jerre
+namespace Jerre.GC
 {
     public class Rotator : MonoBehaviour
     {

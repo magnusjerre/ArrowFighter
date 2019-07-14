@@ -1,7 +1,7 @@
 ﻿using Jerre.Utils;
 using UnityEngine;
 
-namespace Jerre.UI.Utils
+namespace Jerre.GC
 {
     public class ScaleFrom : MonoBehaviour, IDo
     {
