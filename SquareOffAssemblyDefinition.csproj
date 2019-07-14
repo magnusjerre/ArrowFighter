@@ -170,7 +170,6 @@
     <Compile Include="Assets\Scripts\UI\InGame\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\UI\Utils\CanvasMover.cs" />
     <Compile Include="Assets\Scripts\UI\Utils\ScaleFrom.cs" />
-    <Compile Include="Assets\Scripts\UIStuff\TextChangeAnimator.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\DoCall.cs" />

@@ -1,5 +1,4 @@
 ﻿using Jerre.GameMode.Undead;
-using Jerre.UIStuff;
 using Jerre.UI.InGame;
 using UnityEngine;
 
