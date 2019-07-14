@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\GameSettings\GameRoundState.cs" />
     <Compile Include="Assets\Scripts\GameSettings\GameSettingsState.cs" />
     <Compile Include="Assets\Scripts\GameSettings\KeyValueWithOptionsSetting.cs" />
+    <Compile Include="Assets\Scripts\GeneralComponents\DoCall.cs" />
     <Compile Include="Assets\Scripts\GeneralComponents\Rotator.cs" />
     <Compile Include="Assets\Scripts\GeneralComponents\ScaleFrom.cs" />
     <Compile Include="Assets\Scripts\JColliders\Components\JCollider.cs" />
@@ -172,7 +173,6 @@
     <Compile Include="Assets\Scripts\UI\Utils\CanvasMover.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
-    <Compile Include="Assets\Scripts\Utils\DoCall.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
     <Compile Include="Assets\Scripts\Utils\IDo.cs" />
     <Compile Include="Assets\Scripts\Utils\Logging.cs" />

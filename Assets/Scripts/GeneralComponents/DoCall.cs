@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Jerre.Utils;
+using UnityEngine;
 
-namespace Jerre.Utils
+namespace Jerre.GC
 {
     public class DoCall : MonoBehaviour
     {
