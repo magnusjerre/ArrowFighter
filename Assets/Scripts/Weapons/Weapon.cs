@@ -19,7 +19,7 @@ namespace Jerre.Weapons
 
         void Start()
         {
-            timeSinceLastFire = 1f / FireRate;
+            timeSinceLastFire = 1f / FireRate - 0.5f;   // Adding a half-second delay for firing the first round
             RoundsLeft = MaxRounds;
         }
 

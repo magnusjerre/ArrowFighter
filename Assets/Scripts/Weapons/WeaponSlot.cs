@@ -52,7 +52,10 @@ namespace Jerre.Weapons
             weaponInstance.bulletColor = settings.color;
             weaponInstance.PlayerNumber = settings.playerNumber;
 
-            Destroy(activeWeaponInstance);
+            if(activeWeaponInstance != null)
+            {
+                Destroy(activeWeaponInstance.gameObject);
+            }
             activeWeaponInstance = weaponInstance;
         }
 

@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbab8bafc68fb844824a4e348fe9353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponName: DEFAULT
+  WeaponName: DEFAULT_1
   Muzzles:
   - {fileID: 7430427576517612803}
+  FireOnlyFromOneMuzzleAtATime: 0
   FireRate: 4
   PlayerNumber: 0
   InfiniteBullets: 0

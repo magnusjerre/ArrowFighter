@@ -65,9 +65,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponsUpgradesNames:
-  - DEFAULT
+  - DEFAULT_1
+  - DEFAULT_2
   WeaponsUpgrades:
   - {fileID: 7430427575736047849, guid: d5998a24be3518544ae59ceae160c202, type: 3}
+  - {fileID: 9016133140853463048, guid: 13df3500844e9a64298598dc4a562f5c, type: 3}
 --- !u!114 &1188007961
 MonoBehaviour:
   m_ObjectHideFlags: 0
