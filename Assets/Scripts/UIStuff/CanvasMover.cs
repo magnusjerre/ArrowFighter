@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Jerre.Utils;
 using UnityEngine;
 
 namespace Jerre.UIStuff

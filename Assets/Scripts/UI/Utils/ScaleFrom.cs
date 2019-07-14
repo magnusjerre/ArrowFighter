@@ -1,4 +1,4 @@
-﻿using Jerre.UIStuff;
+﻿using Jerre.Utils;
 using UnityEngine;
 
 namespace Jerre.UI.Utils
