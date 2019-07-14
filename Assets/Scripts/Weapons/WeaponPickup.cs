@@ -28,7 +28,7 @@ namespace Jerre.Weapons
         {
             Debug.Log("OnEnterHandler for WeaponPickup: " + gameObject.name);
             var weaponSlot = otherBody.GetComponent<WeaponSlot>();
-            if (weaponSlot == null) return;
+            if (weaponSlot == null || !weaponSlot.enabled) return;
 
             string name = weaponSlot.ActiveWeaponName;
             var index = -1;

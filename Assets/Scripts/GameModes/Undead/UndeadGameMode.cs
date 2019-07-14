@@ -2,6 +2,7 @@
 using Jerre.GameSettings;
 using Jerre.UIStuff;
 using Jerre.Utils;
+using Jerre.Weapons;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -103,16 +104,16 @@ namespace Jerre.GameMode.Undead
         {
             var mainEngineParticles = playerSettings.GetComponent<PlayerMainEngineParticles>();
             mainEngineParticles.ChangeColor(UndeadColor);
-            var playerWeapon = playerSettings.GetComponent<PlayerWeapon>();
-            playerWeapon.enabled = false;
+            var weaponSlot = playerSettings.GetComponent<WeaponSlot>();
+            weaponSlot.enabled = false;
         }
 
         void MakeLiving(PlayerSettings playerSettings)
         {
             var mainEngineParticles = playerSettings.GetComponent<PlayerMainEngineParticles>();
             mainEngineParticles.ChangeColor(playerSettings.color);
-            var playerWeapon = playerSettings.GetComponent<PlayerWeapon>();
-            playerWeapon.enabled = true;
+            var weaponSlot = playerSettings.GetComponent<WeaponSlot>();
+            weaponSlot.enabled = true;
         }
 
 
