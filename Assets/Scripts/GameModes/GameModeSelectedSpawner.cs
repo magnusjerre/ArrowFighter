@@ -1,5 +1,4 @@
 ﻿using Jerre.GameMode.Undead;
-using Jerre.UI;
 using Jerre.UIStuff;
 using UnityEngine;
 
@@ -7,7 +6,6 @@ namespace Jerre.GameMode
 {
     public class GameModeSelectedSpawner : MonoBehaviour
     {
-        public ScoreUIElement scoreUIElementPrefab;
         public CountDownTimer countDownTimerPrefab;
         public RectTransform TopBar;
 

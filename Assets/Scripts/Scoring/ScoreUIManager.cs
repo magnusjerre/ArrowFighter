@@ -1,6 +1,5 @@
 ﻿using Jerre.Events;
 using Jerre.UI;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jerre
@@ -8,10 +7,7 @@ namespace Jerre
     public class ScoreUIManager : MonoBehaviour, IAFEventListener
     {
         private FreeForAllGameModeManager scoreManager;
-
-        //public ScoreUIElement scoreUIElementPrefab;
-
-        public MainUIBarManager uiBarManager;
+        private MainUIBarManager uiBarManager;
 
         private void Awake()
         {

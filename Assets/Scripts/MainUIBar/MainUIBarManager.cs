@@ -7,22 +7,14 @@ namespace Jerre.UI
     public class MainUIBarManager : MonoBehaviour, IAFEventListener
     {
         public RectTransform entireMenuBarUIArea;
-        public UIElementContainer uiElementContainerPrefab;
         public PlayerUIBarElement uiPlayerElementPrefab;
 
-        private SortedDictionary<int, UIElementContainer> playerToRect;
         private SortedDictionary<int, PlayerUIBarElement> playerToUiElement;
 
         void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
-            playerToRect = new SortedDictionary<int, UIElementContainer>();
             playerToUiElement = new SortedDictionary<int, PlayerUIBarElement>();
-        }
-
-        public UIElementContainer GetRectTransformHolderForPlayerNumber(int playerNumber)
-        {
-            return playerToRect[playerNumber];
         }
 
         public PlayerUIBarElement GetUiBarElemntForPlayerNumber(int number)
@@ -53,10 +45,6 @@ namespace Jerre.UI
                 uiPlayerElementInstance.health = player.MaxHealth;
                 playerToUiElement.Add(player.playerNumber, uiPlayerElementInstance);
 
-                var newContainer = Instantiate(uiElementContainerPrefab, entireMenuBarUIArea);
-                newContainer.SetBackgroundColor(player.color);
-                newContainer.SetSize(i * width, (i + 1) * width);
-                playerToRect.Add(player.playerNumber, newContainer);
                 AFEventManager.INSTANCE.PostEvent(AFEvents.PlayerMenuBarUICreated(player.playerNumber));
             }
         }

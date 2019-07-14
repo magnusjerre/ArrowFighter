@@ -6,11 +6,11 @@ namespace Jerre.Health
 {
     public class HealthUIManager : MonoBehaviour, IAFEventListener
     {
-        public MainUIBarManager mainUIBarCanvas;
-        //public HealthUIElement healthUIElementPrefab;
+        private MainUIBarManager mainUIBarCanvas;
 
         void Awake()
         {
+            mainUIBarCanvas = GameObject.FindObjectOfType<MainUIBarManager>();
             AFEventManager.INSTANCE.AddListener(this);
         }
 
