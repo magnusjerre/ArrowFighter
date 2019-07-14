@@ -62,6 +62,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Constants\PlayerInputTags.cs" />
+    <Compile Include="Assets\Scripts\Constants\SceneNames.cs" />
     <Compile Include="Assets\Scripts\Events\AFEvent.cs" />
     <Compile Include="Assets\Scripts\Events\AFEventManager.cs" />
     <Compile Include="Assets\Scripts\Events\AFEvents.cs" />
@@ -179,9 +181,7 @@
     <Compile Include="Assets\Scripts\Utils\LookDirectionConstr.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayAreaIndicator.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerFetcher.cs" />
-    <Compile Include="Assets\Scripts\Utils\PlayerInputTags.cs" />
     <Compile Include="Assets\Scripts\Utils\QueueRerunnable.cs" />
-    <Compile Include="Assets\Scripts\Utils\SceneNames.cs" />
     <Compile Include="Assets\Scripts\Weapons\Bomb\BombLifetimeIndicator.cs" />
     <Compile Include="Assets\Scripts\Weapons\Bomb\BombSettings.cs" />
     <Compile Include="Assets\Scripts\Weapons\Bomb\BombTriggerable.cs" />
