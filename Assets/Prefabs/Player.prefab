@@ -50,8 +50,6 @@ GameObject:
   - component: {fileID: 2887167135447658282}
   - component: {fileID: 3844733223788122563}
   - component: {fileID: 3238656893420677796}
-  - component: {fileID: 1464357877829653123}
-  - component: {fileID: 6507999089634282337}
   - component: {fileID: 490021978120704870}
   - component: {fileID: 7106944308335024696}
   - component: {fileID: 8670595436449926809}
@@ -217,35 +215,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombPrefab: {fileID: 7730678022640361869, guid: 88e9359741f7eb0449b3479fe324ba10,
     type: 3}
---- !u!135 &1464357877829653123
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091042639049842558}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 20
-  m_Center: {x: 0, y: 0, z: 7.8}
---- !u!54 &6507999089634282337
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091042639049842558}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &490021978120704870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsTrigger: 0
-  IsPushable: 1
+  IsStationary: 0
   jLayer: 1
   meshFilter: {fileID: 3318281008047161025}
   IdGenerated: 0
@@ -605,15 +574,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a94a674e07fc2e9428905ad27c786e67, type: 3}
---- !u!4 &1760227394527048912 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1760227394501026847, guid: a94a674e07fc2e9428905ad27c786e67,
-    type: 3}
-  m_PrefabInstance: {fileID: 60231887}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &1760227394527048913 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1760227394501026846, guid: a94a674e07fc2e9428905ad27c786e67,
+    type: 3}
+  m_PrefabInstance: {fileID: 60231887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1760227394527048912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1760227394501026847, guid: a94a674e07fc2e9428905ad27c786e67,
     type: 3}
   m_PrefabInstance: {fileID: 60231887}
   m_PrefabAsset: {fileID: 0}

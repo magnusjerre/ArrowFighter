@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Jerre
 {
-    [RequireComponent(typeof (BulletSettings)), RequireComponent(typeof (Rigidbody))]
+    [RequireComponent(typeof (BulletSettings))]
     public class BulletCollider : MonoBehaviour
     {
         BulletSettings settings;
