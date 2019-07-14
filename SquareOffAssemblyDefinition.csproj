@@ -162,6 +162,7 @@
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
+    <Compile Include="Assets\Scripts\UI\InGame\CountDownTimer.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\HealthUIManager.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\MainUIBarManager.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PauseMenu.cs" />
@@ -169,7 +170,6 @@
     <Compile Include="Assets\Scripts\UI\InGame\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\UI\Utils\CanvasMover.cs" />
     <Compile Include="Assets\Scripts\UI\Utils\ScaleFrom.cs" />
-    <Compile Include="Assets\Scripts\UIStuff\CountDownTimer.cs" />
     <Compile Include="Assets\Scripts\UIStuff\TextChangeAnimator.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Jerre.UIStuff
+namespace Jerre.UI.InGame
 {
     [RequireComponent(typeof (Text))]
     public class CountDownTimer : MonoBehaviour

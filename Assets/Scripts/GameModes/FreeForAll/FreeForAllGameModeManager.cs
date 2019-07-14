@@ -1,7 +1,7 @@
 ﻿using Jerre.Events;
 using Jerre.GameMode.FreeForAll;
 using Jerre.GameSettings;
-using Jerre.UIStuff;
+using Jerre.UI.InGame;
 using System.Collections.Generic;
 using UnityEngine;
 
