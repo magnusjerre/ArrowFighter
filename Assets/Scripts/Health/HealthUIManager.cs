@@ -7,7 +7,7 @@ namespace Jerre.Health
     public class HealthUIManager : MonoBehaviour, IAFEventListener
     {
         public MainUIBarManager mainUIBarCanvas;
-        public HealthUIElement healthUIElementPrefab;
+        //public HealthUIElement healthUIElementPrefab;
 
         void Awake()
         {
@@ -19,37 +19,26 @@ namespace Jerre.Health
             
         }
 
-        private void HandlePlayerJoined(PlayerMenuBarUICreatedPayload payload)
-        {
-            var container = mainUIBarCanvas.GetRectTransformHolderForPlayerNumber(payload.PlayerNumber);
-            var instance = Instantiate(healthUIElementPrefab, container.Left.transform);
-            instance.PlayerNumber = payload.PlayerNumber;
-
-
-            var allPlayerSettings = GameObject.FindObjectsOfType<PlayerSettings>();
-            for (var i = 0; i < allPlayerSettings.Length; i++)
-            {
-                if (allPlayerSettings[i].playerNumber == payload.PlayerNumber)
-                {
-                    var settings = allPlayerSettings[i];
-                    instance.PlayerColor = settings.color;
-                    instance.InitialHealth = settings.MaxHealth;
-                    break;
-                }
-            }
-            
-        }
-
         public bool HandleEvent(AFEvent afEvent)
         {
             switch(afEvent.type)
             {
-                case AFEventType.PLAYER_MENU_BAR_UI_CREATED:
+                case AFEventType.HEALTH_DAMAGE:
                     {
-                        HandlePlayerJoined((PlayerMenuBarUICreatedPayload)afEvent.payload);
+                        var payload = (HealthDamagePayload)afEvent.payload;
+                        var uiElement = mainUIBarCanvas.GetUiBarElemntForPlayerNumber(payload.DamagedPlayerNumber);
+                        uiElement.SetHealth(payload.HealthLeft);
+                        break;
+                    }
+                case AFEventType.RESPAWN:
+                    {
+                        var payload = (RespawnPayload)afEvent.payload;
+                        var uiElement = mainUIBarCanvas.GetUiBarElemntForPlayerNumber(payload.PlayerNumber);
+                        uiElement.SetHealth(payload.Health);
                         break;
                     }
             }
+
             return false;
         }
     }

@@ -9,7 +9,7 @@ namespace Jerre
     {
         private FreeForAllGameModeManager scoreManager;
 
-        public ScoreUIElement scoreUIElementPrefab;
+        //public ScoreUIElement scoreUIElementPrefab;
 
         public MainUIBarManager uiBarManager;
 
@@ -20,30 +20,17 @@ namespace Jerre
             AFEventManager.INSTANCE.AddListener(this);
         }
 
-        private void AddScoreIndicatorsForPlayers(List<PlayerSettings> players)
-        {
-            for (var i = 0; i < players.Count; i++)
-            {
-                AddScoreIndicatorForPlayer(players[i]);
-            }
-        }
-
-        private void AddScoreIndicatorForPlayer(PlayerSettings player)
-        {
-            var parent = uiBarManager.GetRectTransformHolderForPlayerNumber(player.playerNumber);
-            var scoreIndicator = Instantiate(scoreUIElementPrefab, parent.Right);
-            scoreIndicator.PlayerNumber = player.playerNumber;
-            scoreIndicator.PlayerColor = player.color;
-            scoreIndicator.MaxScore = scoreManager != null ? scoreManager.maxScore : -1;
-            scoreIndicator.InitialScore = scoreManager != null ? scoreManager.GetPlayerScore(player.playerNumber) : -1;
-        }
-
         public bool HandleEvent(AFEvent afEvent)
         {
-            if (afEvent.type == AFEventType.PLAYERS_ALL_CREATED)
+            switch (afEvent.type)
             {
-                var payload = (PlayersAllCreatedPayload)afEvent.payload;
-                AddScoreIndicatorsForPlayers(payload.AllPlayers);
+                case AFEventType.SCORE:
+                    {
+                        var payload = (ScorePayload)afEvent.payload;
+                        var uiElement = uiBarManager.GetUiBarElemntForPlayerNumber(payload.playerNumber);
+                        uiElement.SetScoreText("" + payload.playerScore);
+                        break;
+                    }
             }
             return false;
         }

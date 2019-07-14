@@ -24,7 +24,6 @@ namespace Jerre.GameMode
                         undeadMode.TopBar = TopBar;
 
                         var scoreUIManager = gameObject.AddComponent<ScoreUIManager>();
-                        scoreUIManager.scoreUIElementPrefab = scoreUIElementPrefab;
                         break;
                     }
                 case GameModes.FREE_FOR_ALL:
@@ -34,7 +33,6 @@ namespace Jerre.GameMode
                         scoreMode.TopBar = TopBar;
 
                         var scoreUIManager = gameObject.AddComponent<ScoreUIManager>();
-                        scoreUIManager.scoreUIElementPrefab = scoreUIElementPrefab;
                         break;
                     }
             }

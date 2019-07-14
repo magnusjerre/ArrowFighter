@@ -805,6 +805,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCanvasOverlay
       objectReference: {fileID: 0}
+    - target: {fileID: 2763585038439031259, guid: 986205435d883884d84a17dd7954ab8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2763585038439031263, guid: 986205435d883884d84a17dd7954ab8c,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -2543,6 +2543,8 @@ MonoBehaviour:
   entireMenuBarUIArea: {fileID: 1015158252}
   uiElementContainerPrefab: {fileID: 162030613787468935, guid: 9d5e4cd225847fd43a362c206b150e27,
     type: 3}
+  uiPlayerElementPrefab: {fileID: 4896359985248049168, guid: c6360915eaaafa444834f3bd789e7081,
+    type: 3}
 --- !u!114 &1043987881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5532,7 +5534,7 @@ PrefabInstance:
     - target: {fileID: 8575801068867353456, guid: 05907e7cb9b0ae04fb0095f5d6113c1a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 8575801068867353456, guid: 05907e7cb9b0ae04fb0095f5d6113c1a,
         type: 3}
@@ -5572,12 +5574,7 @@ PrefabInstance:
     - target: {fileID: 8575801068867353456, guid: 05907e7cb9b0ae04fb0095f5d6113c1a,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8575801068867353457, guid: 05907e7cb9b0ae04fb0095f5d6113c1a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05907e7cb9b0ae04fb0095f5d6113c1a, type: 3}
