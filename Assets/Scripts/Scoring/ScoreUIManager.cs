@@ -1,5 +1,5 @@
 ﻿using Jerre.Events;
-using Jerre.UI;
+using Jerre.UI.InGame;
 using UnityEngine;
 
 namespace Jerre

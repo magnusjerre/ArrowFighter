@@ -2,7 +2,7 @@
 using Jerre.Events;
 using Jerre.UI;
 
-namespace Jerre.Health
+namespace Jerre.UI.InGame
 {
     public class HealthUIManager : MonoBehaviour, IAFEventListener
     {

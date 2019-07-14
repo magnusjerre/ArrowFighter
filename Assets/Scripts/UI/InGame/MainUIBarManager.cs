@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Jerre.UI
+namespace Jerre.UI.InGame
 {
     public class MainUIBarManager : MonoBehaviour, IAFEventListener
     {
