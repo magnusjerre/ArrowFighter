@@ -98,7 +98,6 @@
     <Compile Include="Assets\Scripts\GameSettings\GameRoundState.cs" />
     <Compile Include="Assets\Scripts\GameSettings\GameSettingsState.cs" />
     <Compile Include="Assets\Scripts\GameSettings\KeyValueWithOptionsSetting.cs" />
-    <Compile Include="Assets\Scripts\Health\HealthUIManager.cs" />
     <Compile Include="Assets\Scripts\JColliders\Components\JCollider.cs" />
     <Compile Include="Assets\Scripts\JColliders\Components\JColliderDebuggerManager.cs" />
     <Compile Include="Assets\Scripts\JColliders\Components\JColliderManager.cs" />
@@ -164,6 +163,7 @@
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
+    <Compile Include="Assets\Scripts\UI\InGame\HealthUIManager.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\MainUIBarManager.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PlayerUIBarElement.cs" />
