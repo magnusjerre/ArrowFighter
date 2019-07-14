@@ -178,7 +178,6 @@
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
     <Compile Include="Assets\Scripts\Utils\IDo.cs" />
     <Compile Include="Assets\Scripts\Utils\Logging.cs" />
-    <Compile Include="Assets\Scripts\Utils\LookDirectionConstr.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayAreaIndicator.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerFetcher.cs" />
     <Compile Include="Assets\Scripts\Utils\QueueRerunnable.cs" />
