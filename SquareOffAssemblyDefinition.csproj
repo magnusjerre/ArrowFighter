@@ -167,8 +167,8 @@
     <Compile Include="Assets\Scripts\UI\InGame\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PlayerUIBarElement.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\ScoreUIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Utils\CanvasMover.cs" />
     <Compile Include="Assets\Scripts\UI\Utils\ScaleFrom.cs" />
-    <Compile Include="Assets\Scripts\UIStuff\CanvasMover.cs" />
     <Compile Include="Assets\Scripts\UIStuff\CountDownTimer.cs" />
     <Compile Include="Assets\Scripts\UIStuff\TextChangeAnimator.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
