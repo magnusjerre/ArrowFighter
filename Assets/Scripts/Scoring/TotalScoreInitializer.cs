@@ -1,4 +1,5 @@
-﻿using Jerre.GameMode.FreeForAll;
+﻿using Jerre.GameMode;
+using Jerre.GameMode.FreeForAll;
 using Jerre.GameSettings;
 using UnityEngine;
 using UnityEngine.UI;

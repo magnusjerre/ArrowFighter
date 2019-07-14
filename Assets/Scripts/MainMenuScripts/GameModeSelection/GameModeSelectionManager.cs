@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Jerre.GameMode;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Jerre.MainMenu.GameMode

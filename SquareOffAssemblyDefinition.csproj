@@ -82,9 +82,9 @@
     <Compile Include="Assets\Scripts\Events\Payloads\RoundOverPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\ScorePayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\WeaponUpgradePayload.cs" />
-    <Compile Include="Assets\Scripts\GameModes.cs" />
     <Compile Include="Assets\Scripts\GameModes\FreeForAll\FreeForAllGameModeManager.cs" />
     <Compile Include="Assets\Scripts\GameModes\FreeForAll\FreeForAllGameSettings.cs" />
+    <Compile Include="Assets\Scripts\GameModes\GameModes.cs" />
     <Compile Include="Assets\Scripts\GameModes\GameModeSelectedSpawner.cs" />
     <Compile Include="Assets\Scripts\GameModes\SetTextToMatchameMode.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\SingleRoundUndeadScore.cs" />
