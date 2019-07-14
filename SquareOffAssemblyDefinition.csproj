@@ -129,7 +129,6 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerReady.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PreventDeselectionGroup.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\WaitingForPlayer.cs" />
-    <Compile Include="Assets\Scripts\MainUIBar\MainUIBarManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ByeByeManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerComponentsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
@@ -165,6 +164,7 @@
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
+    <Compile Include="Assets\Scripts\UI\InGame\MainUIBarManager.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PlayerUIBarElement.cs" />
     <Compile Include="Assets\Scripts\UIStuff\CanvasMover.cs" />
