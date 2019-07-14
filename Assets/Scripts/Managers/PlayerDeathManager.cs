@@ -2,6 +2,7 @@
 using System.Collections;
 using Jerre.Events;
 using Jerre.JPhysics;
+using Jerre.JColliders;
 
 namespace Jerre
 {
@@ -44,7 +45,7 @@ namespace Jerre
         private void EnableOrDisablePlayer(PlayerSettings playerSettings, bool enabled)
         {
             playerSettings.GetComponent<PlayerHealth>().enabled = enabled;
-            playerSettings.GetComponent<Collider>().enabled = enabled;
+            playerSettings.GetComponent<JCollider>().enabled = enabled;
             playerSettings.GetComponent<JPhysicsBody>().enabled = enabled;
             var playerInputComponent = playerSettings.GetComponent<PlayerInputComponent>();
             playerInputComponent.InputIsFresh = enabled ? playerInputComponent.InputIsFresh : false;
