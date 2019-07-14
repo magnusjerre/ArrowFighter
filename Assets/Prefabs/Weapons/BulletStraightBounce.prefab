@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7936496267054984807}
   - component: {fileID: 1640427026038902208}
   m_Layer: 9
-  m_Name: Bullet
+  m_Name: BulletStraightBounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   Damage: 10
   PlayerOwnerNumber: 0
   color: {r: 0, g: 0, b: 0, a: 0}
+  DestroyOnAnyOverlap: 0
   hitParticlesPrefab: {fileID: 4512442324150540652, guid: 589160b62bd40a94a8f199e9bd29cdf4,
     type: 3}
 --- !u!54 &4647767403863908387
@@ -138,14 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ac515316fda2548ba7c561460759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MeshRenderer: {fileID: 6589645552005308402}
-  meshFilter: {fileID: 3923982157174578337}
-  mesh: {fileID: 0}
-  IsStationary: 0
   SurfaceBounceFactor: 2
-  jLayer: 2
-  DebugMesh: 1
-  DebugAABB: 0
 --- !u!114 &1640427026038902208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +155,7 @@ MonoBehaviour:
   CheckOnlyForOverlap: 0
   jLayer: 2
   meshFilter: {fileID: 3923982157174578337}
+  IdGenerated: 0
   debugMesh: 0
   debugAABB: 0
 --- !u!1 &5100744275307756462

@@ -108,14 +108,26 @@ namespace Jerre.JColliders
         // Modifies completedCollisions by always trying to add the new collision pair to the list
         private bool ShouldSkipCollisionCheck(JCollider colliderA, JCollider colliderB, HashSet<JCollisionPair> completedCollisions)
         {
+            var isABullet = colliderA.GetComponent<BulletSettings>() != null;
+            var isBBullet = colliderB.GetComponent<BulletSettings>() != null;
+            var isAPlayer = colliderA.GetComponent<PlayerSettings>() != null;
+            var isBPlayer = colliderB.GetComponent<PlayerSettings>() != null;
             if (!JLayerMaskUtil.MaskCheck(JLayerMaskUtil.GetLayerMask(colliderA.jLayer), colliderB.jLayer))
             {
+                if ((isABullet && isBPlayer) || (isAPlayer && isBBullet))
+                {
+                    Debug.Log("Bullet and player mask check failed");
+                }
                 return true;
             }
 
             var collisionPair = new JCollisionPair(colliderA, colliderB);
             if (!completedCollisions.Add(collisionPair))    // This is where the methods mutates completedCollisions
             {
+                if ((isABullet && isBPlayer) || (isAPlayer && isBBullet))
+                {
+                    Debug.Log("Collision already registered");
+                }
                 return true;
             }
 
@@ -124,6 +136,10 @@ namespace Jerre.JColliders
 
             if (!JMeshOverlap.AABBOverlap(boundsA, boundsB))    // TODO replace with JMeshOverlap.AABOverlap
             {
+                if ((isABullet && isBPlayer) || (isAPlayer && isBBullet))
+                {
+                    Debug.Log("player and bullet dont overlap.");
+                }
                 return true;
             }
 

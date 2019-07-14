@@ -22,12 +22,10 @@ namespace Jerre
         {
             var playerHealth = otherBody.GetComponent<PlayerHealth>();
             var otherColor = settings.color;
-            collision.NotifyDestroyCollider();
             if (playerHealth != null)
             {
                 var playerSettings = otherBody.GetComponent<PlayerSettings>();
                 otherColor = playerSettings.color;
-                Debug.Log("Player " + settings.PlayerOwnerNumber + " hit player " + playerSettings.playerNumber + "! Doing damage: " + settings.Damage);
                 if (playerHealth.DoDamage(settings.Damage))
                 {
                     AFEventManager.INSTANCE.PostEvent(AFEvents.Kill(settings.PlayerOwnerNumber, playerSettings.playerNumber));
@@ -40,6 +38,7 @@ namespace Jerre
 
             if (playerHealth != null || settings.DestroyOnAnyOverlap)
             {
+                Debug.Log("Time to destroy bullet");
                 var hitParticles = Instantiate(settings.hitParticlesPrefab, transform.position, transform.rotation);
                 var colorModule = hitParticles.colorOverLifetime;
                 colorModule.enabled = true;
