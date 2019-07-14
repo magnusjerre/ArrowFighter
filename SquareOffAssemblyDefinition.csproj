@@ -154,8 +154,8 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMainEngineParticles.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerPhysics.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\UsePlayerInput.cs" />
-    <Compile Include="Assets\Scripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\PlayersState.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
     <Compile Include="Assets\Scripts\RoundOverScripts\RoundOverManager.cs" />
