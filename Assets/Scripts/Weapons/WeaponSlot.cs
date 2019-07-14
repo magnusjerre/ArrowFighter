@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Jerre.Events;
+using UnityEngine;
 
 namespace Jerre.Weapons
 {
@@ -6,12 +7,16 @@ namespace Jerre.Weapons
     public class WeaponSlot : MonoBehaviour, UsePlayerInput
     {
         public Weapon defaultWeaponPrefab;
+        public WeaponPickup DefaultWeaponPickup;
+        private WeaponUpgradePath DefaultWeaponUpgradePath;
 
         private Weapon activeWeaponInstance;
         public string ActiveWeaponName
         {
             get { return activeWeaponInstance?.WeaponName; }
         }
+        private WeaponUpgradePath ActiveWeaponUpgradePath;
+
         private PlayerSettings settings;
         private PlayerInputComponent playerInput;
 
@@ -31,7 +36,10 @@ namespace Jerre.Weapons
 
         void Start()
         {
-            AttachWeapon(defaultWeaponPrefab);
+            var defaultPickupInstance = Instantiate(DefaultWeaponPickup);
+            DefaultWeaponUpgradePath = defaultPickupInstance.weaponUpgradePathInitial();
+            Destroy(defaultPickupInstance.gameObject);
+            AttachWeapon(defaultWeaponPrefab, DefaultWeaponUpgradePath);
         }
 
         void Update()
@@ -41,12 +49,12 @@ namespace Jerre.Weapons
             {
                 if (activeWeaponInstance.Fire() && activeWeaponInstance.IsSpent())
                 {
-                    AttachWeapon(defaultWeaponPrefab);
+                    AttachWeapon(defaultWeaponPrefab, DefaultWeaponUpgradePath);
                 }
             }
         }
 
-        public void AttachWeapon(Weapon weaponPrefab)
+        public void AttachWeapon(Weapon weaponPrefab, WeaponUpgradePath upgradePath)
         {
             var weaponInstance = Instantiate(weaponPrefab, transform);
             weaponInstance.bulletColor = settings.color;
@@ -57,6 +65,13 @@ namespace Jerre.Weapons
                 Destroy(activeWeaponInstance.gameObject);
             }
             activeWeaponInstance = weaponInstance;
+            ActiveWeaponUpgradePath = upgradePath;
+
+            AFEventManager.INSTANCE.PostEvent(AFEvents.WeaponUpgrade(
+                    settings.playerNumber,
+                    upgradePath.UpgradeProgress,
+                    upgradePath.UpgradeColor
+                ));
         }
 
     }

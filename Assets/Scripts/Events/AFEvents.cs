@@ -64,5 +64,10 @@ namespace Jerre.Events
         {
             return new AFEvent(AFEventType.PLAYERS_ALL_CREATED, new PlayersAllCreatedPayload(players));
         }
+
+        public static AFEvent WeaponUpgrade(int playerNumber, float upgradeProgress, Color upgradeColor)
+        {
+            return new AFEvent(AFEventType.WEAPON_UPGRADE, new WeaponUpgradePayload(playerNumber, upgradeProgress, upgradeColor));
+        }
     }
 }

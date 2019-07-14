@@ -377,6 +377,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultWeaponPrefab: {fileID: 7430427575736047849, guid: d5998a24be3518544ae59ceae160c202,
     type: 3}
+  DefaultWeaponPickup: {fileID: 3656039077024569611, guid: 6b69a9f34762fb847b778b944408e3f9,
+    type: 3}
   resetToDefaultWhenSpent: 0
 --- !u!1 &1369341429014477098
 GameObject:

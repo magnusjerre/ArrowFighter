@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Events\Payloads\RespawnPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\RoundOverPayload.cs" />
     <Compile Include="Assets\Scripts\Events\Payloads\ScorePayload.cs" />
+    <Compile Include="Assets\Scripts\Events\Payloads\WeaponUpgradePayload.cs" />
     <Compile Include="Assets\Scripts\FixedDirection.cs" />
     <Compile Include="Assets\Scripts\GameModes.cs" />
     <Compile Include="Assets\Scripts\GameModes\FreeForAll\FreeForAllGameModeManager.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponPickup.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponSlot.cs" />
+    <Compile Include="Assets\Scripts\Weapons\WeaponUpgradePath.cs" />
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>

@@ -14,6 +14,7 @@
         ROUND_OVER,
         COUNT_DOWN_FINISHED,
         GAME_START,
-        PLAYERS_ALL_CREATED
+        PLAYERS_ALL_CREATED,
+        WEAPON_UPGRADE
     }
 }

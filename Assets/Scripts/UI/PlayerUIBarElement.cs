@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Jerre.Events;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Jerre.UI
 {
     [ExecuteAlways]
-    public class PlayerUIBarElement : MonoBehaviour
+    public class PlayerUIBarElement : MonoBehaviour, IAFEventListener
     {
         public RectTransform VerticalUpgradeBar;
         public Text HealthText;
@@ -21,6 +22,16 @@ namespace Jerre.UI
         public Vector3 Position;
 
         public Image Separator1, Separator2;
+
+        void Awake()
+        {
+            AFEventManager.INSTANCE.AddListener(this);
+        }
+
+        void OnDestroy()
+        {
+            AFEventManager.INSTANCE.RemoveListener(this);
+        }
 
         private void Start()
         {
@@ -73,6 +84,24 @@ namespace Jerre.UI
         {
             this.score = score;
             ScoreText.text = score;
+        }
+
+        public bool HandleEvent(AFEvent afEvent)
+        {
+            switch(afEvent.type)
+            {
+                case AFEventType.WEAPON_UPGRADE:
+                    {
+                        var payload = (WeaponUpgradePayload)afEvent.payload;
+                        if (payload.PlayerNumber == PlayerNumber)
+                        {
+                            SetUpgradeColor(payload.UpgradeColor);
+                            SetUpgradeProgress(payload.UpgradeProgress);
+                        }
+                        break;
+                    }
+            }
+            return false;
         }
     }
 }

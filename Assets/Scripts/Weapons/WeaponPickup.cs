@@ -1,4 +1,5 @@
-﻿using Jerre.JColliders;
+﻿using Jerre.Events;
+using Jerre.JColliders;
 using UnityEngine;
 
 namespace Jerre.Weapons
@@ -41,18 +42,23 @@ namespace Jerre.Weapons
                 }
             }
 
-
-            if (index == -1)
-            {
-                // The current weapon isn't part of this weapons-upgrade-tree. Therefore choosing the first weapon
-                weaponSlot.AttachWeapon(WeaponsUpgrades[0]);
-            } else
-            {
-                weaponSlot.AttachWeapon(WeaponsUpgrades[(index + 1) % WeaponsUpgrades.Length]);
-            }
+            var nextWeaponIndex = (index + 1) % WeaponsUpgrades.Length;
+            var upgradeColor = GetComponentInChildren<Renderer>().material.color;
+            
+            // nextWeaponIndex + 1 since WeaponUpgradePath.CurrentUpgradeNumber is 1-indexed and nextWeaponIndex is 0-indexed
+            weaponSlot.AttachWeapon(WeaponsUpgrades[nextWeaponIndex], new WeaponUpgradePath(upgradeColor, WeaponsUpgrades.Length, nextWeaponIndex + 1)); 
 
             thisBody.NotifyDestroyCollider();
             Destroy(gameObject);
+        }
+
+        public WeaponUpgradePath weaponUpgradePathInitial()
+        {
+            return new WeaponUpgradePath(
+                GetComponentInChildren<Renderer>().material.color,
+                WeaponsUpgrades.Length,
+                1
+            );
         }
     }
 }
