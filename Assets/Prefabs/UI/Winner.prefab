@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6326969492153835060}
   - component: {fileID: 6326969492153835061}
-  - component: {fileID: 4058188672445604392}
+  - component: {fileID: 3987821722175716136}
   m_Layer: 5
   m_Name: Winner
   m_TagString: Untagged
@@ -225,8 +225,8 @@ MonoBehaviour:
   TitleText: {fileID: 6326969491593057613}
   PlayerWinnerColor: {r: 1, g: 0, b: 0, a: 1}
   WinningScore: 0
-  Scaler: {fileID: 4058188672445604392}
---- !u!114 &4058188672445604392
+  Scaler: {fileID: 3987821722175716136}
+--- !u!114 &3987821722175716136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,8 +241,9 @@ MonoBehaviour:
   From: {x: 0, y: 0, z: 0}
   To: {x: 1, y: 1, z: 1}
   UseInitialScaleAsFrom: 0
-  UseInitialScaleAsTo: 1
+  UseInitialScaleAsTo: 0
   ScaleOnStart: 0
+  ScaleBackAndForth: 0
   time: 0.2
 --- !u!1 &6326969492252086808
 GameObject:

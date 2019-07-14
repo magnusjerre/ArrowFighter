@@ -819,6 +819,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1901364207}
     m_Modifications:
+    - target: {fileID: 3987821722175716136, guid: c03b53e3b6fb044418441b4bef376722,
+        type: 3}
+      propertyPath: UseInitialScaleAsFrom
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987821722175716136, guid: c03b53e3b6fb044418441b4bef376722,
+        type: 3}
+      propertyPath: UseInitialScaleAsTo
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6326969492153835059, guid: c03b53e3b6fb044418441b4bef376722,
         type: 3}
       propertyPath: m_Name
@@ -4140,7 +4150,7 @@ PrefabInstance:
     - target: {fileID: 8358185334174932868, guid: 1805cd730cae4b545854b1d6add6c58d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8358185334174932868, guid: 1805cd730cae4b545854b1d6add6c58d,
         type: 3}
