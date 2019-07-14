@@ -136,7 +136,6 @@
     <Compile Include="Assets\Scripts\Managers\PlayerPositionScreenBoundEnforcerManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
-    <Compile Include="Assets\Scripts\PauseMenu\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\JPhysicsBody.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\PhysicsManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
@@ -166,6 +165,7 @@
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
+    <Compile Include="Assets\Scripts\UI\InGame\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PlayerUIBarElement.cs" />
     <Compile Include="Assets\Scripts\UIStuff\CanvasMover.cs" />
     <Compile Include="Assets\Scripts\UIStuff\CountDownTimer.cs" />
