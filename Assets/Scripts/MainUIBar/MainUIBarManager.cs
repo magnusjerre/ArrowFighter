@@ -39,7 +39,7 @@ namespace Jerre.UI
             {
                 var player = players[i];
                 var uiPlayerElementInstance = Instantiate(uiPlayerElementPrefab, entireMenuBarUIArea);
-                uiPlayerElementPrefab.BackgroundColor = new Color(player.color.r, player.color.g, player.color.b, uiPlayerElementInstance.BackgroundColor.a);
+                uiPlayerElementInstance.BackgroundColor = new Color(player.color.r, player.color.g, player.color.b, uiPlayerElementInstance.BackgroundColor.a);
                 uiPlayerElementInstance.PlayerNumber = player.playerNumber;
                 uiPlayerElementInstance.Position = new Vector3(i * width + 0.5f * width, 0f, 0f);
                 uiPlayerElementInstance.health = player.MaxHealth;
