@@ -157,7 +157,6 @@
     <Compile Include="Assets\Scripts\RoundOverScripts\RoundOverManager.cs" />
     <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreSummary\ScoreSummary.cs" />
-    <Compile Include="Assets\Scripts\Scoring\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\Scoring\TotalScoreInitializer.cs" />
     <Compile Include="Assets\Scripts\Scoring\WinnerText.cs" />
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
@@ -167,6 +166,7 @@
     <Compile Include="Assets\Scripts\UI\InGame\MainUIBarManager.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PlayerUIBarElement.cs" />
+    <Compile Include="Assets\Scripts\UI\InGame\ScoreUIManager.cs" />
     <Compile Include="Assets\Scripts\UIStuff\CanvasMover.cs" />
     <Compile Include="Assets\Scripts\UIStuff\CountDownTimer.cs" />
     <Compile Include="Assets\Scripts\UIStuff\DoCall.cs" />

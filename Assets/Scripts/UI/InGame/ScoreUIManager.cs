@@ -1,8 +1,7 @@
 ﻿using Jerre.Events;
-using Jerre.UI.InGame;
 using UnityEngine;
 
-namespace Jerre
+namespace Jerre.UI.InGame
 {
     public class ScoreUIManager : MonoBehaviour, IAFEventListener
     {
