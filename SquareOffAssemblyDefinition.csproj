@@ -154,7 +154,6 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMainEngineParticles.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerPhysics.cs" />
-    <Compile Include="Assets\Scripts\PlayerScripts\PlayerWeapon.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\UsePlayerInput.cs" />
     <Compile Include="Assets\Scripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\PlayersState.cs" />
