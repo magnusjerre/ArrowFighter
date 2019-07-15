@@ -159,6 +159,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\UsePlayerInput.cs" />
     <Compile Include="Assets\Scripts\PlayersState.cs" />
     <Compile Include="Assets\Scripts\RoundOverScripts\RoundOverManager.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\MainUIBarManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\ScoreSummary.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\SplashDescriptionForGameMode.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\SplashWinner.cs" />
@@ -167,7 +168,6 @@
     <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />
     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\CountDownTimer.cs" />
-    <Compile Include="Assets\Scripts\UI\InGame\MainUIBarManager.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\UI\InGame\PlayerUIBarElement.cs" />
     <Compile Include="Assets\Scripts\UI\Utils\CanvasMover.cs" />

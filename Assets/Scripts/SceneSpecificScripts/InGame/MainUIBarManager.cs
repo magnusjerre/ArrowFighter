@@ -1,8 +1,9 @@
 ﻿using Jerre.Events;
+using Jerre.UI.InGame;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Jerre.UI.InGame
+namespace Jerre
 {
     public class MainUIBarManager : MonoBehaviour, IAFEventListener
     {
