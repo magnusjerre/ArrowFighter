@@ -17,7 +17,7 @@ namespace Jerre.MainMenu.GameMode
                 && Input.GetButton(PlayerInputTags.DODGE_LEFT + 1)
                 && Input.GetButton(PlayerInputTags.ACCEPT + 1))
             {
-                SceneManager.LoadScene(SceneNames.BYE_BYE_SCENE);
+                SceneManager.LoadScene(SceneNames.QUIT_GAME_SCENE);
             }
         }
 

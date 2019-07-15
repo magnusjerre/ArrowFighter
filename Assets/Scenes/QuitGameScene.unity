@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 1139489999}
   - component: {fileID: 1139489997}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: QuitScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,6 +261,7 @@ MonoBehaviour:
   UseInitialScaleAsFrom: 1
   UseInitialScaleAsTo: 0
   ScaleOnStart: 1
+  ScaleBackAndForth: 0
   time: 1.5
 --- !u!1001 &1356342116
 PrefabInstance:

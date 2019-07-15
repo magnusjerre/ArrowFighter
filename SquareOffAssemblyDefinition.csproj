@@ -164,7 +164,7 @@
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\SplashDescriptionForGameMode.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\SplashWinner.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Utils\PlayerComponentsEnabler.cs" />
-    <Compile Include="Assets\Scripts\SceneSpecificScripts\QuitGame\ByeByeManager.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\QuitGame\QuitApplication.cs" />
     <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />

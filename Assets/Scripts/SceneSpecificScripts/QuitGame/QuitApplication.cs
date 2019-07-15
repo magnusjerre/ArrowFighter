@@ -2,9 +2,9 @@
 
 namespace Jerre
 {
-    public class ByeByeManager : MonoBehaviour
+    public class QuitApplication : MonoBehaviour
     {
-        public float TimeUntilQuit = 2f;
+        public float TimeUntilQuit = 1.5f;
         
         void Start()
         {
