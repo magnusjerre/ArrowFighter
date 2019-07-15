@@ -167,7 +167,6 @@
     <Compile Include="Assets\Scripts\Scoring\ScoreListing.cs" />
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />
-    <Compile Include="Assets\Scripts\UI\Utils\CanvasMover.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
