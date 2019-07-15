@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Jerre
 {
-    public class PlayerPositionScreenBoundEnforcerManager : MonoBehaviour
+    public class PlayerPositionScreenBoundEnforcer : MonoBehaviour
     {
         public Rect screenBoundsInWorldSize;
 
