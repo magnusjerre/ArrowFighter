@@ -182,11 +182,11 @@
     <Compile Include="Assets\Scripts\Weapons\Bullet\BulletMover.cs" />
     <Compile Include="Assets\Scripts\Weapons\Bullet\BulletSettings.cs" />
     <Compile Include="Assets\Scripts\Weapons\Bullet\LifteTime.cs" />
-    <Compile Include="Assets\Scripts\Weapons\IWeapon.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
-    <Compile Include="Assets\Scripts\Weapons\WeaponPickup.cs" />
-    <Compile Include="Assets\Scripts\Weapons\WeaponSlot.cs" />
-    <Compile Include="Assets\Scripts\Weapons\WeaponUpgradePath.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Weapon\IWeapon.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Weapon\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Weapon\WeaponPickup.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Weapon\WeaponSlot.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Weapon\WeaponUpgradePath.cs" />
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
