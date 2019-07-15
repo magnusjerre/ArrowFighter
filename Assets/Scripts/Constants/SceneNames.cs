@@ -2,7 +2,7 @@
 {
     public class SceneNames
     {
-        public const string START_MENU = "StartMenu";
+        public const string PLAYER_JOIN_SCENE = "PlayerJoinScene";
         public const string GAME_SCENE = "GameScene";
         public const string GAME_OVER_SCENE = "GameOverScene";
         public const string GAME_MODE_SELECTION = "GameModeSelectionScene";

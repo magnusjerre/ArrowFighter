@@ -26,7 +26,7 @@ namespace Jerre
         {
             if (Input.GetButtonDown(PlayerInputTags.ACCEPT + "1"))
             {
-                SceneManager.LoadScene(SceneNames.START_MENU);
+                SceneManager.LoadScene(SceneNames.PLAYER_JOIN_SCENE);
             } else if (Input.GetButtonDown(PlayerInputTags.FIRE2 + "1"))
             {
                 SceneManager.LoadScene(SceneNames.GAME_MODE_SELECTION);
