@@ -158,6 +158,18 @@
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\SplashDescriptionForGameMode.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\SplashWinner.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Utils\PlayerComponentsEnabler.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Bomb\BombLifetimeIndicator.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Bomb\BombSettings.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Bomb\BombTriggerable.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Bullet\BulletCollider.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Bullet\BulletMover.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Bullet\BulletSettings.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Bullet\LifteTime.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Weapon\IWeapon.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Weapon\Weapon.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Weapon\WeaponPickup.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Weapon\WeaponSlot.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Weapons\Weapon\WeaponUpgradePath.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\PlayerJoin\ColorManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\PlayerJoin\JoinGameManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\PlayerJoin\PlayerJoinItem.cs" />
@@ -175,18 +187,6 @@
     <Compile Include="Assets\Scripts\Utils\PlayAreaIndicator.cs" />
     <Compile Include="Assets\Scripts\Utils\PlayerFetcher.cs" />
     <Compile Include="Assets\Scripts\Utils\QueueRerunnable.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Bomb\BombLifetimeIndicator.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Bomb\BombSettings.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Bomb\BombTriggerable.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Bullet\BulletCollider.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Bullet\BulletMover.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Bullet\BulletSettings.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Bullet\LifteTime.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Weapon\IWeapon.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Weapon\Weapon.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Weapon\WeaponPickup.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Weapon\WeaponSlot.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Weapon\WeaponUpgradePath.cs" />
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.1.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
