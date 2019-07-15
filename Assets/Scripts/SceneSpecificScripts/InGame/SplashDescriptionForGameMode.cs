@@ -4,7 +4,7 @@ using Jerre.GameSettings;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Jerre.Scoring
+namespace Jerre
 {
     public class SplashDescriptionForGameMode : MonoBehaviour
     {
