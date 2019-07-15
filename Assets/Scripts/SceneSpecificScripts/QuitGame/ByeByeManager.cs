@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-namespace Jerre.Managers {
+namespace Jerre
+{
     public class ByeByeManager : MonoBehaviour
     {
         public float TimeUntilQuit = 2f;

@@ -133,7 +133,6 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerReady.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PreventDeselectionGroup.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\WaitingForPlayer.cs" />
-    <Compile Include="Assets\Scripts\Managers\ByeByeManager.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\JPhysicsBody.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\PhysicsManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
@@ -165,6 +164,7 @@
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\SplashDescriptionForGameMode.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\SplashWinner.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Utils\PlayerComponentsEnabler.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\QuitGame\ByeByeManager.cs" />
     <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />
