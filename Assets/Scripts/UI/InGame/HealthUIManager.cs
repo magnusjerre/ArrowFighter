@@ -21,23 +21,23 @@ namespace Jerre.UI.InGame
 
         public bool HandleEvent(AFEvent afEvent)
         {
-            switch(afEvent.type)
-            {
-                case AFEventType.HEALTH_DAMAGE:
-                    {
-                        var payload = (HealthDamagePayload)afEvent.payload;
-                        var uiElement = mainUIBarCanvas.GetUiBarElemntForPlayerNumber(payload.DamagedPlayerNumber);
-                        uiElement.SetHealth(payload.HealthLeft);
-                        break;
-                    }
-                case AFEventType.RESPAWN:
-                    {
-                        var payload = (RespawnPayload)afEvent.payload;
-                        var uiElement = mainUIBarCanvas.GetUiBarElemntForPlayerNumber(payload.PlayerNumber);
-                        uiElement.SetHealth(payload.Health);
-                        break;
-                    }
-            }
+            //switch(afEvent.type)
+            //{
+            //    case AFEventType.HEALTH_DAMAGE:
+            //        {
+            //            var payload = (HealthDamagePayload)afEvent.payload;
+            //            var uiElement = mainUIBarCanvas.GetUiBarElemntForPlayerNumber(payload.DamagedPlayerNumber);
+            //            uiElement.SetHealth(payload.HealthLeft);
+            //            break;
+            //        }
+            //    case AFEventType.RESPAWN:
+            //        {
+            //            var payload = (RespawnPayload)afEvent.payload;
+            //            var uiElement = mainUIBarCanvas.GetUiBarElemntForPlayerNumber(payload.PlayerNumber);
+            //            uiElement.SetHealth(payload.Health);
+            //            break;
+            //        }
+            //}
 
             return false;
         }

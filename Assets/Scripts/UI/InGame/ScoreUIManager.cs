@@ -17,16 +17,16 @@ namespace Jerre.UI.InGame
 
         public bool HandleEvent(AFEvent afEvent)
         {
-            switch (afEvent.type)
-            {
-                case AFEventType.SCORE:
-                    {
-                        var payload = (ScorePayload)afEvent.payload;
-                        var uiElement = uiBarManager.GetUiBarElemntForPlayerNumber(payload.playerNumber);
-                        uiElement.SetScoreText("" + payload.playerScore);
-                        break;
-                    }
-            }
+            //switch (afEvent.type)
+            //{
+            //    case AFEventType.SCORE:
+            //        {
+            //            var payload = (ScorePayload)afEvent.payload;
+            //            var uiElement = uiBarManager.GetUiBarElemntForPlayerNumber(payload.playerNumber);
+            //            uiElement.SetScoreText("" + payload.playerScore);
+            //            break;
+            //        }
+            //}
             return false;
         }
     }

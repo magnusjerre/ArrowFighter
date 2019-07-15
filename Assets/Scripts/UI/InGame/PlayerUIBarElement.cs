@@ -100,6 +100,24 @@ namespace Jerre.UI.InGame
                         }
                         break;
                     }
+                case AFEventType.SCORE:
+                    {
+                        var payload = (ScorePayload)afEvent.payload;                        
+                        SetScoreText("" + payload.playerScore);
+                        break;
+                    }
+                case AFEventType.HEALTH_DAMAGE:
+                    {
+                        var payload = (HealthDamagePayload)afEvent.payload;
+                        SetHealth(payload.HealthLeft);
+                        break;
+                    }
+                case AFEventType.RESPAWN:
+                    {
+                        var payload = (RespawnPayload)afEvent.payload;
+                        SetHealth(payload.Health);
+                        break;
+                    }
             }
             return false;
         }
