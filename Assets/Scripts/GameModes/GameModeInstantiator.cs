@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Jerre.GameMode
 {
-    public class GameModeSelectedSpawner : MonoBehaviour
+    public class GameModeInstantiator : MonoBehaviour
     {
         public CountDownTimer countDownTimerPrefab;
         public RectTransform TopBar;
@@ -11,7 +11,6 @@ namespace Jerre.GameMode
         private void Awake()
         {
             var selectedGameMode = PlayersState.INSTANCE.selectedGameMode;
-            Debug.Log("selectedGameMode" + selectedGameMode);
             switch (selectedGameMode)
             {
                 case GameModes.UNDEAD:
@@ -29,18 +28,6 @@ namespace Jerre.GameMode
                         break;
                     }
             }
-        }
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }
