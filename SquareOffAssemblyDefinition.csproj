@@ -136,7 +136,6 @@
     <Compile Include="Assets\Scripts\Managers\ByeByeManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\SpawnPointManager.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\JPhysicsBody.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\PhysicsManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
@@ -169,7 +168,6 @@
     <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />
-    <Compile Include="Assets\Scripts\SpawnPoint.cs" />
     <Compile Include="Assets\Scripts\UI\Utils\CanvasMover.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />

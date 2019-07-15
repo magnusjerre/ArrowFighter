@@ -9,6 +9,9 @@ namespace Jerre
     {
         public PlayerSettings playerPrefab;
         public Transform PlayersContainer;
+        public Transform SpawnPointsParent;
+
+        private int nextSpawnIndex = 0;
 
         void Start()
         {
@@ -19,7 +22,7 @@ namespace Jerre
                 return;
             }
 
-            var spawnPointManager = GameObject.FindObjectOfType<SpawnPointManager>();
+            //var spawnPointManager = GameObject.FindObjectOfType<SpawnPointManager>();
             var allPlayerSettings = new List<PlayerSettings>(playersToCreate.Count);
             for (var i = 0; i < playersToCreate.Count; i++)
             {
@@ -28,16 +31,16 @@ namespace Jerre
                     AddPlayer(
                         playerMenuSettings.Number, 
                         playerMenuSettings.Color, 
-                        spawnPointManager.GetNextSpawnPoint()
+                        GetNextSpawnPoint()
                     )
                 );
             }
             AFEventManager.INSTANCE.PostEvent(AFEvents.PlayersAllCreated(allPlayerSettings));
         }
 
-        private PlayerSettings AddPlayer(int playerNumber, Color color, SpawnPoint spawnPoint)
+        private PlayerSettings AddPlayer(int playerNumber, Color color, Transform spawnPoint)
         {
-            var newPlayer = Instantiate(playerPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            var newPlayer = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
             newPlayer.name = "Player_" + playerNumber;
             newPlayer.playerNumber = playerNumber;
             newPlayer.color = color;
@@ -56,6 +59,13 @@ namespace Jerre
             var mainEngineParticles = newPlayer.GetComponent<PlayerMainEngineParticles>();
             mainEngineParticles.ParticleColor = color;
             return newPlayer;
+        }
+
+        public Transform GetNextSpawnPoint()
+        {
+            var spawnPoint = SpawnPointsParent.GetChild(nextSpawnIndex);
+            nextSpawnIndex = (nextSpawnIndex + 1) % SpawnPointsParent.childCount;
+            return spawnPoint;
         }
     }
 }

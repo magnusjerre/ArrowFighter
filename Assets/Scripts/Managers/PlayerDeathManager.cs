@@ -15,11 +15,11 @@ namespace Jerre
 
         public ParticleSystem playerDeathExplosionPrefab;
 
-        private SpawnPointManager spawnPointManager;
+        private PlayerSpawnManager spawnPointManager;
 
         private void Awake()
         {
-            spawnPointManager = GameObject.FindObjectOfType<SpawnPointManager>();
+            spawnPointManager = GameObject.FindObjectOfType<PlayerSpawnManager>();
             instance = this;
         }
 
@@ -92,8 +92,8 @@ namespace Jerre
 
             var newSpawnPoint = spawnPointManager.GetNextSpawnPoint();
             var pTransform = playerSettings.transform;
-            pTransform.position = newSpawnPoint.transform.position;
-            pTransform.rotation = newSpawnPoint.transform.rotation;
+            pTransform.position = newSpawnPoint.position;
+            pTransform.rotation = newSpawnPoint.rotation;
         }
 
         private void CreateExplosion(PlayerSettings playerSettings)
