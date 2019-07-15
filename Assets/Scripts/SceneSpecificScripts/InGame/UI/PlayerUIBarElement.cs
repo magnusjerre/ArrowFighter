@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Jerre.UI.InGame
+namespace Jerre
 {
     [ExecuteAlways]
     public class PlayerUIBarElement : MonoBehaviour, IAFEventListener
