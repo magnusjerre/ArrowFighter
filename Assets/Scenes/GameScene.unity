@@ -3837,6 +3837,11 @@ PrefabInstance:
       propertyPath: SpawnPositionsParent
       value: 
       objectReference: {fileID: 1930817352}
+    - target: {fileID: 8358185334174932869, guid: 1805cd730cae4b545854b1d6add6c58d,
+        type: 3}
+      propertyPath: RandomPrefabSpawn
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1805cd730cae4b545854b1d6add6c58d, type: 3}
 --- !u!1001 &8575801068137672348

@@ -48,7 +48,7 @@ MonoBehaviour:
   - {fileID: 8248635753297432323, guid: 68878f0c25613a24593b52bdad6618e8, type: 3}
   SpawnPositionsParent: {fileID: 0}
   RandomSpawnPosition: 0
-  RandomPrefabSpawn: 1
+  RandomPrefabSpawn: 0
   RandomSpawnTime: 1
   DefaultTimeBetweenSpawns: 3
   MaxTimeBetweenSpawns: 6
