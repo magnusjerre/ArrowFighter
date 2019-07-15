@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Jerre.Events;
-using Jerre.Managers;
 
 namespace Jerre
 {

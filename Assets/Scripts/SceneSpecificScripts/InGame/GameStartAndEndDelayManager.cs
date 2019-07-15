@@ -2,7 +2,7 @@ using Jerre.Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Jerre.Managers
+namespace Jerre
 {
     public class GameStartAndEndDelayManager : MonoBehaviour, IAFEventListener
     {
