@@ -134,8 +134,6 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\PreventDeselectionGroup.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\WaitingForPlayer.cs" />
     <Compile Include="Assets\Scripts\Managers\ByeByeManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\PlayerDeathManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\JPhysicsBody.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\PhysicsManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
@@ -156,7 +154,9 @@
     <Compile Include="Assets\Scripts\PlayerScripts\UsePlayerInput.cs" />
     <Compile Include="Assets\Scripts\PlayersState.cs" />
     <Compile Include="Assets\Scripts\RoundOverScripts\RoundOverManager.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\PlayerPositionScreenBoundEnforcer.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\PlayerSpawnManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\CountDownTimer.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\MainUIBarManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\PauseMenu.cs" />
