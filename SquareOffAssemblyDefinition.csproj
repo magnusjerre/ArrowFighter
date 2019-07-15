@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\GameSettings\GameSettingsState.cs" />
     <Compile Include="Assets\Scripts\GameSettings\KeyValueWithOptionsSetting.cs" />
     <Compile Include="Assets\Scripts\GeneralComponents\DoCall.cs" />
+    <Compile Include="Assets\Scripts\GeneralComponents\PreventDeselectionGroup.cs" />
     <Compile Include="Assets\Scripts\GeneralComponents\Rotator.cs" />
     <Compile Include="Assets\Scripts\GeneralComponents\ScaleFrom.cs" />
     <Compile Include="Assets\Scripts\JColliders\Components\JCollider.cs" />
@@ -121,7 +122,6 @@
     <Compile Include="Assets\Scripts\JMath\Intersection.cs" />
     <Compile Include="Assets\Scripts\JMath\IntersectionType.cs" />
     <Compile Include="Assets\Scripts\JMath\Slope.cs" />
-    <Compile Include="Assets\Scripts\MainMenuScripts\PreventDeselectionGroup.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\JPhysicsBody.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\PhysicsManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />

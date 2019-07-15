@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Jerre.MainMenu
+namespace Jerre
 {
     public class PreventDeselectionGroup : MonoBehaviour
     {
