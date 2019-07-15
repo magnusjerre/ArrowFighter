@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Jerre.MainMenu
+namespace Jerre
 {
     public class ColorManager : MonoBehaviour
     {

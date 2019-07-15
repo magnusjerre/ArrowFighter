@@ -4,7 +4,7 @@ using static Jerre.PlayerMenuItem;
 
 namespace Jerre
 {
-    public class PlayerJoinManagerV2 : MonoBehaviour
+    public class PlayerJoinManager : MonoBehaviour
     {         
         private PlayerMenuItem[] playerMenuItems;
         private bool GameAlreadyStarted = false;

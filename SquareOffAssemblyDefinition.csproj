@@ -128,10 +128,9 @@
     <Compile Include="Assets\Scripts\MainMenuScripts\GameSettings\ValueChanger.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\GameStartAndEndDelayManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerInfo.cs" />
-    <Compile Include="Assets\Scripts\MainMenuScripts\PlayerJoinManagerV2.cs" />
+    <Compile Include="Assets\Scripts\MainMenuScripts\PlayerJoinManager.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PlayerMenuItem.cs" />
     <Compile Include="Assets\Scripts\MainMenuScripts\PreventDeselectionGroup.cs" />
-    <Compile Include="Assets\Scripts\MainMenuScripts\WaitingForPlayer.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\JPhysicsBody.cs" />
     <Compile Include="Assets\Scripts\Physics\Components\PhysicsManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PauseMenuTriggerer.cs" />
