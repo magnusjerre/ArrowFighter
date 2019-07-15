@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Jerre
 {
-    public class GameOverManager : MonoBehaviour
+    public class ScoreListing : MonoBehaviour
     {
         [SerializeField]
         private ScoreEntry ScoreEntryPrefab;
         [SerializeField]
         private RectTransform ScoreContainer;
-
-        public int PlayerCount;
         public bool Debug = false;
 
         void Start()
@@ -27,13 +24,6 @@ namespace Jerre
                 scoreEntry.Debug = Debug;
                 offsetCounter++;
             }
-            Invoke("LoadFirstMenuScene", 3f);
-        }
-
-        void LoadFirstMenuScene()
-        {
-            PlayersState.INSTANCE.Reset();
-            SceneManager.LoadScene(SceneNames.GAME_MODE_SELECTION, LoadSceneMode.Single);
         }
     }
 }

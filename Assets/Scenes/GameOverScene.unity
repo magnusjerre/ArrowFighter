@@ -381,6 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1449813956}
   - component: {fileID: 1449813957}
+  - component: {fileID: 1449813958}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -414,10 +415,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3541d0281607b4cab5efe4e3ce8460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoadDelay: 3
+--- !u!114 &1449813958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449813955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f4fe6f3b7b4004eac0e9afeaebf468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   ScoreEntryPrefab: {fileID: 7580344294776711443, guid: 87da09b87363c9f4bb9329340d5a8cae,
     type: 3}
   ScoreContainer: {fileID: 645643753}
-  PlayerCount: 4
   Debug: 0
 --- !u!1 &1541728483
 GameObject:

@@ -139,10 +139,9 @@
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerSettings.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\UsePlayerInput.cs" />
     <Compile Include="Assets\Scripts\PlayersState.cs" />
-    <Compile Include="Assets\Scripts\RoundOverScripts\RoundOverManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameModeSelection\GameModeSelectionManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameModeSelection\TextHighlightButton.cs" />
-    <Compile Include="Assets\Scripts\SceneSpecificScripts\GameOver\GameOverManager.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\GameOver\GameOverNextSceneLoader.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameOver\ScoreEntry.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameSettings\GameSettingsManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameSettings\ValueChanger.cs" />
@@ -163,7 +162,9 @@
     <Compile Include="Assets\Scripts\SceneSpecificScripts\PlayerJoin\PlayerJoinItem.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\PlayerJoinInfo.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\QuitGame\QuitApplication.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\RoundOver\RoundOverNextSceneLoader.cs" />
     <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
+    <Compile Include="Assets\Scripts\Scoring\ScoreListing.cs" />
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />
     <Compile Include="Assets\Scripts\UI\Utils\CanvasMover.cs" />
