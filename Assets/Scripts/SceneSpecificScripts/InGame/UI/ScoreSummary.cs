@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Jerre.Scoring
+namespace Jerre
 {
     public class ScoreSummary : MonoBehaviour, IAFEventListener
     {
