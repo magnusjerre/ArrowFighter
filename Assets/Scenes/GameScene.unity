@@ -741,7 +741,7 @@ PrefabInstance:
     - target: {fileID: 6326969492153835060, guid: c03b53e3b6fb044418441b4bef376722,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6326969492153835060, guid: c03b53e3b6fb044418441b4bef376722,
         type: 3}
@@ -1422,7 +1422,7 @@ PrefabInstance:
     - target: {fileID: 7295248650650351472, guid: 59e2f94c0d81ac04f971eaee5e93fdb9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7295248650650351472, guid: 59e2f94c0d81ac04f971eaee5e93fdb9,
         type: 3}
@@ -1598,7 +1598,6 @@ GameObject:
   - component: {fileID: 1043987875}
   - component: {fileID: 1043987879}
   - component: {fileID: 1043987880}
-  - component: {fileID: 1043987881}
   - component: {fileID: 1043987877}
   - component: {fileID: 1043987882}
   - component: {fileID: 1043987876}
@@ -1735,18 +1734,6 @@ MonoBehaviour:
   entireMenuBarUIArea: {fileID: 1015158252}
   uiPlayerElementPrefab: {fileID: 4896359985248049168, guid: c6360915eaaafa444834f3bd789e7081,
     type: 3}
---- !u!114 &1043987881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043987871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b7b13c762a19bc43980a0d3079ee8aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1043987882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3889,7 +3876,7 @@ PrefabInstance:
     - target: {fileID: 2654991024080976023, guid: 86fa3fab47a2926419fb387d5fedbda3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2654991024080976023, guid: 86fa3fab47a2926419fb387d5fedbda3,
         type: 3}

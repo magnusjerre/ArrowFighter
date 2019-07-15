@@ -20,8 +20,6 @@ namespace Jerre.GameMode
                         var undeadMode = gameObject.AddComponent<UndeadGameMode>();
                         undeadMode.countDownTimerPrefab = countDownTimerPrefab;
                         undeadMode.TopBar = TopBar;
-
-                        var scoreUIManager = gameObject.AddComponent<ScoreUIManager>();
                         break;
                     }
                 case GameModes.FREE_FOR_ALL:
@@ -29,8 +27,6 @@ namespace Jerre.GameMode
                         var scoreMode = gameObject.AddComponent<FreeForAllGameModeManager>();
                         scoreMode.countDownTimerPrefab = countDownTimerPrefab;
                         scoreMode.TopBar = TopBar;
-
-                        var scoreUIManager = gameObject.AddComponent<ScoreUIManager>();
                         break;
                     }
             }
