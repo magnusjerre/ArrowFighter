@@ -6,7 +6,6 @@ namespace Jerre.Managers
 {
     public class GameStartAndEndDelayManager : MonoBehaviour, IAFEventListener
     {
-        PlayerComponentsManager playerCompManager;
         private bool isAwaiting = false;
         public bool IsAwaiting
         {
@@ -25,7 +24,6 @@ namespace Jerre.Managers
         void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
-            playerCompManager = GameObject.FindObjectOfType<PlayerComponentsManager>();
         }
 
         void Start()
@@ -37,7 +35,7 @@ namespace Jerre.Managers
         {
             switch(afEvent.type) {
                 case AFEventType.PLAYERS_ALL_CREATED: {
-                    playerCompManager.EnableOrDisableAllPlayersInputResponses(false);
+                    PlayerComponentsEnabler.EnableOrDisableAllPlayersInputResponses(false);
                     Debug.Log("Delaying player input start");
                     Invoke("ReEnableAllPlayersInputResponses", PlayersState.INSTANCE.WaitTimeForPlayersToStart);
                     if (!hasCalledNotifyGameCanStart) {
@@ -48,14 +46,14 @@ namespace Jerre.Managers
                     break;
                 }
                 case AFEventType.GAME_OVER: {
-                    playerCompManager.EnableOrDisableAllPlayersInputResponses(false);
+                    PlayerComponentsEnabler.EnableOrDisableAllPlayersInputResponses(false);
                     //TODO: Move the score to the center of the screen
                     Invoke("LoadGameOverScene", PlayersState.INSTANCE.WaitTimeToDisplayGameOver);
                     break;
                 }
                 case AFEventType.ROUND_OVER:
                     {
-                        playerCompManager.EnableOrDisableAllPlayersInputResponses(false);
+                        PlayerComponentsEnabler.EnableOrDisableAllPlayersInputResponses(false);
                         Invoke("LoadRoundOverScene", PlayersState.INSTANCE.WaitTimeToDisplayGameOver);
                         break;
                     }
@@ -66,7 +64,7 @@ namespace Jerre.Managers
         void ReEnableAllPlayersInputResponses()
         {
             isAwaiting = false;
-            playerCompManager.EnableOrDisableAllPlayersInputResponses(true);
+            PlayerComponentsEnabler.EnableOrDisableAllPlayersInputResponses(true);
             Debug.Log("Player input is now processed");
         }
 

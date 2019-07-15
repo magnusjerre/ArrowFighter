@@ -1,17 +1,10 @@
 using UnityEngine;
-using System.Collections;
-using Jerre.Events;
 
 namespace Jerre
 {
-    public class PlayerComponentsManager : MonoBehaviour
+    public class PlayerComponentsEnabler
     {
-        void Start()
-        {
-            
-        }
-
-        public void EnableOrDisableAllPlayersInputResponses(bool enabled) {
+        public static void EnableOrDisableAllPlayersInputResponses(bool enabled) {
             var allPlayers = GameObject.FindObjectsOfType<PlayerSettings>();
             for (var i = 0; i < allPlayers.Length; i++) {
                 var playerSettings = allPlayers[i];
@@ -19,7 +12,7 @@ namespace Jerre
             }
         }
 
-        public void EnableOrDisablePlayerInputResponses(PlayerSettings playerSettings, bool enabled) {
+        public static void EnableOrDisablePlayerInputResponses(PlayerSettings playerSettings, bool enabled) {
             var playerComponents = playerSettings.GetComponents<UsePlayerInput>();
             for (var i = 0; i < playerComponents.Length; i++) {
                 playerComponents[i].SetUsePlayerInput(enabled);
@@ -27,7 +20,7 @@ namespace Jerre
         }
 
 
-        public void EnableOrDisablePlayer(PlayerSettings playerSettings, bool enabled)
+        public static void EnableOrDisablePlayer(PlayerSettings playerSettings, bool enabled)
         {
             playerSettings.GetComponent<PlayerHealth>().enabled = enabled;
             playerSettings.GetComponent<Collider>().enabled = enabled;
@@ -35,7 +28,7 @@ namespace Jerre
             SetActiveForAllChildren(playerSettings.transform, enabled);
         }
 
-        private void SetActiveForAllChildren(Transform someTransform, bool active)
+        private static void SetActiveForAllChildren(Transform someTransform, bool active)
         {
             for (var i = 0; i < someTransform.childCount; i++)
             {

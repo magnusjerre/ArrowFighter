@@ -12,8 +12,6 @@ namespace Jerre
         public Color PlayerColor;
         public Image PlayerIndicatorIcon;
 
-        private PlayerComponentsManager playerCompManager;
-
         private bool IsPausing
         {
             get
@@ -25,7 +23,6 @@ namespace Jerre
         void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
-            playerCompManager = GameObject.FindObjectOfType<PlayerComponentsManager>();
         }
 
         void Start()
@@ -53,7 +50,7 @@ namespace Jerre
         {
             PlayerIndicatorIcon.color = PlayerColor;
             gameObject.SetActive(true);
-            playerCompManager.EnableOrDisableAllPlayersInputResponses(false);
+            PlayerComponentsEnabler.EnableOrDisableAllPlayersInputResponses(false);
             Time.timeScale = 0f;
         }
 
@@ -61,7 +58,7 @@ namespace Jerre
         {
             PlayerNumber = -1;
             gameObject.SetActive(false);
-            playerCompManager.EnableOrDisableAllPlayersInputResponses(true);
+            PlayerComponentsEnabler.EnableOrDisableAllPlayersInputResponses(true);
             Time.timeScale = 1f;
         }
 
@@ -72,7 +69,7 @@ namespace Jerre
 
         private void QuitGame()
         {
-            playerCompManager.EnableOrDisableAllPlayersInputResponses(true);
+            PlayerComponentsEnabler.EnableOrDisableAllPlayersInputResponses(true);
             Time.timeScale = 1f;
             AFEventManager.INSTANCE.RemoveAllListeners();
             SceneManager.LoadScene(SceneNames.GAME_MODE_SELECTION);
