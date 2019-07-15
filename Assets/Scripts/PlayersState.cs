@@ -2,7 +2,6 @@
 using Jerre.GameMode.FreeForAll;
 using Jerre.GameMode.Undead;
 using Jerre.GameSettings;
-using Jerre.MainMenu;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,8 +25,6 @@ namespace Jerre
 
         public List<PlayerInfo> PlayerInfos;
 
-        private List<PlayerMenuSettings> ReadyPlayers;
-        public List<PlayerMenuSettings> GetPlayers() { return ReadyPlayers;  }
         public List<PlayerScore> Scores
         {
             get;
@@ -71,23 +68,7 @@ namespace Jerre
 
         private PlayersState()
         {
-            ReadyPlayers = new List<PlayerMenuSettings>();
             PlayerInfos = new List<PlayerInfo>();
-        }
-
-        public bool AddPlayer(PlayerMenuSettings player)
-        {
-            if (!ReadyPlayers.Contains(player))
-            {
-                ReadyPlayers.Add(player);
-                return true;
-            }
-            return false;
-        }
-
-        public bool RemovePlayer(PlayerMenuSettings player)
-        {
-            return ReadyPlayers.Remove(player);
         }
 
         public Color GetPlayerColorV2(int playerNumber)
@@ -102,24 +83,8 @@ namespace Jerre
             return Color.white;
         }
 
-        public Color GetPlayerColor(int playerNumber)
-        {
-            foreach (var settings in ReadyPlayers)
-            {
-                if (settings.Number == playerNumber)
-                {
-                    return settings.Color;
-                }
-            }
-            return Color.white;
-        }
-
-        public int ReadyPlayersCount => ReadyPlayers.Count;
-        public PlayerMenuSettings GetSettings(int index) => ReadyPlayers[index];
-
         public void Reset()
         {
-            ReadyPlayers.Clear();
             PlayerInfos.Clear();
             Scores = null;
             selectedGameMode = GameModes.UNSELECTED;
