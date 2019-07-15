@@ -49,9 +49,9 @@ namespace Jerre
         }
         void InitializeColorMap() {
             playerColorMap = new Dictionary<int, Color>();
-            for (var i = 0; i < PlayersState.INSTANCE.ReadyPlayersCount; i++)
+            for (var i = 0; i < PlayersState.INSTANCE.PlayerInfos.Count; i++)
             {
-                var playerMenuSettings = PlayersState.INSTANCE.GetSettings(i);
+                var playerMenuSettings = PlayersState.INSTANCE.PlayerInfos[i];
                 playerColorMap.Add(playerMenuSettings.Number, playerMenuSettings.Color);
             }
         }

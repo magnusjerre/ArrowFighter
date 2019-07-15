@@ -13,9 +13,6 @@ namespace Jerre.MainMenu
         public RectTransform PlayerJoinedPrefab;
         public RectTransform[] PlayerPositions;
 
-
-
-
         private ColorManager colorManager;
 
         private Dictionary<int, PlayerMenuSettings> playerNumberMap;    //int is the controller number, doesn't have to match the player number

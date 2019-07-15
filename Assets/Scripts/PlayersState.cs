@@ -24,6 +24,8 @@ namespace Jerre
             }
         }
 
+        public List<PlayerInfo> PlayerInfos;
+
         private List<PlayerMenuSettings> ReadyPlayers;
         public List<PlayerMenuSettings> GetPlayers() { return ReadyPlayers;  }
         public List<PlayerScore> Scores
@@ -70,6 +72,7 @@ namespace Jerre
         private PlayersState()
         {
             ReadyPlayers = new List<PlayerMenuSettings>();
+            PlayerInfos = new List<PlayerInfo>();
         }
 
         public bool AddPlayer(PlayerMenuSettings player)
@@ -85,6 +88,18 @@ namespace Jerre
         public bool RemovePlayer(PlayerMenuSettings player)
         {
             return ReadyPlayers.Remove(player);
+        }
+
+        public Color GetPlayerColorV2(int playerNumber)
+        {
+            foreach (var info in PlayerInfos)
+            {
+                if (info.Number == playerNumber)
+                {
+                    return info.Color;
+                }
+            }
+            return Color.white;
         }
 
         public Color GetPlayerColor(int playerNumber)
@@ -105,6 +120,7 @@ namespace Jerre
         public void Reset()
         {
             ReadyPlayers.Clear();
+            PlayerInfos.Clear();
             Scores = null;
             selectedGameMode = GameModes.UNSELECTED;
         }

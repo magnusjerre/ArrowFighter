@@ -15,7 +15,8 @@ namespace Jerre
 
         void Start()
         {
-            var playersToCreate = PlayersState.INSTANCE.GetPlayers();
+            //var playersToCreate = PlayersState.INSTANCE.GetPlayers();
+            var playersToCreate = PlayersState.INSTANCE.PlayerInfos;
             if (playersToCreate.Count == 0)
             {
                 Debug.Log("0 Players joined the game");

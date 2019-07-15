@@ -66,7 +66,7 @@ namespace Jerre.GameMode.Undead
             var scoresSorted = new List<PlayerScore>();
             foreach (var keyValue in totalScore)
             {
-                scoresSorted.Add(new PlayerScore(keyValue.Key, PlayersState.INSTANCE.GetPlayerColor(keyValue.Key), -1, keyValue.Value));
+                scoresSorted.Add(new PlayerScore(keyValue.Key, PlayersState.INSTANCE.GetPlayerColorV2(keyValue.Key), -1, keyValue.Value));
             }
             scoresSorted.Sort();
 
