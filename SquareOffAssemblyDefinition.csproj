@@ -146,6 +146,7 @@
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameSettings\GameSettingsManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameSettings\ValueChanger.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\GameStartAndEndDelayManager.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\PeriodicSpawner.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\PlayerDeathManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\PlayerPositionScreenBoundEnforcer.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\PlayerSpawnManager.cs" />
@@ -166,7 +167,6 @@
     <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreListing.cs" />
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
-    <Compile Include="Assets\Scripts\Spawners\PeriodicSpawner.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />

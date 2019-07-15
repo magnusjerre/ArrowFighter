@@ -1,7 +1,7 @@
 ﻿using Jerre.Weapons;
 using UnityEngine;
 
-namespace Jerre.Spawners
+namespace Jerre
 {
     public class PeriodicSpawner : MonoBehaviour
     {
