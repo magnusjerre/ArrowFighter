@@ -1,10 +1,9 @@
-﻿using Jerre.MainMenu;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace Jerre
 {
-    public class PlayerMenuItem : MonoBehaviour, UsePlayerInput
+    public class PlayerJoinItem : MonoBehaviour, UsePlayerInput
     {
         public int PlayerNumber;
         public Color PlayerColor = Color.white;

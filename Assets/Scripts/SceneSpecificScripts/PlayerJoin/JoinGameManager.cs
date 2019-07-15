@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Jerre.PlayerMenuItem;
+using static Jerre.PlayerJoinItem;
 
 namespace Jerre
 {
-    public class PlayerJoinManager : MonoBehaviour
+    public class JoinGameManager : MonoBehaviour
     {         
-        private PlayerMenuItem[] playerMenuItems;
+        private PlayerJoinItem[] playerMenuItems;
         private bool GameAlreadyStarted = false;
 
         void Start()
         {
-            playerMenuItems = GameObject.FindObjectsOfType<PlayerMenuItem>();
+            playerMenuItems = GameObject.FindObjectsOfType<PlayerJoinItem>();
         }
 
         void Update()
@@ -44,7 +44,7 @@ namespace Jerre
 
                     if (player.viewState == ViewState.JOINED_READY)
                     {
-                        PlayersState.INSTANCE.PlayerInfos.Add(new PlayerInfo(player.PlayerNumber, player.PlayerColor));
+                        PlayersState.INSTANCE.PlayerInfos.Add(new PlayerJoinInfo(player.PlayerNumber, player.PlayerColor));
                     }
                 }
                 Debug.Log("Starting game!");

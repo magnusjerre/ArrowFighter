@@ -23,7 +23,7 @@ namespace Jerre
             }
         }
 
-        public List<PlayerInfo> PlayerInfos;
+        public List<PlayerJoinInfo> PlayerInfos;
 
         public List<PlayerScore> Scores
         {
@@ -68,7 +68,7 @@ namespace Jerre
 
         private PlayersState()
         {
-            PlayerInfos = new List<PlayerInfo>();
+            PlayerInfos = new List<PlayerJoinInfo>();
         }
 
         public Color GetPlayerColorV2(int playerNumber)
