@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Jerre.MainMenu.GameMode
+namespace Jerre
 {
     public class GameModeSelectionManager : MonoBehaviour
     {

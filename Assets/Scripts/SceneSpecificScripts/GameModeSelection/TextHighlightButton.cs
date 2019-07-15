@@ -1,8 +1,7 @@
-﻿using UnityEngine;
+﻿using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-namespace Jerre.MainMenu.GameMode
+namespace Jerre
 {
     public class TextHighlightButton : Button
     {
