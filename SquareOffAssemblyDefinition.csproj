@@ -92,8 +92,6 @@
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadGameSettings.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadPlayerColor.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\WholeGameUndeadScore.cs" />
-    <Compile Include="Assets\Scripts\GameOverScripts\GameOverManager.cs" />
-    <Compile Include="Assets\Scripts\GameOverScripts\ScoreEntry.cs" />
     <Compile Include="Assets\Scripts\GameSettings\BasicGameSettings.cs" />
     <Compile Include="Assets\Scripts\GameSettings\BasicWeaponsSettings.cs" />
     <Compile Include="Assets\Scripts\GameSettings\GameModeSettingsBase.cs" />
@@ -144,6 +142,8 @@
     <Compile Include="Assets\Scripts\RoundOverScripts\RoundOverManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameModeSelection\GameModeSelectionManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameModeSelection\TextHighlightButton.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\GameOver\GameOverManager.cs" />
+    <Compile Include="Assets\Scripts\SceneSpecificScripts\GameOver\ScoreEntry.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameSettings\GameSettingsManager.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\GameSettings\ValueChanger.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\GameStartAndEndDelayManager.cs" />

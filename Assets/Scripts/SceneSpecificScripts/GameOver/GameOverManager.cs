@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Jerre.GameOver
+namespace Jerre
 {
     public class GameOverManager : MonoBehaviour
     {
