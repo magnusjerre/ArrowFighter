@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Jerre.MainMenu.GameSettings
+namespace Jerre
 {
     public class ValueChanger : Selectable
     {

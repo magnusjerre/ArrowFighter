@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Jerre.MainMenu.GameSettings
+namespace Jerre
 {
     public class GameSettingsManager : MonoBehaviour
     {
