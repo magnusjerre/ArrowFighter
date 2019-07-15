@@ -1,6 +1,5 @@
 ﻿using Jerre.Events;
 using Jerre.GameSettings;
-using Jerre.UI.InGame;
 using Jerre.Utils;
 using Jerre.Weapons;
 using System.Collections.Generic;

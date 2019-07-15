@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Jerre.UI.InGame
+namespace Jerre
 {
     public class PauseMenu : MonoBehaviour, IAFEventListener
     {

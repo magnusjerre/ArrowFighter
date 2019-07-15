@@ -1,5 +1,4 @@
 ﻿using Jerre.Events;
-using Jerre.UI.InGame;
 using System.Collections.Generic;
 using UnityEngine;
 
