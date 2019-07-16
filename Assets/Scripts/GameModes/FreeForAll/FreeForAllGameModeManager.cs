@@ -1,7 +1,6 @@
 ﻿using Jerre.Events;
 using Jerre.GameMode.FreeForAll;
 using Jerre.GameSettings;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Jerre
@@ -12,16 +11,15 @@ namespace Jerre
         public CountDownTimer countDownTimerPrefab;
         public RectTransform TopBar;
 
-        private Dictionary<int, int> playerScores;
         private CountDownTimer countDownTimerInstance;
         private string GameTimerName = "GameTimer";
 
         private FreeForAllGameSettings freeForAllSettings;
-
+        private SingleRoundScores<IScore> currentRoundScores;
 
         void Awake()
         {
-            playerScores = new Dictionary<int, int>();
+            currentRoundScores = PlayersState.INSTANCE.gameScores.StartNewRound();
             AFEventManager.INSTANCE.AddListener(this);
             freeForAllSettings = (FreeForAllGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
             Debug.Log("pointsToWin:" + freeForAllSettings.MaxScore);
@@ -70,23 +68,38 @@ namespace Jerre
 
         private bool HandleKilledEvent(KilledEventPayload payload)
         {
-            if (playerScores.ContainsKey(payload.playerNumberOfKiller))
+            if (payload.playerNumberOfKiller == payload.playerNumberOfKilledPlayer)
             {
-                var oldScore = playerScores[payload.playerNumberOfKiller];
-                var newScore = oldScore + 1;
-                playerScores[payload.playerNumberOfKiller] = newScore;
-                AFEventManager.INSTANCE.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, newScore, maxScore));
+                // Player killed itself, no score event generated for this...
+                return false;
+            }
 
-                if (newScore == maxScore)
-                {
-                    countDownTimerInstance.StopTimer();
-                    HandleGameOver();
-                }
-            }
-            else
+            var playerScore = currentRoundScores.GetScoreForPlayer<SimpleScore>(payload.playerNumberOfKiller);
+            var newScore = playerScore.IncreaseScoreBy(1);
+            AFEventManager.INSTANCE.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, newScore, maxScore));
+            if (newScore == maxScore)
             {
-                playerScores.Remove(payload.playerNumberOfKilledPlayer);
+                countDownTimerInstance.StopTimer();
+                HandleGameOver();
             }
+
+            //if (playerScores.ContainsKey(payload.playerNumberOfKiller))
+            //{
+            //    var oldScore = playerScores[payload.playerNumberOfKiller];
+            //    var newScore = oldScore + 1;
+            //    playerScores[payload.playerNumberOfKiller] = newScore;
+            //    AFEventManager.INSTANCE.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, newScore, maxScore));
+
+            //    if (newScore == maxScore)
+            //    {
+            //        countDownTimerInstance.StopTimer();
+            //        HandleGameOver();
+            //    }
+            //}
+            //else
+            //{
+            //    playerScores.Remove(payload.playerNumberOfKilledPlayer);
+            //}
 
             return false;
         }
@@ -94,36 +107,18 @@ namespace Jerre
         private void HandleGameOver()
         {
             Debug.Log("Game over");
-            var players = GameObject.FindObjectsOfType<PlayerSettings>();
-            var scores = new List<PlayerScore>();
-            for (var i = 0; i < players.Length; i++)
-            {
-                var p = players[i];
-                scores.Add(new PlayerScore(p.playerNumber, p.color, 0, playerScores[p.playerNumber]));
-            }
-            scores.Sort();
-            var winningPlayer = scores[0];
-            PlayersState.INSTANCE.SetScores(scores);
-            AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningPlayer.PlayerNumber, playerScores[winningPlayer.PlayerNumber], winningPlayer.PlayerColor));
+
+            var winningPlayer = currentRoundScores.SortedByDescendingScores()[0];
+            AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningPlayer.PlayerNumber(), winningPlayer.Score(), winningPlayer.PlayerColor()));
         }
 
         private bool HandlePlayersAllCreatedEvent(PlayersAllCreatedPayload payload)
         {
-            for (var i = 0; i < payload.AllPlayers.Count; i++)
+            foreach (var player in payload.AllPlayers)
             {
-                playerScores.Add(payload.AllPlayers[i].playerNumber, 0);
+                currentRoundScores.AddScoreForPlayer(new SimpleScore(player.color, player.playerNumber, 0));
             }
             return false;
-        }
-
-        public Dictionary<int, int> GetPlayerScores()
-        {
-            return playerScores;
-        }
-
-        public int GetPlayerScore(int playerNumber)
-        {
-            return playerScores[playerNumber];
         }
     }
 }

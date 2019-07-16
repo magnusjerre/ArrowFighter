@@ -30,6 +30,12 @@ namespace Jerre
             return score;
         }
 
+        public int IncreaseScoreBy(int amount)
+        {
+            score += amount;
+            return score;
+        }
+
         public static SimpleScore Accumulate(SimpleScore acc, SimpleScore current)
         {
             return new SimpleScore(acc.playerColor, acc.playerNumber, acc.score + current.score);
