@@ -15,6 +15,14 @@ namespace Jerre
             return singleRoundScores;
         }
 
+        public int CurrentRoundNumber
+        {
+            get
+            {
+                return roundScores.Count;
+            }
+        }
+
         public SingleRoundScores<T> GetCurrentRoundScores()
         {
             return roundScores[roundScores.Count - 1];

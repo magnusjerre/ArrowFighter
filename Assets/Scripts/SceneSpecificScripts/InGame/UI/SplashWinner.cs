@@ -32,7 +32,7 @@ namespace Jerre
                 case AFEventType.ROUND_OVER:
                     {
                         var payload = (RoundOverPayload)afEvent.payload;
-                        TitleText.text = "WINNER OF ROUND " + GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber;
+                        TitleText.text = "WINNER OF ROUND " + PlayersState.INSTANCE.gameScores.CurrentRoundNumber;
                         image.color = payload.playerColor;
                         ScoreText.text = payload.roundScore + " Points";
                         Show();

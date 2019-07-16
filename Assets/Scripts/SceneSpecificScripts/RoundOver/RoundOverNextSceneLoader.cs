@@ -15,7 +15,6 @@ namespace Jerre
 
         void LoadGameSceneAgain()
         {
-            GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber++;
             SceneManager.LoadScene(SceneNames.GAME_SCENE, LoadSceneMode.Single);
         }
     }

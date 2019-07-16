@@ -148,7 +148,7 @@ namespace Jerre.GameMode.Undead
 
         private bool IsEntireGameOver()
         {
-            return GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber == NumberOfGameRounds;
+            return PlayersState.INSTANCE.gameScores.CurrentRoundNumber == NumberOfGameRounds;
         }
 
         public bool HandleEvent(AFEvent afEvent)
@@ -174,7 +174,7 @@ namespace Jerre.GameMode.Undead
                             break;
                         }
                         countDownTimerInstance.StopTimer();
-                        if (GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber == NumberOfGameRounds)
+                        if (IsEntireGameOver())
                         {
                             Debug.Log("Game over, time ran out!");
                             var winningScore = currentRoundScores.SortedByDescendingScores()[0];
