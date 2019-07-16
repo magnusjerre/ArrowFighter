@@ -20,11 +20,6 @@ namespace Jerre
         private int nextPrefabIndex = 0;
         private int nextSpawnIndex = 0;
 
-        void Start()
-        {
-            Random.InitState(1);
-        }
-
         void Update()
         {
             TimeUntilNextSpawn -= Time.deltaTime;

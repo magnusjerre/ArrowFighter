@@ -180,6 +180,7 @@
     <Compile Include="Assets\Scripts\Scoring\SimpleScore.cs" />
     <Compile Include="Assets\Scripts\Scoring\SingleRoundScores.cs" />
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
+    <Compile Include="Assets\Scripts\Utils\ArrayUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />

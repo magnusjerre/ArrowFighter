@@ -49,36 +49,78 @@ namespace Jerre.GameMode.Undead
             countDownTimerInstance.TimeInSeconds = GameSettingsState.INSTANCE.BasicGameSettings.PlayTime;
         }
 
-        // Update is called once per frame
-        void Update()
+        public static int[] SelectPlayersToStartAsUndead(CompleteGameScores<IScore> gameScores, int nStartingUndead)
         {
+            var undeadAndNot = ExtractWhichPlayersHaveStartedAsUndeadAndNot(gameScores);
+            var nPlayersThatShouldStartAsUndead = Mathf.Min(nStartingUndead, Mathf.Max(undeadAndNot[true].Count + undeadAndNot[false].Count - 1, 0));
+            var nPlayersThatHaventStartedAsUndeadYet = Mathf.Min(nPlayersThatShouldStartAsUndead, undeadAndNot[false].Count);
+            var nPlayersThatHaveStartedAsUndeadYet = Mathf.Min(Mathf.Max(0, nPlayersThatShouldStartAsUndead - nPlayersThatHaventStartedAsUndeadYet), undeadAndNot[true].Count);
 
+            var extractedNeverStartedAsUndead = CollectionUtils.ExtractRandomValues(undeadAndNot[false], nPlayersThatHaventStartedAsUndeadYet);
+            var extractedHasStartedAsUndead = CollectionUtils.ExtractRandomValues(undeadAndNot[true], nPlayersThatHaveStartedAsUndeadYet);
+
+            return ArrayUtils.Merge(extractedNeverStartedAsUndead, extractedHasStartedAsUndead);
         }
 
-        public int[] SelectPlayersToStartAsUndead(List<PlayerSettings> playerSettings)
+        private static Dictionary<bool, List<int>> ExtractWhichPlayersHaveStartedAsUndeadAndNot(CompleteGameScores<IScore> gameScores)
         {
+            Dictionary<int, bool> PlayerHasStartedAsUndead = new Dictionary<int, bool>();
+            foreach (var round in gameScores.roundScores)
+            {
+                foreach (var playerScore in round.Scores)
+                {
+                    if (PlayerHasStartedAsUndead.ContainsKey(playerScore.PlayerNumber()))
+                    {
+                        PlayerHasStartedAsUndead[playerScore.PlayerNumber()] = PlayerHasStartedAsUndead[playerScore.PlayerNumber()] || ((UndeadScore)playerScore).StartedAsUndead;
+                    }
+                    else
+                    {
+                        PlayerHasStartedAsUndead[playerScore.PlayerNumber()] = ((UndeadScore)playerScore).StartedAsUndead;
+                    }
+                }
+            }
 
+            var notStarted = new List<int>();
+            var hasStarted = new List<int>();
 
-
-            return new int[] { 1 };
+            foreach (var keyvalue in PlayerHasStartedAsUndead)
+            {
+                if (keyvalue.Value)
+                {
+                    hasStarted.Add(keyvalue.Key);
+                } else
+                {
+                    notStarted.Add(keyvalue.Key);
+                }
+            }
+            var output = new Dictionary<bool, List<int>>
+            {
+                { true, hasStarted },
+                { false, notStarted }
+            };
+            return output;
         }
+        
 
         void HandleGameStart(List<PlayerSettings> allPlayers)
         {
-            var undeadPlayerNumbers = SelectPlayersToStartAsUndead(allPlayers);
             foreach (var ps in allPlayers)
             {
                 var playerScore = new UndeadScore(ps.playerNumber, ps.color);
                 currentRoundScores.AddScoreForPlayer(playerScore);
-                MakeLiving(ps);
-                for (var i = 0; i < undeadPlayerNumbers.Length; i++)
+            }
+
+            var undeadPlayerNumbers = SelectPlayersToStartAsUndead(PlayersState.INSTANCE.gameScores, NumberOfStartingUndead);
+            foreach (var playerScore in currentRoundScores.Scores)
+            { 
+                if (ArrayUtils.Contains(playerScore.PlayerNumber(), undeadPlayerNumbers))
                 {
-                    if (ps.playerNumber == undeadPlayerNumbers[i])
-                    {
-                        playerScore.Undead = true;
-                        playerScore.StartedAsUndead = true;
-                        MakeUndead(ps);
-                    }
+                    ((UndeadScore)playerScore).Undead = true;
+                    ((UndeadScore)playerScore).StartedAsUndead = true;
+                    MakeUndead(allPlayers.Find(ps => ps.playerNumber == playerScore.PlayerNumber()));
+                } else
+                {
+                    MakeLiving(allPlayers.Find(ps => ps.playerNumber == playerScore.PlayerNumber()));
                 }
             }
         }

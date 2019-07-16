@@ -6,7 +6,7 @@ namespace Jerre
 {
     public class CompleteGameScores<T> where T : IScore
     {
-        private List<SingleRoundScores<T>> roundScores = new List<SingleRoundScores<T>>();
+        public List<SingleRoundScores<T>> roundScores = new List<SingleRoundScores<T>>();
 
         public SingleRoundScores<T> StartNewRound()
         {
