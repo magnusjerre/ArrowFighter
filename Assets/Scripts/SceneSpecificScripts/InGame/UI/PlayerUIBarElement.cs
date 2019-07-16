@@ -102,20 +102,29 @@ namespace Jerre
                     }
                 case AFEventType.SCORE:
                     {
-                        var payload = (ScorePayload)afEvent.payload;                        
-                        SetScoreText("" + payload.playerScore);
+                        var payload = (ScorePayload)afEvent.payload;
+                        if (payload.playerNumber == PlayerNumber)
+                        {
+                            SetScoreText("" + payload.playerScore);
+                        }
                         break;
                     }
                 case AFEventType.HEALTH_DAMAGE:
                     {
                         var payload = (HealthDamagePayload)afEvent.payload;
-                        SetHealth(payload.HealthLeft);
+                        if (payload.DamagedPlayerNumber == PlayerNumber)
+                        {
+                            SetHealth(payload.HealthLeft);
+                        }
                         break;
                     }
                 case AFEventType.RESPAWN:
                     {
                         var payload = (RespawnPayload)afEvent.payload;
-                        SetHealth(payload.Health);
+                        if (payload.PlayerNumber == PlayerNumber)
+                        {
+                            SetHealth(payload.Health);
+                        }
                         break;
                     }
             }
