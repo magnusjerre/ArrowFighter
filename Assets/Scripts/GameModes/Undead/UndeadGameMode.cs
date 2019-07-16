@@ -30,6 +30,7 @@ namespace Jerre.GameMode.Undead
         {
             AFEventManager.INSTANCE.AddListener(this);
             score = new WholeGameUndeadScore();
+            PlayersState.INSTANCE.gameScores.StartNewRound();
 
             undeadSettings = (UndeadGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
             NumberOfGameRounds = undeadSettings.NumberOfGameRounds;
@@ -154,19 +155,29 @@ namespace Jerre.GameMode.Undead
                 {
                     Debug.Log("Game over, all players are undead!");
                     var scores = GeneratePlayerScores();
-                    var winningScore = scores[0];
+                    var currentRoundScores = PlayersState.INSTANCE.gameScores.GetCurrentRoundScores();
+                    foreach (PlayerScore ps in scores)
+                    {
+                        currentRoundScores.AddScoreForPlayer(new SimpleScore(ps.PlayerColor, ps.PlayerNumber, ps.Score));
+                    }
+                    var winningScoreForRound = currentRoundScores.SortedByDescendingScores()[0];
                     PlayersState.INSTANCE.SetScores(scores);
                     GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
-                    AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
+                    AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningScoreForRound.PlayerNumber(), winningScoreForRound.Score(), winningScoreForRound.PlayerColor()));
                 }
                 else
                 {
                     Debug.Log("Round over, all players are undead!");
                     var scores = GeneratePlayerScores();
-                    var winningScore = scores[0];
+                    var currentRoundScores = PlayersState.INSTANCE.gameScores.GetCurrentRoundScores();
+                    foreach (PlayerScore ps in scores)
+                    {
+                        currentRoundScores.AddScoreForPlayer(new SimpleScore(ps.PlayerColor, ps.PlayerNumber, ps.Score));
+                    }
+                    var winningScore = currentRoundScores.SortedByDescendingScores()[0];
                     PlayersState.INSTANCE.SetScores(scores);
                     GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
-                    AFEventManager.INSTANCE.PostEvent(AFEvents.RoundOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
+                    AFEventManager.INSTANCE.PostEvent(AFEvents.RoundOver(winningScore.PlayerNumber(), winningScore.Score(), winningScore.PlayerColor()));
                 }
             }
         }
@@ -203,19 +214,29 @@ namespace Jerre.GameMode.Undead
                         {
                             Debug.Log("Game over, time ran out!");
                             var scores = GeneratePlayerScores();
-                            var winningScore = scores[0];
+                            var currentRoundScores = PlayersState.INSTANCE.gameScores.GetCurrentRoundScores();
+                            foreach (PlayerScore ps in scores)
+                            {
+                                currentRoundScores.AddScoreForPlayer(new SimpleScore(ps.PlayerColor, ps.PlayerNumber, ps.Score));
+                            }
+                            var winningScore = currentRoundScores.SortedByDescendingScores()[0];
                             PlayersState.INSTANCE.SetScores(scores);
                             GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
-                            AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
+                            AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningScore.PlayerNumber(), winningScore.Score(), winningScore.PlayerColor()));
                         }
                         else
                         {
                             Debug.Log("Round over, time ran out!");
                             var scores = GeneratePlayerScores();
-                            var winningScore = scores[0];
+                            var currentRoundScores = PlayersState.INSTANCE.gameScores.GetCurrentRoundScores();
+                            foreach (PlayerScore ps in scores)
+                            {
+                                currentRoundScores.AddScoreForPlayer(new SimpleScore(ps.PlayerColor, ps.PlayerNumber, ps.Score));
+                            }
+                            var winningScore = currentRoundScores.SortedByDescendingScores()[0];
                             PlayersState.INSTANCE.SetScores(scores);
                             GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
-                            AFEventManager.INSTANCE.PostEvent(AFEvents.RoundOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
+                            AFEventManager.INSTANCE.PostEvent(AFEvents.RoundOver(winningScore.PlayerNumber(), winningScore.Score(), winningScore.PlayerColor()));
                         }
                         break;
                     }

@@ -176,8 +176,12 @@
     <Compile Include="Assets\Scripts\SceneSpecificScripts\PlayerJoinInfo.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\QuitGame\QuitApplication.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\RoundOver\RoundOverNextSceneLoader.cs" />
+    <Compile Include="Assets\Scripts\Scoring\CompleteGameScores.cs" />
+    <Compile Include="Assets\Scripts\Scoring\IScore.cs" />
     <Compile Include="Assets\Scripts\Scoring\PlayerScore.cs" />
     <Compile Include="Assets\Scripts\Scoring\ScoreListing.cs" />
+    <Compile Include="Assets\Scripts\Scoring\SimpleScore.cs" />
+    <Compile Include="Assets\Scripts\Scoring\SingleRoundScores.cs" />
     <Compile Include="Assets\Scripts\ShaderHelper\OutlineHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CameraHelper.cs" />
     <Compile Include="Assets\Scripts\Utils\CollectionUtils.cs" />

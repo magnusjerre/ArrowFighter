@@ -2,6 +2,7 @@
 using Jerre.GameMode.FreeForAll;
 using Jerre.GameMode.Undead;
 using Jerre.GameSettings;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,6 +31,9 @@ namespace Jerre
             get;
             private set;
         }
+
+        public CompleteGameScores<IScore> gameScores = new CompleteGameScores<IScore>();
+        public Func<IScore, IScore, IScore> gameScoresAccumulator = (acc, current) => SimpleScore.Accumulate((SimpleScore)acc, (SimpleScore)current);
 
         public GameModes selectedGameMode;
         public void SetSelectedGameMode(GameModes mode) {
