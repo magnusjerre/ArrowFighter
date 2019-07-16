@@ -57,7 +57,7 @@ namespace Jerre
             PlayerInfos = new List<PlayerJoinInfo>();
         }
 
-        public Color GetPlayerColorV2(int playerNumber)
+        public Color GetPlayerColor(int playerNumber)
         {
             foreach (var info in PlayerInfos)
             {

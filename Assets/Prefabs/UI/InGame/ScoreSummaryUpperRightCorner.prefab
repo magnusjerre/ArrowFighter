@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1613902580091077293}
   - component: {fileID: 1613902580091077290}
+  - component: {fileID: 5601002914648890131}
+  - component: {fileID: 3791756979510187396}
   m_Layer: 5
-  m_Name: TotalScore
+  m_Name: ScoreSummaryUpperRightCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,13 +46,39 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613902580091077292}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ccfbff91c6834f1d96f58da062bf2be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leaderScoreText: {fileID: 1613902581450611805}
   totalScoreText: {fileID: 1613902581519910817}
+--- !u!114 &5601002914648890131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613902580091077292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892d295a332b11a4bb223c670630b2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScoreText: {fileID: 1613902581519910817}
+--- !u!114 &3791756979510187396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613902580091077292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2821a07f2ab7f2c48a68577b4a1a9a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaderScoreText: {fileID: 1613902581450611805}
 --- !u!1 &1613902581364553705
 GameObject:
   m_ObjectHideFlags: 0

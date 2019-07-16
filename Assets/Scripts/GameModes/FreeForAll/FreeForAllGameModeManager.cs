@@ -79,6 +79,7 @@ namespace Jerre
 
             var playerScore = currentRoundScores.GetScoreForPlayer<SimpleScore>(payload.playerNumberOfKiller);
             var newScore = playerScore.IncreaseScoreBy(1);
+            
             AFEventManager.INSTANCE.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, newScore, maxScore));
             if (newScore == maxScore)
             {
