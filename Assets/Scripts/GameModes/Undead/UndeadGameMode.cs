@@ -115,6 +115,66 @@ namespace Jerre.GameMode.Undead
             weaponSlot.enabled = true;
         }
 
+        void HandlePlayerKilledEvent(KilledEventPayload payload)
+        {
+            var killerScore = score.GetCurrentRoundScoreForPlayer(payload.playerNumberOfKiller);
+            var killedScore = score.GetCurrentRoundScoreForPlayer(payload.playerNumberOfKilledPlayer);
+
+            if (killerScore.Undead && killedScore.Undead)
+            {
+                // Undead player killed another undead player. 
+                // This is uninteresting. Won't generate a Scoring event
+                return;
+            }
+
+            if (payload.playerNumberOfKilledPlayer == payload.playerNumberOfKiller)
+            {
+                // Player killed itself, should become undead. Won't generate a Scoring event
+                killedScore.Undead = true;
+                MakeUndead(PlayerFetcher.FindPlayerByPlayerNumber(killedScore.PlayerNumber));
+            }
+            else 
+            {
+                // Player killed another player. Will generate a Scoring event
+                var scoreForKillV2 = killerScore.Undead ? UndeadKillPoints : AliveKillPoints;
+                killerScore.Score += scoreForKillV2;
+
+                if (!killedScore.Undead)
+                {
+                    killedScore.Undead = true;
+                    MakeUndead(PlayerFetcher.FindPlayerByPlayerNumber(killedScore.PlayerNumber));
+                }
+                AFEventManager.INSTANCE.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, killerScore.Score, killerScore.Score));
+            }
+            killedScore.Deaths++;
+
+            if (score.AllPlayersDead())
+            {
+                if (IsEntireGameOver())
+                {
+                    Debug.Log("Game over, all players are undead!");
+                    var scores = GeneratePlayerScores();
+                    var winningScore = scores[0];
+                    PlayersState.INSTANCE.SetScores(scores);
+                    GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
+                    AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
+                }
+                else
+                {
+                    Debug.Log("Round over, all players are undead!");
+                    var scores = GeneratePlayerScores();
+                    var winningScore = scores[0];
+                    PlayersState.INSTANCE.SetScores(scores);
+                    GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
+                    AFEventManager.INSTANCE.PostEvent(AFEvents.RoundOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
+                }
+            }
+        }
+
+        private bool IsEntireGameOver()
+        {
+            return GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber == NumberOfGameRounds;
+        }
 
         public bool HandleEvent(AFEvent afEvent)
         {
@@ -122,48 +182,7 @@ namespace Jerre.GameMode.Undead
             {
                 case AFEventType.KILLED:
                     {
-                        var payload = (KilledEventPayload)afEvent.payload;
-                        var killerScore = score.GetCurrentRoundScoreForPlayer(payload.playerNumberOfKiller);
-                        var killedScore = score.GetCurrentRoundScoreForPlayer(payload.playerNumberOfKilledPlayer);
-
-                        int scoreForKill = killedScore.Undead != killerScore.Undead && killerScore.PlayerNumber != killedScore.PlayerNumber ? (killerScore.Undead ? UndeadKillPoints : AliveKillPoints) : 0;
-                        killerScore.Score += scoreForKill;
-                        if (scoreForKill != 0)
-                        {
-                            AFEventManager.INSTANCE.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, killerScore.Score, killerScore.Score));
-                        }
-
-                        killedScore.Undead = true;
-                        killedScore.Deaths++;
-                        Debug.Log("number of game rounds: " + NumberOfGameRounds);
-                        Debug.Log("game state, current round number: " + GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber);
-                        if (score.AllPlayersDead())
-                        {
-                            if (GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber == NumberOfGameRounds)
-                            {
-                                Debug.Log("Game over, all players are undead!");
-                                var scores = GeneratePlayerScores();
-                                var winningScore = scores[0];
-                                PlayersState.INSTANCE.SetScores(scores);
-                                GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
-                                AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
-                            }
-                            else
-                            {
-                                Debug.Log("Round over, all players are undead!");
-                                var scores = GeneratePlayerScores();
-                                var winningScore = scores[0];
-                                PlayersState.INSTANCE.SetScores(scores);
-                                GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
-                                AFEventManager.INSTANCE.PostEvent(AFEvents.RoundOver(winningScore.PlayerNumber, winningScore.Score, winningScore.PlayerColor));
-                            }
-                        }
-                        else
-                        {
-                            var playerSettings = PlayerFetcher.FindPlayerByPlayerNumber(killedScore.PlayerNumber);
-                            MakeUndead(playerSettings);
-                        }
-
+                        HandlePlayerKilledEvent((KilledEventPayload)afEvent.payload);
                         return true;
                     }
                 case AFEventType.PLAYERS_ALL_CREATED:
