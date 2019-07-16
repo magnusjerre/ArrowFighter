@@ -26,12 +26,6 @@ namespace Jerre
 
         public List<PlayerJoinInfo> PlayerInfos;
 
-        public List<PlayerScore> Scores
-        {
-            get;
-            private set;
-        }
-
         public CompleteGameScores<IScore> gameScores = new CompleteGameScores<IScore>();
         public Func<IScore, IScore, IScore> gameScoresAccumulator;
 
@@ -50,17 +44,6 @@ namespace Jerre
                         gameSettings.GameModeSettings = new UndeadGameSettings();
                         break;
                     }
-            }
-        }
-
-        public void SetScores(List<PlayerScore> newScores)
-        {
-            newScores.Sort();
-            Scores = new List<PlayerScore>();
-            for (var i = 0; i < newScores.Count; i++)
-            {
-                var s = newScores[i];
-                Scores.Add(new PlayerScore(s.PlayerNumber, s.PlayerColor, i + 1, s.Score));
             }
         }
 
@@ -89,7 +72,7 @@ namespace Jerre
         public void Reset()
         {
             PlayerInfos.Clear();
-            Scores = null;
+            gameScores = new CompleteGameScores<IScore>();
             selectedGameMode = GameModes.UNSELECTED;
         }
 
