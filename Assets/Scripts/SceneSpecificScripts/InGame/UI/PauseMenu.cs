@@ -72,6 +72,7 @@ namespace Jerre
             PlayerComponentsEnabler.EnableOrDisableAllPlayersInputResponses(true);
             Time.timeScale = 1f;
             AFEventManager.INSTANCE.RemoveAllListeners();
+            PlayersState.INSTANCE.Reset();
             SceneManager.LoadScene(SceneNames.GAME_MODE_SELECTION);
         }
 
