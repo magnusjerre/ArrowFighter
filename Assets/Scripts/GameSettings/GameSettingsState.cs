@@ -17,12 +17,10 @@
 
         private GameSettingsState()
         {
-            RoundState = new GameRoundState();
             BasicGameSettings = new BasicGameSettings();
             BasicWeaponsSettings = new BasicWeaponsSettings();
         }
 
-        public GameRoundState RoundState;
         public BasicGameSettings BasicGameSettings;
         public BasicWeaponsSettings BasicWeaponsSettings;
         public GameModeSettingsBase GameModeSettings;
