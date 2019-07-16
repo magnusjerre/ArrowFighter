@@ -2,7 +2,7 @@
 
 namespace Jerre.GameMode.Undead
 {
-    public class SingleRoundUndeadScore : IScore
+    public class UndeadScore : IScore
     {
         private Color playerColor;
         private int playerNumber;
@@ -11,7 +11,7 @@ namespace Jerre.GameMode.Undead
         public bool Undead = false;
         public bool StartedAsUndead = false;
 
-        public SingleRoundUndeadScore(Color playerColor, int playerNumber, int score, int deaths, bool undead, bool startedAsUndead)
+        public UndeadScore(Color playerColor, int playerNumber, int score, int deaths, bool undead, bool startedAsUndead)
         {
             this.playerColor = playerColor;
             this.playerNumber = playerNumber;
@@ -21,7 +21,7 @@ namespace Jerre.GameMode.Undead
             StartedAsUndead = startedAsUndead;
         }
 
-        public SingleRoundUndeadScore(int playerNumber, Color playerColor)
+        public UndeadScore(int playerNumber, Color playerColor)
         {
             this.playerNumber = playerNumber;
             this.playerColor = playerColor;
@@ -47,9 +47,9 @@ namespace Jerre.GameMode.Undead
             score += amount;
         }
 
-        public static SingleRoundUndeadScore Accumulator(SingleRoundUndeadScore acc, SingleRoundUndeadScore current)
+        public static UndeadScore Accumulator(UndeadScore acc, UndeadScore current)
         {
-            return new SingleRoundUndeadScore(acc.playerColor, acc.playerNumber, acc.score + current.score, acc.Deaths + current.Deaths, false, acc.StartedAsUndead || current.StartedAsUndead);
+            return new UndeadScore(acc.playerColor, acc.playerNumber, acc.score + current.score, acc.Deaths + current.Deaths, false, acc.StartedAsUndead || current.StartedAsUndead);
         }
     }
 }

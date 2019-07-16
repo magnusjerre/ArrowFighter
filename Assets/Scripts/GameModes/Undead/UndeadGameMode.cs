@@ -32,7 +32,7 @@ namespace Jerre.GameMode.Undead
             
             // Setting up scoring resources
             currentRoundScores = PlayersState.INSTANCE.gameScores.StartNewRound();
-            PlayersState.INSTANCE.gameScoresAccumulator = (acc, current) => SingleRoundUndeadScore.Accumulator((SingleRoundUndeadScore)acc, (SingleRoundUndeadScore)current);
+            PlayersState.INSTANCE.gameScoresAccumulator = (acc, current) => UndeadScore.Accumulator((UndeadScore)acc, (UndeadScore)current);
 
             undeadSettings = (UndeadGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
             NumberOfGameRounds = undeadSettings.NumberOfGameRounds;
@@ -68,7 +68,7 @@ namespace Jerre.GameMode.Undead
             var undeadPlayerNumbers = SelectPlayersToStartAsUndead(allPlayers);
             foreach (var ps in allPlayers)
             {
-                var playerScore = new SingleRoundUndeadScore(ps.playerNumber, ps.color);
+                var playerScore = new UndeadScore(ps.playerNumber, ps.color);
                 currentRoundScores.AddScoreForPlayer(playerScore);
                 MakeLiving(ps);
                 for (var i = 0; i < undeadPlayerNumbers.Length; i++)
@@ -101,8 +101,8 @@ namespace Jerre.GameMode.Undead
 
         void HandlePlayerKilledEvent(KilledEventPayload payload)
         {
-            var killerScore = currentRoundScores.GetScoreForPlayer<SingleRoundUndeadScore>(payload.playerNumberOfKiller);
-            var killedScore = currentRoundScores.GetScoreForPlayer<SingleRoundUndeadScore>(payload.playerNumberOfKilledPlayer);
+            var killerScore = currentRoundScores.GetScoreForPlayer<UndeadScore>(payload.playerNumberOfKiller);
+            var killedScore = currentRoundScores.GetScoreForPlayer<UndeadScore>(payload.playerNumberOfKilledPlayer);
 
             if (killerScore.Undead && killedScore.Undead)
             {
@@ -132,7 +132,7 @@ namespace Jerre.GameMode.Undead
             }
             killedScore.Deaths++;
 
-            if (currentRoundScores.DoTrueForAllCheck(score => ((SingleRoundUndeadScore)score).Undead))
+            if (currentRoundScores.DoTrueForAllCheck(score => ((UndeadScore)score).Undead))
             {
                 if (IsEntireGameOver())
                 {
