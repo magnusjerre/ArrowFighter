@@ -29,7 +29,10 @@ namespace Jerre.GameMode.Undead
         void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
+            
+            // Setting up scoring resources
             currentRoundScores = PlayersState.INSTANCE.gameScores.StartNewRound();
+            PlayersState.INSTANCE.gameScoresAccumulator = (acc, current) => SingleRoundUndeadScore.Accumulator((SingleRoundUndeadScore)acc, (SingleRoundUndeadScore)current);
 
             undeadSettings = (UndeadGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
             NumberOfGameRounds = undeadSettings.NumberOfGameRounds;

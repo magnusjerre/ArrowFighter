@@ -19,7 +19,10 @@ namespace Jerre
 
         void Awake()
         {
+            // Setting up scoring resources
             currentRoundScores = PlayersState.INSTANCE.gameScores.StartNewRound();
+            PlayersState.INSTANCE.gameScoresAccumulator = (acc, current) => SimpleScore.Accumulate((SimpleScore)acc, (SimpleScore)current);
+
             AFEventManager.INSTANCE.AddListener(this);
             freeForAllSettings = (FreeForAllGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
             Debug.Log("pointsToWin:" + freeForAllSettings.MaxScore);

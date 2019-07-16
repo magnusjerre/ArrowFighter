@@ -43,13 +43,11 @@ namespace Jerre
                 case GameModes.FREE_FOR_ALL:
                     {
                         gameSettings.GameModeSettings = new FreeForAllGameSettings();
-                        gameScoresAccumulator = (acc, current) => SimpleScore.Accumulate((SimpleScore)acc, (SimpleScore)current);
                         break;
                     }
                 case GameModes.UNDEAD:
                     {
                         gameSettings.GameModeSettings = new UndeadGameSettings();
-                        gameScoresAccumulator = (acc, current) => SingleRoundUndeadScore.Accumulator((SingleRoundUndeadScore)acc, (SingleRoundUndeadScore)current);
                         break;
                     }
             }
