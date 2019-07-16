@@ -7,6 +7,9 @@ namespace Jerre.GameMode
     {
         public CountDownTimer countDownTimerPrefab;
         public RectTransform TopBar;
+        public RectTransform MainUi;
+        public GameObject RoundLeaderScorePrefab;
+        public GameObject LeaderAndMaxScorePrefab;
 
         private void Awake()
         {
@@ -18,6 +21,7 @@ namespace Jerre.GameMode
                         var undeadMode = gameObject.AddComponent<UndeadGameMode>();
                         undeadMode.countDownTimerPrefab = countDownTimerPrefab;
                         undeadMode.TopBar = TopBar;
+                        Instantiate(RoundLeaderScorePrefab, MainUi);
                         break;
                     }
                 case GameModes.FREE_FOR_ALL:
@@ -25,6 +29,7 @@ namespace Jerre.GameMode
                         var scoreMode = gameObject.AddComponent<FreeForAllGameModeManager>();
                         scoreMode.countDownTimerPrefab = countDownTimerPrefab;
                         scoreMode.TopBar = TopBar;
+                        Instantiate(LeaderAndMaxScorePrefab, MainUi);
                         break;
                     }
             }
