@@ -154,7 +154,6 @@
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\PlayerUIBarElement.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\RoundLeaderScore.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\RoundMaxScore.cs" />
-    <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\ScoreSummary.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\SplashDescriptionForGameMode.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\UI\SplashWinner.cs" />
     <Compile Include="Assets\Scripts\SceneSpecificScripts\InGame\Utils\PlayerComponentsEnabler.cs" />
