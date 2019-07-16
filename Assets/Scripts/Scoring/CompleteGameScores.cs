@@ -8,9 +8,11 @@ namespace Jerre
     {
         private List<SingleRoundScores<T>> roundScores = new List<SingleRoundScores<T>>();
 
-        public void StartNewRound()
+        public SingleRoundScores<T> StartNewRound()
         {
-            roundScores.Add(new SingleRoundScores<T>());
+            var singleRoundScores = new SingleRoundScores<T>();
+            roundScores.Add(singleRoundScores);
+            return singleRoundScores;
         }
 
         public SingleRoundScores<T> GetCurrentRoundScores()

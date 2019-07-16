@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3541d0281607b4cab5efe4e3ce8460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LoadDelay: 10
+  LoadDelay: 3
 --- !u!114 &1449813958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +432,6 @@ MonoBehaviour:
     type: 3}
   ScoreContainer: {fileID: 645643753}
   ShowCompleteGameScores: 1
-  Debug: 0
 --- !u!1 &1541728483
 GameObject:
   m_ObjectHideFlags: 0

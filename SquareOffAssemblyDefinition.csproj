@@ -91,7 +91,6 @@
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadGameMode.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadGameSettings.cs" />
     <Compile Include="Assets\Scripts\GameModes\Undead\UndeadPlayerColor.cs" />
-    <Compile Include="Assets\Scripts\GameModes\Undead\WholeGameUndeadScore.cs" />
     <Compile Include="Assets\Scripts\GameSettings\BasicGameSettings.cs" />
     <Compile Include="Assets\Scripts\GameSettings\BasicWeaponsSettings.cs" />
     <Compile Include="Assets\Scripts\GameSettings\GameModeSettingsBase.cs" />

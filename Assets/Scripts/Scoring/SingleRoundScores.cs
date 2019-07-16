@@ -25,14 +25,14 @@ namespace Jerre
             return output;
         }
 
-        public T GetScoreForPlayer(int playerNumber)
+        public R GetScoreForPlayer<R>(int playerNumber) where R : T
         {
             var playerScore = scores.Find(score => score.PlayerNumber() == playerNumber);
             if (playerScore != null)
             {
-                return playerScore;
+                return (R)playerScore;
             }
-            return default(T);
+            return default(R);
         }
 
         public void AddScoreForPlayer(T newScore)

@@ -23,14 +23,13 @@ namespace Jerre.GameMode.Undead
 
         private UndeadGameSettings undeadSettings;
 
-        WholeGameUndeadScore score;
+        private SingleRoundScores<IScore> currentRoundScores;
 
         // Called as part of gameObject.AddComponent<...>(). Can therefore not have initialization here that is added after addComponent, use Start() instead
         void Awake()
         {
             AFEventManager.INSTANCE.AddListener(this);
-            score = new WholeGameUndeadScore();
-            PlayersState.INSTANCE.gameScores.StartNewRound();
+            currentRoundScores = PlayersState.INSTANCE.gameScores.StartNewRound();
 
             undeadSettings = (UndeadGameSettings)GameSettingsState.INSTANCE.GameModeSettings;
             NumberOfGameRounds = undeadSettings.NumberOfGameRounds;
@@ -61,39 +60,20 @@ namespace Jerre.GameMode.Undead
             return new int[] { 1 };
         }
 
-        public List<PlayerScore> GeneratePlayerScores()
-        {
-            var totalScore = score.CalcualtePlayerScoresWithoutPositionOrColorForRound(score.roundScores);
-            var scoresSorted = new List<PlayerScore>();
-            foreach (var keyValue in totalScore)
-            {
-                scoresSorted.Add(new PlayerScore(keyValue.Key, PlayersState.INSTANCE.GetPlayerColorV2(keyValue.Key), -1, keyValue.Value));
-            }
-            scoresSorted.Sort();
-
-            var scores = new List<PlayerScore>();
-            for (var i = 0; i < scoresSorted.Count; i++)
-            {
-                var score = scoresSorted[i];
-                scores.Add(new PlayerScore(score.PlayerNumber, score.PlayerColor, i + 1, score.Score));
-            }
-
-            return scores;
-        }
-
         void HandleGameStart(List<PlayerSettings> allPlayers)
         {
             var undeadPlayerNumbers = SelectPlayersToStartAsUndead(allPlayers);
             foreach (var ps in allPlayers)
             {
-                var currentRoundScore = score.GetCurrentRoundScoreForPlayer(ps.playerNumber);
+                var playerScore = new SingleRoundUndeadScore(ps.playerNumber, ps.color);
+                currentRoundScores.AddScoreForPlayer(playerScore);
                 MakeLiving(ps);
                 for (var i = 0; i < undeadPlayerNumbers.Length; i++)
                 {
                     if (ps.playerNumber == undeadPlayerNumbers[i])
                     {
-                        currentRoundScore.Undead = true;
-                        currentRoundScore.StartedAsUndead = true;
+                        playerScore.Undead = true;
+                        playerScore.StartedAsUndead = true;
                         MakeUndead(ps);
                     }
                 }
@@ -118,8 +98,8 @@ namespace Jerre.GameMode.Undead
 
         void HandlePlayerKilledEvent(KilledEventPayload payload)
         {
-            var killerScore = score.GetCurrentRoundScoreForPlayer(payload.playerNumberOfKiller);
-            var killedScore = score.GetCurrentRoundScoreForPlayer(payload.playerNumberOfKilledPlayer);
+            var killerScore = currentRoundScores.GetScoreForPlayer<SingleRoundUndeadScore>(payload.playerNumberOfKiller);
+            var killedScore = currentRoundScores.GetScoreForPlayer<SingleRoundUndeadScore>(payload.playerNumberOfKilledPlayer);
 
             if (killerScore.Undead && killedScore.Undead)
             {
@@ -132,51 +112,35 @@ namespace Jerre.GameMode.Undead
             {
                 // Player killed itself, should become undead. Won't generate a Scoring event
                 killedScore.Undead = true;
-                MakeUndead(PlayerFetcher.FindPlayerByPlayerNumber(killedScore.PlayerNumber));
+                MakeUndead(PlayerFetcher.FindPlayerByPlayerNumber(killedScore.PlayerNumber()));
             }
             else 
             {
                 // Player killed another player. Will generate a Scoring event
                 var scoreForKillV2 = killerScore.Undead ? UndeadKillPoints : AliveKillPoints;
-                killerScore.Score += scoreForKillV2;
+                killerScore.IncreaseScoreBy(scoreForKillV2);
 
                 if (!killedScore.Undead)
                 {
                     killedScore.Undead = true;
-                    MakeUndead(PlayerFetcher.FindPlayerByPlayerNumber(killedScore.PlayerNumber));
+                    MakeUndead(PlayerFetcher.FindPlayerByPlayerNumber(killedScore.PlayerNumber()));
                 }
-                AFEventManager.INSTANCE.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, killerScore.Score, killerScore.Score));
+                AFEventManager.INSTANCE.PostEvent(AFEvents.Score(payload.playerNumberOfKiller, killerScore.Score(), killerScore.Score()));
             }
             killedScore.Deaths++;
 
-            if (score.AllPlayersDead())
+            if (currentRoundScores.DoTrueForAllCheck(score => ((SingleRoundUndeadScore)score).Undead))
             {
                 if (IsEntireGameOver())
                 {
                     Debug.Log("Game over, all players are undead!");
-                    var scores = GeneratePlayerScores();
-                    var currentRoundScores = PlayersState.INSTANCE.gameScores.GetCurrentRoundScores();
-                    foreach (PlayerScore ps in scores)
-                    {
-                        currentRoundScores.AddScoreForPlayer(new SimpleScore(ps.PlayerColor, ps.PlayerNumber, ps.Score));
-                    }
                     var winningScoreForRound = currentRoundScores.SortedByDescendingScores()[0];
-                    PlayersState.INSTANCE.SetScores(scores);
-                    GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
                     AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningScoreForRound.PlayerNumber(), winningScoreForRound.Score(), winningScoreForRound.PlayerColor()));
                 }
                 else
                 {
                     Debug.Log("Round over, all players are undead!");
-                    var scores = GeneratePlayerScores();
-                    var currentRoundScores = PlayersState.INSTANCE.gameScores.GetCurrentRoundScores();
-                    foreach (PlayerScore ps in scores)
-                    {
-                        currentRoundScores.AddScoreForPlayer(new SimpleScore(ps.PlayerColor, ps.PlayerNumber, ps.Score));
-                    }
                     var winningScore = currentRoundScores.SortedByDescendingScores()[0];
-                    PlayersState.INSTANCE.SetScores(scores);
-                    GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
                     AFEventManager.INSTANCE.PostEvent(AFEvents.RoundOver(winningScore.PlayerNumber(), winningScore.Score(), winningScore.PlayerColor()));
                 }
             }
@@ -213,29 +177,13 @@ namespace Jerre.GameMode.Undead
                         if (GameSettingsState.INSTANCE.RoundState.CurrentRoundNumber == NumberOfGameRounds)
                         {
                             Debug.Log("Game over, time ran out!");
-                            var scores = GeneratePlayerScores();
-                            var currentRoundScores = PlayersState.INSTANCE.gameScores.GetCurrentRoundScores();
-                            foreach (PlayerScore ps in scores)
-                            {
-                                currentRoundScores.AddScoreForPlayer(new SimpleScore(ps.PlayerColor, ps.PlayerNumber, ps.Score));
-                            }
                             var winningScore = currentRoundScores.SortedByDescendingScores()[0];
-                            PlayersState.INSTANCE.SetScores(scores);
-                            GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
                             AFEventManager.INSTANCE.PostEvent(AFEvents.GameOver(winningScore.PlayerNumber(), winningScore.Score(), winningScore.PlayerColor()));
                         }
                         else
                         {
                             Debug.Log("Round over, time ran out!");
-                            var scores = GeneratePlayerScores();
-                            var currentRoundScores = PlayersState.INSTANCE.gameScores.GetCurrentRoundScores();
-                            foreach (PlayerScore ps in scores)
-                            {
-                                currentRoundScores.AddScoreForPlayer(new SimpleScore(ps.PlayerColor, ps.PlayerNumber, ps.Score));
-                            }
                             var winningScore = currentRoundScores.SortedByDescendingScores()[0];
-                            PlayersState.INSTANCE.SetScores(scores);
-                            GameSettingsState.INSTANCE.RoundState.roundScores.Add(score);
                             AFEventManager.INSTANCE.PostEvent(AFEvents.RoundOver(winningScore.PlayerNumber(), winningScore.Score(), winningScore.PlayerColor()));
                         }
                         break;
